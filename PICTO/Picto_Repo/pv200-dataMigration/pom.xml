@@ -16,7 +16,7 @@
 		<svnModuleName>pv200-dataMigration</svnModuleName>
 
         <spring.version>4.0.5.RELEASE</spring.version>
-        <spring-batch.version>3.0.5.RELEASE</spring-batch.version>
+        <spring-batch.version>4.2.2.RELEASE</spring-batch.version>
        
     </properties>
 
