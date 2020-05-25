@@ -1,0 +1,309 @@
+ 
+<div data-ng-controller="preparationController">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content no-padding "></div>
+    <div class="preptbl-wrp form-group">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-gbr-content-bottom right-padd-zero preparation-small-h4 ">
+           <div class="pageinfo-lbl-wrp">
+            <label title=" {{'cop.preparationList.title.preparationVehicle'|localize }} ">
+             <b class="custom-menulist-left ellipsis" title="{{'cop.preparationList.title.preparationVehicle'|localize }}">>..> {{'cop.preparationList.title.preparationVehicle'|localize }}</b>
+            </label>
+            </div>
+            
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 no-padding ellipsis">
+                <h4 class="no-top-margin ellipsis" data-ng-show="(preparationFile.registrationNumber !== null)"  title="{{'cop.preparationList.label.Immatriculation'|localize }}: {{preparationFile.registrationNumber}}" >{{'cop.preparationList.label.Immatriculation'|localize }}: {{preparationFile.registrationNumber}}</h4>
+                <h4 class="no-top-margin ellipsis" data-ng-show="(preparationFile.chasisNumber !== null)&&(preparationFile.registrationNumber===null)" title="{{'cop.preparationList.label.chassis'|localize }}: {{preparationFile.chasisNumber}}">{{'cop.preparationList.label.chassis'|localize }}: {{preparationFile.chasisNumber}}</h4>
+                <h4 class="no-top-margin ellipsis" data-ng-show="(preparationFile.counterMark !== null)&&(preparationFile.chasisNumber===null)&&(preparationFile.registrationNumber===null)" title="{{'cop.preparationList.label.counterMark'|localize }}:{{preparationFile.counterMark}} " >{{'cop.preparationList.label.counterMark'|localize }}:
+                    {{preparationFile.counterMark}}</h4>
+                <h4 class="no-top-margin ellipsis" >{{'cop.preparationList.label.vin'|localize }}: {{preparationFile.vin}}</h4>
+            </div>
+            <div class="col-lg-3 col-md-2 col-sm-12 col-xs-12 no-padding">
+              <div title="{{$select.selected.label}} ">
+                <ui-select multiplte id="dropdownAction" reset-search-input="true" data-ng-model="actions.selected" on-select="actionSelected($select.selected)" data-ng-show="authorization()">
+                <ui-select-match placeholder="Select.." title="{{$select.selected.label}}">{{$select.selected.label}} </ui-select-match> <ui-select-choices
+                    repeat="action in actions | filter: $select.search">
+                <div ng-bind-html="action.label | highlight: $select.search " title="{{action.label}}" data-ng-class="{'disabled':action.label === 'Envoyer en expertise'}"></div>
+                </ui-select-choices> </ui-select>
+              </div>   
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no-padding text-right">
+                <h4 class="no-top-margin ellipsis" title="{{preparationFile.typeOfTest}}">{{preparationFile.typeOfTest}}</h4>
+                <h4 class="no-top-margin ellipsis" title="{{preparationFile.vehicleFileStatusGui |localize}}" >
+                    <i>{{preparationFile.vehicleFileStatusGui |localize}}</i>
+                </h4>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding input-lbl-propertext-wrapp">
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.projectVehicle'|localize }}" >{{'cop.preparationList.label.projectVehicle'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.projectCodeFamilyLabel}}"
+                    data-ng-model="preparationFile.projectCodeFamilyLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.silhoutte'|localize }}">{{'cop.preparationList.label.silhoutte'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.bodyWorkLabel}}"
+                    data-ng-model="preparationFile.bodyWorkLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.constructeurMarque'|localize }} ">{{'cop.preparationList.label.constructeurMarque'|localize }}</label>
+                <input type="text" class="form-control" title="preparationFile.carBrandMaker"
+                    data-ng-model="preparationFile.carBrandMaker" readonly>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin"  data-ng-if="!displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.anneModel'|localize }}" >{{'cop.preparationList.label.anneModel'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.modelYear}}"
+                    data-ng-model="preparationFile.modelYear" readonly>
+
+            </div>
+            
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.boite'|localize }}" >{{'cop.preparationList.label.boite'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.gearBoxLabel}}"
+                    data-ng-model="preparationFile.gearBoxLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.carburant'|localize }}" >{{'cop.preparationList.label.carburant'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.fuelLabel}}"
+                    data-ng-model="preparationFile.fuelLabel" readonly>
+
+            </div>
+            
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.reglemenation'|localize }}" >{{'cop.preparationList.label.reglemenation'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.esLabel}}"
+                    data-ng-model="preparationFile.esLabel" readonly>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+        
+                    <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.moteur'|localize }}" >{{'cop.preparationList.label.moteur'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.engineLabel}}"
+                    data-ng-model="preparationFile.engineLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin"  data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.projectVehicle'|localize }}" > {{'cop.preparationList.label.powerCV'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.powerCV}}"
+                    data-ng-model="preparationFile.powerCV" readonly>
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin"  data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.projectVehicle'|localize }}" > {{'cop.preparationList.label.powerKW'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.powerKW}}"
+                    data-ng-model="preparationFile.powerKW" readonly>
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin"  data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.projectVehicle'|localize }}" > {{'cop.preparationList.label.torque'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.torque}}"
+                    data-ng-model="preparationFile.torque" readonly>
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="!displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.boite'|localize }}" >{{'cop.preparationList.label.boite'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.gearBoxLabel}}"
+                    data-ng-model="preparationFile.gearBoxLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="!displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.carburantType'|localize }}" >{{'cop.preparationList.label.carburantType'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.fuelTypeLabel}}"
+                    data-ng-model="preparationFile.fuelTypeLabel" readonly>
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin"   data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.carburantType'|localize }}" >{{'cop.genomedata.label.EngineFuelInjection'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.fuelInjectionType}}"
+                    data-ng-model="preparationFile.fuelInjectionType" readonly>
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="!displayFields">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.carburant'|localize }}" >{{'cop.preparationList.label.carburant'|localize }}</label> 
+                <input type="text" class="form-control" title="{{preparationFile.fuelLabel}}"
+                    data-ng-model="preparationFile.fuelLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis" title="{{'cop.preparationList.label.pays'|localize }}" >{{'cop.preparationList.label.pays'|localize }}</label> 
+                <!-- <input type="text" class="form-control" title="{{preparationFile.countryLabel}}"
+                    data-ng-model="preparationFile.vehicleFileRepresentation.vehicleRepresentation.destinationCountry.countryLable"> -->
+                    <ui-select multiplte id="countrySelection" reset-search-input="true" data-ng-model="preparationFile.vehicleFileRepresentation.vehicleRepresentation.destinationCountry">
+                <ui-select-match placeholder="Select.." title="{{$select.selected.countryLable}}">{{$select.selected.countryLable}} </ui-select-match> <ui-select-choices
+                    repeat="country in countryList | filter: $select.search">
+                <div ng-bind-html="country.countryLable | highlight: $select.search " title="{{country.countryLable}}" ></div>
+                </ui-select-choices> </ui-select>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content tab-content-border no-padding"></div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+
+        <ul class="nav nav-pills nav-custom f-left custom-tab media-tab-menu">
+            <li class="preperationList{{$index}}" data-ng-hide="checkList.enabled == false || checkList.order == 101"
+                data-ng-repeat="checkList in preparationFile.prepCheckListRepresentation | orderBy:'order'"><a data-toggle="pill"
+                data-target="#preperationList{{$index}}" data-ng-click="tabClick(checkList.label)"> {{checkList.label}}</a></li>
+
+        </ul>
+        <div class="tab-content col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-tab-block ">
+            <div id="preperationList{{$index}}" class="tab-pane fade" data-ng-repeat="checkList in preparationFile.prepCheckListRepresentation | orderBy:'order'">
+                <data-ng-include src="'fragments/cop/views/preparation-tabs/preparation-parametrized-tabs.html'"
+                    data-ng-if="checkList.typeOfList == 1" data-ng-hide="checkList.enabled == false"></data-ng-include>
+                <data-ng-include src="'fragments/cop/views/preparation-tabs/preparation-tab-calculators.html'" data-ng-if="checkList.typeOfList == 2"
+                    data-ng-hide="checkList.enabled == false"></data-ng-include>
+                <data-ng-include src="'fragments/cop/views/preparation-tabs/preparation-oil-level-check.html'" data-ng-if="checkList.typeOfList == 3"
+                    data-ng-hide="checkList.enabled == false"></data-ng-include>
+                <data-ng-include src="'fragments/cop/views/preparation-tabs/preparation-mot-gasoline.html'" data-ng-if="checkList.typeOfList == 4"
+                    data-ng-hide="checkList.enabled == false"></data-ng-include>
+                <data-ng-include src="'fragments/cop/views/preparation-tabs/preparation-mot-diesel.html'" data-ng-if="checkList.typeOfList == 5"
+                    data-ng-hide="checkList.enabled == false"></data-ng-include>
+            </div>
+        </div>
+    </div>
+
+<div id="expertiseStatus" class="modal fade">
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">{{'cop.preparationList.modal.expertiseConfirm' | localize}}</h4>
+
+
+            <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="changeToExpertise()">{{
+                    'cop.vehicleFile.filter.yesButton' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{
+                    'cop.vehicleFile.filter.noButton' | localize }}</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="completePreparation" class="modal fade">
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">{{'cop.preparationList.modal.completePraparation' | localize}}</h4>
+
+
+            <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="completePreparation()">{{
+                    'cop.vehicleFile.filter.yesButton' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{
+                    'cop.vehicleFile.filter.noButton' | localize }}</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="testEVACOP" class="modal fade">
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">{{'cop.preparationList.modal.testEVACOP' | localize}}</h4>
+
+
+            <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="changeToTestEVACOP()">{{
+                    'cop.vehicleFile.filter.yesButton' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{
+                    'cop.vehicleFile.filter.noButton' | localize }}</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="mandatoryErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{'cop.preparationList.message.mandatory' | localize}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="inBasketErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{'cop.preparationList.message.vfNotinBasket' | localize}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="plExistErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{'cop.prepaationList.modal.plExist' | localize}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dataType" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{'cop.preparationList.modal.datatypeError' | localize}} {{errorMSG}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

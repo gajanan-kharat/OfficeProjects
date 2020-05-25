@@ -1,0 +1,649 @@
+<script src="src/main/resources/META-INF/resources/picto-management/modules/jquery-ui.min.js.js"></script>
+<link rel="stylesheet" href="src/main/resources/META-INF/resources/picto-management/modules/jquery-ui.min.css">
+<div id="pictoLoader">
+
+</div>
+<div id="pictoHomePage" class="loaderBlock">
+<div  data-ng-init="validateUser()">
+
+    <!-- Area 1 -->
+
+    <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8 no-padding">
+        <div data-picto-navbar></div>
+        <div class="main-container" data-ng-init="createPicto()" data-ng-click="focusChange($event)" style=" background-color: #eee;height: 79px;" >
+            <div style="text-align:center;padding-top : 20px;">
+                <span class="results-count result-num">{{allPictos.length}}</span>{{ 'picto.catalog.label.results' | localize }}<br><span ng-hide="filterObj.filterCount==0" style="background-color: #1f94bf; color: #FFFFFF;">&thinsp; {{filterObj.filterCount}} {{ 'picto.filter.feedack.label.filterApply' | localize}}</span> {{appliedFilterString}}
+                <span class="results-desc"> </span>
+            </div>
+            <div infinite-scroll="addNextItems()" class="scroll-loader custom-body-catalog" can-load="canLoad"  style="padding: 0vw 0.5vw; position: fixed; bottom: 0px; top: 213px !important; overflow: auto; direction: rtl; unicode-bidi: bidi-override; background-color: #eee; width: 100%;">
+                <div id="wrapper" class="toggled context-wrapper">
+
+                    <div data-picto-catalog></div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Area 2(Information Area) -->
+
+    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 context-right no-padding" style="background-color: #EEEEEE;">
+        <div data-picto-rightbar></div>
+    </div>
+
+    <!-- Multi select options view -->
+
+    <div class="multi-options" data-ng-if="ShowMultipleSelected" data-ng-class="{'add-to-favorites-color':pictoCentral.favValue== '0','remove-from-favorites-color':pictoCentral.favValue == '1','favorites-neutral-color':pictoCentral.favValue == '2'}">
+       <div data-ng-class="{'add-to-cart-color':pictoCentral.cartValue== '0','remove-from-cart-color':pictoCentral.cartValue == '1','cart-neutral-color':pictoCentral.cartValue == '2'}">
+        <span class="fa font-awe multi-select-opt"  data-ng-model="picto.familyID.favoriteFlag" value={{pictoCentral.favValue}}
+        data-ng-class="{'add-to-favorites':pictoCentral.favValue== '0','remove-from-favorites':pictoCentral.favValue == '1','favorites-neutral':pictoCentral.favValue == '2'}"
+        data-ng-click="addToFavoritesMultiple(picto.id,pictoCentral.favValue); pictoCentral.favValue = !pictoCentral.favValue"  
+        title="{{pictoCentral.favValue=='1' ?  (language==='fr' ? 'Retirer des favoris' : 'Remove from favorite') : (language==='en' ? 'Add to favorite' : 'Ajouter aux Favoris') }}">
+        </span> <span class="fa font-awe multi-select-opt"
+        data-ng-model="picto.cartFlag"  value={{pictoCentral.cartValue}}                                
+        data-ng-class="{'add-to-cart':pictoCentral.cartValue== '0','remove-from-cart':pictoCentral.cartValue == '1','cart-neutral':pictoCentral.cartValue == '2'}"
+        data-ng-click="multiplePictoCart(pictoCentral.cartValue,$event); pictoCentral.cartValue = !pictoCentral.cartValue" 
+        title="{{pictoCentral.cartValue=='1' ?  (language==='fr' ? 'Enlever du panier' : 'Remove from Cart') : (language==='en' ? 'Add to Cart' : 'Ajouter au panier') }}">
+        </span> <span class="fa download-files font-awe multi-select-opt" data-ng-click="downloadPictoModal(picto.id,$event)"  title="{{'picto.pictoItem.label.download' | localize}}"></span> 
+        <span class="fa multi-pdf font-awe multi-select-opt" data-ng-click="multiPdfExport($event)"  title="{{'picto.rightBarModal.label.pictoExport' | localize}}"></span>
+         <span class="fa multi-ai-admin font-awe multi-select-opt" data-ng-if="admin" data-ng-click="downloadPictoAiFile(null,null,'centralAreaMultiSelection')" title="{{'picto.navBarModal.label.download' | localize}} AI"></span>
+    </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p></p>
+        </div>
+    </footer>
+</div>
+</div>
+
+<div id="downloadTypes" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{ 'picto.navBarModal.label.download' |
+                    localize }} <span  data-ng-hide="ShowMultipleSelected"> - {{downloadPictoName}} </span></h4>
+            </div>
+
+
+            <div class="modal-body row">
+                <div class="col-lg-12">
+                    <div class="col-lg-6">
+                        <form id="formats">
+                            <h4>{{ 'picto.navBarModal.label.fileFormats' | localize }}</h4>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('ai')" value="ai" data-ng-model="ai">{{ 'picto.navBarModal.label.aiPublic' | localize }}</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('igs')" value="igs" data-ng-model="igs">{{ 'picto.navBarModal.label.igs' | localize }}</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('jpg')" value="jpg" data-ng-model="jpg">{{ 'picto.navBarModal.label.jpg' | localize }}</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('png')" value="png" data-ng-model="png">{{ 'picto.navBarModal.label.png' | localize }}</label>
+                            </div>
+                            <div class="checkbox" data-ng-show="admin">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('aiw')" value="aiw" data-ng-model="aiw">AI Working</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form id="fileTypes">
+                            <h4>{{ 'picto.navBarModal.label.fileTypes' | localize }}</h4>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkType('allVar')" value="allVar" data-ng-model="allVar">All Variants</label>
+                            </div>
+                            <div class="checkbox" data-ng-repeat="vars in availableVarList" style="padding-left: 15px;">
+
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkType(vars.variant)" value="{{vars.variant}}" data-ng-model="vars.selected">{{vars.variant}}
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="col-lg-12 text-center" data-ng-if="ShowMultipleSelected">
+                    <span class="mandatory">*</span>{{ 'picto.message.multipleDownload' | localize }}
+                </div>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button id="btnExport" data-ng-click="downloadFiles()" type="button" style="border-radius: 0px;" class="btn btn-default" download="filename.html">{{ 'picto.navBarModal.label.downloadTo' | localize }}</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="inCartDlg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"  data-ng-class="{'loaderBlockIncart': showLoaderCart == false}">
+    <div class="modal-dialog modal-lg" style="width:90%">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{
+                    'picto.navBarModal.label.pictosInCart' | localize }}</h4>
+            </div>
+
+
+            <div class="modal-body row no-padding" style="overflow: auto">
+                <div class="col-lg-12 col-md-12 col-sm-12 no-padding">
+                    <div class="col-lg-8 col-md-8 col-sm-8 no-padding">
+                        <div class="col-lg-12 col-md-12 col-sm-12 no-padding">
+                            <div class="col-lg-6 col-md-6 col-sm-6 ">
+                                {{cartPictosFromServer.length}} {{ 'picto.navBarModal.label.pictosInShop' | localize }}
+                                <div class="col-lg-12 no-padding">
+                                    <div class="col-lg-9 hidden-xs no-padding">
+                                        <div class="col-lg-12 no-padding">
+
+                                            <div class="filter-item checkbox" style="margin: 0px;">
+                                                <label style="padding-left: 0px;"><input
+                                                    type="checkbox" id="checkbox2" class="checkbox-custom"
+                                                    data-ng-model="hasCheckedIncart"
+                                                    data-ng-click="selectAllInCart()"> <label
+                                                    style="padding-left: 0px;" for="checkbox2"
+                                                    class="checkbox-custom-label-purple color-checkbox-purple"></label>
+                                                    {{ 'picto.navbar.label.selectAllPictos' | localize }} </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--  <div class="col-lg-6 col-md-6 col-sm-6 float-right no-padding">
+                                <div class="multi-options-incart">
+                                    <span  data-ng-if="pictoSelectedIncart" class="fa fa-trash font-awe multi-select-opt-incart" data-ng-click="removeCartPicto()" title="{{'picto.rightBarModal.label.pictoDelete' | localize}}"></span> <span data-ng-show="cartInformationViewVisibilitySeveral" data-ng-if="pictoSelectedIncart" class="fa add-to-favorites font-awe multi-select-opt-incart" data-ng-click="addCartPictosToFavorites(picto.id)" title="{{'picto.pictoItem.label.addToFav' | localize}}"></span><span data-ng-show="cartInformationViewVisibilitySeveral" data-ng-if="pictoSelectedIncart" class="fa download-files font-awe multi-select-opt-incart" data-ng-click="downloadCartPictosModal(picto.id,picto.variantType,$event)" title="{{'picto.pictoItem.label.download' | localize}}"></span>
+                                    <span data-ng-show="cartInformationViewVisibilitySeveral" data-ng-if="pictoSelectedIncart" class="fa multi-pdf font-awe multi-select-opt-incart" data-ng-click="multiPdfExportIncart($event)" title="{{'picto.rightBarModal.label.pictoExport' | localize}}"></span> <span data-ng-click="uploadFile($event)" class="fa picto-list-upload font-awe multi-select-opt-incart" title="{{'picto.rightBarModal.label.uploadTitle' | localize}}"></span> <span data-ng-show="cartInformationViewVisibilitySeveral" class="fa multi-ai-admin font-awe multi-select-opt-incart" data-ng-if="admin && pictoSelectedIncart" data-ng-click="doubleClickMultipleIncart()" title="{{'picto.navBarModal.label.download' | localize}} AI"></span>
+                                </div>
+                            </div> -->
+
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 custom-cart-central" style="margin-top:5px;" data-ng-click="cartInfocus($event)">
+                            <div data-picto-incartitem>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="multi-options-cart text-center">
+                        <span data-ng-show="cartInformationViewVisibilitySeveral" data-ng-if="pictoSelectedIncart" class="fa add-to-favorites font-awe multi-select-opt" 
+                        data-ng-class="{'add-to-favorites':pictoCart.favValueShop== '0','remove-from-favorites':pictoCart.favValueShop == '1','favorites-neutral':pictoCart.favValueShop == '2'}"
+                        data-ng-click="addToFavoritesMultipleCart(pictoCart.favValueShop); pictoCart.favValueShop = !pictoCart.favValueShop" value ={{pictoCart.favValueShop}} title="{{pictoCart.favValueShop=='1' ?  (language==='fr' ? 'Retirer des favoris' : 'Remove from favorite') : (language==='en' ? 'Add to favorite' : 'Ajouter aux Favoris') }}">                  
+                        </span>
+                        <span data-ng-if="pictoSelectedIncart" class="fa remove-from-cart font-awe multi-select-opt" data-ng-click="removeCartPicto(true)" title="{{'picto.rightBarModal.label.pictoDelete' | localize}}" style="background-color: #bc2694 !important;"></span>
+                        <span data-ng-show="cartInformationViewVisibilitySeveral" data-ng-if="pictoSelectedIncart" class="fa download-files font-awe multi-select-opt" data-ng-click="downloadCartPictosModal(picto.id,picto.variantType,$event)" title="{{'picto.pictoItem.label.download' | localize}}"></span>
+                        <span data-ng-show="cartInformationViewVisibilitySeveral" data-ng-if="pictoSelectedIncart" class="fa multi-pdf font-awe multi-select-opt" data-ng-click="multiPdfExportIncart($event)" title="{{'picto.rightBarModal.label.pictoExport' | localize}}"></span>
+                        <span data-ng-click="uploadFile($event)" class="fa picto-list-upload font-awe multi-select-opt" title="{{'picto.rightBarModal.label.uploadTitle' | localize}}"></span>
+                        <span data-ng-show="cartInformationViewVisibilitySeveral" class="fa multi-ai-admin font-awe multi-select-opt" data-ng-if="admin && pictoSelectedIncart" data-ng-click="downloadPictoAiFile(null,null,'cartAreaMultiSelection')" title="{{'picto.navBarModal.label.download' | localize}} AI"></span>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 no-padding" style="border-left: 1px solid #774477; height: 60vw;">
+                        <div>
+                            <div data-picto-incartinfo></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="downloadCartModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{ 'picto.navBarModal.label.download' |
+                    localize }}  <span  data-ng-hide="cartInformationViewVisibilitySeveral"> - {{downloadPictoNameInCart}} </span></h4>
+            </div>
+
+
+            <div class="modal-body row">
+                <div class="col-lg-12">
+                    <div class="col-lg-6">
+                        <form id="formats">
+                            <h4>{{ 'picto.navBarModal.label.fileFormats' | localize }}</h4>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('ai')" value="ai" data-ng-model="ai">{{ 'picto.navBarModal.label.aiPublic' | localize }}</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('igs')" value="igs" data-ng-model="igs">{{ 'picto.navBarModal.label.igs' | localize }}</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('jpg')" value="jpg" data-ng-model="jpg">{{ 'picto.navBarModal.label.jpg' | localize }}</label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('png')" value="png" data-ng-model="png">{{ 'picto.navBarModal.label.png' | localize }}</label>
+                            </div>
+                            <div class="checkbox" data-ng-show="admin">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkFormat('aiw')" value="aiw" data-ng-model="aiw">AI Working</label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <form id="fileTypes">
+                            <h4>{{ 'picto.navBarModal.label.fileTypes' | localize }}</h4>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkType('allVar')" value="allVar" data-ng-model="allVar">All Variants</label>
+                            </div>
+                            <div class="checkbox" data-ng-repeat="vars in availableVarList" style="padding-left: 15px;">
+
+                                <label>
+                                    <input type="checkbox" data-ng-click="checkType(vars.variant)" value="{{vars.variant}}" data-ng-model="vars.selected">{{vars.variant}}
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <!-- PB - 11-aug Start -->
+                <div class="col-lg-12 text-center" data-ng-if="cartInformationViewVisibilitySeveral">
+                    <span class="mandatory">*</span>{{ 'picto.message.multipleDownload' | localize }}
+                </div>
+                <!-- PB - 11-aug End -->
+            </div>
+
+
+            <div class="modal-footer align-center">
+                <button id="btnExport" data-ng-click="downloadCartFiles()" type="button" data-dismiss="modal" style="border-radius: 0px;" class="btn btn-default" download="filename.html">{{ 'picto.navBarModal.label.downloadTo' | localize }}
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="notifDlg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{
+                    'picto.navBarModal.label.notification' | localize }}</h4>
+            </div>
+
+
+            <div class="modal-body row">
+                <div class="col-lg-12">{{notification.length}} {{ 'picto.navBarModal.label.pictosInNotif' | localize }}</div>
+
+                <div class="col-lg-12 no-padding padding-top-bottom" data-ng-repeat="notif in notification">
+                    <div class="notification-card">
+                        <div class="col-lg-2 padding-top-bottom">
+                            <img src="{{notif.imageUrl}}">
+                        </div>
+
+                        <div class="col-lg-6 padding-top-bottom">
+                            <div class="col-lg-12 color-white">Picto Name : {{notif.pictoName}}</div>
+                            <div class="col-lg-12 color-white">Last Picto Update : {{notif.lastUpdateDate}} by {{notif.lastUpdatedUsr.firstName}} - {{notif.lastUpdatedUsr.id}}
+                            </div>
+
+                            <div class="col-lg-12 color-white">Last Picto Family Update : {{notif.modifyDate}} by {{notif.lastModifiedUsr.firstName}} - {{notif.lastModifiedUsr.id}}
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 padding-top-bottom">
+                            <div class="col-lg-12 padding-top-bottom">
+                                <button class="form-control " data-ng-click="notifView(notif.familyID.referenceNum)" data-dismiss="modal">{{'picto.navBarModal.label.view' | localize }}</button>
+                            </div>
+                            <div class="col-lg-12 padding-top-bottom">
+                                <button class="form-control" data-ng-click="notifValidateModif(notif.familyID.familyId)" data-dismiss="modal">{{'picto.navBarModal.label.validateModifications' | localize }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="addVariantDlg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{
+                    'picto.rightBarModal.label.pictoVariantTitle' | localize }}</h4>
+            </div>
+
+
+            <div class="modal-body row">
+                <div class="col-lg-12 no-padding padding-top-bottom">
+                    <div>
+                        <h6 class="add-new-title">1.{{
+                            'picto.rightbar.label.addPictoUpload' | localize }}</h6>
+                        <div class="col-lg-12 image-upload">
+                            <input type="file" name="upload" accept="application/*.ai" id="aiImagUpload" style="visibility:visible;" /> {{ 'picto.rightbar.label.uploadText' | localize }}
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <h6 class="add-new-title">2. {{
+                            'picto.rightbar.label.addNewName' | localize }}</h6>
+                        <div class="col-lg-12 no-padding">
+                            <div style="width: 19%; height: 20px; display: inline-block; padding: 0px;">
+                                <h6><span class="mandatory">*</span>{{ 'picto.rightbar.label.addrefNo' | localize }}</h6>
+                            </div>
+                            <div style="width: 25%; height: 20px; display: inline-block; padding: 0px;">
+                                <h6><span class="mandatory">*</span>{{ 'picto.rightbar.label.addName' | localize }}</h6>
+                            </div>
+                            <div style="width: 25%; height: 20px; display: inline-block; padding: 0px;">
+                                <h6><span class="mandatory">*</span>{{ 'picto.rightbar.label.addVariant' | localize }}</h6>
+                            </div>
+                            <div style="width: 20%; height: 20px; display: inline-block; padding: 0px;">
+                                <h6>{{ 'picto.rightbar.label.addVersion' | localize }}</h6>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 no-padding">
+                            <input class="form-control" type="text" data-ng-model="referenceNum" maxlength=4 style="width: 16%; height: 20px; display: inline-block; padding: 0px;" readonly="readonly" data-ng-model-options="{ debounce: 250 }"/>_
+                            <input class="form-control" type="text" data-ng-model="pictoName" maxlength=255 style="width: 25%; height: 20px; display: inline-block; padding: 0px;" readonly="readonly" data-ng-model-options="{ debounce: 250 }"/>_
+                            <select class="form-control" data-ng-model="variant" style="width: 20%; height: 20px; display: inline-block; padding: 0px;" data-ng-model-options="{ debounce: 250 }">
+                                <option>{{ 'picto.label.Med' | localize }}</option>
+                                <option>{{ 'picto.label.Tiny' | localize }}</option>
+                                <option>{{ 'picto.label.Little' | localize }}</option>
+                            </select>_
+                            <input class="form-control" type="text" data-ng-model="version" maxlength=255 style="width: 20%; height: 20px; display: inline-block; padding: 0px;" data-ng-model-options="{ debounce: 250 }"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-ng-click="addNewPictoVariant(index)">{{ 'picto.rightBarModal.label.create' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" data-dismiss="modal" class="btn btn-default">{{ 'picto.rightBarModal.label.cancel' | localize }}</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="addSpecificDlg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{
+                    'picto.rightBarModal.label.specificDrawingTitle' | localize }}</h4>
+            </div>
+
+            <div class="modal-body row">
+                <div>
+                    <h4 class="add-new-title"> <span class="mandatory">*</span>{{'picto.rightbar.label.SpecificDrawUpload' | localize }}</h4>
+                    <div class="col-lg-12 image-upload">
+                        <input type="file" name="upload" accept="application/*.*" id="specificDrawUpload" style="visibility:visible;" /> {{ 'picto.rightbar.label.uploadText' | localize }}
+                    </div>
+                </div>
+                <!--       <div class="col-lg-12 no-padding padding-top-bottom">
+                    <div class="col-lg-4">
+                        <span class="mandatory">*</span>
+                        <label>{{ 'picto.rightBarModal.label.name' | localize }}:</label>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <input type="text" class="content-editable" data-ng-model="specificDrawingName" maxlength=255 />
+                    </div>
+                </div> -->
+
+                <div class="col-lg-12 no-padding padding-top-bottom">
+                    <div class="col-lg-4">
+                        <label>{{ 'picto.rightBarModal.label.fr' | localize }} :</label>
+                    </div>
+
+                    <div class="col-lg-5">
+
+                        <!--    <div contentEditable="true" type="text" class="content-editable"
+                            data-ng-model="specificDrawingCommentFR"></div> -->
+                        <textarea elastic class="content-editable-new" data-ng-if="admin" data-ng-model="$parent.specificDrawingCommentFR" maxlength=4000>
+                        </textarea>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-12 no-padding padding-top-bottom">
+                    <div class="col-lg-4">
+                        <label>{{ 'picto.rightBarModal.label.en' | localize }} :</label>
+                    </div>
+
+                    <div class="col-lg-5">
+
+                        <!--    <div contentEditable="true" type="text" class="content-editable italic"
+                                          data-ng-model="specificDrawingCommentEN"></div>   -->
+                        <textarea elastic class="content-editable-new italic" data-ng-if="admin" data-ng-model="$parent.specificDrawingCommentEN" maxlength=4000>
+                        </textarea>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-ng-click="submitSpecificDrawing()">{{ 'picto.rightBarModal.label.create' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" data-dismiss="modal" class="btn btn-default">{{ 'picto.rightBarModal.label.cancel' | localize }}</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="addMandatoryTexts" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{
+                    'picto.rightBarModal.label.addNewMandatory' | localize }}</h4>
+            </div>
+
+
+            <div class="modal-body row">
+                <div class="col-lg-12 no-padding padding-top-bottom">
+                    <div class="col-lg-4">
+                        <span class="mandatory">*</span>
+                        <label>{{ 'picto.rightBarModal.label.RuleName' | localize }} :</label>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <input type="text" class="content-editable" data-ng-model="ruleName" maxlength=255 data-ng-model-options="{ debounce: 250 }"/>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 no-padding padding-top-bottom">
+                    <div class="col-lg-4">
+                        <span class="mandatory">*</span>
+                        <label>{{ 'picto.rightBarModal.label.docInfoUrl' | localize }} :</label>
+                    </div>
+
+                    <div class="col-lg-5">                       
+                        <textarea elastic class="content-editable-new" data-ng-model="urlLink" maxlength=500>
+                        </textarea>             
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-ng-click="submitRules(index)">{{ 'picto.rightBarModal.label.create' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" data-dismiss="modal" class="btn btn-default">{{ 'picto.rightBarModal.label.cancel' | localize }}</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="downloadAiFile" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:90%">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{'picto.rightbar.label.informations' |
+                    localize }}</h4>
+            </div>
+
+            <div class="modal-body row">
+                <div class="col-lg-12 no-padding" data-ng-repeat="ai in aiWorkPictos">
+                    <div id="{{ai.pictoId}}">
+
+                        <div class="col-lg-3 word-wrap">{{ai.pictoName}}</div>
+                        <div class="col-lg-3 word-wrap">
+                        <div data-ng-show={{ai.workAdmins}}>{{'picto.rightBarModal.label.listAdmin' | localize }}: {{ai.workAdminList}}</div></div>
+                        <div class="col-lg-2 radio" style="margin-top: 2px; margin-bottom: 2px;">
+                            <div class="col-lg-12">
+                            <input type="radio" class="no-padding" name="{{'optradio' +$index}}" id="pid{{ai.pictoId}}" /> 
+                            Open DB Version</div>
+                        </div>
+                        <div class="col-lg-2 radio" style="margin-top: 2px; margin-bottom: 2px;">
+                        <div data-ng-hide="{{ai.disableLocalVersion}}">
+                            <div class="col-lg-12 word-wrap">
+                            
+                             <input type="radio" name="{{'optradio' +$index}}" id="opnLcl{{ai.pictoId}}" data-ng-hide="{{ai.disableLocalVersion}}" />
+                            {{'picto.rightBarModal.label.openLocal' | localize }}</div></div>
+                        </div>
+                        <div class="col-lg-2 radio" style="margin-top: 2px; margin-bottom: 2px;">
+                            <div class="col-lg-12 word-wrap">
+                             <input type="radio" name="{{'optradio' +$index}}" />
+                            {{'picto.rightBarModal.label.abort' | localize }}</div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-12 custom-hr-gray"></div>
+
+                </div>
+            </div>
+
+
+            <div style="text-align: center; margin-top: 2px; margin-bottom: 2px;">
+                <button type="button" data-ng-click="validateAi(ifDownloadIsFromCart)" data-dismiss="modal" class="btn btn-default">{{'picto.rightBarModal.label.validate' | localize }}</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Notifier -->
+<div id="notifierDlg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{'picto.rightbar.label.informations' |
+                    localize }}</h4>
+            </div>
+
+            <div class="modal-body row" style="text-align: center">
+                {{notificationMessage}}</div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" data-dismiss="modal" class="btn btn-default">{{ 'picto.rightBarModal.label.informationOk' | localize }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  Confirm Dailog -->
+<div id="confirmDlg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 data-ng-show="createCaseFlag && !deleteCaseFlag" class="modal-title align-center">
+                {{'picto.rightbar.label.creteConfirm' | localize }}</h4>
+                <h4 data-ng-show="!createCaseFlag && !deleteCaseFlag" class="modal-title align-center">
+                {{'picto.rightbar.label.updateConfirm' | localize }}</h4>
+                <h4 data-ng-show="deleteCaseFlag && !createCaseFlag" class="modal-title align-center">
+                {{'picto.rightbar.label.deleteConfirm' | localize }}</h4>
+                <h4 data-ng-show="deleteCaseFlag && createCaseFlag" class="modal-title align-center">
+                {{'picto.message.deleteConfirm' | localize }}</h4>
+            </div>
+
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal" data-ng-click="onActionConfirmation()">{{ 'picto.rightBarModal.label.informationOk' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" data-dismiss="modal" class="btn btn-default">{{ 'picto.rightBarModal.label.cancel' | localize }}</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Upload file in shopping cart -->
+
+<div id="uploadFileDlg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                {{'picto.rightBarModal.label.uploadTitle' | localize }}
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body row">
+                <input type="file" id="importPicto" name="importPicto" accept="text/plain" />
+            </div>
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal" data-ng-click="ImportPicto()">{{ 'picto.rightBarModal.label.informationOk' | localize }}</button>
+
+                <button type="button" style="border-radius: 0px;" data-dismiss="modal" class="btn btn-default">{{ 'picto.rightBarModal.label.cancel' | localize }}</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--  Create picto family focus change -->
+
+<div id="modifyDlg" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" class="modal-title align-center">{{'picto.message.modifyConfirm' | localize }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal" data-ng-click="onActionModify()">{{ 'picto.rightBarModal.label.yes' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" data-dismiss="modal" class="btn btn-default" data-ng-click="abortChange()">{{ 'picto.rightBarModal.label.no' | localize }}</button>
+            </div>
+
+        </div>
+    </div>
+</div>

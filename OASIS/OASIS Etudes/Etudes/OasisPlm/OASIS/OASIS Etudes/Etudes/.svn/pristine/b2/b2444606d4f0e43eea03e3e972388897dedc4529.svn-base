@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	
+	<properties>
+		<title>Historique des changements</title>
+	</properties>
+	
+	<body>
+		<release version="1.0.6" date="17-11-2016" description ="VCOPLMPSA-29483 / VCOPLMPSA-29485 / VCOPLMPSA-27483 ">
+            <action type="fix" issue="VCOPLMPSA-29483" dev="e495366"> 
+                 "Monte Carlo Calculation": problem with the unity on the TNC obtained after calculation
+            </action>
+			<action type="fix" issue="VCOPLMPSA-29485" dev="e495366"> 
+                 "Monte Carlo Calculation": displaying problem in calculation report for µ attribute
+            </action>
+			<action type="fix" issue="VCOPLMPSA-27483" dev="e495366"> 
+                 Complementary implementation about Position of Error in Formula when operator between a contributor and another term.
+            </action>
+        </release>
+		<release version="1.0.5" date="14-11-2016" description ="Fix for VCOPLMPSA-37828">
+            <action type="fix" issue="VCOPLMPSA-37828" dev="e495366"> 
+                 Added Check on Missing Referenced Contributors in Formula for Semiquadratic and ArithStat Calculations.
+            </action>
+        </release>
+		<release version="1.0.4" date="07-11-2016" description ="Fix for VCOPLMPSA-27483">
+            <action type="fix" issue="VCOPLMPSA-27483" dev="e495366"> 
+                 New Checks for coherence between Formula and Report Formula
+            </action>
+        </release>
+		<release version="1.0.3" date="18-06-2015" description ="Fix for VCOPLMPSA-28809 and VCOPLMPSA-28520">
+            <action type="fix" issue="VCOPLMPSA-28809" dev="e386196"> 
+                 SemiQuadratic Calculations was incorrectly impacted by contributors attached to transfer Model but not present in Formula.
+            </action>
+            <action type="fix" issue="VCOPLMPSA-28520" dev="e386196"> 
+                 Error Management when Scilab does not Return values because of mathematic impossibilities.
+            </action>
+        </release>
+        <release version="1.0.2" date="21-05-2015" description ="Fix Management of Infinite and NaN for Rounding Value">
+            <action type="fix" issue="VCOPLMPSA-27772" dev="u337450"> 
+                 MonteCarlo Calculation were failing because of the absence of management of Infinite or NaN values.
+            </action>
+            <action type="fix" issue="VCOPLMPSA-26940" dev="u337450"> 
+                 Fix for this issue is commented because a joint evolution on PLM is also necessary (proper display of Warning Message)
+            </action>
+        </release>
+		<release version="1.0.1" date="19-05-2015" description ="Various Fix">
+			<action type="fix" issue="VCOPLMPSA-26876" dev="u224106"> 
+                 Error in TNC Conversion for ArithStat and SemiQuadra. Scilab scripts expect a TNC in real Notation an not in PerCent.
+            </action>
+			<action type="fix" issue="VCOPLMPSA-27344" dev="u386196"> 
+                 Wrong Position in error message when checking the formula.
+            </action>
+		</release>
+		<release version="1.0.0" date="15-04-2014" description ="First Release with CIQ">
+		</release>
+	</body>
+</document>

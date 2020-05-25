@@ -1,0 +1,147 @@
+<div data-cop-header></div>
+
+
+<div id="wrapper" class="context-wrapper">
+    <div>
+        <div data-cop-sidebar></div>
+    </div>
+
+    <form name="reception-file" style="" class="form-inline flex-group" data-ng-init="getAllReceptionFile()" role="form">
+
+        <div class="col-lg-12 custom-top-pad">
+            <div class="col-lg-12 no-padding">
+                <b class="pull-left">{{'cop.receptionFile.label.title'| localize}}</b>
+                <p class="pull-right">{{date | date :'dd/MM/yyyy'}}</p>
+            </div>
+            <div class="col-lg-12 no-padding">
+                <div style="background-color: #A9A9A9;" class=" col btn  " ng-show="userTeamRepresentation.publishingUserRepresentation!=null">
+                    <div ng-bind-template="  {{userTeamRepresentation.publishingTeamRepresentation.label}}"></div>
+                </div>
+                <div style="background-color: #A9A9A9;" class=" col btn  " ng-show="userTeamRepresentation.publishingUserRepresentation!=null">
+                    <div
+                        ng-bind-template="{{userTeamRepresentation.publishingUserRepresentation.firstName}} {{userTeamRepresentation.publishingUserRepresentation.lastName}} {{userTeamRepresentation.publishingUserRepresentation.userId}}"></div>
+                </div>
+                <div ng-bind-html=" numberOfVechicleFile" class=" col btn btn-default pull-right  " ng-show="numberOfVechicleFile!=null"></div>
+            </div>
+        </div>
+        <div class="col-lg-12 custom-top-pad">
+            <div data-ui-grid="receptionFileGrid" data-ui-grid-edit data-ui-grid-auto-resize data-ui-grid-cellNav></div>
+
+        </div>
+        
+    </form>
+
+
+
+    <div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 custom-footer">
+        <label class="screenNo">{{'cop.receptionFile.label.screenNo' | localize}}</label>
+        <div class="col-lg-12 padding-top-btm">
+           <button type="button" id="History" class="btn btn-default pull-right" data-ng-show="auth"
+                    data-ng-click="searchVehicle()">{{ 'cop.receptionFile.vehicle.add' | localize }}</button>
+         </div>
+        <div class="col-lg-12 padding-top-btm">
+            <div>
+
+                <button type="button" id="save" class="btn btn-primary" data-ng-show="auth" data-ng-click="saveAll()">{{
+                    'cop.genomedata.label.save' | localize }}</button>
+
+                <button type="reset" id="valider" class="btn btn-default" data-ng-show="auth" data-ng-click="refresh()">{{
+                    'cop.technicalData.label.cancel' | localize }}</button>
+
+
+                <button type="button" id="History" class="btn btn-default pull-right" data-ng-show="auth"
+                    data-ng-click="sendMailOnCondition('RECEPTION_FILE')">{{ 'cop.receptionFile.sendMail.label' | localize }}</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="showReceptionMailBox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content" style="border-radius: 0px;">
+
+                <div class="modal-header">
+                    <div class="row">
+
+                        <div class="modal-title col-lg-10 no-padding" id="myModalLabel">
+                            <div class="col-lg-8">
+                                <label>{{ 'cop.receptionFile.label.receptionMail'| localize }}</label>
+                            </div>
+
+                            <div class="col-lg-4 text-right no-padding">
+                                <label>{{date| date:'dd/MM/yyyy HH:mm'}}</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal"
+                                aria-hidden="true"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row form-group">
+
+                        <div class=" col-lg-12 text center">
+                            <label for="email" class="control-label">{{'cop.receptionFile.mail.popUp.receipt' | localize }}</label>
+                            <ui-select name="email" multiple ng-model="email.selected" reset-search-input="true" theme="bootstrap"> <ui-select-match
+                                placeholder="enter text to be searched"> {{$item}}</ui-select-match> <ui-select-choices
+                                repeat="user in email.validUserList" refresh="searchValidUser($select.search)" refresh-delay="0">{{user}}
+                            </ui-select-choices> </ui-select>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="sendPdfToValidUser()"
+                        data-dismiss="modal">{{ 'cop.genomedata.label.save'| localize}}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{
+                        'cop.technicalData.label.cancel'| localize}}</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <div id="showModificationModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content" style="border-radius: 0px;">
+
+                <div class="modal-header">
+                    <div class="row">
+
+                        <div class="modal-title col-lg-10" id="myModalLabel">
+                        <label>{{'cop.receptionFile.save.confirmation' | localize }}</label> 
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal"
+                                aria-hidden="true"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row form-group">
+
+                        <div class=" col-lg-12 text center">
+                            <label>{{'cop.receptionFile.save.message' | localize }}</label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer" style="text-align: center;">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="saveModifiedData()"
+                        data-dismiss="modal">{{ 'cop.genomedata.label.save'| localize}}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{
+                        'cop.technicalData.label.cancel'| localize}}</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

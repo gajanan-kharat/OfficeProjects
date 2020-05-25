@@ -1,0 +1,59 @@
+# Put configuration in this file
+
+[org.seedstack.seed.core]
+application-id = cop-batch
+application-name = New Cop
+application-version = ${project.version}
+
+[org.seedstack]
+jdbc.datasources = ${valo.batch.org.seedstack.seed.persistence.jdbc.datasources}
+jpa.units = ${valo.batch.org.seedstack.seed.persistence.jpa.units}
+
+
+
+####################################################################
+# Security
+####################################################################
+# The following section is used by ConfigurationRealm, the default security realm, which should be replaced by a
+# more useful one like ClpRealm.
+#[org.seedstack.seed.security]
+#realms = ${valo.batch.org.seedstack.seed.security.realms}
+
+# For this sample, user accounts are directly hard-coded in configuration
+[org.seedstack.seed.security.users]
+demo = demo
+
+
+####################################################################
+# Persistence
+####################################################################
+
+
+# Configure the application datasource
+[org.seedstack.jdbc.datasource.cop_ds]
+provider= HikariDataSourceProvider
+driver=${valo.batch.config.database.jdbc.driver}
+url= ${valo.batch.config.database.jdbc.url}
+user=${valo.batch.config.database.jdbc.user}
+password=${valo.batch.config.database.jdbc.password}
+property.sql.enforce_strict_size = ${valo.batch.config.database.sql.enforce}
+
+# Configure the COP JPA unit
+[org.seedstack.jpa.unit.cop-domain]
+datasource= ${valo.batch.org.seedstack.seed.persistence.jdbc.datasources}
+property.hibernate.dialect= ${valo.batch.hibernante.dialect}
+property.hibernate.connection.provider_class=com.zaxxer.hikari.hibernate.HikariConnectionProvider
+property.hibernate.hikari.minimumIdle=${valo.batch.hibernante.hikari.minimumidle}
+property.hibernate.hikari.maximumPoolSize=${valo.batch.hibernante.hikari.maxpoolsize}
+property.hibernate.hikari.idleTimeout=${valo.batch.hibernante.hikari.idletimeout}
+property.hibernate.hikari.dataSourceClassName=com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+property.hibernate.hikari.dataSource.url=${valo.batch.config.database.jdbc.url}
+property.hibernate.hikari.dataSource.user=${valo.batch.config.database.jdbc.user}
+property.hibernate.hikari.dataSource.password=${valo.batch.config.database.jdbc.password}
+
+# Define the JPA unit for classes under this package
+[com.inetpsa.poc00.domain.*]
+jpa-unit=${valo.batch.org.seedstack.seed.persistence.jpa.units}
+
+# This empty section resets to keys without prefix
+[]

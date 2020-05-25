@@ -1,0 +1,1274 @@
+<div data-cop-header></div>
+
+
+<div id="wrapper" class="context-wrapper">
+	<div>
+		<div data-cop-sidebar></div>
+
+		<div class="col-lg-12 no-padding">
+			<div class="row no-margin">
+
+
+				<div>
+
+
+					<div class="no-padding slide-resize col-lg-10 col-lg-12"
+						style="position: fixed; z-index: 100; background-color: #fff;">
+
+
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+						<div data-ng-show="technicalDataActive">
+							<label><b>&nbsp;&nbsp;> {{
+									'cop.technicalData.label.headingTDList' | localize }}</b></label>
+						</div>
+						<div data-ng-show="testConditionActive">
+							<label><b>&nbsp;&nbsp;> {{
+									'cop.technicalData.label.headingTCList' | localize }}</b></label>
+						</div>
+						<div data-ng-show="factorsActive">
+							<label><b>&nbsp;&nbsp;> {{
+									'cop.technicalData.label.headingFCList' | localize }}</b></label>
+						</div>
+						<div data-ng-show="limitsActive">
+							<label><b>&nbsp;&nbsp;> {{
+									'cop.technicalData.label.headingPGList' | localize }}</b></label>
+						</div>
+						<div class="col-lg-12 no-padding">
+							<div class="col-lg-3">
+								<ui-select id="esSelect" data-ng-model="eStandard.selected"
+									reset-search-input="true" on-select="setEms($select.selected)" title="{{$select.selected.displayLabel}}">
+								<ui-select-match placeholder="Select Emission Standard"  >
+								{{$select.selected.displayLabel }} </ui-select-match> <ui-select-choices
+									repeat="es in emsList   | filter:{displayLabel:$select.search}">
+								<div ng-bind-html="es.displayLabel | highlight: $select.search" title="{{es.displayLabel}}"></div>
+								</ui-select-choices> </ui-select>
+							</div>
+							<div class="col-lg-2">
+
+      <ui-select data-ng-model="selectedAction" reset-search-input="true" on-select="takeAction($select.selected.value)" data-ng-show = "authorization('POCMRole')">
+					<ui-select-match placeholder="Actions">
+						{{$select.selected.label}} 
+					</ui-select-match> 
+					<ui-select-choices repeat="action in actions  | filter: $select.search track by $index ">
+						<div ng-bind-html="action.label | highlight: $select.search"></div>
+					</ui-select-choices>
+				</ui-select>
+							</div>
+						</div>
+
+
+						<div class="col-lg-12 tab-content-bottom">
+							<div class="col-lg-6 padding-top-btm">
+								<button type="button" style="border-radius: 8px;" 
+									class="btn btn-warning" data-ng-show="technicalDataActive && authorization('POCMRole')"
+									data-dismiss="modal" data-ng-click="showAddListModal()">
+									<span class="fa fa-plus-square-o fa-custom-pad"></span>{{
+									'cop.technicalData.label.addTDList' | localize }}
+								</button>
+								<button type="button" style="border-radius: 8px;" 
+									class="btn btn-warning" data-ng-show="testConditionActive && authorization('POCMRole')"
+									data-dismiss="modal" data-ng-click="showAddTCLListModal()">
+									<span class="fa fa-plus-square-o fa-custom-pad"></span>{{
+									'cop.testCondition.label.addTCList' | localize }}
+								</button>
+								<button type="button" style="border-radius: 8px;" 
+									class="btn btn-warning" data-ng-show="factorsActive && authorization('POCMRole')"
+									data-dismiss="modal" data-ng-click="showAddFCListModal()">
+									<span class="fa fa-plus-square-o fa-custom-pad"></span>{{
+									'cop.factor.label.addFCList' | localize }}
+								</button>
+								<button type="button" style="border-radius: 8px;"
+									class="btn btn-warning" data-ng-show="limitsActive && authorization('POCMRole')"
+									data-dismiss="modal" data-ng-click="showAddPGListModal()">
+
+									<span class="fa fa-plus-square-o fa-custom-pad"></span> {{
+									'cop.pollutant.label.addPGList' | localize }}
+
+								</button>
+							</div>
+							<div class="col-lg-6 no-padding">
+
+								<ul class="nav nav-pills fade in active">
+									<li class="icon-option active" data-toggle="pill"
+										href="#EmmisionStandard" data-ng-click="showTechnicalData()"><span
+										class="fa fa-car fa-2x"></span>
+										<div>{{'cop.esDependent.tab.TechnicalData' |localize}}</div></li>
+									<li class="icon-option" data-toggle="pill" href="#Conditions"
+										data-ng-click="showTestConditions()"><span
+										class="fa fa-cogs fa-2x"></span>
+										<div>{{'cop.esDependent.tab.TestCondition'|localize}}</div></li>
+									<li class="icon-option" data-toggle="pill" href="#limits"
+										data-ng-click="showLimits()"><span
+										class="fa fa-flag fa-2x"></span>
+										<div>{{'cop.esDependent.tab.Limits'|localize}}</div></li>
+									<li class="icon-option" data-toggle="pill" href="#factors"
+										data-ng-click="showFactors()"><span
+										class="fa fa-line-chart fa-2x"></span>
+										<div>{{'cop.esDependent.tab.Factors'|localize}}</div></li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-12 tab-content no-padding"
+						style="bottom: 43px; padding-top: 180px !important;">
+						<div id="EmmisionStandard" class="tab-pane fade in active">
+							<ng-include src="'fragments/cop/views/edit-emissionstandard-deptdl.html'"></ng-include>
+						</div>
+						<div id="Conditions" class="tab-pane fade">
+							<ng-include src="'fragments/cop/views/edit-emissionstandard-deptcl.html'"></ng-include>
+						</div>
+						<div id="limits" class="tab-pane fade">
+							<ng-include src="'fragments/cop/views/edit-emissionstandard-deplimits.html'"></ng-include>
+						</div>
+						<div id="factors" class="tab-pane fade">
+							<ng-include src="'fragments/cop/views/edit-emissionstandard-depfactors.html'"></ng-include>
+						</div>
+					</div>
+
+
+
+
+				</div>
+				
+				<div id="duplicateLabelModal" class="modal fade" tabindex="-1"role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.ems.message.duplicateLabel'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal"
+					data-ng-click="showCopyModal()">{{
+					'cop.technicalData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				
+			</div>
+		</div>
+	</div>
+</div>
+				
+				<div id="addDatalModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addListItem'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label>{{ 'cop.technicalData.text.label'| localize }}</label> <span
+										class="astrik">*</span>
+								</div>
+								<div>
+
+									<input class="form-control" type="text"
+										data-ng-model="itemlabel" data-ng-maxlength="255"
+										maxlength="255" />
+
+								</div>
+								<div>
+									<label>{{ 'cop.technicalData.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+									<textarea class="form-control" data-ng-model="itemDescription"
+										data-ng-maxlength="255" maxlength="255"></textarea>
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addDataItem()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-ng-click="cancelCreation(itemlabel,itemDescription,'addDatalModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="addListModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+								data-ng-click="cancelCreation(Listlabel,ListDescription,'addListModal')"
+									style="float: right; background-color: #fff;"
+									  aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addList'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label>{{ 'cop.technicalDataList.text.label'| localize
+										}}</label> <span class="astrik">*</span>
+								</div>
+								<div>
+
+									<input class="form-control" type="text"
+										data-ng-model="Listlabel" data-ng-maxlength="255"
+										maxlength="255" />
+
+								</div>
+								<div>
+									<label>{{ 'cop.technicalDataList.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+									<textarea class="form-control" data-ng-model="ListDescription"
+										data-ng-maxlength="255" maxlength="255"></textarea>
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addList()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default"  data-ng-click="cancelCreation(Listlabel,ListDescription,'addListModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div id="ConfirmSaveModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalDataList.message.saveConfirmation'| localize }}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+								<div>
+									<div class="col-lg-8" data-ng-show="!isStatusValid && listModified">
+										<input name="ESNewVersion" data-ng-model="newVersion1"
+											type="checkbox"> {{
+										'cop.ems.message.createNewVersion'| localize }} &nbsp;&nbsp;
+									</div>
+									<div class="col-lg-4">
+
+
+
+										<button type="button" style="border-radius: 0px;"
+											class="btn btn-primary" data-dismiss="modal"
+											data-ng-click="saveChanges()">{{
+											'cop.technicalData.label.ok' | localize }}</button>
+										&nbsp;
+										<button type="button" style="border-radius: 0px;"
+											class="btn btn-default" data-dismiss="modal">{{
+											'cop.technicalData.message.cancel' | localize }}</button>
+
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="ConfirmDeleteModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.message.deleteConfirmation' | localize
+									}} {{deleteListLabel}}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="removeList()">{{
+									'cop.technicalData.label.ok' | localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="addconditionModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addListItem'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label>{{ 'cop.technicalData.text.label'| localize }}</label> <span
+										class="astrik">*</span>
+								</div>
+								<div>
+
+									<input class="form-control" type="text"
+										data-ng-model="TCitemlabel" data-ng-maxlength="255"
+										maxlength="255" />
+
+								</div>
+								<div>
+									<label>{{ 'cop.technicalData.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+
+									<textarea class="form-control"
+										data-ng-model="TCitemDescription" data-ng-maxlength="255"
+										maxlength="255"></textarea>
+
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addCondition()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" data-ng-click="cancelCreation(TCitemlabel,TCitemDescription,'addconditionModal')" style="border-radius: 0px;"
+									class="btn btn-default">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="deleteConditionlModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.testConditionList.message.deleteConfirmation'| localize }}
+									{{deleteConditionLabel}}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="removeCondition()">{{
+									'cop.technicalData.message.delete' | localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="addTCListModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+								data-ng-click="cancelCreation(TCListlabel,TCListDescription,'addTCListModal')"
+									style="float: right; background-color: #fff;"
+									 aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addList'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label>{{ 'cop.technicalDataList.text.label'| localize
+										}}</label><span class="astrik">*</span>
+								</div>
+								<div>
+
+									<input class="form-control" type="text"
+										data-ng-model="TCListlabel" data-ng-maxlength="255"
+										maxlength="255" />
+								</div>
+								<div>
+									<label>{{ 'cop.technicalDataList.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+									<textarea class="form-control"
+										data-ng-model="TCListDescription" data-ng-maxlength="255"
+										maxlength="255"></textarea>
+
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+
+
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addTCLList()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-ng-click="cancelCreation(TCListlabel,TCListDescription,'addTCListModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div id="ConfirmDeleteTCModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.message.deleteConfirmation' | localize
+									}} {{deleteListTCLabel}}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="removeTCList()">{{
+									'cop.technicalData.label.ok' | localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="ConfirmSaveTCLModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalDataList.message.saveConfirmation'| localize }}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+
+								<div>
+									<div class="col-lg-8" data-ng-show="!isStatusValid && listTCModified">
+										<input name="ESNewVersion2" data-ng-model="newVersion2"
+											type="checkbox"> {{
+										'cop.ems.message.createNewVersion'| localize }} &nbsp;&nbsp;
+									</div>
+									<div class="col-lg-4">
+										<button type="button" style="border-radius: 0px;"
+											class="btn btn-primary" data-dismiss="modal"
+											data-ng-click="saveTCLChanges()">{{
+											'cop.technicalData.label.ok' | localize }}</button>
+										&nbsp;
+										<button type="button" style="border-radius: 0px;"
+											class="btn btn-default" data-dismiss="modal">{{
+											'cop.technicalData.message.cancel' | localize }}</button>
+
+
+
+
+									</div>
+								</div>
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="addFCListModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+								data-ng-click="cancelCreation(fcListlabel,fcListDescription,'addFCListModal')"
+									style="float: right; background-color: #fff;"
+									 aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addList'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label>{{ 'cop.technicalDataList.text.label'| localize
+										}}</label><span class="astrik">*</span>
+								</div>
+								<div>
+
+									<input class="form-control" type="text"
+										data-ng-model="fcListlabel" data-ng-maxlength="255"
+										maxlength="255" />
+
+								</div>
+								<div>
+									<label>{{ 'cop.technicalDataList.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+
+									<textarea class="form-control"
+										data-ng-model="fcListDescription" data-ng-maxlength="255"
+										maxlength="255"></textarea>
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addFactorList()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-ng-click="cancelCreation(fcListlabel,fcListDescription,'addFCListModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="addPGListModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+								data-ng-click="cancelCreation(pgListlabel,pgListDescription,'addPGListModal')"
+									style="float: right; background-color: #fff;"
+									 aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addList'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label>{{ 'cop.technicalDataList.text.label'| localize
+										}}</label><span class="astrik">*</span>
+								</div>
+								<div>
+
+									<input class="form-control" type="text"
+										data-ng-model="pgListlabel" data-ng-maxlength="255"
+										maxlength="255" />
+
+								</div>
+								<div>
+									<label>{{ 'cop.technicalDataList.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+
+									<textarea class="form-control"
+										data-ng-model="pgListDescription" data-ng-maxlength="255"
+										maxlength="255"></textarea>
+
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addLimitList()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default"  data-ng-click="cancelCreation(pgListlabel,pgListDescription,'addPGListModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="deletePollutantlModal" class="modal" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.testConditionLimits.message.deleteConfirmation'| localize }}
+									{{selectedPgLabel.label}}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="removePollutant()">{{
+									'cop.technicalData.message.delete' | localize }}</button>
+								&nbsp;&nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="deleteFactorlModal" class="modal" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.emissionStandardFactors.message.deleteConfirmation'| localize }}
+									{{selectedFCLabel}}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="removeFactor()">{{
+									'cop.technicalData.message.delete' | localize }}</button>
+								&nbsp;&nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="ConfirmSavePGLModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalDataList.message.saveConfirmation'| localize }}</h4>
+							</div>
+
+
+							<div class="modal-footer align-center">
+
+								<div>
+									<div class="col-lg-8" data-ng-show="!isStatusValid && listPGModified">
+										<input name="ESNewVersion3" data-ng-model="newVersion3"
+											type="checkbox"> {{
+										'cop.ems.message.createNewVersion'| localize }} &nbsp;&nbsp;
+									</div>
+									<div class="col-lg-4">
+										<button type="button" style="border-radius: 0px;"
+											class="btn btn-primary" data-dismiss="modal"
+											data-ng-click="savePGLChanges()">{{
+											'cop.technicalData.label.ok' | localize }}</button>
+										&nbsp;
+										<button type="button" style="border-radius: 0px;"
+											class="btn btn-default" data-dismiss="modal">{{
+											'cop.technicalData.message.cancel' | localize }}</button>
+
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div id="ConfirmSaveFCLModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalDataList.message.saveConfirmation'| localize }}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+
+								<div>
+									<div class="col-lg-8" data-ng-show="!isStatusValid && listFCModified">
+										<input name="ESNewVersion4" data-ng-model="newVersion4"
+											type="checkbox"> {{
+										'cop.ems.message.createNewVersion'| localize }} &nbsp;&nbsp;
+									</div>
+									<div class="col-lg-4">
+										<button type="button" style="border-radius: 0px;"
+											class="btn btn-primary" data-dismiss="modal"
+											data-ng-click="saveFCLChanges()">{{
+											'cop.technicalData.label.ok' | localize }}</button>
+										&nbsp;
+										<button type="button" style="border-radius: 0px;"
+											class="btn btn-default" data-dismiss="modal">{{
+											'cop.technicalData.message.cancel' | localize }}</button>
+									</div>
+								</div>
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="ConfirmDeleteFCModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.message.deleteConfirmation' | localize
+									}} {{deleteListFCLabel}}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="removeFactorList()">{{
+									'cop.technicalData.label.ok' | localize }}</button>
+
+
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="ConfirmDeletePGModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 600px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 600px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.message.deleteConfirmation' | localize
+									}} {{deleteListPGLabel}}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="removeLimitList()">{{
+									'cop.technicalData.label.ok' | localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="copyEmsModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+								data-ng-click="cancelCreation(eslabel,esDescription,'copyEmsModal')"
+									style="float: right; background-color: #fff;"
+									 aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.ems.modal.duplicateEms'| localize }} {{eStandard.selected.esLabel}} V {{eStandard.selected.version}}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label>{{ 'cop.technicalDataList.text.label'| localize
+										}}</label><span class="astrik">*</span>
+								</div>
+								<div>
+									<input id="eslabelId"  class="form-control" type="text" data-ng-model="eslabel" ng-keydown="changeEmissionName()" />
+								</div>
+								<div>
+									<label>{{ 'cop.technicalDataList.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+									<textarea class="form-control" data-ng-model="esDescription"></textarea>
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="checkLabel()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-ng-click="cancelCreation(eslabel,esDescription,'copyEmsModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="deleteEMSlModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.ems.modal.deleteEms'| localize }}{{eStandard.selected.displayLabel}}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+
+
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="deleteEmissionStandard()">{{
+									'cop.technicalData.message.delete' | localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div id="deleteDatalModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalDataList.message.deleteConfirmation'| localize }}
+									{{dataDeleteLabel}}</h4>
+							</div>
+
+							<div class="modal-footer align-center"
+								style="padding-right: 100px; margin-top: 10px;">
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="removeDataItem()">{{
+									'cop.technicalData.message.delete' | localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div id="deleteFactorlModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.emissionStandardFactors.message.deleteConfirmation'| localize }}
+									{{selectedFCLabel}}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+
+
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="removeFactor()">{{
+									'cop.technicalData.message.delete' | localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="validEMSlModal" class="modal fade" tabindex="-1"
+					role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-md" style="width: 500px;">
+						<div class="modal-content"
+							style="border-radius: 0px; width: 500px;">
+
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+									style="float: right; background-color: #fff;"
+									data-dismiss="modal" aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.ems.action.changeStatus'| localize }}</h4>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+
+
+
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="changeEmsStatus()">{{
+									'cop.technicalData.label.ok' | localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-dismiss="modal">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+							</div>
+							
+				
+							
+						</div>
+					</div>
+				</div>
+				
+				<div id="cancelCreationModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.creation.cancel.message'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="continueCreation()">{{
+								'cop.creation.label.yes' | localize }}</button>
+							&nbsp; &nbsp;
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal">{{
+								'cop.creation.label.no' | localize }}</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div id="TdlModificationModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.common.message.dataModificationsMessage'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="saveTdlModifications()">{{
+								'cop.creation.label.yes' | localize }}</button>
+								<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal" data-ng-click="removeTdlModifications()">{{
+								'cop.creation.label.no' | localize }}</button>
+							&nbsp; &nbsp;
+							
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="TclModificationModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.common.message.dataModificationsMessage'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="saveTclModification()">{{
+								'cop.creation.label.yes' | localize }}</button>
+								<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal" data-ng-click="removeTclModification()">{{
+								'cop.creation.label.no' | localize }}</button>
+							&nbsp; &nbsp;
+						   </div>
+						</div>
+					</div>
+				</div>
+						
+						<div id="LimitModificationModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.common.message.dataModificationsMessage'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="saveLimiteModifications()">{{
+								'cop.creation.label.yes' | localize }}</button>
+								<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal" data-ng-click="removeLimiteModifications()">{{
+								'cop.creation.label.no' | localize }}</button>
+							&nbsp; &nbsp;
+							
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div id="FactureModificationModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.common.message.dataModificationsMessage'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="saveFactureModifications()">{{
+								'cop.creation.label.yes' | localize }}</button>
+								<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal" data-ng-click="removeFactureModifications()">{{
+								'cop.creation.label.no' | localize }}</button>
+							&nbsp; &nbsp;
+							
+
+						</div>
+
+			</div>
+		</div>
+	</div>
+	<div data-cop-history></div>
+	
+	<div id="errorDisplayModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 400px;">
+		<div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+			<div class="modal-header">
+				<button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+					}}</button>
+
+			</div>
+		</div>
+	</div>
+</div>

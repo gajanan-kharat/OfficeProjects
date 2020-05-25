@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<assembly>
+    <!-- Eviter de toucher aux quelques lignes suivantes -->
+    <id>livraison</id>
+    <formats>
+        <format>tar.gz</format>
+        <format>tar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>../EDSserverWEB/target</directory>
+            <includes>
+                <include>*.war</include>
+            </includes>
+            <outputDirectory>/j2ee</outputDirectory>
+        </fileSet>
+
+        <!-- ********************************** -->
+        <!-- DEV CONFIG VALORISATION -->
+        <!-- ********************************** -->
+        <!-- We retrieve the templates of the externalized files which -->
+        <!-- will be valued for the dev environment thanks to the -->
+        <!-- "filtered" tag set to "true" -->
+        <fileSet>
+            <directory>../EDSserverWEB/psa/valorisation/templates/data</directory>
+            <outputDirectory>/data</outputDirectory>
+            <filtered>true</filtered>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+
+        <fileSet>
+            <directory>../EDSserverWEB/OPHGserver</directory>
+            <outputDirectory>/OPHGserver</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../EDSserverWEB/psa/valorisation/templates</directory>
+            <includes>
+                <include>opl00.xml</include>
+            </includes>
+            <outputDirectory>/j2ee</outputDirectory>
+            <filtered>true</filtered>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+
+        <!-- ************************** -->
+        <!-- VALUATION FILES -->
+        <!-- ************************** -->
+        <!-- We have to provide the Indus with all the templates of the externalized files -->
+
+        <fileSet>
+            <directory>../EDSserverWEB/psa/valorisation/templates/data</directory>
+            <outputDirectory>/valuation/templates/data</outputDirectory>
+        </fileSet>
+
+        <!-- And to provide them with the dictionary that was used to generate the externalized files -->
+        <!-- for the development environment -->
+        <fileSet>
+            <directory>psa/valorisation/dictionaries</directory>
+            <includes>
+                <include>dico-dev.properties</include>
+            </includes>
+            <outputDirectory>/valuation/dictionaries</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>../EDSserverWEB/sql</directory>
+            <outputDirectory>/sql</outputDirectory>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+    </fileSets>
+
+    <dependencySets>
+        <!-- Add jar dependencies for tomcat server -->
+        <dependencySet>
+            <scope>provided</scope>
+            <excludes>
+                <exclude>org.apache.tomcat:tomcat-servlet-api</exclude>
+            </excludes>
+            <outputDirectory>lib</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+</assembly>

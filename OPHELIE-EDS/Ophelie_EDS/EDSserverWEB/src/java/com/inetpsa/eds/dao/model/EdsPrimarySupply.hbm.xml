@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 1 ao?t 2012 15:24:34 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsPrimarySupply" table="OPLQTPRS">
+        <id name="psedsId" type="string">
+            <column name="PSEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="psedsRef" type="string">
+            <column name="PSEDS_REF" length="36" not-null="true" />
+        </property>
+        <property name="psedsSupplyName" type="string">
+            <column name="PSEDS_SUPPLY_NAME" length="225" />
+        </property>
+        <property name="psRank" type="int">
+            <column name="PS_RANK" />
+        </property>
+        <property name="psedsTbtBt" type="string">
+            <column name="PSEDS_TBT_BT" length="3" />
+        </property>
+        <property name="psedsIVeille" type="java.lang.Float">
+            <column name="PSEDS_I_VEILLE" precision="7" scale="0" />
+        </property>
+        <property name="psedsIReveilleInactif" type="java.lang.Float">
+            <column name="PSEDS_I_REVEILLE_INACTIF" precision="7" scale="0" />
+        </property>
+        <property name="psedsINomStab" type="java.lang.Float">
+            <column name="PSEDS_I_NOM_STAB" precision="7" scale="0" />
+        </property>
+        <property name="psedsIPirecasStab" type="java.lang.Float">
+            <column name="PSEDS_I_PIRECAS_STAB" precision="7" scale="0" />
+        </property>
+        <property name="psedsSupplyNameIformBy" type="string">
+            <column name="PSEDS_SUPPLY_NAME_IFORM_BY" length="1024" />
+        </property>
+        <property name="psedsSupplyTypeSupplyNameIformBy" type="string">
+            <column name="PSEDS_SUP_TYPE_SUP_NAM_IF_BY" length="1024" />
+        </property>
+        <property name="psedsIVeilleIformBy" type="string">
+            <column name="PSEDS_I_VEILLE_IFORM_BY" length="1024" />
+        </property>
+        <property name="psedsReveilleIformBy" type="string">
+            <column name="PSEDS_REVEILLE_IFORM_BY" length="1024" />
+        </property>
+        <property name="psedsINomStabIformBy" type="string">
+            <column name="PSEDS_I_NOM_STAB_IFORM_BY" length="1024" />
+        </property>
+        <property name="psedsIPirecasStabIformBy" type="string">
+            <column name="PSEDS_I_PIRECAS_STAB_IF_BY" length="1024" />
+        </property>
+        <property name="psedsSupplyNameComment" type="string">
+            <column name="PSEDS_SUPPLY_NAME_COMMENT" length="1024" />
+        </property>
+        <property name="psedsSupplyTypeSupplyNameComment" type="string">
+            <column name="PSEDS_SUP_TYPE_SUP_NAM_COM" length="1024" />
+        </property>
+        <property name="psedsIVeilleComment" type="string">
+            <column name="PSEDS_I_VEILLE_COMMENT" length="1024" />
+        </property>
+        <property name="psedsReveilleComment" type="string">
+            <column name="PSEDS_REVEILLE_COMMENT" length="1024" />
+        </property>
+        <property name="psedsINomStabComment" type="string">
+            <column name="PSEDS_I_NOM_STAB_COMMENT" length="1024" />
+        </property>
+        <property name="psedsIPirecasComment" type="string">
+            <column name="PSEDS_I_PIRECAS_COMMENT" length="1024" />
+        </property>
+        <many-to-one name="wording" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false">
+            <column name="PSEDS_W_ID" length="36" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

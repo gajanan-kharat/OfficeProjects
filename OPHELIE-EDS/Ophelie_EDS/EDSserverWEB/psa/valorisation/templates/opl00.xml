@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat>
+    <prd>opl</prd>
+    <occ>00</occ>
+    <reflexName>OPHELIE/EDS/D</reflexName>
+    <aliasName>EDSserverWEB</aliasName>
+    <logLevel>info</logLevel>
+    <introscope>enable</introscope>
+    <applicationsList>
+        <application>
+            <aliasName>EDSserverWEB</aliasName>
+            <url>ophelie-eds-tomcat.dev.inetpsa.com</url>
+            <source>${archiveAssemblyFinalName}.war</source>
+            <contextRoot>/</contextRoot>
+            <dsOracleList>
+                <dsOracle>
+                    <aliasName>DsOracle</aliasName>
+                    <driverClassPath>ojdbc6-12.1.0.1.jar</driverClassPath>
+                    <url>jdbc:oracle:thin:@yval1d70.inetpsa.com:1521:OPL</url>
+                    <userKey>opl</userKey>
+                    <passwordKey>{xor}0tTQ3uDYn6A=</passwordKey>
+                    <resRefName>jdbc/opl</resRefName>
+                </dsOracle>
+            </dsOracleList>
+            <configuration>
+                <jvmXmx>1024</jvmXmx>
+                <jvmGenericArgument>-Djava.awt.headless=true</jvmGenericArgument>
+            </configuration>
+            <shareLibList>
+                <shareLib>
+                    <aliasName>Mail</aliasName>
+                    <classPathList>
+                        <classPath>/users/opl00/tom70/lib/javax.mail-1.5.3.jar</classPath>
+                        <classPath>/users/opl00/tom70/lib/activation-1.1.jar</classPath>
+                    </classPathList>
+                </shareLib>
+            </shareLibList>
+            <configuration>
+                <jvmClassPathList>
+                    <jvmClassPath>/usersdev2/opl/data</jvmClassPath>
+                </jvmClassPathList>
+            </configuration>
+        </application>
+    </applicationsList>
+</tomcat>

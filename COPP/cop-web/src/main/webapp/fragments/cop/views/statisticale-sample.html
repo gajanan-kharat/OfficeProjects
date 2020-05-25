@@ -1,0 +1,185 @@
+<div data-cop-header></div>
+
+<div id="wrapper" class="context-wrapper">
+    <div>
+        <div data-cop-sidebar></div>
+    </div>
+
+    <div class="col-lg-11 statisticaleSample">
+        <div class="row" style="margin: 0.5em; border-bottom: 1px solid;">
+            <label>{{'cop.statisticaleSample.label.heading' | localize}}</label>
+        </div>
+        <div class="col-lg-12" style="margin-left: 3em; margin-top: 2em;">
+            <div class="row" style="margin-left: 0.1em;">
+                {{'cop.esDependent.tab.TechnicalData.Tvv' | localize}}<span class="astrik">*</span></span>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <input type="text" data-ng-model="tvvLabel" class="form-control" ng-disabled="!authorization()" data-ng-enter="getStatisticalSample()"/>
+                </div>
+                <div class="col-lg-4">
+                    <button class="btn btn-info" data-ng-click="getStatisticalSample()" data-ng-show="authorization()">{{'cop.statisticaleSample.label.search'
+                        | localize}}</button>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 2em;">
+                <div class="col-lg-3">
+                    <span>{{'cop.preparationList.label.reglemenation' | localize}}<span class="astrik">*</span></span><br>
+                    <ui-select id="dropdownTypeofTest" data-ng-model="statisticalSampleList.eslabelselect" reset-search-input="true" data-ng-change="checkValues()"
+                        ng-disabled="!authorization()"> <ui-select-match placeholder="Select..">{{$select.selected.esLabel}}
+                    </ui-select-match> <ui-select-choices repeat="esLabelList in esLabelList | filter: $select.search">
+                    <div ng-bind-html="esLabelList.esLabel | highlight: $select.search "></div>
+                    </ui-select-choices> </ui-select>
+                </div>
+                <div class="col-lg-3">
+                    <span>{{'cop.statisticalSample.label.staticaleRule' | localize}}<span class="astrik">*</span></span><br>
+                    <ui-select id="dropdownTypeofTest" data-ng-model="statisticalSampleList.statisticalRuleSelect" reset-search-input="true" data-ng-change="checkValues()"
+                        ng-disabled="!authorization()"> <ui-select-match placeholder="Select..">{{$select.selected.statisticalRuleLabel}}
+                    </ui-select-match> <ui-select-choices repeat="statisticalRuleList in srLabelList | filter: $select.search">
+                    <div ng-bind-html="statisticalRuleList.statisticalRuleLabel | highlight: $select.search "></div>
+                    </ui-select-choices> </ui-select>
+                </div>
+                <div class="col-lg-3">
+                    <span>{{'cop.genomedata.label.Factory' | localize}}<span class="astrik">*</span></span><br>
+                    <ui-select id="dropdownTypeofTest" data-ng-model="statisticalSampleList.carFactoryselect" reset-search-input="true" data-ng-change="checkValues()"
+                        ng-disabled="!authorization()"> <ui-select-match placeholder="Select..">{{$select.selected.carFactoryLabel}}
+                    </ui-select-match> <ui-select-choices repeat="carFactoryList in cfLabelList | filter: $select.search">
+                    <div ng-bind-html="carFactoryList.carFactoryLabel | highlight: $select.search "></div>
+                    </ui-select-choices> </ui-select>
+                </div>
+                <div class="col-lg-3">
+                    <br>
+                    <button class="btn btn-primary" data-ng-click="selectedCriteria()" data-ng-show="authorization() && showValidation">{{'cop.technicalData.label.validate'
+                        | localize}}</button>
+                </div>
+
+            </div>
+            <div class="col-lg-4" style="margin-top: 2em; margin-bottom: 2em;">
+                <span>{{'cop.statisticalSample.label.sample' | localize}}</span>
+
+                <div data-ng-repeat="statisticalSampleItem in statisticalSample">
+
+                    <button class="btn btn-link" data-ng-click="showPollutentSelect(statisticalSampleItem)">{{'cop.statisticalSample.label.period'
+                        | localize}} {{statisticalSampleItem.minDate| date : 'dd/MM/yyyy'}} {{'cop.statisticalSample.label.to' | localize}}
+                        {{statisticalSampleItem.maxDate | date : 'dd/MM/yyyy'}}</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed; bottom: 20px; background-color: #fff;">
+        <label class="screenNo">{{'cop.statisticalSmaple.label.screenNo' | localize}}</label>
+    </div>
+</div>
+
+
+
+<div id="showSCBox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content " style="border-radius: 0px;">
+
+            <div class="modal-header">
+                <div class="row">
+
+                    <div class="modal-title col-lg-10 no-padding" id="myModalLabel">
+                        <div class="col-lg-9">
+                            <label>{{ 'cop.statisticalCurve.label'| localize }}</label>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-1">
+                        <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal"
+                            data-ng-click="refresh()" aria-hidden="true"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-11">
+                        <label>{{ 'cop.statisticalCurve.Pollutants'| localize }}</label>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4">
+                        <label> <input type="checkbox" name="select all" ng-click="selectAll()" data-ng-model="checkFlag"
+                            data-ng-checked="allFlag"> {{ 'cop.statisticalCurve.selectAll'| localize }}
+                        </label>
+
+
+                        <div data-ng-repeat="pg in pollutantGasList  track by $index">
+                            <input type="checkbox" name="selectedPgGas[]" value="{{pg}}" data-ng-checked="checkFlag"
+                                data-ng-click="toggleSelection(pg)"> {{pg}}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-4">
+                        <input type="radio" name="rating" data-ng-model="file" value="pdf" /><img src="fragments/cop/images/pdf.jpg" alt="pdf"
+                            style="width: 30px; height: 30px;"> <br />
+                        <br /> <input type="radio" name="rating" data-ng-model="file" data-ng-click="show()" value="excel"> <img
+                            src="fragments/cop/images/excel.jpg" alt="excel" style="width: 30px; height: 30px;">
+                    </div>
+                </div>
+                <!--  <div class="row">
+                    <div class="col-lg-7"></div>
+                    <div class="col-lg-5">
+
+                            <md-radio-group layout="row"> <input type="radio" name="rating" data-ng-model="file" md-radio-button
+                            value="pdf" class="md-primary">PDF</md-radio-button> <input type="radio" name="rating" data-ng-model="file" data-ng-click="show()"
+                            md-radio-button value="excel"> Excel </md-radio-button> </md-radio-group>
+                    </div>
+                </div> -->
+                <div class="modal-footer" style="text-align: center;">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-2">
+                            <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="sendFile()"
+                                ng-show="selection.length  >   0">{{ 'cop.genomedata.label.save'| localize}}</button>
+                        </div>
+
+
+                        <div class="col-lg-2">
+                            <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal" data-ng-click="refresh()">{{
+                                'cop.technicalData.label.cancel'| localize}}</button>
+                        </div>
+
+                        <div class="col-lg-4"></div>
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="ErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{errorMassage}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{
+                    'cop.technicalData.label.ok' | localize }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>

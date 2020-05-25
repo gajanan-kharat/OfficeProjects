@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 avr. 2013 16:19:06 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsConsolidateCurentFormData" table="OPLQTOCD">
+        <id name="ccedsId" type="string">
+            <column name="CCEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsGroundConsolidateCurent" class="com.inetpsa.eds.dao.model.EdsGroundConsolidateCurent" fetch="select" lazy="false"
+            cascade="all">
+            <column name="PCC_CCM_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select">
+            <column name="CCEDS_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="ccComment" type="string">
+            <column name="CC_COMMENT" length="1024" />
+        </property>
+        <set name="edsSupplies" inverse="false" lazy="false" cascade="all">
+            <key>
+                <column name="S_CCEDS_ID" length="36" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsSupply" />
+        </set>
+    </class>
+</hibernate-mapping>

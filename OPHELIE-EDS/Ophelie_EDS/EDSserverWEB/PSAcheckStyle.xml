@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" 
+	"http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+
+<!-- Checkstyle Conventions for PSA applications -->
+<!-- -->
+<!-- 2.0.0 11-01-2005 (WSAD Version Quality package) -->
+<!-- 3.0.0 08-02-2005 (IRWD Version Quality package) -->
+<!-- 3.1.0 27-09-2005 (New functionality in Quality package) -->
+<!-- 4.0.0 29-09-2006 New Checkstyle configuration (+New functionality) -->
+<!-- 4.1.0 10-01-2007 (Eclipse 3.2 Version Quality package) -->
+<!-- 4.3.0 02-02-2009 (Eclipse 3.3.x Version Quality package) -->
+<!-- 5.0.0 28-06-2012 Checkstyle v5 format conversion -->
+<!-- 5.0.1 09-08-2012 Change 'AbstractClassName' pattern to "^Abstract.*$" -->
+<!-- -->
+
+<module name="Checker">
+    <property name="severity" value="warning" />
+    <module name="FileLength">
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="System\.(out|err)\.print" />
+        <property name="message" value="Use logging functionalities instead of 'System.out/err'." />
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="System\.exit" />
+        <property name="message" value="It is forbidden to terminate a program with System.exit." />
+    </module>
+    <module name="RegexpSingleline">
+        <property name="severity" value="error" />
+        <property name="format" value="CHECKSTYLE:OFF(\s)*$" />
+        <property name="message" value="It is mandatory to comment on why the following code is excluded Checkstyle checks." />
+    </module>
+    <!-- SPECIFIC LEGO v2 : BEGIN -->
+    <module name="RegexpMultiline">
+        <property name="format" value="PersistenceBrokerFactory\.(create|default)PersistenceBroker\(" />
+        <property name="message" value="[LEGO] Do not directly use the OJB broker, but use BusinessService#getPersistentContext." />
+    </module>
+    <!-- SPECIFIC LEGO v2 : END -->
+    <module name="TreeWalker">
+        <!-- QUALIFICATION DES APPLIS JAVA -->
+        <module name="JavaNCSS">
+            <property name="severity" value="error" />
+            <property name="methodMaximum" value="50" />
+            <property name="classMaximum" value="750" />
+        </module>
+        <module name="CyclomaticComplexity">
+            <property name="severity" value="error" />
+            <property name="max" value="20" />
+        </module>
+        <!-- AUTRES CHECKS -->
+        <module name="FileContentsHolder">
+        </module>
+        <module name="JavadocMethod">
+        </module>
+        <module name="JavadocStyle">
+            <property name="excludeScope" value="nothing" />
+            <property name="checkEmptyJavadoc" value="true" />
+            <property name="checkFirstSentence" value="false" />
+        </module>
+        <module name="JavadocType">
+        </module>
+        <module name="JavadocVariable">
+        </module>
+        <module name="AbstractClassName">
+            <property name="format" value="^Abstract.*$" />
+        </module>
+        <module name="ConstantName">
+        </module>
+        <module name="LocalFinalVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$|^[a-z]?_[a-zA-Z0-9]*$" />
+        </module>
+        <module name="LocalVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$|^[a-z]?_[a-zA-Z0-9]*$" />
+        </module>
+        <module name="MemberName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$|^[a-z]?_[a-zA-Z0-9]*$" />
+        </module>
+        <module name="MethodName">
+        </module>
+        <module name="PackageName">
+            <property name="format" value="^com\.inetpsa\.[a-z0-9]{3}(\.[a-z0-9]*)*$" />
+        </module>
+        <module name="ParameterName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$|^[a-z]?_[a-zA-Z0-9]*$" />
+        </module>
+        <module name="StaticVariableName">
+            <property name="format" value="^[a-z][a-zA-Z0-9]*$|^[a-z]?_[a-zA-Z0-9]*$" />
+        </module>
+        <module name="TypeName">
+        </module>
+        <module name="AvoidStarImport">
+            <property name="severity" value="info" />
+        </module>
+        <module name="IllegalImport">
+            <property name="illegalPkgs" value="sun,com.ibm,com.oracle" />
+        </module>
+        <module name="RedundantImport">
+            <property name="severity" value="info" />
+        </module>
+        <module name="UnusedImports">
+            <property name="severity" value="info" />
+        </module>
+        <module name="AnonInnerLength">
+            <property name="max" value="50" />
+        </module>
+        <module name="ParameterNumber">
+        </module>
+        <module name="EmptyForInitializerPad">
+        </module>
+        <module name="ModifierOrder">
+            <property name="severity" value="info" />
+        </module>
+        <module name="RedundantModifier">
+            <property name="severity" value="info" />
+        </module>
+        <module name="AvoidNestedBlocks">
+        </module>
+        <module name="EmptyBlock">
+        </module>
+        <module name="AvoidInlineConditionals">
+        </module>
+        <module name="CovariantEquals">
+        </module>
+        <module name="DefaultComesLast">
+            <property name="severity" value="error" />
+        </module>
+        <module name="EmptyStatement">
+        </module>
+        <module name="EqualsHashCode">
+            <property name="severity" value="error" />
+        </module>
+        <module name="ExplicitInitialization">
+        </module>
+        <module name="FallThrough">
+        </module>
+        <module name="IllegalCatch">
+        </module>
+        <module name="InnerAssignment">
+        </module>
+        <module name="MagicNumber">
+        </module>
+        <module name="MissingSwitchDefault">
+        </module>
+        <module name="MultipleVariableDeclarations">
+        </module>
+        <module name="NestedIfDepth">
+            <property name="max" value="5" />
+        </module>
+        <module name="NestedTryDepth">
+            <property name="max" value="2" />
+        </module>
+        <module name="ParameterAssignment">
+            <property name="severity" value="error" />
+        </module>
+        <module name="ReturnCount">
+            <property name="max" value="3" />
+        </module>
+        <module name="SimplifyBooleanExpression">
+            <property name="severity" value="info" />
+        </module>
+        <module name="SimplifyBooleanReturn">
+            <property name="severity" value="info" />
+        </module>
+        <module name="StringLiteralEquality">
+        </module>
+        <module name="SuperClone">
+        </module>
+        <module name="SuperFinalize">
+        </module>
+        <module name="FinalClass">
+        </module>
+        <module name="HideUtilityClassConstructor">
+        </module>
+        <module name="InterfaceIsType">
+        </module>
+        <module name="MutableException">
+        </module>
+        <module name="ThrowsCount">
+            <property name="max" value="3" />
+        </module>
+        <module name="VisibilityModifier">
+            <property name="protectedAllowed" value="true" />
+        </module>
+        <module name="ArrayTypeStyle">
+        </module>
+
+    </module>
+    <module name="SuppressionCommentFilter">
+    </module>
+</module>

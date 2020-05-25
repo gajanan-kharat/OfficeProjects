@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 sept. 2012 11:19:40 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsValidation" table="OPLQTVAL">
+        <id name="VId" type="string">
+            <column name="V_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsWording" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false">
+            <column name="V_COMMENT1_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsUser" class="com.inetpsa.eds.dao.model.EdsUser" fetch="select" lazy="false">
+            <column name="V_VALIDATOR_ID" length="36" />
+        </many-to-one>
+        <property name="VStatus" type="int">
+            <column name="V_STATUS" not-null="true" />
+        </property>
+        <property name="VValidationDate" type="timestamp">
+            <column name="V_VALIDATION_DATE" length="23" />
+        </property>
+        <property name="VComment2" type="string">
+            <column name="V_COMMENT2" length="1024" />
+        </property>
+        <!-- <set name="edsHighValidationFormDatasForHvfdRsPrimaryId" inverse="true"> <key> <column name="HVFD_RS_PRIMARY_ID" length="36" not-null="true" 
+            unique="true" /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" /> </set> <set name="edsHighValidationFormDatasForHvfdCadeClosedId" 
+            inverse="true"> <key> <column name="HVFD_CADE_CLOSED_ID" length="36" not-null="true" unique="true" /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" 
+            /> </set> <set name="edsHighValidationFormDatasForHvfdReClosedId" inverse="true"> <key> <column name="HVFD_RE_CLOSED_ID" length="36" not-null="true" unique="true" 
+            /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" /> </set> <set name="edsHighValidationFormDatasForHvfdDbeesClosedId" 
+            inverse="true"> <key> <column name="HVFD_DBEES_CLOSED_ID" length="36" not-null="true" unique="true" /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" 
+            /> </set> <set name="edsHighValidationFormDatasForHvfdCadeConsolidateId" inverse="true"> <key> <column name="HVFD_CADE_CONSOLIDATE_ID" length="36" not-null="true" 
+            unique="true" /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" /> </set> <set name="edsHighValidationFormDatasForHvfdReRobustId" 
+            inverse="true"> <key> <column name="HVFD_RE_ROBUST_ID" length="36" not-null="true" unique="true" /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" 
+            /> </set> <set name="edsHighValidationFormDatasForHvfdDbeedClosedId" inverse="true"> <key> <column name="HVFD_DBEED_CLOSED_ID" length="36" not-null="true" 
+            unique="true" /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" /> </set> <set name="edsHighValidationFormDatasForHvfdReConsolidateId" 
+            inverse="true"> <key> <column name="HVFD_RE_CONSOLIDATE_ID" length="36" not-null="true" unique="true" /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" 
+            /> </set> <set name="edsHighValidationFormDatasForHvfdDbeedConsolidateId" inverse="true"> <key> <column name="HVFD_DBEED_CONSOLIDATE_ID" length="36" not-null="true" 
+            unique="true" /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" /> </set> <set name="edsHighValidationFormDatasForHvfdDbeesConsolidateId" 
+            inverse="true"> <key> <column name="HVFD_DBEES_CONSOLIDATE_ID" length="36" not-null="true" unique="true" /> </key> <one-to-many class="com.inetpsa.eds.dao.model.EdsHighValidationFormData" 
+            /> </set> -->
+    </class>
+</hibernate-mapping>

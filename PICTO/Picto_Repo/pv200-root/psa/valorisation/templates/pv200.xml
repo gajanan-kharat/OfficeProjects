@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat>
+	<prd>pv2</prd>
+	<occ>00</occ>
+	<reflexName>Appli/d</reflexName>
+	<aliasName>HelloWorld</aliasName>
+	<applicationsList>
+		<application>
+			<aliasName>TomcatMySql</aliasName>
+			<url>pictotheque.dev.inetpsa.com</url>
+			<source>TomcatMySql.war</source>
+			<contextRoot>/</contextRoot>
+			<dsMySQLList>
+				<dsMySQL>
+					<aliasName>DsMySql</aliasName>
+					<driverClassPath>mysql-connector-java-5.1.31-bin.jar</driverClassPath>
+					<url>jdbc:mysql://yval1vx0.inetpsa.com:3306/PV2</url>
+					<userKey>mdepv200</userKey>
+					<passwordKey>mdepv200</passwordKey>
+					<resRefName>jdbc/resrefname1</resRefName>
+				</dsMySQL>
+			</dsMySQLList>
+                        <shareLibList>
+                                <shareLib>
+                                        <aliasName>JSTL</aliasName>
+                                        <scope>application</scope>
+                                        <classPathList>
+                                                <classPath>/users/pv200/tom70/lib/jstl.jar</classPath>
+                                                <classPath>/users/pv200/tom70/lib/standard.jar</classPath>
+                                        </classPathList>
+                                </shareLib>
+                        </shareLibList>
+
+		</application>
+	</applicationsList>
+</tomcat>

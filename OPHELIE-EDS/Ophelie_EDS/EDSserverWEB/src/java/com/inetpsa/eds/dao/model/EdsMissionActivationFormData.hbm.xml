@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 30 juil. 2012 09:33:53 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsMissionActivationFormData" table="OPLQTMAD">
+        <id name="mafdId" type="string">
+            <column name="MAFD_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select">
+            <column name="MAFD_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="mafdCommentaire" type="string">
+            <column name="MAFD_COMMENTAIRE" length="2048" />
+        </property>
+        <set cascade="all, delete-orphan" inverse="true" lazy="false" name="edsCurrentStatements">
+            <key>
+                <column length="36" name="CS_MAFD_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsCurrentStatement" />
+        </set>
+    </class>
+</hibernate-mapping>

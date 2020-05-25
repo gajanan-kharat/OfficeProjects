@@ -1,0 +1,270 @@
+<div data-cop-header></div>
+
+<div id="wrapper" class="context-wrapper">
+    
+        <div data-cop-sidebar></div>
+        <div class="col-lg-12" style="padding-bottom: 4em;">
+        <div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-10 col-sm-10 col-xs-10 custom-top-pad custom-page-header col-lg-10">
+            <div>
+                <b class="custom-menulist-left" >>...> {{'cop.preparationstructure.label.heading'| localize}}</b> <label class="pull-right">Version
+                    V{{pfsList.version}} du {{pfsList.modificationDate | date : 'dd/MM/yyyy'}}</label>
+            </div>
+        <div class="padding-top-btm" style="border-bottom: 2px solid #eee;">
+                <button type="button" class="btn btn-warning" data-ng-click="showAddGPLModel()" data-ng-show = "authorization()" style="border-radius: 8px;">
+                    <i class="fa fa-plus-square-o fa-lg blackiconcolor"></i><span style="padding-left: 1em;" title="{{'cop.preparationstructure.label.addEcl'
+                        | localize}}" >{{'cop.preparationstructure.label.addEcl'
+                        | localize}}</span>
+                </button>
+        </div>
+        </div>
+        <div class="eclBox col-lg-12" data-ng-repeat="preparationCheck in pfsList.preparationChecklists">
+            <div class="custom-cross">
+                <span class="fa fa-remove fa-2x" style="cursor: pointer;" data-ng-click="showDeleteGPL($index)" data-ng-show="authorization()"></span>
+            </div>
+            <div class="col-lg-12 custom-top-btm-padding">
+                <div class="col-lg-12 custom-top-btm-padding">
+                    <div class="col-lg-3">
+                        <b title="{{'cop.technicalData.text.label' | localize}}">{{'cop.technicalData.text.label' | localize}}</b><br> <input type="text" class="form-control"
+                            data-ng-model="preparationCheck.label" data-ng-disabled="true" title="{{preparationCheck.label}} "/>
+                    </div>
+                    <div class="col-lg-3">
+                        <b title="{{'cop.technicalData.text.Description' | localize}}">{{'cop.technicalData.text.Description' | localize}}</b><br> <input type="text" class="form-control"
+                            data-ng-model="preparationCheck.description" data-ng-maxlength="255" data-ng-disabled="!authorization()"
+                            title={{preparationCheck.description}} />
+                    </div>
+                    <div class="col-lg-2">
+                        <b title="{{'cop.preparationstructure.label.order' | localize}}" >{{'cop.preparationstructure.label.order' | localize}}</b><span style="color: red;">*</span><br> <input type="text"
+                            class="form-control" data-ng-model="preparationCheck.order" style="width: 5em;" data-ng-maxlength="11"
+                            data-ng-disabled="!authorization()" title={{preparationCheck.order}} data-ng-change="preparationCheck.order = numValidation(preparationCheck.order)"/>
+                    </div>
+                    <div class="col-lg-3 no-padding">
+
+                        <input type="checkbox" data-ng-model="preparationCheck.enabled" data-ng-disabled="!authorization()" /> <b title="{{'cop.preparationStructure.label.viewing' | localize}} ">{{'cop.preparationStructure.label.viewing'
+                            | localize}}</b>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 no-padding custom-top-btm-padding" data-ng-repeat="preparationItems in preparationCheck.preparationItems" style="border-top: 1px solid #bfbfbf;">
+                <div class="col-lg-12 no-padding custom-top-btm-padding">
+                    <div class="col-lg-4 no-padding" >
+                    <div data-ng-show="authorization()">
+                        <editlabeles model="preparationItems.label" data-ng-disabled="!authorization()"></editlabeles>
+                        
+                           <span class="fa fa-remove" style="cursor: pointer;" data-ng-click="showDeleteGPI($parent.$index,$index)"
+                            data-ng-show="authorization()"></span>
+                            </div>
+                            
+                            <div data-ng-show="!authorization()"> 
+                            <div class="col-lg-9" style="max-height: auto; overflow: hidden;text-overflow: ellipsis;font-weight: bold;" title="{{preparationItems.label}}">
+                            {{preparationItems.label}}
+                            </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="col-lg-6 no-padding text-right">
+                            <b title="{{'cop.preparationstructure.label.order' | localize}}">{{'cop.preparationstructure.label.order' | localize}}<span style="color: red;">*</span></b>
+                        </div>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" data-ng-model="preparationItems.order" style="width: 5em;"
+                                data-ng-maxlength="11" data-ng-disabled="!authorization()" title={{preparationItems.order}} data-ng-change="preparationItems.order = numValidation(preparationItems.order)"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 no-padding custom-top-btm-padding">
+                    <div class="col-lg-2">
+                        <b><span title="{{'cop.technicalData.label.dataType' | localize}}">{{'cop.technicalData.label.dataType' | localize}}</span><span style="color: red;">*</span></b>
+                        <div title="{{$select.selected}}">
+                            <ui-select id="dropdownPIdataType" reset-search-input="true" data-ng-model="preparationItems.dataType" data-ng-disabled="!authorization()"> <ui-select-match
+                                placeholder="Select..">{{$select.selected}} </ui-select-match> <ui-select-choices
+                                repeat="datatype in PIdatatypeList | filter: $select.search">
+                            <div ng-bind-html="datatype | highlight: $select.search "></div>
+                            </ui-select-choices> </ui-select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <b><span title="{{'cop.technicalData.label.unit' | localize}}">{{'cop.technicalData.label.unit' | localize}}</span></b> <input type="text"
+                            class="form-control" data-ng-model="preparationItems.unit" data-ng-maxlength="255" data-ng-disabled="!authorization()"
+                            title={{preparationItems.unit}} />
+                    </div>
+                    <div class="col-lg-3">
+                        <b><span title="{{'cop.preparationstructture.label.helptext' | localize}} " >{{'cop.preparationstructture.label.helptext' | localize}}</span></b> <input type="text" class="form-control"
+                            data-ng-model="preparationItems.helpText" data-ng-maxlength="255" data-ng-disabled="!authorization()"
+                            title={{preparationItems.helpText}} />
+                    </div>
+                    <div class="col-lg-3 no-padding">
+                        <input type="checkbox" data-ng-model="preparationItems.mandatory" data-ng-disabled="!authorization()" /> <b><span title="{{'cop.preparationstructure.label.mandatory' | localize}}" >{{'cop.preparationstructure.label.mandatory'
+                                | localize}}</span></b><br> <input type="checkbox" data-ng-model="preparationItems.authorizedComment"
+                            data-ng-disabled="!authorization()" /> <b><span class="{{'cop.preparationstructure.label.authorizedComment' | localize}} " >{{'cop.preparationstructure.label.authorizedComment' |
+                                localize}}</span></b>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-12" style="margin-top: 2em;">
+                <button class="btn btn-success pull-right" data-ng-click="showAddGPIModel($index)" data-ng-show="authorization()">
+                    <i class="fa fa-plus-square-o fa-lg blackiconcolor"></i><span style="margin-left: 1em;">{{'cop.preparationstructure.label.addEci'
+                        | localize }}</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+<label class="screenNo" title="Screen Number :SCR040">Screen Number :SCR040</label>
+<div class="padding-top-btm">
+<button class="btn btn-primary" data-ng-click="pfsSave()" data-ng-show = "authorization()">{{'cop.technicalData.label.validate' | localize}}</button>
+<button class="btn btn-default" data-ng-click="pfsCancel()" data-ng-show = "authorization()">{{'cop.technicalData.label.cancel' | localize }}</button>
+</div>
+</div>
+   
+</div>
+
+<div id="addListModal" class="modal fade" tabindex="-1"
+                    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-md" style="width: 500px;">
+                        <div class="modal-content"
+                            style="border-radius: 0px; width: 500px;">
+
+                            <div class="modal-header">
+                                <button type="button" class="btn fa fa-remove"
+                                data-dismiss="modal"
+                                    style="float: right; background-color: #fff;"
+                                      aria-hidden="true"></button>
+                                <h4 class="modal-title" id="myModalLabel">{{
+                                    'cop.technicalData.label.addList'| localize }}</h4>
+                            </div>
+                            <div class="modal-body" style="padding-top: 20px;">
+                                <div>
+                                    <label>{{ 'cop.technicalDataList.text.label'| localize
+                                        }}</label> <span class="astrik">*</span>
+                                </div>
+                                <div>
+
+                                    <input class="form-control" type="text"
+                                        data-ng-model="Listlabel" data-ng-maxlength="255"
+                                        maxlength="255" />
+
+                                </div>
+                                <div>
+                                    <label>{{ 'cop.technicalDataList.text.Description'|
+                                        localize }}</label>
+
+                                </div>
+                                <div>
+                                    <textarea class="form-control" data-ng-model="ListDescription"
+                                        data-ng-maxlength="255" maxlength="255"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer align-center">
+
+
+                                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="addGPL()">{{'cop.technicalData.message.create' |localize }}</button>
+                                &nbsp; &nbsp;
+                                <button type="button" style="border-radius: 0px;"
+                                    class="btn btn-default" data-dismiss="modal">{{
+                                    'cop.technicalData.message.cancel' | localize }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="addItemModal" class="modal fade" tabindex="-1"
+                    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-md" style="width: 500px;">
+                        <div class="modal-content"
+                            style="border-radius: 0px; width: 500px;">
+
+                            <div class="modal-header">
+                                <button type="button" class="btn fa fa-remove"
+                                data-dismiss="modal"
+                                    style="float: right; background-color: #fff;"
+                                      aria-hidden="true"></button>
+                                <h4 class="modal-title" id="myModalLabel">{{
+                                    'cop.technicalData.label.addListItem'| localize }}</h4>
+                            </div>
+                            <div class="modal-body" style="padding-top: 20px;">
+                                <div>
+                                    <label>{{ 'cop.technicalDataList.text.label'| localize
+                                        }}</label> <span class="astrik">*</span>
+                                </div>
+                                <div>
+
+                                    <input class="form-control" type="text"
+                                        data-ng-model="itemlabel" data-ng-maxlength="255"
+                                        maxlength="255" />
+
+                                </div>
+                                <div>
+                                    <label>{{ 'cop.preparationstructture.label.helptext'|
+                                        localize }}</label>
+
+                                </div>
+                                <div>
+                                    <textarea class="form-control" data-ng-model="itemDescription"
+                                        data-ng-maxlength="255" maxlength="255"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer align-center">
+
+
+                                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="addGPI()">{{'cop.technicalData.message.create' |localize }}</button>
+                                &nbsp; &nbsp;
+                                <button type="button" style="border-radius: 0px;"
+                                    class="btn btn-default" data-dismiss="modal">{{
+                                    'cop.technicalData.message.cancel' | localize }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ <div id="removeListModal" class="modal fade">
+    <div class="modal-dialog modal-md" style="width: 500px;" >
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px; width: 500px;">
+            <h4 style="text-align: center;">{{'cop.preparationstructure.model.gpidelete' | localize}}</h4>
+            
+            
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em;">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="deleteGPL()">{{ 'cop.regulationGroup.modalOption.yes' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.regulationGroup.modalOption.No' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>               
+<div id="removeItemModal" class="modal fade">
+    <div class="modal-dialog modal-md" style="width: 500px;" >
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px; width: 500px;">
+            <h4 style="text-align: center;">{{'cop.preparationstructure.model.gpidelete' | localize}}</h4>
+            
+            
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em;">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="deleteGPI()">{{ 'cop.regulationGroup.modalOption.yes' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.regulationGroup.modalOption.No' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="errorModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel"> {{errorMsg}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>

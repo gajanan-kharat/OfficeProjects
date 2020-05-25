@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="OASIS/PLM">
+	<skin>
+      <groupId>com.inetpsa.ciq.skins</groupId>
+      <artifactId>maven-psa-skin</artifactId>
+      <version>1.0.0</version>
+   </skin>
+	<publishDate position="left" format="dd MMM yyyy"/>
+    <bannerLeft>
+        <name>OASIS/PLM</name>
+    </bannerLeft>
+    <bannerRight>
+        <src>/images/logo_psa.jpg</src>
+    </bannerRight>
+    
+	
+	<body>
+	
+		<menu name="Liens">
+			<item name="Presentation" href="index.html"/>
+		</menu>
+		
+		<menu ref="modules" />
+
+        <menu ref="reports" />
+		
+		<menu name="Historique">
+            <item name="Versions" href="/changes-report.html"/>
+        </menu>
+	
+		<menu name="Other reports">
+			<item name="PSA Dashboard" href="/psa-dashboard.html"/>
+		</menu>
+		
+	</body>
+</project>

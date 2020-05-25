@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 ao?t 2012 13:31:05 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsComportementConsolideFormData" table="OPLQTCCD">
+        <id name="cocofdId" type="string">
+            <column name="COCOFD_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select">
+            <column name="COCOFD_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="cocofdTypePilotage" type="string">
+            <column name="COCOFD_TYPE_PILOTAGE" length="256" />
+        </property>
+        <property name="cocofdPlageFrequence" type="string">
+            <column name="COCOFD_PLAGE_FREQUENCE" length="256" />
+        </property>
+        <property name="cocofdModeleRlcImage" type="string">
+            <column name="COCOFD_MODELE_RLC_IMAGE" length="256" />
+        </property>
+        <property name="cocofdModeleRclCommentaire" type="string">
+            <column name="COCOFD_MODELE_RCL_COM" length="2048" />
+        </property>
+        <property name="cocofdModeleSaberImage" type="string">
+            <column name="COCOFD_MODELE_SABER_IMAGE" length="256" />
+        </property>
+        <property name="cocofdModeleSaberCommentaire" type="string">
+            <column name="COCOFD_MODELE_SABER_COM" length="2048" />
+        </property>
+        <property name="cocofdModeleRclUrls" type="string">
+            <column name="COCOFD_MODELE_RCL_URLS" length="256" />
+        </property>
+        <property name="cocofdModeleSaberUrls" type="string">
+            <column name="COCOFD_MODELE_SABER_URLS" length="256" />
+        </property>
+    </class>
+</hibernate-mapping>

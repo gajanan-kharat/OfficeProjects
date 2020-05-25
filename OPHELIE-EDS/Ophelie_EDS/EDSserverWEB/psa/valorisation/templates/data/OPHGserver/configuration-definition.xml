@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definition>
+    <part id="Service" iconpath="iDivers.png" order="1">
+        <section id="Serveur" order="3" enabled="true">
+            <property
+                    id="endpoint-ws"
+                    order="1"
+                    shortname="URL du webservice"
+                    description="URL du webservice"
+                    type="string" />
+            <property
+                    id="endpoint-download"
+                    order="2"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="string" />
+            <property
+                    id="endpoint-upload"
+                    order="3"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="string" />
+            <property
+                    id="endpoint-ping"
+                    order="4"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="int" />
+            <property
+                    id="profil-directory"
+                    order="5"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="string" />
+            <property
+                    id="database-template-directory"
+                    order="6"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="string" />
+            <property
+                    id="tmp-directory"
+                    order="7"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="string" />
+            <property
+                    id="hibernate-config-file"
+                    order="8"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="string" />
+            <property
+                    id="gestion-container-id"
+                    order="9"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="string" />
+            <property
+                    id="gestion-login"
+                    order="10"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="string" />
+            <property
+                    id="gestion-password"
+                    order="11"
+                    shortname="Delay de ping (ms) du webservice"
+                    description="Delay de ping (ms) du webservice"
+                    type="string" />
+        </section>
+    </part>
+</definition>

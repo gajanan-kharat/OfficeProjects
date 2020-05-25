@@ -1,0 +1,16 @@
+com.inetpsa.cxl.core.fault
+com.inetpsa.oaz.ws.checker.formula.services
+com.inetpsa.oaz.ws.checker.model
+com.inetpsa.oaz.ws.report.services
+com.inetpsa.oaz.ws.report.services.impl
+com.inetpsa.oaz.ws.report.servlets
+com.inetpsa.oaz.ws.report.utils
+com.inetpsa.oaz.ws.scilab.model
+com.inetpsa.oaz.ws.scilab.services
+com.inetpsa.oaz.ws.scilab.services.impl
+com.inetpsa.oaz.ws.scilab.utils
+com.inetpsa.oaz.ws.server.invoker
+com.inetpsa.oaz.ws.server.services
+com.inetpsa.oaz.ws.strategy.services
+com.inetpsa.oaz.ws.strategy.services.impl
+com.inetpsa.xml.services.oasisplm.interfaceoasis

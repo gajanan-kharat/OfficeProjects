@@ -1,0 +1,26 @@
+<div class="variants-border" id="variant-{{$index}}">
+	<div class="panel-innerbody">
+		<div class="content-context">
+			<div class="info-title">Variant {{variant.variant}}</div>
+			<div class="img-thumbnail" style="position: relative; border: none;">
+				<span id="code3" class="admin-info fa fa-circle"></span>
+				<div class="custom-picto">
+					<img data-ng-src='{{variant.image}}' />
+				</div>
+				<div class="custom-picto-right">
+					<i class="fa fa-info-circle custom-info"></i>
+					<div class="eye-slasher">
+						<input type="checkbox" id="toggle"> <label for="toggle"><i
+							id="bars" class="fa fa-eye"></i> <i id="cross"
+							class="fa fa-eye-slash"></i> </label>
+					</div>
+					<i class="fa fa-male custom-workforce"></i>
+				</div>
+				<div class="custom-picto-bottom">
+					<label class="txt-ellipsis"
+						data-ng-bind="selectedPictoDetails.name"></label> <label>[{{variant.variant}}]</label>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

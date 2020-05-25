@@ -1,0 +1,14 @@
+source foreignkeys/PV2QICAT.sql;
+source foreignkeys/PV2QIDRA.sql;
+source foreignkeys/PV2QIFAV.sql;
+source foreignkeys/PV2QIPFM.sql;
+source foreignkeys/PV2QIPIC.sql;
+source foreignkeys/PV2QIROU.sql;
+source foreignkeys/PV2QISHP.sql;
+source foreignkeys/PV2QITYP.sql;
+source foreignkeys/PV2QIIMG.sql;
+source foreignkeys/PV2QIDIS.sql;
+source foreignkeys/PV2QINTF.sql;
+source foreignkeys/PV2QIACT.sql;
+source foreignkeys/PV2QIALR.sql;
+source foreignkeys/PV2QIFAI.sql;

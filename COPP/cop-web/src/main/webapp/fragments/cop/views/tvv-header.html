@@ -1,0 +1,203 @@
+<div class="row form-group input-lbl-propertext-wrapp">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext" title=" {{'cop.search.label.projectVehicle'|localize}} ">{{'cop.search.label.projectVehicle'|localize}}</label>
+          <div title="{{$select.selected.displayLabel}} ">
+            <ui-select id="projectSelect" data-ng-model="tvvObject.projectCodeFamily" reset-search-input="true"  ng-disabled="!disableFeild('POCHRole')"
+                title="{{tvvObject.projectCodeFamily.displayLabel}}"> 
+                <ui-select-match placeholder="Valeur">  {{$select.selected.displayLabel}} </ui-select-match> 
+                <ui-select-choices repeat="project in ProjectFamily | filter: $select.search">
+                <div ng-bind-html="project.displayLabel | highlight: $select.search " title="{{project.displayLabel}}"></div>
+            </ui-select-choices> 
+            </ui-select>
+           </div>
+            
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext" title=" {{'cop.search.label.bodyWork'|localize}} ">{{'cop.search.label.bodyWork'|localize}}</label>
+            <div title="{{$select.selected.silhoutteLable}} ">
+            <ui-select id="bodyWorkSelect" data-ng-model="tvvObject.bodyWork" reset-search-input="true" title="{{tvvObject.bodyWork.silhoutteLable}}" ng-disabled="!disableFeild('POCHRole')">
+            <ui-select-match placeholder="Valeur"> {{$select.selected.silhoutteLable}}</ui-select-match> <ui-select-choices
+                repeat="bodyWorkInstance in BodyWork | filter: $select.search">
+            <div ng-bind-html="bodyWorkInstance.silhoutteLable | highlight: $select.search " title="{{bodyWorkInstance.silhoutteLable}}"></div>
+            </ui-select-choices> </ui-select>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext" title=" {{'cop.search.label.engine'|localize}} ">{{'cop.search.label.engine'|localize}}</label>
+            <div title=" {{$select.selected.displayLabel}} "> 
+              <ui-select id="engineSelect" data-ng-model="tvvObject.engine" reset-search-input="true" title="{{tvvObject.engine.displayLabel}}" ng-disabled="!disableFeild('POCHRole')"> <ui-select-match
+                placeholder="Valeur"> {{$select.selected.displayLabel}} </ui-select-match> <ui-select-choices repeat="engine in Engine | filter: $select.search">
+              <div ng-bind-html="engine.displayLabel| highlight: $select.search " title="{{engine.displayLabel}}"></div>
+              </ui-select-choices> </ui-select>
+            </div>
+            
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext" title=" {{'cop.search.label.gearBox'|localize}} ">{{'cop.search.label.gearBox'|localize}}</label>
+            <div title="  {{$select.selected.gearBoxLabel}} "> 
+            <ui-select id="gearBoxSelect" data-ng-model="tvvObject.gearBox" reset-search-input="true" title="{{tvvObject.gearBox.displayLabel}}" ng-disabled="!disableFeild('POCHRole')"> <ui-select-match
+                placeholder="Valeur"> {{$select.selected.displayLabel}} </ui-select-match> <ui-select-choices repeat="gearBox in GearBox | filter: $select.search">
+            <div ng-bind-html="gearBox.displayLabel| highlight: $select.search " title="{{gearBox.displayLabel}}"></div>
+            </ui-select-choices> </ui-select>
+            </div>
+           
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext" title="{{'cop.search.label.fuel'|localize}} ">{{'cop.search.label.fuel'|localize}}</label>
+            <div title=" {{$select.selected.label}} "> 
+               <ui-select id="fuelSelect" data-ng-model="tvvObject.fuel" reset-search-input="true" title="{{tvvObject.fuel.label}}" ng-disabled="!disableFeild('POCHRole')"> <ui-select-match
+                placeholder="Valeur"> {{$select.selected.label}} </ui-select-match> <ui-select-choices repeat="fuel in Fuel | filter: $select.search">
+               <div ng-bind-html="fuel.label | highlight: $select.search " title="{{fuel.label}}"></div>
+               </ui-select-choices> </ui-select>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext" title="{{'cop.search.label.emissionStandard'|localize}} ">{{'cop.search.label.emissionStandard'|localize}}</label>
+            <div title=" {{$select.selected.displayLabelTVV}} ">
+            <ui-select id="emissionStandardSelect" data-ng-model="tvvObject.emissionStandard" reset-search-input="true" ng-disabled="!disableFeild('POCHRole')"
+                title="{{tvvObject.emissionStandard.displayLabelTVV}}"> <ui-select-match placeholder="Valeur">
+            {{$select.selected.displayLabelTVV}} </ui-select-match> <ui-select-choices repeat="emissionStandard in EmissionStandard | filter: $select.search">
+            <div ng-bind-html="emissionStandard.displayLabelTVV| highlight: $select.search " title="{{emissionStandard.displayLabelTVV}}"></div>
+            </ui-select-choices> </ui-select>
+            </div>
+            
+        </div>
+
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+        
+            <label class="input-lbl-propertext" title="{{'cop.edit.label.inertia'|localize}}">{{'cop.edit.label.inertia'|localize}}</label> 
+            <input class="form-control" type="text" data-ng-model="coastDownLabel" id="coastDownLabel" title="{{coastDownLabel}} " readonly>
+
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext " title=" {{'cop.genomedata.label.CarBrand'|localize}} ">{{'cop.genomedata.label.CarBrand'|localize}}</label>
+            <div title=" {{$item.displayLabel}} "> 
+            <ui-select multiple id="carBrandSelect"  data-ng-model="selectedCarBrand.selectedList" reset-search-input="true" ng-disabled="!disableFeild('POCHRole')"
+                title="{{selectedCarBrandList.displayLabel}}" append-to-body="true" on-select="addToCBList($item)"> 
+               <ui-select-match placeholder="Valeur"> {{$item.displayLabel}} </ui-select-match> 
+               <ui-select-choices repeat="carBrand in carBrandList | filter: $select.search">
+                  <div ng-bind-html="carBrand.displayLabel| highlight: $select.search " title="{{carBrand.displayLabel}}"></div>
+               </ui-select-choices> 
+            </ui-select>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+           
+            <label class="input-lbl-propertext" title="{{'cop.search.label.minLimit'|localize}} "> {{'cop.search.label.minLimit'|localize}} </label>
+            <input class="form-control" type="text" data-ng-model="tvvObject.minCo2LimitTvv" id="minLimit" title="{{tvvObject.minCo2LimitTvv}}"  readonly>
+        
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext" title="{{'cop.search.label.maxLimit'|localize}}">{{'cop.search.label.maxLimit'|localize}}</label> 
+            <input class="form-control" type="text" data-ng-model="tvvObject.maxCo2LimitTvv" id="maxLimit" title="{{tvvObject.maxCo2LimitTvv}}"  readonly>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext" title=" {{'cop.search.label.typeApprovalArea'|localize}} ">{{'cop.search.label.typeApprovalArea'|localize}}</label>
+            
+            <input class="form-control" type="text" data-ng-model="tvvObject.typeApprovalArea.label" value ="tvvObject.typeApprovalArea.label"id="maxLimit" title="{{tvvObject.typeApprovalArea.label}}" readonly>
+            <!--  <ui-select id="typeApprovalAreaSelect" data-ng-model="tvvObject.typeApprovalAreaList" reset-search-input="true"
+                title="{{typeApprovalArea.selected}}" on-select="setTypeApprovalArea($select.selected)" append-to-body="true"> <ui-select-match
+                placeholder="Valeur"> {{$select.selected.label}} </ui-select-match> <ui-select-choices repeat="typeApprovalArea in Area | filter: $select.search">
+            <div ng-bind-html="typeApprovalArea.label | highlight: $select.search " title="{{typeApprovalArea.label}}"></div>
+            </ui-select-choices> </ui-select>-->
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+            <label class="input-lbl-propertext" title=" {{'cop.search.label.country'|localize}} ">{{'cop.search.label.country'|localize}}</label>
+           <!--  <input class="form-control" type="text" data-ng-model="tvvObject.country" id="maxLimit" title="{{tvvObject.country}}" readonly> -->
+             <ui-select multiple id="countrySelect" data-ng-model="selectedCountry.selectedList" reset-search-input="true" title="{{country.selected}}" ng-disabled="!disableFeild('POCHRole')" append-to-body="true"> <ui-select-match
+                placeholder="Valeur"> {{$item.countryLable}} </ui-select-match> <ui-select-choices repeat="country in countryDataList| filter: $select.search">
+            <div ng-bind-html="country.countryLable | highlight: $select.search " title="{{country.countryLable}}"></div>
+            </ui-select-choices> </ui-select> 
+            
+        </div>
+        <div class=" wrapp-for-no-float ">       
+                   
+        <div class="col-sm-2 no-padding">
+
+                <div class="col-lg-12">
+
+                    <label class="input-lbl-propertext" title=" {{'cop.specificCop.label.category'|localize}} "> {{'cop.specificCop.label.category'|localize}} <span class="astrik">*</span></label>
+                    <div title=" {{$select.selected.label}}{{$select.selected.clasz_label}} ">
+                    <ui-select id="categorySelect" data-ng-model="tvvObject.category" reset-search-input="true" ng-disabled="!disableFeild('POCHRole')"
+                        title="{{category.label}}{{category.clasz_label}}">
+                         <ui-select-match placeholder="Select Category"> {{$select.selected.label}}{{$select.selected.clasz_label}} </ui-select-match> 
+                         <ui-select-choices
+                        repeat="category in categoryData | filter: $select.search">
+                    <div ng-bind-html="category.label+category.clasz_label |highlight: $select.search " title="{{category.label}}{{category.clasz_label}}"></div>
+                    </ui-select-choices> </ui-select>
+                     </div>
+                </div>
+                
+                
+          &nbsp;&nbsp;&nbsp;&nbsp;
+         </div>
+                
+         <div class="col-sm-2 no-padding">
+
+                <div class="col-lg-12">
+
+                    <label class="input-lbl-propertext" title=" {{'cop.specificCop.label.vehicalTechnology'|localize}} ">{{'cop.specificCop.label.vehicalTechnology'|localize}} <span class="astrik">*</span></label>
+                   
+                    <div title=" {{$select.selected.label}} ">
+                    <ui-select id="vehicalTechSelecyed" data-ng-model="tvvObject.vehicalTechnology" reset-search-input="true" ng-disabled="!disableFeild('POCHRole')"
+                        title="{{vehical.label}}"> <ui-select-match placeholder="Select Vehicles"> {{$select.selected.label}} </ui-select-match> 
+                        <ui-select-choices
+                        repeat="vehical in vehicleTechData | filter: $select.search">
+                    <div ng-bind-html="vehical.label| highlight: $select.search " title="{{vehical.label}}"></div>
+                    </ui-select-choices> </ui-select>
+                    </div>
+                    
+                   
+                </div>
+           &nbsp;&nbsp;&nbsp;&nbsp;
+          </div>
+          
+          <div class="col-sm-2 no-padding">
+
+                <div class="col-lg-12">
+
+                    <label class="input-lbl-propertext" title="{{'cop.tvv.label.factory'|localize}} " >{{'cop.tvv.label.factory'|localize}} <span class="astrik">*</span></label>
+                    <div title="  {{$item.carFactoryLabel}}  ">
+                    <ui-select multiple id="factorySelected"  data-ng-model="selectedCarFactory.selectedList" reset-search-input="true" ng-disabled="!disableFeild('POCHRole')" placeholder="Select carFactoryList" style="min-height:34px"
+                        title="{{selectedCarFactoryList.carFactoryLabel}}" on-select="addToCarFactoryList($item)"> <ui-select-match placeholder="Select carFactoryList"> {{$item.carFactoryLabel}} </ui-select-match> <ui-select-choices
+                        repeat="factory in factoryList | filter: $select.search">
+                    <div ng-bind-html="factory.carFactoryLabel| highlight: $select.search " title="{{factory.carFactoryLabel}}" ></div>
+                    </ui-select-choices> </ui-select>
+                    </div>
+
+                </div>
+           &nbsp;&nbsp;&nbsp;&nbsp;
+           </div>
+           
+           <div class="col-sm-2 no-padding">
+                <div class="col-lg-12">
+
+                    <label class="input-lbl-propertext" title=" {{'cop.genomedata.label.EngineFuelInjection'|localize}} " >{{'cop.genomedata.label.EngineFuelInjection'|localize}} <span class="astrik">*</span></label>
+                    <div title=" {{$select.selected.label}} ">
+                    <ui-select  id="fuelInjectionId"  data-ng-model="tvvObject.fuelInjection" reset-search-input="true" ng-disabled="!disableFeild('POCHRole')" placeholder="Select Fuel type" style="min-height:34px"
+                        title="{{fuelinjection.label}}"  append-to-body="true"> <ui-select-match > {{$select.selected.label}} </ui-select-match> <ui-select-choices
+                        repeat="fuelinjection in fuelinjectionList | filter: $select.search">
+                    <div ng-bind-html="fuelinjection.label| highlight: $select.search " title="{{fuelinjection.label}}" ></div>
+                    </ui-select-choices> </ui-select>
+                    </div>
+
+                </div>
+           </div>
+             
+           &nbsp;&nbsp;&nbsp;&nbsp;
+               
+      </div> <!-- wrapp-for-no-float end-->
+      
+      
+    </div>
+</div>

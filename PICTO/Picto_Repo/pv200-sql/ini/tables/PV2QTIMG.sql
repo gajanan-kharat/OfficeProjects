@@ -1,0 +1,9 @@
+CREATE TABLE PV2QTIMG (
+  ID bigint(20) UNIQUE NOT NULL AUTO_INCREMENT,
+  IMG_JPG boolean NULL,
+  IMG_PNG boolean NULL,
+  IMG_AI_WORK boolean NULL,
+  IMG_AI_PUBLIC boolean NULL,
+  IMG_IGS boolean NULL,
+  PIC_ID bigint(20) NULL
+  );

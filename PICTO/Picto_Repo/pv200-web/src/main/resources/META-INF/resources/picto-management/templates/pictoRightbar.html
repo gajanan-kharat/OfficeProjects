@@ -1,0 +1,1010 @@
+<div>
+    <div class="row" style="background-color: #D4DCE1 !important; height : 134px !important" >
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-ng-class="{'vis-hidden': informationViewOptionsVisibility==false}" style="height : 66px !important;" >
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav ui-pad" style="align-center; padding-left:10px;  float: right;">
+                    <li class="page-scroll left-slash right-slash" title="{{'picto.rightBarModal.label.pictoValidate' | localize}}" data-ng-hide="user" data-ng-click="validateInfoArea()"><a class="li-pad"><span
+							class="fa custom-ok font-size-em info-options"></span></a>
+                    </li>
+                    <li class="page-scroll right-slash" data-ng-hide="contribUser()"><a class="li-pad"><span
+							class="fa custom-del font-size-em info-options"
+							title="{{createCaseFlag ? 'Abort' : 'Delete'}}"  
+							data-ng-click="deletePictoFamilyValidation()"></span></a>
+                    </li>
+                    <li class="page-scroll right-slash" data-ng-hide="addNewpictoview">
+                        <a class="li-pad"> <span class="fa custom-pdf font-size-em info-options" title="{{'picto.rightBarModal.label.pictoExport' | localize}}" data-ng-click="pdfExport(pictoInfo.referenceNum)"></span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-box text-center purple-box header-font-size header-bar-height" style="padding:0px !important;">
+            <span data-ng-hide="addNewpictoview" data-ng-if="informationViewVisibility"><b style="font-weight:�400 !important;">{{pictoInfo.referenceNum}}_{{pictoInfo.refCharte}}
+            <input data-ng-if="admin"  data-ng-hide="imageColor" class="form-control" type="text" data-ng-model="pictoInfo.name" maxlength=255 id="pictoname" value={{pictoInfo.name}} style="width: 25%; height: 20px; display: inline-block; padding: 0px;" data-ng-model-options="{ debounce: 250 }"/>
+            <span data-ng-if="admin" data-ng-show="imageColor" data-ng-model="pictoInfo.name" value="{{pictoInfo.name}}">{{pictoInfo.name}}</span>
+            <span data-ng-if="contribUser" data-ng-model="pictoInfo.name" value="{{pictoInfo.name}}">{{pictoInfo.name}}</span>
+            </b>
+            </span>
+            <span data-ng-show="addNewpictoview"><b>{{
+					'picto.rightbar.label.createNewPicto' | localize }}</b></span> <span class="header-font-size" data-ng-hide="informationViewVisibility"><b>{{PictoTitleStatus}}</b></span>
+        </div>
+    </div>
+
+    <div data-ng-hide="informationViewVisibility" style="padding: 80px;">
+        <i><b class="data-color">{{SeveralPictoStatus}}</b></i>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding" data-ng-if="informationViewVisibility">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px; position: absolute; margin-top: 12px;">
+        </div>
+
+        <!-- PB - Added - 2-Aug-16 - Start -->
+        <div class="row right-info-block custom-info-block" style="background-color: #eee;" >
+            <!-- PB - Added - 2-Aug-16 - End -->
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div data-ng-if="createNewPictoFamily">
+                    <div>
+
+                        <h6 class="add-new-title">1.{{
+							'picto.rightbar.label.addPictoUpload' | localize }}</h6>
+                        <div class="col-lg-12">
+                            <input type="file" name="upload" accept="application/*.ai" id="aiImagUpload" /> {{ 'picto.rightbar.label.uploadText' | localize }}
+                        </div>
+                    </div>
+                    <div>
+                        <h6 class="add-new-title">2. {{
+							'picto.rightbar.label.addNewName' | localize }}</h6>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                            <div style="width: 19%; height: 20px; display: inline-block; padding: 0px;">
+                                <h6>
+									<span class="mandatory">*</span>{{
+									'picto.rightbar.label.addrefNo' | localize }}
+								</h6>
+                            </div>
+                            <div style="width: 25%; height: 20px; display: inline-block; padding: 0px;">
+                                <h6>
+									<span class="mandatory">*</span>{{
+									'picto.rightbar.label.addName' | localize }}
+								</h6>
+                            </div>
+                            <div style="width: 25%; height: 20px; display: inline-block; padding: 0px;">
+                                <h6>
+									<span class="mandatory">*</span>{{
+									'picto.rightbar.label.addVariant' | localize }}
+								</h6>
+                            </div>
+                            <div style="width: 20%; height: 20px; display: inline-block; padding: 0px;">
+                                <h6>{{ 'picto.rightbar.label.addVersion' | localize }}</h6>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                            <input class="form-control" type="text" data-ng-model="pictoInfo.referenceNum" id="pictoRef" maxlength=4 readonly="readonly" value={{pictoInfo.referenceNum}} style="width: 16%; height: 20px; display: inline-block; padding: 0px;" data-ng-model-options="{ debounce: 250 }"/>_
+                            <input class="form-control" type="text" data-ng-model="pictoInfo.name" maxlength=255 id="pictoname" value={{pictoInfo.name}} style="width: 25%; height: 20px; display: inline-block; padding: 0px;" data-ng-model-options="{ debounce: 250 }"/>_
+                            <select class="form-control" data-ng-model="pictoInfo.pictos.variantType" value={{pictoInfo.pictos.variantType}} style="width: 20%; height: 20px; display: inline-block; padding: 0px;" data-ng-model-options="{ debounce: 250 }">
+                                <option>{{ 'picto.label.Med' | localize }}</option>
+                                <option>{{ 'picto.label.Tiny' | localize }}</option>
+                                <option>{{ 'picto.label.Little' | localize }}</option>
+                            </select>_
+                            <input class="form-control" type="text" data-ng-model="pictoInfo.pictos.version" maxlength=255 value={{pictoInfo.pictos.version}} style="width: 20%; height: 20px; display: inline-block; padding: 0px;" data-ng-model-options="{ debounce: 250 }"/>
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <h6 class="add-new-title">3. {{
+							'picto.rightbar.label.InforFamily' | localize }}</h6>
+                        <div class="col-lg-12"></div>
+                    </div>
+                </div>
+
+                <div class="panel-group">
+
+                    <!-- Information Panel-->
+
+                    <div class="panel panel-default panel-custom" data-ng-if="admin">
+                        <div style="border: 1px solid #774477 !important;">
+                            <div class="panel-heading">
+                                <h4 class="panel-title" style="text-align: center;">
+									<b><a data-toggle="collapse" href="#informations">{{
+											'picto.rightbar.label.informations' | localize }}</a></b>
+								</h4>
+                            </div>
+
+                            <div id="informations" class="panel-collapse collapse in">
+                                <div class="panel-body">
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <h6 class="data-color">{{
+											'picto.rightbar.label.notifications' | localize }}</h6>
+                                        <div class="information-options">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left:0px; text-align: left;">
+                                                <span class="mandatory" data-ng-show="addNewpictoview" style="position: absolute; left: -10px;">*</span>
+                                                <ui-select data-ng-model="pictoInfo.informationTypeLabel" id="idInformationTypeLabel" reset-search-input="true" data-ng-model-options="{ debounce: 250 }">
+                                                    <ui-select-match placeholder="Select information">{{$select.selected}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="information as information in listInformation | filter: $select.search">
+                                                        <div ng-bind-html="information | highlight: $select.search"></div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-right:0px;">
+                                                <ui-select data-ng-model="pictoInfo.validationLevel" id="idvalidationLevelLabel" reset-search-input="true" data-ng-model-options="{ debounce: 250 }">
+                                                    <ui-select-match placeholder="Select validation">{{$select.selected}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="validation as validation in listValidation | filter: $select.search">
+                                                        <div ng-bind-html="validation | highlight: $select.search"></div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding padding-top-bottom" data-ng-model="pictoInfo.pictos.isVisible" style="padding: 0px;" data-ng-if="createNewPictoFamily">
+                                                <span class="mandatory" data-ng-show="addNewpictoview" style="position: absolute; left: -10px;">*</span>
+                                                <ui-select data-ng-model="pictoInfo.pictos.isVisible" id="idVisible" reset-search-input="true" data-ng-model-options="{ debounce: 250 }">
+                                                    <ui-select-match placeholder="Select visible">{{$select.selected}}
+                                                    </ui-select-match>
+                                                    <ui-select-choices repeat="visible as visible in listofVisbile | filter: $select.search">
+                                                        <div ng-bind-html="visible | highlight: $select.search"></div>
+                                                    </ui-select-choices>
+                                                </ui-select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <br>
+                                    <div class="no-padding" style="position: relative;">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <h6 class="data-color">{{
+												'picto.rightbar.label.publicinfos' | localize}}</h6>
+                                            <div>
+                                                <textarea elastic class="input-lang-fr content-editable-new" data-ng-if="admin" data-ng-model="pictoInfo.informationFR" maxlength=2000 value={{pictoInfo.informationFR}} data-ng-model-options="{ debounce: 250 }">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div>
+                                                <textarea elastic class="input-lang-en content-editable-new italic" data-ng-if="admin" data-ng-model="pictoInfo.informationEN" maxlength=2000 value={{pictoInfo.informationEN}} data-ng-model-options="{ debounce: 250 }">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-ng-if="admin">
+                                        <h6 class="text-left data-color">{{
+											'picto.rightbar.label.adminInfos' | localize }}</h6>
+                                        <div>
+                                            <textarea elastic data-ng-if="admin" class="content-editable-new" data-ng-model="pictoInfo.adminInfo" maxlength=2000 value={{pictoInfo.adminInfo}} data-ng-model-options="{ debounce: 250 }">
+                                            </textarea>
+                                        </div>
+
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow" style="text-align: center;">
+                            <a data-toggle="collapse" href="#informations" class="collapsed"></a>
+                        </div>
+                    </div>
+
+                    <!-- User view for information area -->
+                    <div data-ng-if="contribUser()" style="text-align:center;">
+                        <div class="col-lg-12 no-padding padding-top-bottom" data-ng-hide="pictoInfo.informationType =='0'">
+                            <i class="fa" data-ng-model="pictoInfo.informationType" data-ng-class="{'info-nothing':pictoInfo.informationType =='0',
+					  					'info-valid-color':pictoInfo.informationType =='1', 'info-warning-color':pictoInfo.informationType =='2'}"></i>
+                            <span class="data-color"><b>{{pictoInfo.informationTypeLabel}}</b></span>
+                        </div>
+                        <div class="col-lg-12  no-padding padding-top-bottom" data-ng-if="contribUser() && (pictoInfo.informationFR.length > 0 || pictoInfo.informationEN.length > 0)">
+                            <span class="data-color" data-ng-if="contribUser() && pictoInfo.informationFR.length > 0">
+								{{pictoInfo.informationFR}}</span>
+                            <br> <span class="data-color italic" data-ng-if="contribUser() && pictoInfo.informationEN.length > 0">{{pictoInfo.informationEN}}</span>
+                        </div>
+
+                        <div class="col-lg-12 no-padding padding-top-bottom">
+                         <div>
+                             <i class="fa" data-ng-model="pictoInfo.validationLevel" data-ng-class="{'work-validate-color':pictoInfo.validationLevel == 'validate','work-in-progress-color':pictoInfo.validationLevel == 'work in progress'}"></i>
+                         <span class="data-color"><b>{{pictoInfo.validationLevel}}</b></span>
+                          </div>
+                           
+                        </div>
+                    </div>
+
+                    &nbsp;
+
+                    <!-- Frontage Panel-->
+
+                    <div class="panel panel-default panel-custom" data-ng-hide="addNewpictoview">
+                        <div style="border: 1px solid #774477 !important;">
+                            <div class="panel-heading">
+                                <h4 class="panel-title" style="text-align: center;">
+									<b><a data-toggle="collapse" href="#frontage">{{
+											'picto.rightbar.label.frontage' | localize }}</a></b>
+								</h4>
+                            </div>
+                            <div id="frontage" class="panel-collapse text-center collapse in">
+
+                                <div class="panel-body no-padding" data-ng-repeat="frontage in pictoInfo.pictos" data-ng-show="frontage.isFrontagePicto == true" style="text-align: center;">
+                                    <!-- data-ng-repeat="var in vari"> -->
+                                    <div class="no-padding" style="position: relative;">
+                                        <div class="col-lg-12 no-padding">
+                                            <div class="panel panel-default">
+                                            <div class="panel-heading panel-child-heading">
+                                             <h4 class="panel-title panel-child-title text-left">
+                                             {{frontage.variantType}}<span data-ng-hide="frontage.version == null">_</span>{{frontage.version}}
+                                             </h4>
+                                            </div>
+                                                <div class="custom-picto-col frontageClass picto-active" id="{{ 'frontage' +frontage.id}}" data-ng-click="setClicked()" style="float: none; display: inline-block;" data-ng-class="{'none':frontage.isVisible == '1','dashed-border':frontage.isVisible == '0'}">
+                                                    <div class="picto-border" style="display: block;">
+                                                        <div class="img-thumbnail custom-picto-box" style="position: relative;" data-ng-click="selectDeselectFrontage(frontage.id)" data-ng-dblclick="downloadPictoAiFile(frontage.familyID.referenceNum,frontage.id,'infoArea')">
+                                                        <div class="cust-border">
+                                                            <span data-ng-if="admin" data-ng-class="{'admin-info-red':frontage.colorFlag == 'red','admin-info-yellow':frontage.colorFlag == 'yellow', 'admin-info-none':frontage.colorFlag == 'none',}" class="admin-info custom-fa-square"></span>
+                                                            <div class="custom-picto">
+                                                                <div style="width: 64px; height: 64px;">
+                                                                    <img class="custom-img-size" src="{{frontage.imageUrl}}" onerror="this.src='images/PictosClean-assets/Template.png'">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="custom-picto-right">
+                                                                <i class="fa" data-ng-model="frontage.informationType" data-ng-class="{'info-nothing':frontage.familyID.informationType =='0',
+					  														'info-valid':frontage.familyID.informationType =='1', 'info-warning':frontage.familyID.informationType =='2'}"></i>
+                                                                <div class="eye-slasher">
+                                                                    <input type="checkbox" id="toggle">
+                                                                    <label for="toggle" data-ng-if="admin" class="eye-slash-label"> <i class="fa" data-ng-model="frontage.isVisible" title="{{ frontage.isVisible ? 'Visible' : 'Invisible'}}" data-ng-click="frontage.isVisible = !frontage.isVisible;" data-ng-class="{'eye-open':frontage.isVisible == '1','eye-cross-central':frontage.isVisible == '0'}"></i>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="workforce">
+																	<!-- <i class="fa fa-male custom-workforce"></i> -->
+                                                                    <i class="fa" data-ng-model="frontage.validationLevel" data-ng-class="{'work-validate':frontage.familyID.validationLevel == 'validate','work-in-progress':frontage.familyID.validationLevel == 'work in progress'}"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="custom-picto-bottom">
+                                                                <label id="picto-title" class="pic-title">{{frontage.familyID.referenceNum}}_{{frontage.familyID.refCharte}}{{frontage.familyID.name}} [{{frontage.variantType}}<span data-ng-hide="frontage.version == null">_</span>{{frontage.version}}]
+                                                                </label>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                      </div>
+                                                        <!-- PB - PRP024006-43 Start -->
+                                                        <div class="custom-picto-options">
+                                                            <div class="custom-picto-left" data-ng-class="{'vis-hidden': HideMultipleSelected==true}">
+
+																<div data-ng-class="{'add-to-favorites-color':pictoInfo.favoriteFlag== '0','remove-from-favorites-color':pictoInfo.favoriteFlag == '1'}" style="padding-top : 4px;">
+																	<i>
+																		<button
+																			class="fa add-to-favorites btn font-awe btn-color"
+																			style="padding: 0px;"
+																			id="{{ 'pro' +picto.familyID.referenceNum}}"
+																			title="{{pictoInfo.favoriteFlag ?  (language==='fr' ? 'Retirer des favoris' : 'Remove from favorite') : (language==='en' ? 'Add to favorite' : 'Ajouter aux Favoris') }}"
+																			data-ng-disabled="disabled"
+																			value="{{picto.favoriteFlag}}"
+																			data-ng-model="pictoInfo.favoriteFlag"		
+																			data-ng-class="{'add-to-favorites':pictoInfo.favoriteFlag== '0','remove-from-favorites':pictoInfo.favoriteFlag == '1'}"
+																			data-ng-click="addToFavoritesInfoArea(frontage.id,pictoInfo.favoriteFlag); pictoInfo.favoriteFlag = !pictoInfo.favoriteFlag"></button>
+
+																	</i>
+																</div>
+
+																<div class="custom-cart-style" data-ng-class="{'add-to-cart-bgcolor':frontage.cartFlag == '1'}">
+																	<i class="item">																		
+																		<button class="fa add-to-cart btn font-awe btn-color"
+																			style="padding: 0px;"
+																			id="{{ 'pro' +picto.familyID.referenceNum}}"
+																			title="{{frontage.cartFlag ?  (language==='fr' ? 'Enlever du panier' : 'Remove from Cart') : (language==='en' ? 'Add to Cart' : 'Ajouter au panier') }}"
+																			data-ng-disabled="disabled"
+																			data-ng-model="frontage.cartFlag"									
+																			data-ng-class="{'add-to-cart':frontage.cartFlag== '0','remove-from-cart':frontage.cartFlag == '1'}"
+																			data-ng-click="addToCartInfoArea(frontage.id,frontage.cartFlag,$event); frontage.cartFlag= !frontage.cartFlag" ></button>
+
+																	</i>
+                                                                </div>
+
+                                                                <div style="padding: 4px 0px 0px 0px;">
+                                                                    <i title="{{'picto.pictoItem.label.download' | localize}}">
+																		<button
+																			class="fa download-files btn font-awe btn-color"
+																			style="padding: 0px;"
+																			id="{{ 'pro' +picto.familyID.referenceNum}}"
+																			data-ng-disabled="disabled"
+																			data-ng-click="downloadPictoModal(frontage.id,frontage.variantType,$event)"></button>
+																	</i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- PB - PRP024006-43 END -->
+                                                    </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+									<span data-ng-hide="frontage.colorFlag == none"> <span
+										data-ng-if="admin" style="position: relative;"
+										data-ng-class="{'admin-info-red':frontage.colorFlag == 'red','admin-info-yellow':frontage.colorFlag == 'yellow', 'admin-info-none':frontage.colorFlag == 'none',}"
+										class="admin-info custom-fa-square"> </span> <span style="color: black; font-family: calibri; float: left;">{{frontage.adminName}}</span>
+									</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="arrow" style="text-align: center;">
+                            <a data-toggle="collapse" href="#frontage" class="collapsed"></a>
+                        </div>
+
+                    </div>
+                    &nbsp;
+
+                    <!-- Variants Panel -->
+
+                    <div class="custom-plus-add" data-ng-click="variantModal()" data-ng-if="admin" data-ng-hide="addNewpictoview"></div>
+                    <div data-ng-hide="pictoInfo.pictos.length-1 == 0 && contribUser()">
+                    <div class="panel panel-default panel-custom" data-ng-hide="addNewpictoview">
+                        <div data-ng-hide="pictoInfo.pictos.length-1 == 0 && contribUser()">
+                            <div value={{variantCount}} data-ng-hide ="variantCount ==0 && contribUser()">
+                            <div style="border: 1px solid #774477 !important;">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="text-align: center;">
+									<b> <a data-toggle="collapse" href="#variants">{{'picto.rightbar.label.variants' | localize}}(<span data-ng-if=admin>{{pictoInfo.pictos.length-1}}</span><span data-ng-if=contribUser()>{{variantCount}}</span>)</a>
+									</b>
+								</h4>
+                                </div>
+                                <div id="variants" class="panel-collapse collapse in">
+
+                                    <div class="panel-body no-padding" data-ng-repeat="variant in pictoInfo.pictos" data-ng-show="variant.isFrontagePicto == false">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                            <!--  data-ng-repeat="variant in variants"> -->
+                                            <span class="glyphicon span-plus-left" title="{{'picto.rightBarModal.label.deleteTinyVariant' | localize}}" data-ng-click="removeVariant(variant, $index)" data-ng-if="admin"></span> <span class="glyphicon span-plus-right" title="{{'picto.rightBarModal.label.toggleVariant' | localize}}" data-ng-click="makeFrontage(variant)" data-ng-if="admin"></span>
+                                            <div class="panel panel-default">
+
+                                                    <div class="panel-heading panel-child-heading" data-ng-hide ="contribUser() &&  variant.isVisible == '0'">
+                                                    <h4 class="panel-title panel-child-title">
+													<a data-toggle="collapse" href="#variants{{$index}}">{{variant.variantType}}<span
+														data-ng-hide="variant.version == null">_</span>{{variant.version}}
+													</a>												
+												</h4>
+                                            </div>
+                                                    <div id="variants{{$index}}" value={{variant.isVisible}} class="panel-collapse collapse in" data-ng-hide ="contribUser() &&  variant.isVisible == '0'">
+
+                                                    <div class="panel-body">
+
+                                                            <div class="no-padding" style="position: relative; text-align: center;">
+                                                                <div class="custom-picto-col picto-active" id="variant{{variant.id}}" data-ng-click="setClicked()" style="float: none; display: inline-block;" data-ng-class="{'none':variant.isVisible == '1','dashed-border':variant.isVisible == '0'}" data-ng-dblclick="downloadPictoAiFile(variant.familyID.referenceNum,variant.id,'infoArea')">
+                                                                <div class="picto-border" style="display: block;">
+																			<div class="img-thumbnail custom-picto-box"
+																				style="position: relative;">
+                                                                            <div class="cust-border">
+																					<span data-ng-if="admin"
+																						data-ng-class="{'admin-info-red':variant.colorFlag == 'red','admin-info-yellow':variant.colorFlag == 'yellow', 'admin-info-none':variant.colorFlag == 'none',}"
+																						class="admin-info custom-fa-square"></span>
+                                                                        <div class="custom-picto">
+                                                                            <div style="width: 64px; height: 64px;">
+																							<img class="custom-img-size"
+																								src="{{variant.imageUrl}}"
+																								onerror="this.src='images/PictosClean-assets/Template.png'">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="custom-picto-right">
+                                                                            <!-- 																		<i class="fa fa-info-circle custom-info"
+																			data-ng-model="var.informationType"></i> -->
+																						<i class="fa"
+																							data-ng-model="variant.informationType"
+																							data-ng-class="{'info-nothing':variant.familyID.informationType =='0',
+					  														'info-valid':variant.familyID.informationType =='1', 'info-warning':variant.familyID.informationType =='2'}"></i>
+                                                                            <div class="eye-slasher">
+																							<input type="checkbox" id="toggle"> <label
+																								for="toggle" data-ng-if="admin"
+																								class="eye-slash-label"> <i class="fa"
+																								data-ng-model="variant.isVisible"
+																								title="{{ variant.isVisible ? 'Visible' : 'Invisible'}}"
+																								data-ng-click="variant.isVisible = !variant.isVisible;"
+																								data-ng-class="{'eye-open':variant.isVisible == '1','eye-cross':variant.isVisible == '0'}"></i>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="workforce">
+                                                                                <!-- <i class="fa fa-male custom-workforce"></i> -->
+																							<i class="fa"
+																								data-ng-model="variant.validationLevel"
+																								data-ng-class="{'work-validate':variant.familyID.validationLevel == 'validate','work-in-progress':variant.familyID.validationLevel == 'work in progress'}"></i>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="custom-picto-bottom">
+																						<label id="picto-title" class="pic-title"
+																							title="{{variant.familyID.referenceNum}}_{{variant.familyID.refCharte}}{{variant.familyID.name}} [{{variant.variantType}}">{{variant.familyID.referenceNum}}_{{variant.familyID.refCharte}}{{variant.familyID.name}}
+																							[{{variant.variantType}}<span
+																							data-ng-hide="variant.version == null">_</span>{{variant.version}}]
+                                                                            </label>
+                                                                        </div>
+                                                                        </div>
+                                                                    </div>
+																		</div>
+                                                                    <div class="custom-picto-options">
+                                                                        <div class="custom-picto-left">
+                                                                        <div class="fa" style="padding-top: 4px;display: block;" title="{{pictoInfo.favoriteFlag ?  (language==='fr' ? 'Retirer des favoris' : 'Remove from favorite') : (language==='en' ? 'Add to favorite' : 'Ajouter aux Favoris') }}"  data-ng-class="{'add-to-favorites':pictoInfo.favoriteFlag== '0','remove-from-favorites':pictoInfo.favoriteFlag == '1'}" data-ng-model="variant.familyID.favoriteFlag" data-ng-click="addToFavoritesInfoArea(variant.id,pictoInfo.favoriteFlag)">
+                                                                                <i class="fa font-awe" 
+                                                                                    data-ng-disabled="disabled" ></i>
+																			</div>
+																			<div class="custom-cart-style" data-ng-class="{'add-to-cart-bgcolor':variant.cartFlag == '1'}">
+																				<i class="item">
+																					<span
+																					title="{{variant.cartFlag ?  (language==='fr' ? 'Enlever du panier' : 'Remove from Cart') : (language==='en' ? 'Add to Cart' : 'Ajouter au panier') }}"
+																					data-ng-disabled="disabled"
+																					data-ng-model="picto.cartFlag"	
+																					class="fa add-to-cart btn font-awe btn-color"
+																					style="padding: 0px;" id="variant{{variant.id}}"
+																					data-ng-class="{'add-to-cart':variant.cartFlag== '0','remove-from-cart':variant.cartFlag == '1'}"
+																					data-ng-click="addPictoToCartList(variant.id,variant.cartFlag,$event)"></span>
+
+																			</i>
+                                                                            </div>
+                                                                                <i class="fa download-files font-awe" style="padding-top : 4px;" title="{{'picto.pictoItem.label.download' | localize}}" data-ng-click="selectVariantPicto(variant.id);downloadPictoModal(variant.id,variant.variantType,$event)"></i>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+														<span data-ng-hide="variant.colorFlag == none"> <span
+															data-ng-if="admin" style="position: relative;"
+															data-ng-class="{'admin-info-red':variant.colorFlag == 'red','admin-info-yellow':variant.colorFlag == 'yellow', 'admin-info-none':variant.colorFlag == 'none',}"
+															class="admin-info custom-fa-square"> </span> <span style="color: black; font-family: calibri; float: left;">{{variant.adminName}}</span>
+														</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arrow" style="text-align: center;">
+                                <a data-toggle="collapse" href="#variants"></a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    &nbsp;
+
+                    <!-- Specifics drawings -->
+                    <div class="custom-plus-add" title="{{'picto.rightBarModal.label.addDrawing' | localize}}" data-ng-click="addSpecificDrawings()" data-ng-hide="addNewpictoview" data-ng-if="admin">
+                    </div>
+
+                    <div data-ng-hide="pictoInfo.specificDrawings.length == 0 && contribUser">
+                    <div class="panel panel-default panel-custom" data-ng-hide="addNewpictoview">                      
+                            <div style="border: 1px solid #774477 !important;">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="text-align: center;">
+									<b><a data-toggle="collapse" href="#specificdrawings">{{
+											'picto.rightbar.label.specificDrawings' | localize
+											}}({{pictoInfo.specificDrawings.length}})</a></b>
+								</h4>
+                                </div>
+                                
+                                <div id="specificdrawings" class="panel-collapse collapse in">
+
+                                    <div class="panel-body no-padding" data-ng-repeat="specificDraw in pictoInfo.specificDrawings">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                            <!--  data-ng-repeat="variant in variants"> -->
+                                            <span class="glyphicon span-plus-left" title="{{'picto.rightBarModal.label.deleteDesignSpec' | localize}}" data-ng-click="removeSpecificDraw(specificDraw,$index)" data-ng-if="admin"></span>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading panel-child-heading" style=" padding: 18px 5px !important;">
+                                                    <h4 class="panel-title panel-child-title"     >                                                     
+													<a href="{{specificDraw.specficDrawUrl}}" target="_blank"
+														class="collapsed title-underscore custom-specific-drawing" style="float:left;"
+														data-ng-model="specificDraw.name" download>{{specificDraw.name}}</a>
+													<a data-toggle="collapse" href="#specifiDrawings{{$index}}"
+														class="collapsed title-underscore"
+														data-ng-model="specificDraw.name" style="float:right;">
+													</a>
+												</h4>
+                                                </div>
+
+                                                <div id="specifiDrawings{{$index}}" class="panel-collapse collapse">
+
+                                                    <div class="panel-body">
+                                                        <div class="no-padding" style="position: relative;">
+                                                            <div class="col-lg-12">                                                                
+                                                                <div>
+                                                                    <textarea elastic class="input-lang-fr content-editable-new " data-ng-if="admin" data-ng-model="specificDraw.commentsFR" maxlength=4000 value={{specificDraw.commentsFR}} data-ng-model-options="{ debounce: 250 }">
+                                                                    </textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12">                                                               
+                                                                <div>
+                                                                    <textarea elastic class="input-lang-en content-editable-new italic" data-ng-if="admin" data-ng-model="specificDraw.commentsEN" maxlength=4000 value={{specificDraw.commentsEN}} data-ng-model-options="{ debounce: 250 }">
+                                                                    </textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--  user view -->
+
+                                                        <div class="col-lg-12  no-padding padding-top-bottom" data-ng-hide="admin">
+                                                            <span class="data-color-black" data-ng-if="specificDraw.commentsFR.length > 0">{{specificDraw.commentsFR}}</span>
+                                                            <br><span class="data-color-black italic" data-ng-if="specificDraw.commentsEN.length > 0">{{specificDraw.commentsEN}}</span>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="arrow" style="text-align: center;">
+                                <a data-toggle="collapse" href="#specificdrawings" class="collapsed"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    &nbsp;
+
+                    <!-- Usage -->
+
+                    <div class="panel panel-default panel-custom" data-ng-if="admin || contrib">
+                        <div style="border: 1px solid #774477 !important;">
+                            <div class="panel-heading">
+                                <h4 class="panel-title" style="text-align: center;">
+									<b><a data-toggle="collapse" href="#usage">{{
+											'picto.rightbar.label.usagetitle' | localize }}</a></b>
+								</h4>
+                            </div>
+                            
+                            <div id="usage" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="col-lg-12">
+                                        <h6 class="data-color">{{ 'picto.rightbar.label.function'
+											| localize }}</h6>
+
+                                        <div>
+                                            <textarea elastic class="input-lang-fr content-editable-new " data-ng-if="admin || contrib" data-ng-model="pictoInfo.functionFR" maxlength=2000 value={{pictoInfo.functionFR}} data-ng-model-options="{ debounce: 250 }">
+                                            </textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-12">
+
+                                        <div>
+                                            <textarea elastic class="input-lang-en content-editable-new italic" data-ng-if="admin || contrib" data-ng-model="pictoInfo.functionEN" maxlength=2000 value={{pictoInfo.functionEN}} data-ng-model-options="{ debounce: 250 }">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="col-lg-7 no-padding float-left">
+
+                                            <h6 class="data-color">
+												<span class="mandatory" data-ng-show="addNewpictoview"
+													style="position: absolute; left: -10px;">*</span>{{
+												'picto.rightbar.label.type' | localize }}
+											</h6>
+                                          <div class="information-options">  
+                                            <ui-select data-ng-model="pictoInfo.typeID" id="idType" reset-search-input="true" data-ng-change="selectType();" data-ng-model-options="{ debounce: 250 }">
+                                                <ui-select-match placeholder="Select type">{{$select.selected.typeLabel}}
+                                                </ui-select-match>
+                                                <ui-select-choices repeat="typeID as typeID in listTypes | filter: $select.search">
+                                                    <div ng-bind-html="typeID.typeLabel | highlight: $select.search"></div>
+                                                </ui-select-choices>
+                                            </ui-select>
+										</div>
+                                        </div>
+                                        &nbsp;
+                                        <div class="col-lg-4 no-padding float-right" data-ng-show="showFlag">
+                                            <h6 class="data-color">{{
+												'picto.rightbar.label.refCharte' | localize }}</h6>
+                                            <input type="text" class="custom-width" data-ng-if="admin || contrib" data-ng-hide="imageColor" maxlength=3 data-ng-model="pictoInfo.refCharte" value={{pictoInfo.refCharte}} data-ng-model-options="{ debounce: 250 }">
+                                            <span data-ng-if="admin || contrib" data-ng-show="imageColor" data-ng-model="pictoInfo.refCharte" value="{{pictoInfo.refCharte}}">{{pictoInfo.refCharte}}</span>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-ng-show="showFlag">
+                                            <div class="col-lg-12 no-padding">
+                                                <h6 class="data-color">{{
+												'picto.rightbar.label.commandET' | localize }}</h6> </div>
+                                            <div class="col-lg-7 no-padding">
+                                             <!-- Custom Checkbox Purple -->
+                                                    <div class="checkbox" style="margin: 0px;">
+                                                                        <label style="padding-left: 0px;"><input id="checkboxrtbar1" type="checkbox"
+                                                                         class="checkbox-custom" data-ng-model="pictoInfo.command"> <label
+                                                                            style="padding-left: 0px;" for="checkboxrtbar1"
+                                                                            class="checkbox-custom-label-purple color-checkbox-purple"></label>
+                                                                            <div class="custom-v-align">{{'picto.rightbar.label.commande' | localize }}</div> </label>
+                                                                    </div>
+                                                        
+<!--                                           Custom checkbox purple end    -->
+<!--                                                 <input type="checkbox" value="commande" data-ng-model="pictoInfo.command" /> -->
+<!--                                                 <h6 style="margin-top: 5px;"> {{ -->
+<!-- 													'picto.rightbar.label.commande' | localize }}</h6> -->
+                                            </div>
+                                            <div class="col-lg-5 no-padding">
+
+                                                <div>
+                                                    <textarea elastic class="content-editable-new" data-ng-show="pictoInfo.command" data-ng-model="pictoInfo.commandInformation" maxlength=255 value={{pictoInfo.commandInformation}} data-ng-model-options="{ debounce: 250 }">
+                                                    </textarea>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-ng-show="showFlag">
+                                        <!-- Custom Checkbox Purple -->
+                                        <div class="checkbox" style="margin: 0px;">
+                                                            <label style="padding-left: 0px;"><input id="checkboxrtbar2" type="checkbox"
+                                                             class="checkbox-custom" data-ng-model="pictoInfo.isRHNWitness"> <label
+                                                                style="padding-left: 0px;" for="checkboxrtbar2"
+                                                                class="checkbox-custom-label-purple color-checkbox-purple"></label><div class="custom-v-align">{{
+                                                                'picto.rightbar.label.temoins' | localize }}</div> </label>
+                                                        </div>
+                                                        
+                                          <!-- Custom checkbox purple end -->              
+                                            <div style="padding-left: 15px;" data-ng-show="pictoInfo.isRHNWitness">
+                                            <div>
+                                              <!-- Custom Checkbox Purple -->
+                                                    <div class="checkbox" style="margin: 0px;display : inline-block;">
+                                                                        <label style="padding-left: 0px;"><input id="checkboxrtbar3" type="checkbox"
+                                                                         class="checkbox-custom" data-ng-model="pictoInfo.isRHNActive"> <label
+                                                                            style="padding-left: 0px;" for="checkboxrtbar3"
+                                                                            class="checkbox-custom-label-purple color-checkbox-purple"></label><div class="custom-v-align">{{
+                                                                            'picto.rightbar.label.activation' | localize }}</div> </label>
+                                                                    </div>
+                                                        
+                                              <!-- Custom checkbox purple end    -->
+<!--                                                 <input type="checkbox" data-ng-model="pictoInfo.isRHNActive"> -->
+<!--                                                 <h6>{{ 'picto.rightbar.label.activation' | localize }}</h6> -->
+<!--                                                 <div style="padding-left: 15px;"> -->
+                                                    <div style="display : inline-block;" class="custom-color-checkbox-width" data-ng-repeat="witnessAct in pictoInfo.witnessActive | orderBy : 'orderId'">
+                                                        <div data-ng-show="pictoInfo.isRHNActive">
+                                                                    <div class="checkbox" style="margin: 0px;">
+                                                                        <label style="padding-left: 0px;"><input id="rtbar3{{witnessAct.color}}" type="checkbox"
+                                                                         class="checkbox-custom" data-ng-model="witnessAct.flag"> <label
+                                                                            style="padding-left: 0px;" for="rtbar3{{witnessAct.color}}"
+                                                                            class="checkbox-custom-label-{{witnessAct.color}} color-checkbox-{{witnessAct.color}}"></label></label>
+                                                                    </div>
+                                                        
+<!--                                                             <span> <input id="{{witnessAct.color}}"  -->
+<!-- 															class="checkbox-custom" name="{{witnessAct.color}}" type="checkbox"  ng-model="witnessAct.flag"> -->
+<!-- 															<label  for="{{witnessAct.color}}"class="checkbox-custom-label color-{{witnessAct.color}}"></label> -->
+<!-- 														</span> -->
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="clear:both;">
+                                               <!-- Custom Checkbox Purple -->
+                                                    <div class="checkbox" style="margin: 0px;display : inline-block;">
+                                                                        <label style="padding-left: 0px;"><input id="checkboxrtbar4" type="checkbox"
+                                                                         class="checkbox-custom" data-ng-model="pictoInfo.isRHNAlert"> <label
+                                                                            style="padding-left: 0px;" for="checkboxrtbar4"
+                                                                            class="checkbox-custom-label-purple color-checkbox-purple"></label><div class="custom-v-align">{{
+                                                                            'picto.rightbar.label.alerte' | localize }}</div> </label>
+                                                                    </div>
+                                                        
+                                              <!-- Custom checkbox purple end    -->
+<!--                                                     <input type="checkbox" data-ng-model="pictoInfo.isRHNAlert"> -->
+<!--                                                     <h6>{{ 'picto.rightbar.label.alerte' | localize }}</h6> -->
+
+                                                    <div style="display : inline-block;" class="custom-color-checkbox-width" data-ng-model="pictoInfo.witnessAlert" data-ng-repeat="witnessAlt in pictoInfo.witnessAlert | orderBy : 'orderId' | limitTo: 2">
+                                                        <div data-ng-show="pictoInfo.isRHNAlert">
+                                                                   <div class="checkbox" style="margin: 0px;">
+                                                                        <label style="padding-left: 0px;"><input id="alert{{$index}}" type="checkbox"
+                                                                         class="checkbox-custom" ng-model="witnessAlt.flag"> <label
+                                                                            style="padding-left: 0px;" for="alert{{$index}}"
+                                                                            class="checkbox-custom-label-{{witnessAlt.color}} color-checkbox-{{witnessAlt.color}}"></label></label>
+                                                                    </div>
+<!--                                                             <span> <input id="alert{{$index}}"  -->
+<!-- 															class="checkbox-custom" name="alert{{$index}}" -->
+<!-- 															type="checkbox" ng-model="witnessAlt.flag"> -->
+<!-- 															 <label	for="alert{{$index}}" class="checkbox-custom-label color-{{witnessAlt.color}}"></label> -->
+<!-- 														</span> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="clear:both;">
+                                                <!-- Custom Checkbox Purple -->
+                                                    <div class="checkbox" style="margin: 0px;display:inline-block;">
+                                                                        <label style="padding-left: 0px;"><input id="checkboxrtbar5" type="checkbox"
+                                                                         class="checkbox-custom" data-ng-model="pictoInfo.isRHNDefault"> <label
+                                                                            style="padding-left: 0px;" for="checkboxrtbar5"
+                                                                            class="checkbox-custom-label-purple color-checkbox-purple"></label><div class="custom-v-align">{{
+                                                                            'picto.rightbar.label.defaillance' | localize }}</div> </label>
+                                                                    </div>
+                                                        
+                                              <!-- Custom checkbox purple end    -->
+<!--                                                     <input type="checkbox" data-ng-model="pictoInfo.isRHNDefault"> -->
+<!--                                                     <h6>{{ 'picto.rightbar.label.defaillance' | localize }}</h6> -->
+                                               
+                                                    <div style="display:inline-block;" class="custom-color-checkbox-width" data-ng-model="pictoInfo.witnessFailure" data-ng-repeat="witnessFailure in pictoInfo.witnessFailure | orderBy : 'orderId' | limitTo: 2">
+                                                        <div data-ng-show="pictoInfo.isRHNDefault">
+                                                                   <div class="checkbox" style="margin: 0px;">
+                                                                        <label style="padding-left: 0px;"><input id="rtbar5{{witnessFailure.color}}" type="checkbox"
+                                                                         class="checkbox-custom" ng-model="witnessFailure.flag" name="{{witnessFailure.color}}"> <label
+                                                                            style="padding-left: 0px;" for="rtbar5{{witnessFailure.color}}"
+                                                                            class="checkbox-custom-label-{{witnessFailure.color}} color-checkbox-{{witnessFailure.color}}"></label></label>
+                                                                    </div>
+<!--                                                             <span> <input id="{{witnessFailure.color}}"  data-ng-show="pictoInfo.isRHNDefault" -->
+<!-- 															class="checkbox-custom" name="{{witnessFailure.color}}}" -->
+<!-- 															type="checkbox" ng-model="witnessFailure.flag"> <label -->
+<!-- 															for="{{witnessFailure.color}}}" -->
+<!-- 															class="checkbox-custom-label color-{{witnessFailure.color}}"></label> -->
+<!-- 														</span> -->
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-ng-show="showFlag">
+                                            <h6 class="data-color">{{
+												'picto.rightbar.label.informationRHN' | localize }}</h6>                                 
+
+                                            <div>
+                                                <textarea elastic class="input-lang-fr content-editable-new" data-ng-if="admin || contrib" data-ng-model="pictoInfo.rhnInfoFR" maxlength=2000 value={{pictoInfo.rhnInfoFR}} data-ng-model-options="{ debounce: 250 }">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-ng-show="showFlag">
+
+                                            <div>
+                                                <textarea elastic class="input-lang-en content-editable-new italic" data-ng-if="admin || contrib" data-ng-model="pictoInfo.rhnInfoEN" maxlength=2000 value={{pictoInfo.rhnInfoEN}} data-ng-model-options="{ debounce: 250 }">
+                                                </textarea>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow" style="text-align: center;">
+                            <a data-toggle="collapse" href="#usage" class="collapsed"></a>
+                        </div>
+                    </div>
+                    &nbsp;
+
+                    <!-- Mandatory feilds -->
+
+                    <div class="custom-plus-add" data-ng-click="addRules()" data-ng-if="admin || contrib" data-ng-hide="addNewpictoview || !showFlag"></div>
+
+                    <div data-ng-hide="user">
+                    <div class="panel panel-default panel-custom" data-ng-hide="addNewpictoview || !showFlag">
+
+                            <div style="border: 1px solid #774477 !important;">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="text-align: center;">
+									<b><a data-toggle="collapse" href="#mandatoryFeilds">{{'picto.rightbar.label.mandatorytextstitle'
+											| localize }}({{pictoInfo.rules.length}})</a></b>
+								</h4>
+                                </div>
+                                
+                                <div id="mandatoryFeilds" class="panel-collapse collapse in">
+
+                                    <div class="panel-body no-padding" data-ng-repeat="rule in pictoInfo.rules">
+                                        <div class="col-lg-12 no-padding">                                            
+                                            <span class="glyphicon span-plus-left" title="{{'picto.rightBarModal.label.deleteTexts' | localize}}" data-ng-click="removeRules($index)" data-ng-if="admin || contrib"></span>
+                                            <div class="panel panel-default">
+
+                                                <div class="panel-heading panel-main-heading">
+                                                    <h4 class="panel-title panel-child-title">
+													<a href={{rule.docLink}} target="_blank"
+														class="collapsed title-underscore"
+														data-ng-model="rule.name">{{rule.name}}</a>
+												</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="arrow" style="text-align: center;">
+                                <a data-toggle="collapse" href="#mandatoryFeilds" class="collapsed"></a>
+                            </div>
+
+                        </div>
+                        &nbsp;
+                    </div>
+                    <div data-ng-show="pictoInfo.rules.length != 0 && user">
+                    	<div data-ng-hide="addNewpictoview || !showFlag">                  
+                             <div class="col-lg-12 no-padding padding-top-bottom border-top-purple" data-ng-hide="contrib" data-ng-if="pictoInfo.functionFR.length > 0 || pictoInfo.functionEN.length > 0">
+                               <h6 class="data-color no-margin">{{ 'picto.rightbar.label.mandatorytextstitle' |
+								localize }}</h6>
+                            </br> 
+                            <div data-ng-repeat="rule in pictoInfo.rules"> 
+                             <h4 class="panel-title panel-child-title">                                    
+									<a class="data-color-black collapsed title-underscore" href={{rule.docLink}} target="_blank"								
+														data-ng-model="rule.name">{{rule.name}}</a>    
+								</h4>                              
+                               </div>
+                        </div>
+                      </div> 
+                     </div>
+
+                    <!-- Tags -->
+
+                    <div class="panel panel-default panel-custom" data-ng-if="admin">
+                        <div style="border: 1px solid #774477 !important;">
+                            <div class="panel-heading">
+                                <h4 class="panel-title" style="text-align: center;">
+									<b><a data-toggle="collapse" href="#tags">Tags<span
+											class="mandatory" data-ng-show="addNewpictoview">*</span></a></b>
+								</h4>
+                            </div>
+                            
+                            <div id="tags" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="col-lg-12">
+                                        <h6 class="data-color">{{ 'picto.rightbar.label.keywords'
+											| localize }}</h6>
+                                        <span data-ng-if="contribUser()" data-ng-model="pictoInfo.keywordFR">{{pictoInfo.keywordFR}}</span>
+                                   
+                                        <div>
+                                            <textarea elastic class="input-lang-fr content-editable-new" data-ng-if="admin" data-ng-model="pictoInfo.keywordFR" maxlength=2000 value={{pictoInfo.keywordFR}} data-ng-model-options="{ debounce: 250 }">
+                                            </textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <span data-ng-if="contribUser()" data-ng-model="pictoInfo.keywordEN">{{pictoInfo.keywordEN}}</span>
+                                        <div>
+                                            <textarea elastic class="input-lang-en content-editable-new italic" data-ng-if="admin" data-ng-model="pictoInfo.keywordEN" maxlength=2000 value={{pictoInfo.keywordEN}} data-ng-model-options="{ debounce: 250 }">
+                                            </textarea>
+                                        </div>
+                                    </div>
+									
+                                    <div class="col-lg-12">
+                                        <h6 class="data-color">{{ 'picto.rightbar.label.surcat' |
+											localize }}</h6>
+                                        <span data-ng-if="contribUser()"  data-ng-show="language === 'fr'" data-ng-model="pictoInfo.categoryID.name">{{pictoInfo.categoryID.categoryFr}}</span>  
+                                        <div class="information-options">                          
+                                        <ui-select class="custom-dropdown-purple" data-ng-model="pictoInfo.categoryID" id="idCategory" data-ng-show="language === 'fr'" data-ng-model-options="{ debounce: 250 }">                                        
+                                            <ui-select-match placeholder="Select category">
+                                                {{$select.selected.categoryFr}} </ui-select-match>
+                                            <ui-select-choices repeat="category in allCatogory | filter: $select.search">
+                                                <div ng-bind-html="category.categoryFr | highlight: $select.search"></div>
+                                            </ui-select-choices>
+                                        </ui-select>
+
+                                        <span data-ng-if="contribUser()"  data-ng-hide="language === 'fr'" data-ng-model="pictoInfo.categoryID.name">{{pictoInfo.categoryID.categoryEn}}</span>                          
+                                        <ui-select class="custom-dropdown-purple" data-ng-model="pictoInfo.categoryID" id="idCategory" data-ng-hide="language === 'fr'" data-ng-model-options="{ debounce: 250 }">                                        
+                                            <ui-select-match placeholder="Select category">
+                                                {{$select.selected.categoryEn}} </ui-select-match>
+                                            <ui-select-choices repeat="category in allCatogory | filter: $select.search">
+                                                <div ng-bind-html="category.categoryEn | highlight: $select.search"></div>
+                                            </ui-select-choices> 
+                                        </ui-select>
+                                        </div> 
+                                    </div>                                    
+                 
+                                    &nbsp;
+                                </div>
+                            </div>
+                        </div>
+                        <div class="arrow" style="text-align: center;">
+                            <a data-toggle="collapse" href="#tags" class="collapsed"></a>
+                        </div>
+                        &nbsp;
+                    </div>
+
+                    <div data-ng-if="contribUser()">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-bottom border-top-purple" data-ng-hide="contrib" data-ng-if="pictoInfo.functionFR.length > 0 || pictoInfo.functionEN.length > 0">
+                            <h6 class="data-color no-margin">{{ 'picto.rightbar.label.function' |
+								localize }}</h6>
+                            </br> <span class="data-color-black" data-ng-hide="contrib" data-ng-if="pictoInfo.functionFR.length > 0"> {{pictoInfo.functionFR}}</span> </br> <span class="data-color-black italic" data-ng-hide="contrib" data-ng-if="pictoInfo.functionEN.length > 0">
+								{{pictoInfo.functionEN}}</span>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-bottom border-top-purple" data-ng-hide="contrib">
+                            <h6 class="data-color no-margin">{{ 'picto.rightbar.label.type' |
+								localize }}</h6>
+                            </br> <span class="data-color-black" style="float:left;">{{pictoInfo.typeID.typeLabel}}
+                           <div class="float-right" data-ng-hide="contrib" data-ng-if="pictoInfo.refCharte.length > 0">
+                            <h6 class="data-color-black no-margin">({{ 'picto.rightbar.label.refCharte' |
+								localize }}</h6>
+                            <span class="data-color-black">{{pictoInfo.refCharte}})</span>
+                        </div>
+                            </span>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-bottom border-top-purple" data-ng-hide="contrib" data-ng-if="pictoInfo.commandInformation.length > 0 || pictoInfo.isRHNActive|| pictoInfo.isRHNAlert||pictoInfo.isRHNDefault">
+                              <h6 class="data-color no-margin">{{'picto.rightbar.label.commandET' | localize }}</h6> 
+                        <div data-ng-if="pictoInfo.commandInformation.length > 0">
+                            <h6 class="data-color-black no-margin">{{ 'picto.rightbar.label.commande' |
+								localize }} :</h6>
+                            <span class="data-color-black">{{pictoInfo.commandInformation}}</span>
+                        </div>
+
+                        <div data-ng-show="pictoInfo.isRHNActive && user">                        
+                            <label class="data-color-black no-margin" style="float:left;font-weight: normal;">{{ 'picto.rightbar.label.activationTell' | localize }} :</label>
+                            <div data-ng-hide="contrib">
+                                <div style="float:left;" data-ng-repeat="witnessAct in pictoInfo.witnessActive | orderBy : 'orderId'">
+                                    <div data-ng-show="pictoInfo.isRHNActive">
+                                        <span>
+                                        	<label class="{{witnessAct.color}}" data-ng-if="witnessAct.flag && witnessAct.color=='Rouge'"> &nbsp {{ 'picto.rightbar.label.rouge' | localize }} </label> 
+                                            <label class="{{witnessAct.color}}" data-ng-if="witnessAct.flag && witnessAct.color=='Ambre'"> &nbsp {{ 'picto.rightbar.label.ambre' | localize }} </label>     
+                                            <label class="{{witnessAct.color}}" data-ng-if="witnessAct.flag && witnessAct.color=='Blue'"> &nbsp {{ 'picto.rightbar.label.blue' | localize }} </label>     
+                                            <label class="{{witnessAct.color}}" data-ng-if="witnessAct.flag && witnessAct.color=='Vert'"> &nbsp {{ 'picto.rightbar.label.vert' | localize }} </label>   
+                                            <label class="{{witnessAct.color}}" data-ng-if="witnessAct.flag && witnessAct.color=='White'"> &nbsp {{ 'picto.rightbar.label.white' | localize }} </label>    
+										</span>
+
+                                    </div>
+                                </div>                               
+                            </div>
+                            </div>
+                            <div style="clear: both;" data-ng-show="pictoInfo.isRHNAlert && user">
+                                <label class="data-color-black no-margin" style="float:left;font-weight: normal;">{{ 'picto.rightbar.label.alerteTell' | localize }} :</label>
+                            </div>
+                            <div data-ng-hide="contrib">
+                            <div data-ng-repeat="witnessAlt in pictoInfo.witnessAlert | orderBy : 'orderId' | limitTo: 2">
+                                <div style="float:left" data-ng-model="pictoInfo.witnessAlert" >
+                                    <div data-ng-show="pictoInfo.isRHNAlert && user">
+                                        <span> 
+                                            <label class="{{witnessAlt.color}}" data-ng-if="witnessAlt.flag && witnessAlt.color=='Rouge'"> &nbsp {{ 'picto.rightbar.label.rouge' | localize }} </label>		
+                                            <label class="{{witnessAlt.color}}" data-ng-if="witnessAlt.flag && witnessAlt.color=='Ambre'"> &nbsp {{ 'picto.rightbar.label.ambre' | localize }} </label> 	
+                                            <label class="{{witnessAlt.color}}" data-ng-if="witnessAlt.flag && witnessAlt.color=='Blue'"> &nbsp {{ 'picto.rightbar.label.blue' | localize }} </label>     
+                                            <label class="{{witnessAlt.color}}" data-ng-if="witnessAlt.flag && witnessAlt.color=='Vert'"> &nbsp {{ 'picto.rightbar.label.vert' | localize }} </label> 	
+                                            <label class="{{witnessAlt.color}}" data-ng-if="witnessAlt.flag && witnessAlt.color=='White'"> &nbsp {{ 'picto.rightbar.label.white' | localize }} </label> 							
+										</span>
+                                    </div>
+                                </div>                              
+                                </div>
+                            </div>
+
+                            <div style="clear: both;"  data-ng-show="pictoInfo.isRHNDefault && user">
+                                <label class="data-color-black no-margin" style="float:left;font-weight: normal;">{{ 'picto.rightbar.label.defaillanceTell' | localize }} :</label>
+                            </div>
+                            <div data-ng-hide="contrib">
+                                <div style="float:left;" data-ng-model="pictoInfo.witnessFailure" data-ng-repeat="witnessFailure in pictoInfo.witnessFailure | orderBy : 'orderId' | limitTo: 2">
+                                    
+                                    <div data-ng-show="pictoInfo.isRHNDefault && user">
+                                        <span>
+                                            <label class="{{witnessFailure.color}}" data-ng-if="witnessFailure.flag && witnessFailure.color=='Rouge'"> &nbsp {{ 'picto.rightbar.label.rouge' | localize }} </label>     
+                                            <label class="{{witnessFailure.color}}" data-ng-if="witnessFailure.flag && witnessFailure.color=='Ambre'"> &nbsp {{ 'picto.rightbar.label.ambre' | localize }} </label>     
+                                            <label class="{{witnessFailure.color}}" data-ng-if="witnessFailure.flag && witnessFailure.color=='Blue'"> &nbsp {{ 'picto.rightbar.label.blue' | localize }} </label>     
+                                            <label class="{{witnessFailure.color}}" data-ng-if="witnessFailure.flag && witnessFailure.color=='Vert'"> &nbsp {{ 'picto.rightbar.label.vert' | localize }} </label>   
+                                            <label class="{{witnessFailure.color}}" data-ng-if="witnessFailure.flag && witnessFailure.color=='White'"> &nbsp {{ 'picto.rightbar.label.white' | localize }} </label>     
+										</span>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-bottom border-top-purple" data-ng-show="showFlag" data-ng-hide="contrib" data-ng-if="pictoInfo.rhnInfoFR.length > 0 || pictoInfo.rhnInfoEN.length > 0">
+                            <h6 class="data-color no-margin">{{
+												'picto.rightbar.label.informationRHN' | localize }}</h6>
+                            </br> <span class="data-color-black" data-ng-if="pictoInfo.rhnInfoFR.length > 0">{{pictoInfo.rhnInfoFR}}</span>
+                            </br> <span class="data-color-black italic" data-ng-if="pictoInfo.rhnInfoEN.length > 0"> {{pictoInfo.rhnInfoEN}}</span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-bottom border-top-purple">
+                            <h6 class="data-color no-margin">{{ 'picto.rightbar.label.keywords' |
+								localize }}</h6>
+                            </br> <span class="data-color-black">
+								 {{pictoInfo.keywordFR}}
+							</span> </br> <span class="data-color-black italic">
+								 {{pictoInfo.keywordEN}}
+							</span>
+                        </div>
+                        <div data-ng-show="language === 'fr'" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-bottom border-top-purple">
+                            <h6 class="data-color no-margin">{{ 'picto.rightbar.label.surcat' |
+								localize }}</h6>
+                            </br> <span class="data-color-black">{{pictoInfo.categoryID.categoryFr}}</span>
+                        </div>
+                        <div data-ng-show="language === 'en'" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-bottom border-top-purple">
+                            <h6 class="data-color no-margin">{{ 'picto.rightbar.label.surcat' |
+								localize }}</h6>
+                            </br> <span class="data-color-black">{{pictoInfo.categoryID.categoryEn}}</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

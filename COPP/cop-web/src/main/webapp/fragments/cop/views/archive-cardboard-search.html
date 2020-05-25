@@ -1,0 +1,152 @@
+<div >
+    <div data-cop-header></div>
+
+
+    <div id="wrapper" class="context-wrapper">
+        <div>
+            <div data-cop-sidebar></div>
+        </div>
+        
+        <div>
+            <div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">&nbsp;</div>
+                    <label class="" title=" ">  </label>
+                    <div class="row no-margin col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            
+                        <div class="container-fluid no-padding">
+                          <label><b>&gt; {{'cop.searchInArchiveCardboard.label.title' | localize}}  </b></label>
+                          <h4><b>{{'cop.searchInArchiveCardboard.label.heading' | localize}}</b></h4>
+                          <div class="row">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+                                    <label class="ellipsis" title="">{{'cop.searchInArchiveCardboard.label.nChassis' | localize}}</label> 
+                                    <input type="text" id="" class="form-control" data-ng-model="chassis">
+                                </div>
+                                
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+                                    <label class="ellipsis" title="">{{'cop.searchInArchiveCardboard.label.countermark' | localize}}</label>
+                                    <input type="text" id="" class="form-control"  data-ng-model="counterMark">
+                                   
+                                </div>
+                        
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+                                    <label class="ellipsis" title="">{{'cop.searchInArchiveCardboard.label.registration' | localize}}</label>
+                                     <input type="text" id="" class="form-control" data-ng-model="registration">
+                                </div>
+                        
+                        
+                          </div>
+                          </div> <!--row-end  -->
+                          
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp </div>
+                          <div class="border-top"></div>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp </div>
+                                                    
+                          <div class="row">
+                          
+                           <!-- start ng-reapet -->
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding" data-ng-repeat="vehicleFile in archiveVehicleFileList">
+                          
+                             <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6 col-margin">
+                                
+                                <div data-ng-show="vehicleFile.vehicleRepresentation.registrationNumber!== null">
+                                <label class="ellipsis" title="{{'cop.basket.label.registrationNumber' | localize}}">{{'cop.basket.label.registrationNumber' | localize}}</label> 
+                                <input type="text" id="" class="form-control"  data-ng-model="vehicleFile.vehicleRepresentation.registrationNumber" data-ng-disabled = "true">
+                                </div>
+                                <div data-ng-show="vehicleFile.vehicleRepresentation.registrationNumber=== null && vehicleFile.vehicleRepresentation.chasisNumber !== null">
+                                <label class="ellipsis" title="{{'cop.basket.label.chasisNumber' | localize}}">{{'cop.basket.label.chasisNumber' | localize}}</label> 
+                                <input type="text" id="" class="form-control"  data-ng-model="vehicleFile.vehicleRepresentation.chasisNumber" data-ng-disabled = "true">
+                                </div>
+                                <div data-ng-show="vehicleFile.vehicleRepresentation.registrationNumber=== null && vehicleFile.vehicleRepresentation.chasisNumber === null">
+                                <label class="ellipsis" title="{{'cop.basket.label.countermarkNumber' | localize}}">{{'cop.basket.label.countermarkNumber' | localize}}</label> 
+                                <input type="text" id="" class="form-control"  data-ng-model="vehicleFile.vehicleRepresentation.counterMark" data-ng-disabled = "true">
+                                </div>
+                             </div>
+                             <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6 col-margin">
+                                <label class="ellipsis" title="{{'cop.searchInArchiveCardboard.label.typeTest' | localize }}">{{'cop.searchInArchiveCardboard.label.typeTest' | localize }}</label> 
+                                <input type="text" id="" class="form-control"  data-ng-model="vehicleFile.typeOfTestLabel" title="{{vehicleFile.typeOfTestLabel}}" data-ng-disabled="true">
+                             </div>
+                             <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6 col-margin">
+                                <label class="ellipsis" title="{{'cop.searchInArchiveCardboard.label.years' | localize }}">{{'cop.searchInArchiveCardboard.label.years' | localize }}</label> 
+                                <input type="text" id="" class="form-control" data-ng-model="vehicleFile.archiveBoxRepresentation.modelYear" title="{{vehicleFile.archiveBoxRepresentation.modelYear}}" data-ng-disabled="true">
+                             </div>
+                             <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6 col-margin">
+                                <label class="ellipsis" title="{{'cop.searchInArchiveCardboard.label.family' | localize }}">{{'cop.searchInArchiveCardboard.label.family' | localize }}</label> 
+                                <input type="text" id="" class="form-control"  data-ng-model="vehicleFile.archiveBoxRepresentation.projectCodeFamilyReprsentation.displayLabel" title="{{vehicleFile.archiveBoxRepresentation.projectCodeFamilyReprsentation.displayLabel}}" data-ng-disabled="true">
+                             </div>
+                             <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6 col-margin">
+                                <label class="ellipsis" title="{{'cop.searchInArchiveCardboard.label.fuel' | localize }}">{{'cop.searchInArchiveCardboard.label.fuel' | localize }}</label> 
+                                <input type="text" id="" class="form-control"  data-ng-model="vehicleFile.archiveBoxRepresentation.fuelRepresentation.label" title="{{vehicleFile.archiveBoxRepresentation.fuelRepresentation.label}}" data-ng-disabled="true">
+                             </div>
+                             
+                             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin">
+                                <label class="ellipsis" title="{{'cop.searchInArchiveCardboard.label.user' | localize }}">{{'cop.searchInArchiveCardboard.label.user' | localize }}</label> 
+                                <input type="text" id="" class="form-control"  data-ng-disabled="true">
+                             </div>
+                             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin">
+                                <label class="ellipsis" title="{{'cop.searchInArchiveCardboard.label.date' | localize }}">{{'cop.searchInArchiveCardboard.label.date' | localize }}</label> 
+                                <input type="text" id="" class="form-control"  value="{{vehicleFile.updateDate | date : 'dd/MM/yyyy'}}" title="{{vehicleFile.updateDate | date : 'dd/MM/yyyy'}}" data-ng-disabled="true">
+                             </div>
+                             <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin">
+                                <label class="ellipsis" title="{{'cop.searchInArchiveCardboard.label.cartonContainingTheVehicle' | localize }}">{{'cop.searchInArchiveCardboard.label.cartonContainingTheVehicle' | localize }}</label> 
+                                <input type="text" id="" class="form-control"  data-ng-model="vehicleFile.archiveBoxRepresentation.archiveBoxNumber" title="{{vehicleFile.archiveBoxRepresentation.archiveBoxNumber}}" data-ng-disabled="true">
+                             </div>
+                             
+                             <div class="col-lg-1 col-md-1 col-sm-6 col-xs-6 col-margin">
+                                <label class="ellipsis" title=""> &nbsp </label> 
+                                <span  class="fa fa-table fa-2x " data-ng-click="toResultSet(vehicleFile.entityId)"> </span>
+                             </div>
+                          </div>
+                          
+                          <!-- End ng-reapet -->
+                          
+                          </div> <!--row-end  -->
+                          
+                        </div> <!-- End container-fluid-->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+           
+            <div class="col-lg-12 col-md-9 col-sm-9 col-xs-12 padding-top-btm">
+              
+                <div class="col-lg-9 text-center">
+                    <button type="button" id="save" class="btn btn-primary" data-ng-click="searchArchiveCardBoard()">{{ 'cop.searchInArchiveCardboard.label.save' |
+                        localize }}</button>
+
+                    &nbsp; &nbsp;
+
+                    <button type="reset" id="valider" class="btn btn-default" data-ng-click="refresh()">{{ 'cop.searchInArchiveCardboard.label.cancel' |
+                        localize }}</button>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+                  <label class="screenNo ellipsis">{{'cop.searchInArchiveCardboard.label.screenNo' | localize }} </label>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Archive error massage model -->
+    <div id="archiveErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

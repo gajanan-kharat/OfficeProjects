@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+
+    <!-- Eviter de toucher aux quelques lignes suivantes -->
+    <id>livraison</id>
+    <formats>
+        <format>tar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    
+    <!-- A partir de là, il s'agit de la description précises de l'archive -->
+    <fileSets>
+        <!--
+        *****************************
+        dictionaries for config files for all
+        *****************************
+        -->
+        <fileSet>
+            <directory>/psa/valorisation/dictionaries</directory>
+            <includes>
+                <include>*.*</include>
+            </includes>
+            <outputDirectory>valorisation/dictionaries</outputDirectory>
+        </fileSet>
+        <!--
+        *****************************
+        BATCH package
+        *****************************
+        -->
+        <fileSet>
+            <directory>target</directory>
+            <includes>
+                <include>${pom.artifactId}-${pom.version}.jar</include>
+            </includes>
+            <outputDirectory>lib/java/</outputDirectory>
+        </fileSet>
+        
+        
+        <fileSet>
+            <directory>psa/valorisation/templates/</directory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0777</fileMode>
+            <directoryMode>0777</directoryMode>
+            <outputDirectory>valorisation/templates</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        
+        <fileSet>
+            <directory>psa/valorisation/templates/scripts</directory>
+            <lineEnding>unix</lineEnding>
+            <outputDirectory>script</outputDirectory>
+            <fileMode>0777</fileMode>
+            <directoryMode>0777</directoryMode>
+            <filtered>true</filtered>
+        </fileSet>
+
+        
+         <fileSet>
+            <directory>src/main/resources/META-INF/configuration</directory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0777</fileMode>
+            <directoryMode>0777</directoryMode>
+            <outputDirectory>valorisation/templates/META-INF/configuration</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        
+          <fileSet>
+            <directory>src/main/resources/META-INF/spring</directory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0777</fileMode>
+            <directoryMode>0777</directoryMode>
+            <outputDirectory>valorisation/templates/META-INF/spring</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+       
+    </fileSets>
+</assembly>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<assembly>
+    <!-- Eviter de toucher aux quelques lignes suivantes -->
+    <id>livraison</id>
+    <formats>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <fileSets>
+        <fileSet>
+            <directory>target/appassembler/repo</directory>
+            <outputDirectory>repo</outputDirectory>
+            <excludes>
+                <exclude>maven-metadata-appassembler.xml</exclude>
+            </excludes>
+            <directoryMode>0755</directoryMode>
+            <fileMode>0644</fileMode>
+        </fileSet>
+        <fileSet>
+            <directory>target/appassembler/bin</directory>
+            <outputDirectory>bin</outputDirectory>
+            <includes>
+                <include>edschsexport</include>
+                <include>edschsexport.bat</include>
+            </includes>
+            <directoryMode>0755</directoryMode>
+            <fileMode>0755</fileMode>
+        </fileSet>
+
+        <!-- ********************************** -->
+        <!-- DEV CONFIG VALORISATION -->
+        <!-- ********************************** -->
+        <!-- We retrieve the templates of the externalized files which -->
+        <!-- will be valued for the dev environment thanks to the -->
+        <!-- "filtered" tag set to "true" -->
+        <fileSet>
+            <directory>${basedir}/psa/valorisation/templates</directory>
+            <outputDirectory>etc</outputDirectory>
+            <directoryMode>0755</directoryMode>
+            <filtered>true</filtered>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0644</fileMode>
+        </fileSet>
+
+        <!-- ************************** -->
+        <!-- VALUATION FILES -->
+        <!-- ************************** -->
+        <!-- We have to provide the Indus with all the templates of the externalized files -->
+        <fileSet>
+            <directory>${basedir}/psa/valorisation/templates</directory>
+            <outputDirectory>etc/templates</outputDirectory>
+            <directoryMode>0755</directoryMode>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0644</fileMode>
+        </fileSet>
+    </fileSets>
+</assembly>

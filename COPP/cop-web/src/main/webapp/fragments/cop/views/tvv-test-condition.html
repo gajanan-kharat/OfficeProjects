@@ -1,0 +1,250 @@
+<div class="padding-top-btm tvv-smalltabgroup-wrapp">
+	<ul class="nav nav-pills nav-custom f-left custom-tab">
+		<li class="active left"><a data-toggle="pill" href="#coastDown">Coast
+				Down</a></li>
+		<li data-ng-repeat="List in testConditionLists"><a data-toggle="pill"
+			href="#condition-{{$index}}">{{List.label}}({{List.editedValues}}/{{List.genericTestConditionLength}})</a></li>
+	</ul>
+</div>
+
+<div class="col-lg-12 tab-content no-padding">
+
+	<div class="tab-pane padding-top-btm fade in active scroll-box" id="coastDown"
+		data-ng-click="test()">
+
+
+		<div class="col-lg-2 col-md-2 col-sm-2 no-padding">
+			<div
+				class="col-lg-12 col-md-12 col-sm-12 col-xs-11 custom-card no-padding"
+				style="min-height: 50px; max-height: 110px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<label tite=" {{'cop.costDown.dropdown.label'|localize}} ">{{'cop.costDown.dropdown.label'|localize}}</label>
+                   <div title="{{$select.selected.pSAReference}} {{$select.selected.version}} ">
+					<ui-select id="coastDownSelect" data-ng-model="coastDownvalue" ng-disabled="!disableFeild('POCHRole')"
+						reset-search-input="true"
+						ng-change="CoastDownChange($select.selected)"> <ui-select-match
+						placeholder="Valeur">
+					{{$select.selected.pSAReference}} {{$select.selected.version}}</ui-select-match> <ui-select-choices
+						repeat="coastDown in DistinctCoastDownData | filter: $select.search">
+					<div
+						ng-bind-html="coastDown.pSAReference + ' '+coastDown.version| highlight: $select.search "></div>
+
+					</ui-select-choices> </ui-select>
+                    </div>
+                    
+				</div>
+			</div>
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-11 custom-card no-padding" style="min-height: 50px; max-height: 110px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<label title=" {{'cop.search.label.inertia'|localize}} ">{{'cop.search.label.inertia'|localize}}</label>
+                   <div title=" {{$select.selected.inertia_value}}  "> 
+					<ui-select id="inertiaSelect" data-ng-model="inertiaValue" ng-disabled="!disableFeild('POCHRole')"
+						reset-search-input="true"
+						data-ng-change="InertiaChange($select.selected)"> <ui-select-match
+						placeholder="Valeur">
+					{{$select.selected.inertia_value}} </ui-select-match> <ui-select-choices
+						repeat="inertia in DistinctInertia | filter: $select.search">
+					<div
+						ng-bind-html="inertia.inertia_value | highlight: $select.search "></div>
+					</ui-select-choices> </ui-select>
+                    </div>
+                    
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-lg-7 col-md-8 col-sm-8 no-padding">
+
+			<!-- Static -->
+
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-11 custom-card no-padding" style="min-height: 50px; max-height: 50px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<span class="control-label" title=" {{'cop.search.label.theoricalBenchF0'|localize}} ">{{'cop.search.label.theoricalBenchF0'|localize}}</span>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 card-text-overflow ">
+					<b><span class="control-label" title=" {{coastDownvalue.theoricalBenchF0}} " >{{coastDownvalue.theoricalBenchF0}}</span></b>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-11 custom-card no-padding"
+				style="min-height: 50px; max-height: 50px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<span class="control-label" title="{{'cop.search.label.theoricalBenchF1'|localize}}  " >{{'cop.search.label.theoricalBenchF1'|localize}}</span>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 card-text-overflow ">
+					<b><span class="control-label" title="{{coastDownvalue.theoricalBenchF1}}" >{{coastDownvalue.theoricalBenchF1}}</span></b>
+				</div>
+			</div>
+
+			<div
+				class="col-lg-3 col-md-3 col-sm-3 col-xs-11 custom-card no-padding"
+				style="min-height: 50px; max-height: 50px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<span class="control-label" title=" {{'cop.search.label.theoricalBenchF2'|localize}} ">{{'cop.search.label.theoricalBenchF2'|localize}}</span>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 card-text-overflow ">
+					<b><span class="control-label" title=" {{coastDownvalue.theoricalBenchF2}}" >{{coastDownvalue.theoricalBenchF2}}</span></b>
+				</div>
+			</div>
+
+			<div
+				class="col-lg-3 col-md-3 col-sm-3 col-xs-11 custom-card no-padding"
+				style="min-height: 50px; max-height: 50px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<span class="control-label" title="{{'cop.search.label.computedBenchF0'|localize}} " >{{'cop.search.label.computedBenchF0'|localize}}</span>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 card-text-overflow ">
+					<b><span class="control-label" title="{{coastDownvalue.computedBenchF0}}" >{{coastDownvalue.computedBenchF0}}</span></b>
+				</div>
+			</div>
+
+			<div
+				class="col-lg-3 col-md-3 col-sm-3 col-xs-11 custom-card no-padding"
+				style="min-height: 50px; max-height: 50px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<span class="control-label" title="{{'cop.search.label.computedBenchF1'|localize}} " >{{'cop.search.label.computedBenchF1'|localize}}</span>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 card-text-overflow ">
+					<b><span class="control-label" title="{{coastDownvalue.computedBenchF1}} " >{{coastDownvalue.computedBenchF1}}</span></b>
+				</div>
+			</div>
+
+			<div
+				class="col-lg-3 col-md-3 col-sm-3 col-xs-11 custom-card no-padding"
+				style="min-height: 50px; max-height: 50px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<span class="control-label" title="{{'cop.search.label.computedBenchF2'|localize}} " >{{'cop.search.label.computedBenchF2'|localize}}</span>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 card-text-overflow ">
+					<b><span class="control-label" title=" {{coastDownvalue.computedBenchF2}} " >{{coastDownvalue.computedBenchF2}}</span></b>
+				</div>
+			</div>
+
+			<div
+				class="col-lg-3 col-md-3 col-sm-3 col-xs-11 custom-card no-padding"
+				style="min-height: 50px; max-height: 50px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<span class="control-label" title="{{'cop.search.label.computedUtilF0'|localize}} " >{{'cop.search.label.computedUtilF0'|localize}}</span>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12" >
+					<b><span class="control-label" title=" " ><editcoast ng-show="disableFeild('POCHRole')"
+							model="coastDownvalue.userBenchF0"></editcoast></span></b>
+				</div>
+			</div>
+
+			<div
+				class="col-lg-3 col-md-3 col-sm-3 col-xs-11 custom-card no-padding"
+				style="min-height: 50px; max-height: 50px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<span class="control-label" title="{{'cop.search.label.computedUtilF1'|localize}} " >{{'cop.search.label.computedUtilF1'|localize}}</span>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<b><span class="control-label" title=" " ><editcoast ng-show="disableFeild('POCHRole')"
+							model="coastDownvalue.userBenchF1"></editcoast></span></b>
+				</div>
+			</div>
+
+			<div
+				class="col-lg-3 col-md-3 col-sm-3 col-xs-11 custom-card no-padding"
+				style="min-height: 50px; max-height: 50px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<span class="control-label" title="{{'cop.search.label.computedUtilF2'|localize}} " >{{'cop.search.label.computedUtilF2'|localize}}</span>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+					<b><span class="control-label" title=" "><editcoast ng-show="disableFeild('POCHRole')"
+							model="coastDownvalue.userBenchF2"></editcoast></span></b>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div data-ng-repeat="List in testConditionLists" id="condition-{{$index}}"
+		class="tab-pane fade in">
+		<div data-ng-repeat="condition in List.genericTestCondition">
+				<div
+				class="col-lg-5 col-md-5 col-sm-5 col-xs-11 custom-card no-padding"
+				style="min-height: 65px; max-height: 65px;">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+				<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 no-padding"><span class="control-label">({{condition.label}})</span></div>
+					<!--  <span class="control-label"><editable model="condition.defaultValue" data-ng-click="editDefaultConditionValue(List)"></editable></span>-->
+					<div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 no-padding padding-top-btm">
+                    
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding card-lg-overflow" title="{{condition.defaultValue}}" ng-hide="!disableFeild('POCHRole')">
+                            <input class="form-control editableInput" data-ng-hide="editable" type="text" ng-disabled="!disableFeild('POCHRole')"
+                                data-ng-enter="enterSave();editDefaultConditionValue(List)" data-ng-blur='save();editDefaultConditionValue(List)'
+                                data-ng-model="condition.defaultValue"><b><span data-ng-show="editable"
+                                data-ng-click="">{{condition.defaultValue}}</span></b>
+                        </div>
+                    
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding card-lg-overflow" title="{{condition.defaultValue}}" ng-show="!disableFeild('POCHRole')">
+							<input class="form-control editableInput" data-ng-hide="editable" type="text" ng-disabled="!disableFeild('POCHRole')"
+								data-ng-enter="enterSave();editDefaultConditionValue(List)" data-ng-blur='save();editDefaultConditionValue(List)'
+								data-ng-model="condition.defaultValue"><b><span data-ng-show="editable"
+								data-ng-click="edit()">{{condition.defaultValue}}</span></b>
+						</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding card-lg-overflow" title="{{data.unit.value}}">
+                            <b>{{condition.unit.value}}</b>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1  no-padding" style="text-align: right" data-ng-click="editDefaultConditionValue(List);">
+							<span data-ng-click="edit()" data-ng-show="editable"><span data-ng-show = "disableFeild('POCHRole')"
+								class="fa fa-pencil fa-2x"></span></span> <span data-ng-click="save();editDefaultConditionValue(List)"
+								data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<div class="slide-resize col-lg-12 col-lg-10"
+		style="position: fixed;
+	/* top: 0px; */ bottom: 0px; background-color: #fff;">
+<label class="screenNo" title="{{'cop.tvv.testCondition.label.screenNo' | localize}}" >{{'cop.tvv.testCondition.label.screenNo' | localize}}</label>
+		<div class="col-lg-12 padding-top-btm text-center">
+
+			<div class="col-lg-3"></div>
+
+			<div class="col-lg-6 text-center">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-hide="!disableFeild('POCHRole')"					
+					data-ng-click="updateTCL()">{{
+					'cop.technicalData.label.validate' | localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" class="btn btn-default" data-dismiss="modal" data-ng-hide="!disableFeild('POCHRole')" data-ng-click="CancelOnConfirmationTCL()">{{
+					'cop.technicalData.label.cancel' | localize }}</button>
+			</div>
+		</div>
+	</div>
+<!-- Confirmation Message On Cancel Button -->
+<div id="ConfirmCancelTCModal" class="modal fade" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.message.cancelUnsavedDataOnConfirmation'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal"
+					data-ng-click="cancelModifiedTCChanges()">{{
+					'cop.cancelUnsavedData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal">{{
+					'cop.cancelUnsavedData.message.cancel' | localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Confirmation Message On Cancel Button-->
+
+

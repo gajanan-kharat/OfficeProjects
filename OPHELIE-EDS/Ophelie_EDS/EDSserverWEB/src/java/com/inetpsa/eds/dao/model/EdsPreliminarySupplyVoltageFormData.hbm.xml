@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 sept. 2012 21:59:40 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsPreliminarySupplyVoltageFormData" table="OPLQTPVD">
+        <id name="psvId" type="string">
+            <column name="PSV_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsWordingByPsvOrigineDonneeTensionMaximaleFonctionnementNominale" class="com.inetpsa.eds.dao.model.EdsWording"
+            fetch="select" lazy="false">
+            <column name="PSV_OR_DATA_TEN_MAX_FCT_NOM" length="36" />
+        </many-to-one>
+        <many-to-one name="edsWordingByPsvOrigineDonneeTensionMinimaleFonctionnementNominale" class="com.inetpsa.eds.dao.model.EdsWording"
+            fetch="select" lazy="false">
+            <column name="PSV_OR_DATA_TEN_MIN_FCT_NOM" length="36" />
+        </many-to-one>
+        <many-to-one name="edsWordingByPsvOrigineDonneeTensionMinimaleFonctionnementInitialisation" class="com.inetpsa.eds.dao.model.EdsWording"
+            fetch="select" lazy="false">
+            <column name="PSV_OR_DATA_TEN_MIN_FCT_INIT" length="36" />
+        </many-to-one>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select" lazy="false">
+            <column name="PSV_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="edsWordingByPsvOrigineDonneeTensionMaximaleFonctionnementRehabilisation" class="com.inetpsa.eds.dao.model.EdsWording"
+            fetch="select" lazy="false">
+            <column name="PSV_OR_DATA_TEN_MAX_FCT_REHAB" length="36" />
+        </many-to-one>
+        <property name="psvValeurTensionMinimaleFonctionnementInitialisation" type="string">
+            <column name="PSV_VAL_TEN_MIN_FCT_INIT" length="256" />
+        </property>
+        <property name="psvValeurTensionMinimaleFonctionnementNominale" type="string">
+            <column name="PSV_VAL_TEN_MIN_FCT_NOM" length="256" />
+        </property>
+        <property name="psvValeurTensionMaximaleFonctionnementNominale" type="string">
+            <column name="PSV_VAL_TEN_MAX_FCT_NOM" length="256" />
+        </property>
+        <property name="psvValeurTensionMaximaleFonctionnementRehabilisation" type="string">
+            <column name="PSV_VAL_TEN_MAX_FCT_REHAB" length="256" />
+        </property>
+    </class>
+</hibernate-mapping>

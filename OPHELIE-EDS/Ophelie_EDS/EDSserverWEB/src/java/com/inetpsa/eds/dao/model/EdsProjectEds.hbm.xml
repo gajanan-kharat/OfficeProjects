@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 juin 2012 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsProjectEds" table="OPLQTPRE">
+        <id name="pedsId" type="string">
+            <column name="PEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select">
+            <column name="PEDS_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="edsProject" class="com.inetpsa.eds.dao.model.EdsProject" fetch="select" lazy="false">
+            <column name="PEDS_P_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="pedsReconductionDate" type="timestamp">
+            <column name="PEDS_RECONDUCTION_DATE" length="23" not-null="true" />
+        </property>
+        <property name="pedsCount" type="java.lang.Integer">
+            <column name="PEDS_COUNT" />
+        </property>
+        <property name="pedsReconductWithModif" type="java.lang.Integer">
+            <column name="PEDS_RECONDUCT_WITH_MODIF" />
+        </property>
+    </class>
+</hibernate-mapping>

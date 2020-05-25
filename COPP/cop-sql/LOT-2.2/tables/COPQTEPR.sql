@@ -1,0 +1,10 @@
+-- EXPERTISE RESULT
+CREATE TABLE COPQTEPR(
+        ID                  BIGINT(20) UNIQUE NOT NULL AUTO_INCREMENT,
+        VEHICLE_FILE_ID     BIGINT(20),
+        USER_ID             BIGINT(20),
+        VALUE               VARCHAR(255),
+        COMMENT             VARCHAR(255),
+        CREATION_DATE       DATETIME NOT NULL,
+        UPDATION_DATE       DATETIME NOT NULL
+);

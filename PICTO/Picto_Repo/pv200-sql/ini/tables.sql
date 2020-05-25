@@ -1,0 +1,17 @@
+source tables/PV2QTTYP.sql;
+source tables/PV2QTSCT.sql;
+source tables/PV2QTCAT.sql;
+source tables/PV2QTCOL.sql;
+source tables/PV2QTDRA.sql;
+source tables/PV2QTROU.sql;
+source tables/PV2QTPFM.sql;
+source tables/PV2QTPIC.sql;
+source tables/PV2QTUSR.sql;
+source tables/PV2QTFAV.sql;
+source tables/PV2QTSHP.sql;
+source tables/PV2QTIMG.sql;
+source tables/PV2QTDIS.sql;
+source tables/PV2QTNTF.sql;
+source tables/PV2QTACT.sql;
+source tables/PV2QTALR.sql;
+source tables/PV2QTFAI.sql;

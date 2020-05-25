@@ -1,0 +1,190 @@
+<div data-cop-header></div>
+
+<div id="wrapper" class="context-wrapper">
+<div>
+            <div data-cop-sidebar></div>
+        </div>
+<div class="container-fluid custom-top-pad custom-page-header">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding" style="border-bottom:1px solid #DED2D2; padding-bottom: 10px !important;">
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no-padding">
+<b>>...>{{'cop.vehicle.heading.vehiclepage' | localize }}</b>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no-padding">
+<a href="#!/cop/Basket" class="btn btn-success pull-right">{{'cop.vehicle.lable.basket' | localize}}<br/>{{vehicleCount}} {{'cop.vehicle.label.vehicle' | localize}}</a>
+<a href="#!/cop/ReceptionFile"><button class="btn btn-default pull-right" style="margin-right: 1em;">{{'cop.vehicle.label.messageEdit' | localize}}</button></a>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+<h4 style="padding:0px 15px;">{{'cop.vehicle.label.testtype' | localize}}<span style="color:red;">*</span></h4>
+
+<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+<ui-select id="dropdownTypeofTest"data-ng-model="typeOfTest.selected" reset-search-input="true" on-select="onTestTypeSelect()" ng-disabled="isReadOnly()">
+     <ui-select-match placeholder="Select test type">{{$select.selected.label}} </ui-select-match> 
+     <ui-select-choices repeat="type in typeOfTest | filter: $select.search">
+        <div ng-bind-html="type.label | highlight: $select.search "></div></ui-select-choices> 
+ </ui-select>
+ </div>
+<div class="col-lg-9 col-md-6 col-sm-6 col-xs-6 no-padding">
+<p class="pull-right">{{currentDate | date :'dd/MM/yyyy'}}</p>
+</div>
+</div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 vehicleinput no-padding">
+
+<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+<label>{{'cop.vehicle.label.countermark' | localize}}</label>
+<input class="form-control" type="text" data-ng-model="countermark" data-ng-maxlength="255" ng-readonly="isReadOnly()" data-ng-enter="searchTVV()"/>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+<label>{{'cop.vehicle.label.chassis' | localize}}</label>
+<input class="form-control" type="text" data-ng-model="chassis" data-ng-maxlength="255" ng-readonly="isReadOnly()" data-ng-enter="searchTVV()"/>
+</div>
+<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+<label>{{'cop.vehicle.label.registration' | localize}}</label>
+<input class="form-control" type="text" data-ng-model="registration" data-ng-maxlength="255" ng-readonly="isReadOnly()" data-ng-enter="searchTVV()"/>
+</div>
+<div class="col-lg-2 col-md-6 col-sm-12 col-xs-12">
+<label>{{'cop.search.label.tvv' | localize}}<span style="color:red;">*</span></label>
+<input class="form-control" type="text" data-ng-model="tvvLabel" data-ng-maxlength="255" data-ng-enter="searchTVV()" ng-readonly="isReadOnly()"/>
+</div>
+<div class="col-lg-1 col-md-12 col-sm-12 col-xs-12" style="padding-top: 20px; cursor: pointer;">
+<button class="btn btn-default fa fa-search fa-2x pull-right"  data-ng-click="searchTVV()" ng-disabled="isReadOnly()"> </button>
+</div>
+</div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-btm-pad vehicle-main-block">
+    <div data-ng-repeat=" tvvObj in tvvObjList" class= "col-lg-5 col-md-5 col-sm-5 col-xs-5 vehicleTvvBox tvvObjClass" id="tvvSelected{{$index}}" data-ng-click="selectTvv('tvvSelected'+ $index,tvvObj)" Style="cursor: pointer;"> 
+        <div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <span style="font-size: 0.7em;">(TVV)</span><br/>
+                <span style=" overflow: hidden; text-overflow: ellipsis;" title="{{tvvObj.label}}"><b>{{tvvObj.label}}</b></span><br/>
+                <span  style="font-size: 0.7em;">V{{tvvObj.version}}({{tvvObj.status.label}} {{tvvObj.testNature.label}})</span>
+             </div>
+             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 no-padding">
+                <span>CO2 {{tvvObj.minCo2LimitTvv}}-{{tvvObj.maxCo2LimitTvv}}g</span>
+                <h5 style=" overflow: hidden; text-overflow: ellipsis; color: blue;" title="{{tvvObj.emissionStandard.esLabel}}"><b>{{tvvObj.emissionStandard.esLabel}} V{{tvvObj.emissionStandard.version}}</b></h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+<label class="screenNo">Screen Number :SCR046</label>
+<div class="padding-top-btm">
+<button class="btn btn-primary" data-ng-click="validateVehicle()" data-ng-disabled="vehicleButton" data-ng-show = "authorization()">{{'cop.technicalData.label.validate' | localize}}</button>
+</div>
+</div>
+
+</div>
+<div id="vehicleCreate" class="modal fade">
+    <div class="modal-dialog modal-md" style="width: 500px;" >
+        <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-radius: 0px; width: 500px;">
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4>{{'cop.vehicle.label.createvehicleHeader' | localize}}</h4>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" data-ng-if="countermark.trim().length>0" style="margin-top: 1em;">
+            <label >{{'cop.vehicle.label.countermark' | localize}}</label><br/>
+            <input class="form-control" type="text" value="{{countermark}}" data-ng-disabled="true" />
+            </div>
+             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left: 1em;margin-top: 1em;" data-ng-if="chassis.trim().length>0">
+            <label >{{'cop.vehicle.label.chassis' | localize}}</label><br/>
+            <input class="form-control" type="text" value="{{chassis}}" data-ng-disabled="true" />
+            </div>
+             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" data-ng-if="registration.trim().length>0" style="margin-top: 1em;">
+            <label >{{'cop.vehicle.label.registration' | localize}}</label><br/>
+            <input class="form-control" type="text" value="{{registration}}" data-ng-disabled="true" />
+            </div>
+             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left: 1em; margin-top: 1em;">
+            <label >{{'cop.search.label.tvv' | localize}}</label><br/>
+            <input class="form-control" type="text" value="{{tvvLabel}}" data-ng-disabled="true"/>
+            </div>
+            
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left: 1em;margin-top: 1em;">
+            <label >{{'cop.vehicle.label.manufacturingfactory' | localize}}<span style="color:red;">*</span></label><br/>
+         <ui-select id="dropdownTypeofTest"data-ng-model="tvvFactoryList.selected" reset-search-input="true">
+     <ui-select-match placeholder="Select Factory">{{$select.selected.carFactoryLabel}} </ui-select-match> 
+     <ui-select-choices repeat="tvvFactory in tvvFactoryList | filter: $select.search">
+        <div ng-bind-html="tvvFactory.carFactoryLabel | highlight: $select.search "></div></ui-select-choices> 
+ </ui-select>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left: 1em;margin-top: 1em;">
+            <label >{{'cop.vehicle.label.modelyear' | localize}}<span style="color:red;">*</span></label><br/>
+            <input class="form-control" type="text" data-ng-model="modelYear" data-ng-maxlength="255"/>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left: 1em;margin-top: 1em;">
+            <label >{{'cop.vehicle.label.mco2' | localize}}<span style="color:red;">*</span></label><br/>
+            <input class="form-control" type="text" data-ng-model="mco2Label" data-ng-maxlength="11" data-ng-change="mco2Label = floatCheck(mco2Label)"/>
+            </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal-footer text-center"
+                style="margin-top: 1em; margin-top: 1em;">
+                <button type="button" style="border-radius: 0px;"
+                    class="btn btn-primary" data-ng-click="saveVehicle()">{{
+                    'cop.technicalData.label.validate' | localize }}</button>
+                <button type="button" style="border-radius: 0px;"
+                    class="btn btn-default" data-dismiss="modal" >{{
+                    'cop.technicalData.message.cancel' | localize }}</button>
+                &nbsp; &nbsp;
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="vehicleDetail" class="modal fade">
+    <div class="modal-dialog modal-md">
+    
+        <div class="modal-content col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="border-radius: 10px;">
+            <h4 style="text-align: center; border-bottom: dashed 2px;padding-bottom:5px;">{{'cop.vehicle.modal.vehicleInfo' | localize}}</h4>
+            <div data-ng-repeat="vehicleFile in allVehicleFiles" style="margin-top: 2em; margin-bottom: 2em">
+            <p>{{'cop.vehicle.model.vehiclefileDetail' | localize}} , {{vehicleFile.typeOfTestLabel}}: <br> {{vehicleFile.creationDate | date :'dd/MM/yyyy'}}</p>
+            <p><b>{{'cop.vehicle.model.vehiclefileN°chassis' | localize}} :</b> {{vehicleFile.chasisNumber}} ({{vehicleFile.vehicleFamilylabel}})</p>
+            <p><b>{{'cop.vehicle.label.countermark' | localize}} :</b> {{vehicleFile.counterMark}} ({{vehicleFile.vehicleFamilylabel}})</p>
+            <p><b>{{'cop.vehicle.label.registration' | localize}} :</b> {{vehicleFile.registrationNumber}}</p>
+            </div>
+            <p>{{'cop.vehicle.model.typeOfTestSelected' | localize}} : {{typeOfTest.selected.label}}</p>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 modal-footer text-center" style="margin-top: 1em;">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="showAddToBasket()">{{ 'cop.regulationGroup.modal.ok' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="AddToBasket" class="modal fade">
+    <div class="modal-dialog modal-md">
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">{{'cop.vehicle.model.addTobasket' | localize}}</h4>
+            
+            
+                <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="addToBasket()">{{ 'cop.creation.label.yes' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.creation.label.no' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+    <div id="vehicleErrorDisplayModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 juil. 2012 18:39:46 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.ws.model.EdsWsSessionToken" table="OPLQTWST">
+        <id name="wstId" type="string">
+            <column name="WST_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsUser" class="com.inetpsa.eds.dao.model.EdsUser" lazy="false" fetch="select">
+            <column name="WST_U_ID" length="36" />
+        </many-to-one>
+        <property name="wstLogin" type="string">
+            <column name="WST_LOGIN" length="255" not-null="true" />
+        </property>
+        <property name="wstRemoteAddress" type="string">
+            <column name="WST_REMOTE_ADDRESS" length="45" not-null="true" />
+        </property>
+        <property name="wstExpirationDate" type="timestamp">
+            <column name="WST_EXPIRATION_DATE" length="23" not-null="true" />
+        </property>
+        <property name="wstSource" type="string">
+            <column name="WST_SOURCE" length="10" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

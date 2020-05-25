@@ -1,0 +1,30 @@
+<div class="specific-border" id="specificdrawings-{{$index}}">
+	<div class="panel-innerbody">
+		<div class="content-context specific-content">
+			<div class="picto-specific">{{selectedPictoDetails.name}}</div>
+
+
+
+			<div class="padding-level5 info-content">
+				FR: <span data-ng-if="contribUser()">{{specific.frSpecific}}</span><input
+					data-ng-if="admin" />
+			</div>
+			<div class="padding-level5 info-content">
+				EN: <span data-ng-if="contribUser()">{{specific.enSpecific}}</span><input
+					data-ng-if="admin" />
+			</div>
+
+			<div class="style-sd-trash">
+				<span class="fa fa-trash-o" data-ng-href="{{specific.dlink}}"
+					data-ng-if="admin"><span class="label-pad">Supress&nbsp;this
+						specific&nbsp;draw</span></span>
+			</div>
+			<div class="style-sd-download">
+				<span class="fa fa-download" data-ng-href="{{specific.dlink}}"><span
+					class="label-pad">Download this&nbsp;specific</span></span>
+			</div>
+
+
+		</div>
+	</div>
+</div>

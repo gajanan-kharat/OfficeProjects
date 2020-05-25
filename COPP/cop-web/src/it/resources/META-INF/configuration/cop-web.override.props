@@ -1,0 +1,30 @@
+# Add application module configuration below
+[org.seedstack.seed.core]
+application-id = cop
+
+
+[org.seedstack]
+jdbc.datasources = cop_ds
+jpa.units = cop-domain
+
+
+# Configure the application datasource
+[org.seedstack.jdbc.datasource.cop_ds]
+provider= HikariDataSourceProvider
+driver=org.hsqldb.jdbcDriver
+url= jdbc:hsqldb:mem:testdb
+user=sa
+password=
+property.sql.enforce_strict_size = false
+
+
+# Configure the COP JPA unit
+[org.seedstack.jpa.unit.cop-domain]
+datasource= cop_ds
+property.hibernate.dialect= org.hibernate.dialect.HSQLDialect
+property.hibernate.hbm2ddl.auto = create
+
+# Define the JPA unit for classes under this package
+[com.inetpsa.poc00.domain.*]
+jpa-unit=cop-domain
+

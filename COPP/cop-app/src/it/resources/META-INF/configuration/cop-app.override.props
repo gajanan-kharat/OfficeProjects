@@ -1,0 +1,61 @@
+# Add application module configuration below
+[org.seedstack.seed.core]
+application-id = cop
+
+[org.seedstack.seed.security.users]
+poca1 = poca1, POC.Vehicle_Preparator
+pocb1 = pocb1, POC.Bench_Pilot
+pocc1 = pocc1, POC.Vehicle_Driver
+pocd1 = pocd1, POC.Park_Manager
+poce1 = poce1, POC.Serial_COP_Expert
+pocf1 = pocf1, POC.Serial_COP_Analyst
+pocg1 = pocg1, POC.Special_Tests_Analyst
+poch1 = poch1, POC.Special_Tests_Expert
+poci1 = poci1, POC.Special_Test_Schedule_Reader
+pocj1 = pocj1, POC.Serial_Test_Schedule_Reader
+pocm1 = pocm1, POC.Technical_Database_Manager
+pocn1 = pocn1, POC.Groups_Rules_Manager
+poco1 = poco1, POC.Global_Data_Manager
+
+# COP Application Roles
+[org.seedstack.seed.security.roles]
+POCRole  = POC.Vehicle_Preparator, POC.Bench_Pilot, POC.Vehicle_Driver, POC.Park_Manager, POC.Serial_COP_Expert, POC.Serial_COP_Analyst, POC.Special_Tests_Analyst, POC.Special_Tests_Expert, POC.Special_Test_Schedule_Reader, POC.Serial_Test_Schedule_Reader, POC.Technical_Database_Manager, POC.Groups_Rules_Manager, POC.Global_Data_Manager
+POCARole = POC.Vehicle_Preparator
+POCBRole = POC.Bench_Pilot
+POCCRole = POC.Vehicle_Driver
+POCDRole = POC.Park_Manager
+POCERole = POC.Serial_COP_Expert
+POCFRole = POC.Serial_COP_Analyst
+POCGRole = POC.Special_Tests_Analyst
+POCHRole = POC.Special_Tests_Expert
+POCIRole = POC.Special_Test_Schedule_Reader
+POCJRole = POC.Serial_Test_Schedule_Reader
+POCMRole = POC.Technical_Database_Manager
+POCNRole = POC.Groups_Rules_Manager
+POCORole = POC.Global_Data_Manager
+
+
+[org.seedstack]
+jdbc.datasources = cop_ds
+jpa.units = cop-domain
+
+
+# Configure the application datasource
+[org.seedstack.jdbc.datasource.cop_ds]
+provider= HikariDataSourceProvider
+driver=org.hsqldb.jdbcDriver
+url= jdbc:hsqldb:mem:testdb
+user=sa
+password=
+property.sql.enforce_strict_size = false
+
+
+# Configure the COP JPA unit
+[org.seedstack.jpa.unit.cop-domain]
+datasource= cop_ds
+property.hibernate.dialect= org.hibernate.dialect.HSQLDialect
+property.hibernate.hbm2ddl.auto = create
+
+# Define the JPA unit for classes under this package
+[com.inetpsa.poc00.domain.*]
+jpa-unit=cop-domain

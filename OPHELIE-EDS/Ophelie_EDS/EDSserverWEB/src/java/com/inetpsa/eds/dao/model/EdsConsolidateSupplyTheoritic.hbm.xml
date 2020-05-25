@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27 sept. 2012 18:58:20 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsConsolidateSupplyTheoritic" table="OPLQTCST">
+        <id name="cstedsId" type="string">
+            <column name="CSTEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+
+        <property name="csedsTmin" type="java.lang.Float">
+            <column name="CSEDS_TMIN" precision="7" scale="0" />
+        </property>
+        <property name="csedsTmoy" type="java.lang.Float">
+            <column name="CSEDS_TMOY" precision="7" scale="0" />
+        </property>
+        <property name="csedsTmax" type="java.lang.Float">
+            <column name="CSEDS_TMAX" precision="7" scale="0" />
+        </property>
+
+        <property name="csedsTminIformBy" type="string">
+            <column name="CSEDS_TMIN_IFORM_BY" length="1024" />
+        </property>
+        <property name="csedsTmaxIformBy" type="string">
+            <column name="CSEDS_TMAX_IFORM_BY" length="1024" />
+        </property>
+        <property name="csedsTminComment" type="string">
+            <column name="CSEDS_TMIN_COMMENT" length="1024" />
+        </property>
+        <property name="csedsTmoyComment" type="string">
+            <column name="CSEDS_TMOY_COMMENT" length="1024" />
+        </property>
+        <property name="csedsTmaxComment" type="string">
+            <column name="CSEDS_TMAX_COMMENT" length="1024" />
+        </property>
+        <set name="edsConsolidateSupplyProfile" inverse="false" table="OPLQTSTP" lazy="false" cascade="all,delete-orphan" order-by="JCSP_INSERT_ORDER asc">
+            <key>
+                <column name="JCSP_CSTEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsConsSupProfile">
+                <column name="JCSP_CSP_ID" length="36" unique="true" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantBloqueCourantDysfonctionnements" inverse="false" table="OPLQTUTC" lazy="false" cascade="all,delete-orphan" order-by="JCSTCBCDEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSTCBCDEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantBloqueCourantDysfonctionnement">
+                <column name="JCSTCBCDEDS_CBCD_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsModeParcs" inverse="false" table="OPLQTTMP" lazy="false" cascade="all,delete-orphan" order-by="JCSTMPEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSTMPEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsModeParc">
+                <column name="JCSTMPEDS_MP_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsReseauVeilleReveilleOrganeInactifs" inverse="false" table="OPLQTSTR" lazy="false" cascade="all,delete-orphan" order-by="JCSTRVROIEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSTRVROIEDS_RVROI_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsReseauVeilleReveilleOrganeInactif">
+                <column name="JCSTRVROIEDS_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantMiseSousTensions" inverse="false" table="OPLQTTCM" lazy="false" cascade="all,delete-orphan" order-by="JCSTCMSTEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSTCMSTEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantMiseSousTension">
+                <column name="JCSTCMSTEDS_CMST_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsModeMontages" inverse="false" table="OPLQTTMM" lazy="false" cascade="all,delete-orphan" order-by="JCSTMMEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSTMMEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsModeMontage">
+                <column name="JCSTMMEDS_MM_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantNominaleActivations" inverse="false" table="OPLQTPTC" lazy="false" cascade="all,delete-orphan" order-by="JCSTCNAEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSTCNAEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantNominaleActivation">
+                <column name="JCSTCNAEDS_CNA_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantAppelleActivations" inverse="false" table="OPLQTSTC" lazy="false" cascade="all,delete-orphan" order-by="JCSTCAAEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSTCAAEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantAppelleActivation">
+                <column name="JCSTCAAEDS_CAA_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        
+        <set name="consolidateSupplyEdsTensions" inverse="false" table="OPLQTSTT" lazy="false" cascade="all,delete-orphan" order-by="JCSU_CSU_INSERT_ORDER asc">
+            <key>
+                <column name="JCSTU_CSTEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.ConsolidateSupplyEdsTension">
+                <column name="JCSU_CSU_ID" length="36" unique="true" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

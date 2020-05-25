@@ -1,0 +1,283 @@
+
+
+<form id = "emsFactor">
+
+<div data-ng-repeat="fclist in factorsList">
+	<div class="col-lg-12  top-btm-padding">
+		<fieldset class="custom-border">
+			<legend class="custom-border">Liste {{fclist.label}} V
+				{{fclist.version}}</legend>
+			<div class="custom-cross">
+				<span class="fa fa-remove fa-2x" style="cursor: pointer;" data-ng-show = "authorization('POCMRole')"
+					data-ng-click="showDeleteFCListModal(fclist,fclist.label,$index)"></span>
+			</div>
+			<div class="full-list-inner">
+				<div class="col-lg-12 no-padding"
+					style="padding: 5px 0px 15px 0px !important">
+					<div class="col-lg-3">
+						<label>{{ 'cop.technicalDataList.text.label'| localize }}</label>
+						<input class="form-control" type="text"
+							data-ng-model="fclist.label"
+							data-ng-disabled="fclist.entityId!==undefined"
+							data-ng-maxlength="255" maxlength="255" />
+					</div>
+					<div class="col-lg-3">
+						<label>{{'cop.ems.factors.application'|localize}}</label><span
+							class="astrik">*</span>
+						<ui-select id="Appselect" ng-disabled="!authorization('POCMRole')"
+							data-ng-model="fclist.fcApplicationTypes[0]"
+							reset-search-input="true"
+							on-select="setApplicationType($select.selected,fclist)">
+						<ui-select-match placeholder="Select Application Type">
+						{{$select.selected.label}} </ui-select-match> <ui-select-choices
+							repeat="type in applicationTypes | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+					<div class="col-lg-1"></div>
+					<div class="col-lg-4">
+						<label>{{ 'cop.technicalDataList.text.Description'|
+							localize }}</label>
+						<textarea class="form-control" data-ng-model="fclist.description" ng-disabled="!authorization('POCMRole')"
+							data-ng-change="setModifiedFCFlag(fclist)"
+							data-ng-maxlength="255" maxlength="255"></textarea>
+					</div>
+				</div>
+
+				<div
+					class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding tab-content-border"
+					style="padding: 5px 0px 15px 0px !important">
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+						<label>{{'cop.specificCop.label.Fuel'|localize}}</label><span
+							class="astrik">*</span>
+						<ui-select id="FuelSelect" data-ng-model="fclist.fuels"  ng-disabled="!authorization('POCMRole')"
+							reset-search-input="true"
+							on-select="setCorburant($select.selected,fclist)" multiple>
+						<ui-select-match placeholder="Select Fuel">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in fuelList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+						<label>{{'cop.specificCop.label.Category'|localize}}</label><span
+							class="astrik">*</span>
+						<ui-select id="categorySelect" data-ng-model="fclist.categories" ng-disabled="!authorization('POCMRole')"
+							reset-search-input="true"
+							on-select="setCategory($select.selected,fclist)" multiple>
+						<ui-select-match placeholder="Select Category">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in categoryList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+						<label class="control-label">{{'cop.specificCop.label.Class'|localize}}</label><span
+							class="astrik">*</span>
+						<ui-select id="classSelect" data-ng-model="fclist.classes" ng-disabled="!authorization('POCMRole')"
+							reset-search-input="true"
+							on-select="setClass($select.selected,fclist)" multiple>
+						<ui-select-match placeholder="Select Class">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in classList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-margin">
+						<label>{{'cop.specificCop.label.VehicleTechnology'|localize}}</label><span
+							class="astrik">*</span>
+						<ui-select id="vehicleTechnologySelect" ng-disabled="!authorization('POCMRole')"
+							data-ng-model="fclist.vehicleTechnologySet"
+							reset-search-input="true"
+							on-select="setVTechnology($select.selected,fclist)" multiple>
+						<ui-select-match placeholder="Select Vehicle Technology">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in vehicleTList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-margin">
+						<label>{{'cop.genomedata.label.EngineFuelInjection'|localize}}</label><span
+							class="astrik">*</span>
+
+						<ui-select id="injectionTypeSelect" ng-disabled="!authorization('POCMRole')"
+							data-ng-model="fclist.fuelInjectionTypes"
+							reset-search-input="true"
+							on-select="setInjectionType($select.selected,fclist)" multiple>
+						<ui-select-match placeholder="Select Fuel Injection Type">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in fuelITList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+
+
+				</div>
+
+
+				<div data-ng-repeat="factor in fclist.factorOrCoeffiecients"
+					data-ng-show="factor.isDeleted!=='TRUE'">
+					<div class="col-lg-12 custom-phase-pad" id="$index">
+						<div class="col-lg-5">
+
+
+							<div class="col-lg-9">
+								<ui-select id="pgLabelSelect" data-ng-model="factor.pgLabel" 
+                                 ng-change="baseValueChangeForFCoff(factor.oldPgLabel, factor.pgLabel); factor.oldPgLabel = factor.pgLabel"
+                                                                ng-disabled="!authorization('POCMRole')"
+									append-to-body="true" reset-search-input="true"
+									on-select="setPGLabelForFCoff($select.selected,fclist)"
+                                      on-remove="unSetPGLabelForFCoff($select.selected,PGlist)"> <ui-select-match
+									placeholder="Select Pollutant or Gas Label">
+								{{$select.selected.label}} </ui-select-match> <ui-select-choices
+                                 ui-disable-choice="checkVisibleForFCoff(type,fclist)"
+									repeat="type in fcPgLabelList | filter: $select.search">
+								<div ng-bind-html="type.label | highlight: $select.search "></div>
+								</ui-select-choices> </ui-select>
+								<span class="astrik">*</span>
+							</div>
+							<div class="col-lg-3" style="padding: 5px;">
+								<span class="fa fa-pencil" data-ng-show = "authorization('POCMRole')"></span> <span class="fa fa-remove" data-ng-show = "authorization('POCMRole')"
+									data-ng-click="showDeleteFactorModal(fclist,$index,factor.pgLabel.label)"></span>
+							</div>
+						</div>
+
+						<div class="col-lg-3">
+							<div style="float: left; padding: 5px 0px;">
+								<label class="control-label">{{
+									'cop.technicalDataList.text.label'| localize }}</label><span
+									class="astrik">*</span>
+							</div>
+							<div class="col-lg-7">
+								<input class="form-control" type="text" ng-disabled="!authorization('POCMRole')"
+									data-ng-change="setModifiedFCFlag(fclist)"
+									data-ng-model="factor.fcLabel.label" data-ng-maxlength="255"
+									maxlength="255" required />
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div style="padding: 5px 0px;" class="col-lg-6">
+								<label class="control-label">{{'cop.technicalData.label.defaultValue'|localize}}</label><span
+									class="astrik">*</span>
+							</div>
+							<div class="col-lg-6">
+								<input class="form-control" type="text" frdecimal ng-disabled="!authorization('POCMRole')"
+									data-ng-change="setModifiedFCFlag(fclist)"
+									data-ng-model="factor.defaultValue" required />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-12 no-padding" id="factors"></div>
+			</div>
+			<div class="col-lg-12 custom-phase-btn">
+				<div class="col-lg-12">
+					<button class="btn btn-success" style="float: right" data-ng-show = "authorization('POCMRole')"
+						data-ng-click="addFactor(fclist)" class="drop">
+						<span class="fa fa-plus-square-o fa-custom-pad"></span>{{'cop.factor.label.add'|localize}}
+					</button>
+				</div>
+			</div>
+		</fieldset>
+
+	</div>
+</div>
+
+
+<div class="slide-resize col-lg-12 col-lg-10"
+	style="position: fixed;
+	/* top: 0px; */ bottom: 0px; background-color: #fff;">
+<label class="screenNo">{{'cop.ems.factors.label.screenNo' | localize}}</label>
+	<div class="col-lg-12 padding-top-btm">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6 text-center">
+
+			<button type="submit" class="btn btn-primary" data-dismiss="modal" data-ng-show = "authorization('POCMRole')"
+				data-ng-click="showSaveFCConfirmation(true)">{{
+				'cop.technicalData.label.validate' | localize }}</button>
+
+			&nbsp; &nbsp;
+
+
+			<button type="button" class="btn btn-default " data-ng-show = "authorization('POCMRole')"
+				data-dismiss="modal" data-ng-click="CancelConfirmationESFC()">{{ 'cop.technicalData.label.cancel' |
+				localize }}</button>
+		</div>
+
+
+		<div class="col-lg-3 text-right">
+			<div class="padding-top-btm">
+				<button type="button" style="border-radius: 8px;"
+					class="btn btn-default" data-dismiss="modal"
+					 data-ng-click="getAllHistory('EMS_DEPENDENT_FCL')">{{
+					'cop.technicalData.label.modificationHistory' |localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</form>
+
+
+<!-- Confirmation Message On Cancel Button -->
+<div id="ConfirmCancelESFCModal" class="modal fade" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.message.cancelUnsavedDataOnConfirmation'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal"
+					data-ng-click="cancelModifiedESFCChanges()">{{
+					'cop.cancelUnsavedData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal">{{
+					'cop.cancelUnsavedData.message.cancel' | localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Confirmation Message On Cancel Button-->
+<!--Start of validation modal  -->
+<div id="validationErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+				<div><h3>{{'cop.factor.required.label' | localize}}</h3></div>
+				<div ng-repeat="message in message">
+				<h4 class="modal-title" id="mymessage"><b>{{ message.label }}</b></h4>
+				<div ng-repeat="error in message.errors">
+					<h5 class="modal-title" id="myerrorLabel">{{$index+1}}) {{ error }}</h5>
+				</div>
+				</div>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+					}}</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--End of validation modal  -->
+
+
+

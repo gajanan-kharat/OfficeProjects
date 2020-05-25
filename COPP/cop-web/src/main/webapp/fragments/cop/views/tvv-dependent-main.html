@@ -1,0 +1,481 @@
+<div data-cop-header></div>
+<div id="wrapper" class="context-wrapper">
+	<div>
+		<div data-cop-sidebar></div>
+	</div>
+
+	<div class="col-lg-12 no-padding">
+		<div class="row no-margin">
+
+
+			<div>
+
+				<div class="no-padding slide-resize col-lg-10 col-lg-12"
+					style="position: fixed; z-index: 100; background-color: #fff;">
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;&nbsp;</div>
+					<div class="col-lg-12 tab-content-bottom no-padding">
+						<div class="col-lg-6">
+							<div data-ng-show="TvvStructure">
+								<div>
+									<label title=" {{'cop.tvvstructure.label.headingTDList'
+                                            | localize }} "><b> {{'cop.tvvstructure.label.headingTDList'
+											| localize }} </b></label>
+								</div>
+								<div class="padding-top-btm">
+									<button type="button" style="border-radius: 8px;"
+										class="btn btn-default" data-dismiss="modal"
+										 data-ng-click="getAllHistory('TVV_DEPENDENT_TDL')">{{
+										'cop.technicalData.label.modificationHistory' |localize }}</button>
+								</div>
+								<button type="button" style="border-radius: 8px;" data-ng-show = "authorization('POCMRole')"
+									class="btn btn-warning" data-ng-show="TvvStructure"
+									data-dismiss="modal" data-ng-click="showAddListModal()">
+									<span class="fa fa-plus-square-o fa-custom-pad"></span> {{
+									'cop.technicalData.label.addTDList' | localize }}
+								</button>
+							</div>
+							<div data-ng-show="testConditionActive">
+								<div>
+									<label title="{{'cop.tvvstructure.label.headingTCList' | localize }}" ><b>>
+											{{'cop.tvvstructure.label.headingTCList' | localize }} </b></label>
+								</div>
+								<div class="padding-top-btm">
+									<button type="button" style="border-radius: 8px;"
+										class="btn btn-default" data-dismiss="modal"
+										 data-ng-click="getAllHistory('TVV_DEPENDENT_TCL')">{{
+										'cop.technicalData.label.modificationHistory' |localize }}</button>
+								</div>
+								<button type="button" style="border-radius: 8px;" data-ng-show = "authorization('POCMRole')"
+									class="btn btn-warning" data-ng-show="testConditionActive"
+									data-dismiss="modal" data-ng-click="showAddTCListModal()">
+									<span class="fa fa-plus-square-o fa-custom-pad"></span> {{
+									'cop.testCondition.label.addTCList' | localize }}
+								</button>
+							</div>
+						</div>
+						<div class="col-lg-6">
+
+							<ul class="tab-pane fade in active">
+								<li class="icon-option active" data-toggle="tab"
+									href="#TvvStructuree" data-ng-click="showTechnicalData()">
+									<span class="fa fa-car fa-2x"></span>
+									<div>{{'cop.technicalData.tab.label' | localize }}</div>
+								</li>
+								<li class="icon-option" data-toggle="tab" href="#Conditions"
+									data-ng-click="showTestConditions()"><span
+									class="fa fa-cogs fa-2x"></span>
+									<div>{{'cop.testCondition.tab.label' | localize }}</div></li>
+							</ul>
+
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-lg-12 tab-content no-padding"
+					style="bottom: 43px; padding-top: 170px !important;">
+
+					<div id="TvvStructuree" class="tab-pane fade in active">
+						<ng-include src="'fragments/cop/views/tvv-dependent-tdl.html'"></ng-include>
+					</div>
+					<div id="Conditions" class="tab-pane fade">
+						<ng-include src="'fragments/cop/views/tvv-dependent-tcl.html'"></ng-include>
+					</div>
+
+				</div>
+			</div>
+
+			<div id="addDatalModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+						<form name="myForm3">
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+								 data-ng-click="cancelCreation(itemlabel,itemDescription,'addDatalModal')"
+									style="float: right; background-color: #fff;"
+									 aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addListItem'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label> {{ 'cop.technicalData.text.label'| localize }}</label>
+									<span class="astrik">*</span>
+								</div>
+								<div>
+									<input class="form-control" type="text"
+										data-ng-model="itemlabel" data-ng-maxlength="255"
+										maxlength="255" required />
+								</div>
+								<div>
+									<label>{{ 'cop.technicalData.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+									<textarea class="form-control" data-ng-model="itemDescription"
+										data-ng-maxlength="255" maxlength="255"></textarea>
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+								<button type="submit" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addDataItem()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-ng-click="cancelCreation(itemlabel,itemDescription,'addDatalModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+
+
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div id="addListModal" class="modal fade" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+						<form name="myForm4">
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+								data-ng-click="cancelCreation(Listlabel,ListDescription,'addListModal')"
+									style="float: right; background-color: #fff;"
+									aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addList'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label>{{ 'cop.technicalDataList.text.label'| localize
+										}}</label> <span class="astrik">*</span>
+								</div>
+								<div>
+									<input class="form-control" type="text"
+										data-ng-model="Listlabel" data-ng-maxlength="255"
+										maxlength="255" required />
+								</div>
+								<div>
+									<label>{{ 'cop.technicalDataList.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+									<textarea class="form-control" data-ng-model="ListDescription"
+										data-ng-maxlength="255" maxlength="255"></textarea>
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+
+								<button type="submit" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addList()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-ng-click="cancelCreation(Listlabel,ListDescription,'addListModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div id="ConfirmDeleteModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 600px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 600px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.technicalData.message.deleteConfirmation' | localize }}
+								{{deleteListLabel}}</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="removeList()">{{
+								'cop.technicalData.label.ok' | localize }}</button>
+							&nbsp; &nbsp;
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal">{{
+								'cop.technicalData.message.cancel' | localize }}</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div id="ConfirmDeleteTCModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 600px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 600px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.technicalData.message.deleteConfirmation' | localize }}
+								{{deleteTCListLabel}}</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+							
+
+						
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="removeTCList()">{{
+								'cop.technicalData.label.ok' | localize }}</button>
+									&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal">{{
+								'cop.technicalData.message.cancel' | localize }}</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="deleteDatalModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.technicalDataList.message.deleteConfirmation'| localize }}{{deleteLabel}}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="removeDataItem()">{{
+								'cop.technicalData.message.delete' | localize }}</button>
+							&nbsp; &nbsp;
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal">{{
+								'cop.technicalData.message.cancel' | localize }}</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="addConditionlModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+						<form name="myForm1">
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+								data-ng-click="cancelCreation(itemlabel,itemDescription,'addConditionlModal')"
+									style="float: right; background-color: #fff;"
+									 aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addListItem'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label>{{ 'cop.technicalData.text.label'| localize }}</label>
+									<span class="astrik">*</span>
+								</div>
+								<div>
+									<input class="form-control" type="text"
+										data-ng-model="itemlabel" data-ng-maxlength="255"
+										maxlength="255" required />
+								</div>
+								<div>
+									<label>{{ 'cop.technicalData.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+									<textarea class="form-control" data-ng-model="itemDescription"
+										data-ng-maxlength="255" maxlength="255"></textarea>
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+								<button type="submit" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addCondition()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-ng-click="cancelCreation(itemlabel,itemDescription,'addConditionlModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div id="addTCListModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+						<form name="myForm2">
+							<div class="modal-header">
+								<button type="button" class="btn fa fa-remove"
+								data-ng-click="cancelCreation(TCListlabel,TCListDescription,'addTCListModal')"
+									style="float: right; background-color: #fff;"
+									 aria-hidden="true"></button>
+								<h4 class="modal-title" id="myModalLabel">{{
+									'cop.technicalData.label.addList'| localize }}</h4>
+							</div>
+							<div class="modal-body" style="padding-top: 20px;">
+								<div>
+									<label class="required">{{
+										'cop.technicalDataList.text.label'| localize }}</label> <span
+										class="astrik">*</span>
+								</div>
+								<div>
+									<input class="form-control" type="text"
+										data-ng-model="TCListlabel" data-ng-maxlength="255"
+										maxlength="255" required />
+								</div>
+								<div>
+									<label>{{ 'cop.technicalDataList.text.Description'|
+										localize }}</label>
+
+								</div>
+								<div>
+									<textarea class="form-control"
+										data-ng-model="TCListDescription" data-ng-maxlength="255"
+										maxlength="255"></textarea>
+								</div>
+							</div>
+
+							<div class="modal-footer align-center">
+
+
+
+								<button type="submit" style="border-radius: 0px;"
+									class="btn btn-primary" data-dismiss="modal"
+									data-ng-click="addTCList()">{{
+									'cop.technicalData.message.create' |localize }}</button>
+								&nbsp; &nbsp;
+								<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-ng-click="cancelCreation(TCListlabel,TCListDescription,'addTCListModal')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="deleteConditionModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.testConditionList.message.deleteConfirmation'| localize }} {{deleteLabel}}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+						
+
+						
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="removeCondition()">{{
+								'cop.technicalData.message.delete' | localize }}</button>
+									&nbsp; &nbsp;
+									<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal">{{
+								'cop.technicalData.message.cancel' | localize }}</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="cancelCreationModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.creation.cancel.message'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="continueCreation()">{{
+								'cop.creation.label.yes' | localize }}</button>
+							&nbsp; &nbsp;
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal">{{
+								'cop.creation.label.no' | localize }}</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<div data-cop-history></div>

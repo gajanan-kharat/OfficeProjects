@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsPinTypeComment" table="OPLQTETC">
+        <id column="ID_COMMENT" name="id" >
+            <generator class="increment"/>
+        </id>
+
+        <property name="message" type="string">
+            <column name="MESSAGE" />
+        </property>
+        <property name="tMax">
+            <column name="T_MAX" />
+        </property>
+        <property name="tMin">
+            <column name="T_MIN" />
+        </property>
+        <properties  name="pair" unique="true">
+            <many-to-one name="eds" class="com.inetpsa.eds.dao.model.EdsEds" lazy="false"  >
+                <column name="EDS_ID"  length="36" not-null="true" />
+            </many-to-one>
+            <property name="type" type="string">
+                <column name="PIN_TYPE" not-null="true"/>
+            </property>
+        </properties>
+    </class>
+</hibernate-mapping>

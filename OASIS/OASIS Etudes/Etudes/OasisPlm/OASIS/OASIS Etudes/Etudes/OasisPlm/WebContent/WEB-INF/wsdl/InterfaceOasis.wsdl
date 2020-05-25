@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="OasisPlm"
+	targetNamespace="http://xml.inetpsa.com/Services/OasisPLM/InterfaceOasis"
+	xmlns:tns="http://xml.inetpsa.com/Services/OasisPLM/InterfaceOasis"
+	xmlns:cxl="http://fault.core.cxl.inetpsa.com"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<wsdl:types>
+
+		<schema targetNamespace="http://xml.inetpsa.com/Services/OasisPLM/InterfaceOasis"
+			xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0"
+			xmlns="http://www.w3.org/2001/XMLSchema" version="1.0">
+
+			<element name="ServiceException" />
+
+			<element name="CalculationRequest">
+				<complexType>
+					<sequence>
+						<element maxOccurs="1" minOccurs="1" ref="tns:calculation" />
+					</sequence>
+				</complexType>
+			</element>
+
+			<element name="CalculationResponse">
+				<complexType>
+					<sequence>
+						<element maxOccurs="1" minOccurs="1" ref="tns:calculation" />
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Root node -->
+			<element name="calculation">
+				<complexType>
+					<sequence>
+						<element name="calculationType" type="tns:CalculationType" />
+						<element name="requirements" type="tns:RequirementsType" />
+						<element name="transferModels" type="tns:TransferModelsType" />
+						<element name="result" type="tns:ResultType" minOccurs="0" />
+						<element name="projectName" type="string" />
+						<element name="userId" type="string" />
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Calculation type -->
+			<simpleType name="CalculationType">
+				<restriction base="string">
+					<enumeration value="MONTE-CARLO" />
+					<enumeration value="SPEC-IT" />
+					<enumeration value="ARITHMETIC" />
+					<enumeration value="SEMI-QUADRATIC" />
+				</restriction>
+			</simpleType>
+
+			<!-- Requirements Type -->
+			<complexType name="RequirementsType">
+				<sequence>
+					<element name="requirement" type="tns:RequirementType"
+						maxOccurs="unbounded" />
+				</sequence>
+				<attribute name="nb" type="positiveInteger" use="required" />
+			</complexType>
+
+			<!-- Transfer Models Type -->
+			<complexType name="TransferModelsType">
+				<sequence>
+					<element name="transferModel" type="tns:TransferModelType"
+						maxOccurs="unbounded" />
+				</sequence>
+				<attribute name="nb" type="positiveInteger" use="required" />
+			</complexType>
+
+			<!-- Requirement Type -->
+			<complexType name="RequirementType">
+				<sequence>
+					<element name="title" type="string" />
+					<element name="code" type="string" />
+					<element name="nominal" type="double" minOccurs="0" />
+					<element name="mean" type="double" minOccurs="0" />
+					<element name="standardDeviation" type="double" minOccurs="0" />
+					<element name="valueInf" type="double" minOccurs="0" />
+					<element name="valueSup" type="double" minOccurs="0" />
+					<element name="itInf" type="double" minOccurs="0" />
+					<element name="itSup" type="double" minOccurs="0" />
+					<element name="tnc" type="double" minOccurs="0" />
+					<element name="cap" type="double" minOccurs="0" />
+					<element name="cpk" type="double" minOccurs="0" />
+					<element name="centeringMax" type="double" minOccurs="0" />
+					<element name="law" type="tns:LawType" minOccurs="0" />
+					<element name="paramLaw1" type="double" minOccurs="0" />
+					<element name="paramLaw2" type="double" minOccurs="0" />
+					<element name="arithmeticalIT" type="double" minOccurs="0" />
+					<element name="arithmeticalITInf" type="double" minOccurs="0" />
+					<element name="arithmeticalITSup" type="double" minOccurs="0" />
+					<element name="arithmeticalValueInf" type="double"
+						minOccurs="0" />
+					<element name="arithmeticalValueSup" type="double"
+						minOccurs="0" />
+					<element name="statisticalIT" type="double" minOccurs="0" />
+					<element name="statisticalITInf" type="double" minOccurs="0" />
+					<element name="statisticalITSup" type="double" minOccurs="0" />
+					<element name="statisticalValueInf" type="double"
+						minOccurs="0" />
+					<element name="statisticalValueSup" type="double"
+						minOccurs="0" />
+					<element name="semiQuadraticIT" type="double" minOccurs="0" />
+					<element name="semiQuadraticITInf" type="double" minOccurs="0" />
+					<element name="semiQuadraticITSup" type="double" minOccurs="0" />
+					<element name="semiQuadraticValueInf" type="double"
+						minOccurs="0" />
+					<element name="semiQuadraticValueSup" type="double"
+						minOccurs="0" />
+				</sequence>
+				<attribute name="id" type="string" use="required" />
+				<attribute name="parentId" type="string" use="required" />
+				<attribute name="name" type="string" use="required" />
+				<attribute name="order" type="nonNegativeInteger" use="required" />
+				<attribute name="referenceRequirement" type="boolean" use="required" />
+				<attribute name="status" type="boolean" />
+			</complexType>
+
+			<!-- Law type -->
+			<simpleType name="LawType">
+				<restriction base="string">
+					<enumeration value="BINOMIAL" />
+					<enumeration value="EXPO" />
+					<enumeration value="LOG" />
+					<enumeration value="NORMAL_PLAGE" />
+					<enumeration value="NORMAL_STD" />
+					<enumeration value="POISSON" />
+					<enumeration value="RAYLEIGH" />
+					<enumeration value="UNIFORM" />
+					<enumeration value="WEIBULL" />
+				</restriction>
+			</simpleType>
+
+			<element name="CheckFormulaRequest">
+				<complexType>
+					<sequence>
+						<element maxOccurs="1" minOccurs="1" ref="tns:checkFormula" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="CheckFormulaResponse">
+				<complexType>
+					<sequence>
+						<element maxOccurs="1" minOccurs="1" ref="tns:checkFormula" />
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Root node -->
+			<element name="checkFormula">
+				<complexType>
+					<sequence>
+						<element name="transferModel" type="tns:TransferModelType" />
+						<element name="result" type="tns:ResultType" minOccurs="0" />
+						<element name="userId" type="string" />
+					</sequence>
+				</complexType>
+			</element>
+
+			<!-- Transfer Model Type -->
+			<complexType name="TransferModelType">
+				<sequence>
+					<element name="formula" type="string" />
+					<element name="reportFormula" type="string" />
+					<element name="uncertainty" type="double" />
+				</sequence>
+				<attribute name="id" type="string" use="required" />
+				<attribute name="parentId" type="string" use="required" />
+				<attribute name="status" type="boolean" />
+			</complexType>
+
+
+			<!-- Result type -->
+			<complexType name="ResultType">
+				<sequence>
+					<element name="description" type="string" />
+					<element name="formula" type="string" minOccurs="0" />
+					<element name="impactedObject" type="string" minOccurs="0" />
+					<element name="position" type="nonNegativeInteger"
+						minOccurs="0" />
+					<element name="level" type="string" minOccurs="0" />
+					<element name="reportPath" type="string" minOccurs="0" />
+				</sequence>
+				<attribute name="status" type="nonNegativeInteger" use="required" />
+			</complexType>
+
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="CalculationRequest">
+		<wsdl:part element="tns:CalculationRequest" name="CalculationRequest" />
+	</wsdl:message>
+	<wsdl:message name="CheckFormulaRequest">
+		<wsdl:part element="tns:CheckFormulaRequest" name="CheckFormulaRequest" />
+	</wsdl:message>
+	<wsdl:message name="ServiceException">
+		<wsdl:part element="tns:ServiceException" name="ServiceException" />
+	</wsdl:message>
+	<wsdl:message name="CalculationResponse">
+		<wsdl:part element="tns:CalculationResponse" name="CalculationResponse" />
+	</wsdl:message>
+	<wsdl:message name="CheckFormulaResponse">
+		<wsdl:part element="tns:CheckFormulaResponse" name="CheckFormulaResponse" />
+	</wsdl:message>
+	<wsdl:portType name="InterfaceOasisPortType">
+		<wsdl:operation name="Calculation">
+			<wsdl:input message="tns:CalculationRequest" name="CalculationRequest" />
+			<wsdl:output message="tns:CalculationResponse" name="CalculationResponse" />
+			<wsdl:fault message="tns:ServiceException" name="ServiceException" />
+		</wsdl:operation>
+		<wsdl:operation name="CheckFormula">
+			<wsdl:input message="tns:CheckFormulaRequest" name="CheckFormulaRequest" />
+			<wsdl:output message="tns:CheckFormulaResponse" name="CheckFormulaResponse" />
+			<wsdl:fault message="tns:ServiceException" name="ServiceException" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="InterfaceOasisHttpBinding" type="tns:InterfaceOasisPortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="Calculation">
+			<soap:operation
+				soapAction="http://xml.inetpsa.com/Services/OasisPLM/InterfaceOasis#Calculation" />
+			<wsdl:input name="CalculationRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CalculationResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault name="ServiceException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="CheckFormula">
+			<soap:operation
+				soapAction="http://xml.inetpsa.com/Services/OasisPLM/InterfaceOasis#CheckFormula" />
+			<wsdl:input name="CheckFormulaRequest">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="CheckFormulaResponse">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault name="ServiceException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="InterfaceOasis">
+		<wsdl:port binding="tns:InterfaceOasisHttpBinding" name="InterfaceOasisHttpPort">
+			<soap:address
+				location="http://localhost:8080/OasisPlm/services/InterfaceOasis" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- *************************************************************** -->
+<!-- Il s'agit du projet ROOT : tous les composants de l'application -->
+<!-- vont "hériter" de ce projet. Ce POM rassemble donc les éléments -->
+<!-- communs aux POMs des composants Java, War et Ear du projet -->
+<!-- *************************************************************** -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<!-- tout projet ROOT hérite du POM Entreprise PSA -->
+	<parent>
+		<groupId>com.inetpsa.ciq</groupId>
+		<artifactId>psa-java-root</artifactId>
+		<version>3.1.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.inetpsa.oaz00</groupId>
+	<artifactId>OasisPlmRoot</artifactId>
+	<version>1.0.6-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+    <!-- Maven 3 mandatory (copy/past, leave variables) -->
+    <distributionManagement>
+        <site>
+            <id>projectSite</id>
+            <url>${urlProjectSite}</url>
+        </site>
+    </distributionManagement>
+
+	<name>OASIS/PLM</name>
+	<description>Web version of OASIS client for PLM interface</description>
+	<inceptionYear>2011</inceptionYear>
+
+	<developers>
+		<developer>
+			<id>U224106</id>
+			<name>Pierre-Antoine SIBERT</name>
+			<email>pierreantoine.sibert@mpsa.com</email>
+			<roles>
+				<role>Project Leader</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<contributors>
+		<contributor>
+			<name>Amit PHADKE</name>
+			<email>Amit.Phadke@geometricglobal.com</email>
+			<organization>Geometric Limited</organization>
+			<organizationUrl>http://www.geometricglobal.com</organizationUrl>
+			<roles>
+				<role>Designer</role>
+				<role>Developer</role>
+			</roles>
+		</contributor>
+	</contributors>
+
+	<!-- les POMs des modules de l'application -->
+	<modules>
+		<module>../OasisPlm</module>
+	</modules>
+
+	<!-- Propriétés générales du projet -->
+	<properties>
+        <envInst>oaz00</envInst>                  
+		<!-- EDIT : nom de la BU utilisee dans l'URL du JIRA du projet -->
+		<jiraBU>SIPP</jiraBU>
+
+		<svnUser>mdeoaz01</svnUser>
+        <svnInstance>4</svnInstance>
+		<svnRoot>/svn/oaz00/Etudes/trunk/</svnRoot>
+		<svnModuleName>OasisPlmRoot</svnModuleName>
+
+        <!-- Java compiler and compability version -->
+		<qualificationAppliJava>2.0.0</qualificationAppliJava>
+		<javaSourceCompatibility>1.6</javaSourceCompatibility>
+		<javaTargetCompatibility>1.6</javaTargetCompatibility>
+		<currentJavaPath>${javaPath_16}</currentJavaPath>
+
+        <!-- Source encoding -->
+		<sourceEncoding>UTF-8</sourceEncoding>
+        
+	</properties>
+
+</project>

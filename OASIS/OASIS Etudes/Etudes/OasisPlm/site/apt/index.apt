@@ -1,0 +1,10 @@
+OASIS/PLM Web Half Connector 
+
+	Web project including Web Service for OASIS / PLM Interface.
+	
+		2 Flows are available : 
+		
+		* CalculationRequest
+		
+		* CheckFormula Request
+		

@@ -1,0 +1,352 @@
+<div data-cop-header></div>
+
+
+<div id="wrapper" class="context-wrapper">
+    <div>
+        <div data-cop-sidebar></div>
+    </div>
+
+    <div class="col-lg-12 no-padding">
+        <div class="row no-margin">
+            <div style="padding-top:10px;">
+                <div class="no-padding  tab-gbr-content-bottom slide-resize col-lg-10 col-lg-12" style="position: fixed; z-index: 100; background-color: #fff;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content no-padding">
+
+                        <div data-ng-show="statusTabheading"><label><b>&nbsp > {{'cop.settings.status.statusheading' | localize}}</b></label></div>
+                        <div data-ng-show="mandatoryTvvEmission"><label><b>&nbsp > {{'cop.settings.status.mandatoryTvvEmissionheading' | localize}}</b></label></div>
+                        <div data-ng-show="mandatoryTvvStatus"><label><b>&nbsp > {{'cop.settings.status.mandatoryTvvStatusheading' | localize}}</b></label></div>
+
+                        <div class="top-btm-padding">
+                            <ul class="nav nav-pills nav-custom f-left custom-tab">
+                                <li class="active left"><a data-toggle="pill" href="#statusTestID" >{{'cop.settings.status.statusTabLabel' | localize}}</a></li>
+                                <li class=""><a data-toggle="pill" data-ng-click="displayESDependentScreen()" href="#ESDependentScreen">{{'cop.settings.status.mandatoryTvvEmissionTabLabel' | localize}}</a></li>
+                                <li class="right"><a data-toggle="pill" data-ng-click="displayTvvDependentScreen()" href="#mandatorytvv" data-ng-click="displayTVVDependentScreen()">{{'cop.settings.status.mandatoryTvvStatusTabLabel'| localize}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+  
+                <div>&nbsp</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content" style="top: 88px;">
+
+                    <!---------------------------------------------- TAB 1 STARTS------------------------------------>
+                    <div id="statusTestID" class="tab-pane fade in active">
+                        <div>
+                            <div class="col-lg-3">
+                                <h4>{{'cop.settings.testNature.label' | localize }}</h4>
+                                 
+                                <div id="testgrid" data-ui-grid="testgrid" data-ng-init="init()" data-ui-grid-auto-resize data-ui-grid-edit></div>
+                                 <button type="button" class="btn btn-default" style="margin-top:5px" ng-click="toggleTestModal()" data-ng-show = "authorization('POCMRole')">{{'cop.settings.testNature.addTestLabel' | localize}}</button>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <h4>{{'cop.settings.status.Label' | localize }}</h4>
+                                <div data-ui-grid="statusgrid" data-ui-grid ui-grid-row-edit data-ui-grid-edit data-ui-grid-auto-resize data-ui-grid-cellNav></div>
+                                <button type="button" class="btn btn-default" style="margin-top:5px" ng-click="addStatus()" data-ng-show = "authorization('POCMRole')">{{'cop.settings.status.addStatusLabel'| localize}}</button>
+                            </div>
+                            <div class="col-lg-3">
+                                <h4>{{'cop.settings.typeoftest.label' | localize }}</h4>
+                                <div data-ui-grid="typeoftestgrid" data-ng-init="init()" data-ui-grid ui-grid-row-edit data-ui-grid-edit data-ui-grid-auto-resize data-ui-grid-cellNav></div>
+                                 <button type="button" class="btn btn-default" style="margin-top:5px" ng-click="addTypeOfTest()" data-ng-show = "authorization('POCMRole')">{{'cop.settings.testNature.addTypeTestLabel' | localize}}</button>
+                            </div>
+                            
+                        </div>
+
+              
+
+                        <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed; bottom: 0px; background-color: #fff;">
+                           <label class="screenNo">{{'cop.status.valuesForStatus.label.screenNo' | localize}}</label> 
+                            <div class="col-lg-12 padding-top-btm">
+                                <div class="col-lg-3"></div>
+
+                                <div class="col-lg-6 text-center">
+                                   <button type="button" id="tvvValider" class=" btn btn-primary" ng-click="saveTypeTestStatusData()" data-ng-show = "authorization('POCMRole')">{{'cop.samplingRule.label.validate' | localize}}</button> &nbsp; &nbsp;
+                                    <button id="annulertvv" class="btn btn-default " ng-click="CancelStatusConfirmation()" data-ng-show = "authorization('POCMRole')">{{'cop.samplingRule.label.cancel' | localize}}</button>
+                                </div>
+
+                                <div class="col-lg-3 text-right"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------------------------------------------- TAB 1 ENDS------------------------------------>
+                    
+                    <!---------------------------------------------- TAB 2 STARTS ------------------------------------>
+                    <div id="ESDependentScreen" class="tab-pane fade">
+                        <div class="col-lg-12">
+                            <div class="col-lg-3 padding-top-btm">
+                                <ui-select id="esSelect" data-ng-model="emissionStandard" reset-search-input="true" on-select="getESDependentData($select.selected)">
+                                    <ui-select-match placeholder="Select Emission Standard">
+                                        {{$select.selected.displayLabelTVV }} </ui-select-match>
+                                        
+                                    <ui-select-choices repeat="es in emsList | filter: $select.search">
+                                        <div ng-bind-html="es.esLabel + ' V' + es.version | highlight: $select.search "></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div data-ui-grid="esDependentGrid" data-ui-grid-auto-resize></div>
+                        </div>
+
+
+                        <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed; bottom: 0px; background-color: #fff;">
+                            <label class="screenNo">{{'cop.status.mandatoryDataEs.label.screenNo' | localize}}</label>
+                            <div class="col-lg-12 padding-top-btm">
+                                <div class="col-lg-3"></div>
+ 
+                                <div class="col-lg-6 text-center">
+                                 <button type="button" id="emsvalider" class=" btn btn-primary pull-left" data-ng-click="showImportModel()" data-ng-show = "authorization('POCMRole')">{{'cop.samplingRule.label.import' | localize}}</button>
+                                   
+								<button type="button" id="emsvalider" class=" btn btn-primary" data-ng-click="saveMandatoryConfigurationES()" data-ng-show = "authorization('POCMRole')">{{'cop.samplingRule.label.validate' | localize}}</button> &nbsp; &nbsp;
+
+                                    <button id="annulerems" class="btn btn-default " data-ng-show = "authorization('POCMRole')"
+                                    ng-click="CancelEMSTVVConfirmation()">{{'cop.samplingRule.label.cancel' | localize}}</button>
+                                </div>
+
+                                <div class="col-lg-3 text-right"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!---------------------------------------------- TAB 3 STARTS------------------------------------>
+
+                    <div id="mandatorytvv" class="tab-pane fade">
+                    <div class="col-lg-12">
+                    	<div class="col-lg-3 padding-top-btm">
+                                <ui-select id="tvvSelect" data-ng-model="TVV" reset-search-input="true" on-select="getTVVDependentData($select.selected)">
+                                    <ui-select-match placeholder="Select TVV">
+                                        {{$select.selected.mandatDisplayTVVLabel }} </ui-select-match>
+                                        
+                                    <ui-select-choices repeat="tvv in tvvList | filter: $select.search">
+                                        <div ng-bind-html="tvv.label + ' V' + tvv.version | highlight: $select.search "></div>
+                                    </ui-select-choices>
+                                </ui-select>
+                            </div>
+                    
+                        <div class="col-lg-12 no-padding">
+                            <div data-ui-grid="esDependentGrid" data-ui-grid-auto-resize></div>
+                        </div>
+					</div>
+                        <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed; bottom: 0px; background-color: #fff;">
+ <label class="screenNo">{{'cop.status.mandatoryDataTvv.label.screenNo' | localize}}</label>
+                            <div class="col-lg-12 padding-top-btm">
+                                <div class="col-lg-3"></div>
+
+                                <div class="col-lg-6 text-center">
+                                    <button type="button" id="valider" class=" btn btn-primary" data-ng-click="saveMandatoryConfigurationTVV()" data-ng-show = "authorization('POCMRole')">{{'cop.samplingRule.label.validate' | localize}}</button>
+                                    <!-- saveMandatoryDataVV() -->
+                                    &nbsp; &nbsp;
+
+                                    <button id="annuler" class="btn btn-default" ng-click="CancelEMSTVVConfirmation()" data-ng-show = "authorization('POCMRole')">{{'cop.samplingRule.label.cancel' | localize}}</button>
+                                </div>
+
+                                <div class="col-lg-3 text-right"></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+					<!---------------------------------------------- TAB 3 ENDS------------------------------------>
+                </div>
+
+
+
+				<!---------------------------------------------- MODALS STARTS------------------------------------>
+				<div id="testModal" class="modal fade" tabindex="-1" 
+					  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      
+					  <div class="modal-dialog modal-md">
+							 <div class="modal-content">
+									<div class="modal-header">
+										   <button type="button" class="btn fa fa-remove"
+												  style="float: right; background-color: #fff;"
+												  data-dismiss="modal" aria-hidden="true"></button>
+										   <h4 class="modal-title" id="myModalLabel">{{'cop.settings.testNature.createpopup.header' | localize}}</h4>
+									</div>
+									<div class="modal-body" style="padding-top: 20px;">
+		
+										   <div class="form-group">
+										<label>{{'cop.settings.testNature.createpopup.label' | localize}}</label> <span class="astrik">*</span> <input
+											type="text" data-ng-model="testnature" required
+											class="form-control" id="test" placeholder="Enter test name" />
+									</div>
+                                    <div class="form-group">
+                                        <label>{{'cop.settings.testNature.createpopup.hierarchy' | localize}}</label> <span class="astrik">*</span> <input
+                                            type="number" data-ng-model="testnatureHierarchy" required
+                                            class="form-control" id="test" placeholder="Enter Hierarchy" />
+                                    </div>
+									</div>
+		
+									<div class="modal-footer align-center">
+										   <button type="submit"
+										data-ng-click="addTest(testnature,testnatureHierarchy,testDescription)"
+										class="btn btn-primary">{{'cop.settings.status.submit' | localize}}</button>
+								</div>
+									</div>
+							 </div>
+					  </div>
+			   </div>
+
+<div id="importModel" class="modal fade" tabindex="-1" 
+					  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog modal-md">
+							 <div class="modal-content">
+									<div class="modal-header">
+										   <button type="button" class="btn fa fa-remove"
+												  style="float: right; background-color: #fff;"
+												  data-dismiss="modal" aria-hidden="true"></button>
+										   <h4 class="modal-title" id="myModalLabel">{{'cop.settings.testNature.importpopup.header' | localize}}</h4>
+									</div>
+									<div class="modal-body" style="padding-top: 20px;">
+		<label>{{'cop.search.label.emissionStandard' | localize}}</label>
+										  <ui-select id="importSelect" data-ng-model="importdata" reset-search-input="true" on-select="selectedData($select.selected)">
+                                    <ui-select-match   placeholder="Select Emission Standard">
+                                        {{$select.selected.displayLabelTVV }} </ui-select-match>
+                                        
+                                    <ui-select-choices repeat="es in emsList | filter: $select.search">
+                                        <div ng-bind-html="es.esLabel + ' V' + es.version | highlight: $select.search "></div>
+                                    </ui-select-choices>
+                                </ui-select>
+									</div>
+		
+									<div class="modal-footer align-center">
+										   <button type="submit"
+										data-ng-click="impoertSelected()"
+										class="btn btn-primary">{{'cop.samplingRule.label.import' | localize}}</button>
+										<button type="button" style="border-radius: 0px;"
+									class="btn btn-default" data-ng-click="cancelCreation(importdata,'importModel')">{{
+									'cop.technicalData.message.cancel' | localize }}</button>
+								</div>
+									</div>
+							 </div>
+					  </div>
+					<div>
+						<modal title="Status" visible="showModalstatus">
+						<form role="form">
+							<div class="form-group">
+								<label>{{'cop.settings.status.Label' | localize }}</label> <input
+									type="text" ng-model="status" class="form-control" id="test"
+									placeholder="Enter the status" />
+							</div>
+							<button type="submit" ng-click="addStatus(status)"
+								class="btn btn-default">{{'cop.settings.status.submit'
+								| localize}}</button>
+						</form>
+						</modal>
+					</div>
+					<!---------------------------------------------- MODALS ENDS------------------------------------>
+
+				</div>
+			</div>
+    </div>
+    
+<!-- Confirmation Message On Cancel Button -->
+<div id="ConfirmCancelStatus" class="modal fade" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.message.cancelUnsavedDataOnConfirmation'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal"
+					data-ng-click="cancelModifiedStatusChanges()">{{
+					'cop.cancelUnsavedData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal">{{
+					'cop.cancelUnsavedData.message.cancel' | localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Confirmation Message On Cancel Button-->
+<!-- Confirmation Message On Cancel Button OF Emission Standard and tvv dep mandatory fields-->
+<div id="ConfirmCancelEMSTVV" class="modal fade" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.message.cancelUnsavedDataOnConfirmation'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal"
+					data-ng-click="cancelModifiedEMSTVVChanges()">{{
+					'cop.cancelUnsavedData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal">{{
+					'cop.cancelUnsavedData.message.cancel' | localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Confirmation Message On Cancel Button OF Emission Standard and tvv dep mandatory fields-->
+<!-- Confirmation message on cancel button for importer dialog -->
+<div id="cancelCreationModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.creation.cancel.message'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="continueCreation()">{{
+								'cop.creation.label.yes' | localize }}</button>
+							&nbsp; &nbsp;
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal">{{
+								'cop.creation.label.no' | localize }}</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- End of confirmation message  on cancel button for importer dialog  -->
+
+ <div id="settingsErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ errorMsgSettings }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>

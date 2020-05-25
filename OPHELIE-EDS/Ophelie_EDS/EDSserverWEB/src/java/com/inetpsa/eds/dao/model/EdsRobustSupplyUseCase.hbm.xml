@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsRobustSupplyUseCase" table="OPLQTRSU">
+        <id name="rsucId" type="string">
+            <column name="RSUC_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+
+        <property name="rsucName" type="string">
+            <column name="RSUC_USECASE_NAME" length="225" />
+        </property>
+
+        <property name="rsucRemove" type="boolean">
+            <column name="RSUC_REMOVE" />
+        </property>
+
+        <property name="rsucIVeille" type="java.lang.Float">
+            <column name="RSUC_I_VEILLE" precision="7" scale="0" />
+        </property>
+        <property name="rsucIVeilleIformBy" type="string">
+            <column name="RSUC_I_VEILLE_IFORM_BY" length="1024" />
+        </property>
+        <property name="rsucIVeilleComment" type="string">
+            <column name="RSUC_I_VEILLE_COMMENT" length="1024" />
+        </property>
+        <property name="rsucIReveilInactif" type="java.lang.Float">
+            <column name="RSUC_I_REVEIL_INACTIF" precision="7" scale="0" />
+        </property>
+        <property name="rsucIReveilIformBy" type="string">
+            <column name="RSUC_I_REVEIL_INACTIF_IFORM_BY" length="1024" />
+        </property>
+        <property name="rsucIReveilComment" type="string">
+            <column name="RSUC_I_REVEIL_COMMENT" length="1024" />
+        </property>
+        <property name="rsucINomStab" type="java.lang.Float">
+            <column name="RSUC_I_NOM_STAB" precision="7" scale="0" />
+        </property>
+        <property name="rsucINomStabIformBy" type="string">
+            <column name="RSUC_I_NOM_STAB_IFORM_BY" length="1024" />
+        </property>
+        <property name="rsucINomStabComment" type="string">
+            <column name="RSUC_I_NOM_STAB_COMMENT" length="1024" />
+        </property>
+        <property name="rsucIPirecasStab" type="java.lang.Float">
+            <column name="RSUC_I_PIRECAS_STAB" precision="7" scale="0" />
+        </property>
+        <property name="rsucIPirecasStabIformBy" type="string">
+            <column name="RSUC_I_PIRECAS_STAB_IFORM_BY" length="1024" />
+        </property>
+        <property name="rsucIPirecasComment" type="string">
+            <column name="RSUC_I_PIRECAS_COMMENT" length="1024" />
+        </property>
+        <property name="rsucUMin" type="java.lang.Float">
+            <column name="RSUC_U_MIN" precision="7" scale="0" />
+        </property>
+        <property name="rsucUMinInformBy" type="string">
+            <column name="RSUC_U_MIN_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucUMinComment" type="string">
+            <column name="RSUC_U_MIN_COMMENT" length="1024" />
+        </property>
+        <property name="rsucUMoy" type="java.lang.Float">
+            <column name="RSUC_U_MOY" precision="7" scale="0" />
+        </property>
+        <property name="rsucUMoyInformBy" type="string">
+            <column name="RSUC_U_MOY_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucUMoyComment" type="string">
+            <column name="RSUC_U_MOY_COMMENT" length="1024" />
+        </property>
+        <property name="rsucUMax" type="java.lang.Float">
+            <column name="RSUC_U_MAX" precision="7" scale="0" />
+        </property>
+        <property name="rsucUMaxInformBy" type="string">
+            <column name="RSUC_U_MAX_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucUMaxComment" type="string">
+            <column name="RSUC_U_MAX_COMMENT" length="1024" />
+        </property>
+        <property name="rsucIMax" type="java.lang.Float">
+            <column name="RSUC_I_MAX" precision="7" scale="0" />
+        </property>
+        <property name="rsucIMaxInformBy" type="string">
+            <column name="RSUC_I_MAX_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucIMaxComment" type="string">
+            <column name="RSUC_I_MAX_COMMENT" length="1024" />
+        </property>
+        <property name="rsucTIMax" type="java.lang.Float">
+            <column name="RSUC_T_IMAX" precision="7" scale="0" />
+        </property>
+        <property name="rsucTIMaxInformBy" type="string">
+            <column name="RSUC_T_IMAX_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucTIMaxComment" type="string">
+            <column name="RSUC_T_IMAX_COMMENT" length="1024" />
+        </property>
+        <property name="rsucUCaracValue" type="java.lang.Float">
+            <column name="RSUC_U_CARAC_VALUE" precision="7" scale="0" />
+        </property>
+        <property name="rsucUCaracInformBy" type="string">
+            <column name="RSUC_U_CARAC_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucUCaracComment" type="string">
+            <column name="RSUC_U_CARAC_COMMENT" length="1024" />
+        </property>
+        <property name="rsucIConsoParc" type="java.lang.Float">
+            <column name="RSUC_I_CONSO_PARC" precision="7" scale="0" />
+        </property>
+        <property name="rsucIConsoParcInformBy" type="string">
+            <column name="RSUC_I_CONSO_PARC_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucIConsoParcComment" type="string">
+            <column name="RSUC_I_CONSO_PARC_COMMENT" length="1024" />
+        </property>
+
+        <!-- New values -->
+        <property name="rsucTNomStab" type="java.lang.Float">
+            <column name="RSUC_T_NOM_STAB" precision="7" scale="0" />
+        </property>
+        <property name="rsucTPireCas" type="java.lang.Float">
+            <column name="RSUC_T_PIRE_CAS" precision="7" scale="0" />
+        </property>
+        <property name="rsucIdysf" type="java.lang.Float">
+            <column name="RSUC_I_DYSF" precision="7" scale="0" />
+        </property>
+        <property name="rsucTdysf" type="java.lang.Float">
+            <column name="RSUC_T_DYSF" precision="7" scale="0" />
+        </property>
+        <property name="rsucImst" type="java.lang.Float">
+            <column name="RSUC_I_MST" precision="7" scale="0" />
+        </property>
+        <property name="rsucTmst" type="java.lang.Float">
+            <column name="RSUC_T_MST" precision="7" scale="0" />
+        </property>
+
+        <property name="rsucTnomStabInformBy" type="string">
+            <column name="RSUC_T_NOM_STAB_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucTpireCasInformBy" type="string">
+            <column name="RSUC_T_PIRE_CAS_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucIdysfInformBy" type="string">
+            <column name="RSUC_I_DYSF_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucTdysfInformBy" type="string">
+            <column name="RSUC_T_DYSF_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucImstInformBy" type="string">
+            <column name="RSUC_I_MST_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsucTmstInformBy" type="string">
+            <column name="RSUC_T_MST_INFORM_BY" length="1024" />
+        </property>
+
+        <property name="rsucTnomStabComment" type="string">
+            <column name="RSUC_T_NOM_STAB_COMMENT" length="1024" />
+        </property>
+        <property name="rsucTpireCasComment" type="string">
+            <column name="RSUC_T_PIRE_CAS_COMMENT" length="1024" />
+        </property>
+        <property name="rsucIdysfComment" type="string">
+            <column name="RSUC_I_DYSF_COMMENT" length="1024" />
+        </property>
+        <property name="rsucTdysfComment" type="string">
+            <column name="RSUC_T_DYSF_COMMENT" length="1024" />
+        </property>
+        <property name="rsucImstComment" type="string">
+            <column name="RSUC_I_MST_COMMENT" length="1024" />
+        </property>
+        <property name="rsucTmstComment" type="string">
+            <column name="RSUC_T_MST_COMMENT" length="1024" />
+        </property>
+
+        <many-to-one name="robustSupply" class="com.inetpsa.eds.dao.model.EdsRobustSupply" fetch="select" lazy="false">
+            <column name="RSUC_RS_ID" length="36" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

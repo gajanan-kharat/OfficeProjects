@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 oct. 2012 11:31:04 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsSupply" table="OPLQTSUY">
+        <id name="sedsId" type="string">
+            <column name="SEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select">
+            <column name="SEDS_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="edsPsaMesureSupply" class="com.inetpsa.eds.dao.model.EdsPsaMesureSupply" fetch="select" lazy="false" cascade="all">
+            <column name="S_PMSEDS_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsRobustSupply" class="com.inetpsa.eds.dao.model.EdsRobustSupply" fetch="select" lazy="false" cascade="all">
+            <column name="S_RSEDS_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsPrimarySupply" class="com.inetpsa.eds.dao.model.EdsPrimarySupply" fetch="select" lazy="false" cascade="all">
+            <column name="S_PSEDS_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsConsolidateSupply" class="com.inetpsa.eds.dao.model.EdsConsolidateSupply" fetch="select" lazy="false"
+            cascade="all">
+            <column name="S_CSEDS_ID" length="36" />
+        </many-to-one>
+        <property name="sedsSupplyName" type="string">
+            <column name="SEDS_SUPPLY_NAME" length="225" />
+        </property>
+        <property name="sedsDriftComment" type="string">
+            <column name="SEDS_DRIFT_COMMENT" length="1024" />
+        </property>
+
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29 ao?t 2012 15:29:50 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsGroundRobustCurent" table="OPLQTRRC">
+        <id name="grcId" type="string">
+            <column name="GRC_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="gsedsTitreMasse" type="string">
+            <column name="GSEDS_TITRE_MASSE" length="1024" />
+        </property>
+        <property name="gsedsIVeille" type="java.lang.Float">
+            <column name="GSEDS_I_VEILLE" precision="7" scale="0" />
+        </property>
+        <property name="gsedsIReveilleInactif" type="java.lang.Float">
+            <column name="GSEDS_I_REVEILLE_INACTIF" precision="7" scale="0" />
+        </property>
+        <property name="gsedsINomStab" type="java.lang.Float">
+            <column name="GSEDS_I_NOM_STAB" precision="7" scale="0" />
+        </property>
+        <property name="gsedsIPirecasStab" type="java.lang.Float">
+            <column name="GSEDS_I_PIRECAS_STAB" precision="7" scale="0" />
+        </property>
+        <!-- <property name="gsedsIMst" type="java.lang.Float"> <column name="GSEDS_I_MST" precision="7" scale="0" /> </property> -->
+        <property name="gsedsIDeltaTMst" type="java.lang.Float">
+            <column name="GSEDS_I_DELTA_T_MST" precision="7" scale="0" />
+        </property>
+        <property name="gsedsIPic" type="java.lang.Float">
+            <column name="GSEDS_I_PIC" precision="7" scale="0" />
+        </property>
+        <property name="gsedsTIpic" type="java.lang.Float">
+            <column name="GSEDS_T_IPIC" precision="7" scale="0" />
+        </property>
+        <property name="gsedsIVeilleIformBy" type="string">
+            <column name="GSEDS_I_VEILLE_IFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsReveilleIformBy" type="string">
+            <column name="GSEDS_REVEILLE_IFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsINomStabIformBy" type="string">
+            <column name="GSEDS_I_NOM_STAB_IFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsIPirecasStabIformBy" type="string">
+            <column name="GSEDS_I_PIRECAS_STAB_IF_BY" length="1024" />
+        </property>
+        <property name="gsedsIPicIformBy" type="string">
+            <column name="GSEDS_I_PIC_IFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsTIPicIformBy" type="string">
+            <column name="GSEDS_T_IPIC_IFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsIVeilleComment" type="string">
+            <column name="GSEDS_I_VEILLE_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsReveilleComment" type="string">
+            <column name="GSEDS_REVEILLE_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsINomStabComment" type="string">
+            <column name="GSEDS_I_NOM_STAB_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsIPirecasComment" type="string">
+            <column name="GSEDS_I_PIRECAS_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsIPicComment" type="string">
+            <column name="GSEDS_I_PIC_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsTIPicComment" type="string">
+            <column name="GSEDS_T_IPIC_COMMENT" length="1024" />
+        </property>
+
+        <!-- New values -->
+        <property name="gsedsTnomStab" type="java.lang.Float">
+            <column name="GSEDS_T_NOM_STAB" precision="7" scale="0" />
+        </property>
+        <property name="gsedsTpireCas" type="java.lang.Float">
+            <column name="GSEDS_T_PIRE_CAS" precision="7" scale="0" />
+        </property>
+        <property name="gsedsIdysf" type="java.lang.Float">
+            <column name="GSEDS_I_DYSF" precision="7" scale="0" />
+        </property>
+        <property name="gsedsTdysf" type="java.lang.Float">
+            <column name="GSEDS_T_DYSF" precision="7" scale="0" />
+        </property>
+        <property name="gsedsImst" type="java.lang.Float">
+            <column name="GSEDS_I_MST" precision="7" scale="0" />
+        </property>
+        <property name="gsedsTmst" type="java.lang.Float">
+            <column name="GSEDS_T_MST" precision="7" scale="0" />
+        </property>
+
+        <property name="gsedsTnomStabInformBy" type="string">
+            <column name="GSEDS_T_NOM_STAB_INFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsTpireCasInformBy" type="string">
+            <column name="GSEDS_T_PIRE_CAS_INFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsIdysfInformBy" type="string">
+            <column name="GSEDS_I_DYSF_INFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsTdysfInformBy" type="string">
+            <column name="GSEDS_T_DYSF_INFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsImstInformBy" type="string">
+            <column name="GSEDS_I_MST_INFORM_BY" length="1024" />
+        </property>
+        <property name="gsedsTmstInformBy" type="string">
+            <column name="GSEDS_T_MST_INFORM_BY" length="1024" />
+        </property>
+
+        <property name="gsedsTnomStabComment" type="string">
+            <column name="GSEDS_T_NOM_STAB_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsTpireCasComment" type="string">
+            <column name="GSEDS_T_PIRE_CAS_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsIdysfComment" type="string">
+            <column name="GSEDS_I_DYSF_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsTdysfComment" type="string">
+            <column name="GSEDS_T_DYSF_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsImstComment" type="string">
+            <column name="GSEDS_I_MST_COMMENT" length="1024" />
+        </property>
+        <property name="gsedsTmstComment" type="string">
+            <column name="GSEDS_T_MST_COMMENT" length="1024" />
+        </property>
+    </class>
+</hibernate-mapping>

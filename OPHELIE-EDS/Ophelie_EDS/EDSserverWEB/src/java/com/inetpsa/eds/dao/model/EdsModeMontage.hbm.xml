@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 sept. 2012 01:07:02 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsModeMontage" table="OPLQTMOM">
+        <id name="mmedsId" type="string">
+            <column name="MMEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="mmedsTmoyModeMontage" type="java.lang.Float">
+            <column name="MMEDS_TMOY_MODE_MONTAGE" precision="7" scale="0" />
+        </property>
+        <property name="mmedsTmoyModeMontageComment" type="string">
+            <column name="MMEDS_TMOY_MODE_MONTAGE_COM" length="1024" />
+        </property>
+        <property name="mmedsModeMontageTitre" type="string">
+            <column name="MMEDS_MODE_MONTAGE_TITRE" length="1024" />
+        </property>
+
+        <property name="mmedsRemove" type="java.lang.Integer">
+            <column name="MMEDS_REMOVE" />
+        </property>
+    </class>
+</hibernate-mapping>

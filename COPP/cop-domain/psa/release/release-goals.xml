@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<release
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ciq-repository.inetpsa.com/repository/virtual/com/inetpsa/jip/xsd/release/release-1.1.xsd">
+    <goals>
+        <goal>deploy</goal>
+    </goals>
+</release>
+
+

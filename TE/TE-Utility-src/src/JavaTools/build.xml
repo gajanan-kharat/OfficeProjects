@@ -1,0 +1,46 @@
+<!-- Build javatools.jar -->
+<project name="JavaTools" basedir="." default="jar">
+
+    <!-- set global properties for this build -->
+    <property environment="env"/>
+    <property name="src.dir"     value="."/>
+    <property name="build.dir"   value="${src.dir}"/>
+    <property name="classes.dir" value="${env.HOME}/vpm/dev/obj/java/${ant.project.name}/classes"/>
+    <property name="jar.dir"     value="${env.BIN}"/>
+    <property name="Syslib.dir"     value="${env.APLDB2}/sqllib/java"/>
+	 <property name="Lcllib.dir"     value="${env.BIN}"/>
+	 <property name="Apllib.dir"     value="${env.APPVPM}/EtudeVpm/java"/>
+    <echo message="${src.dir}"></echo> 
+	<!-- set classpath properties for this build -->
+    <path id="classpath">
+        <fileset dir="${Syslib.dir}" includes="**/*.jar"/>
+     	  <fileset dir="${Lcllib.dir}" includes="**/*.jar"/>
+    	  <fileset dir="${Apllib.dir}" includes="**/*.jar"/>
+    </path>
+
+    <!-- Set targets for clean -->
+    <target name="clean">
+        <delete dir="${classes.dir}"/>
+	<delete file="${jar.dir}/${ant.project.name}.jar"/>
+    </target>
+
+    <!-- Set targets for compile -->
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+    </target>
+
+    <!-- Set targets for building jar file. -->
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main-class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <!-- Set targets for Clean Build -->
+    <target name="clean-build" depends="clean,jar"/>
+
+</project>

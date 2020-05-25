@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 nov. 2012 10:07:50 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsConsolidateSupply" table="OPLQTCOS">
+        <id name="csedsId" type="string">
+            <column name="CSEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="csedsRef" type="string">
+            <column name="CSEDS_REF" length="36" not-null="true" />
+        </property>
+        <many-to-one name="edsConsolidateSupplyMesure" class="com.inetpsa.eds.dao.model.EdsConsolidateSupplyMesure" fetch="select" lazy="false"
+            cascade="all">
+            <column name="CSMEDS_CSM_ID" length="36" not-null="true" />
+        </many-to-one>
+
+        <many-to-one name="edsConsolidateSupplyTheoritic" class="com.inetpsa.eds.dao.model.EdsConsolidateSupplyTheoritic" fetch="select"
+            lazy="false" cascade="all">
+            <column name="CSEDS_CST_ID" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="wording" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false">
+            <column name="CSEDS_W_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="csedsSupplyName" type="string">
+            <column name="CSEDS_SUPPLY_NAME" length="225" />
+        </property>
+        <property name="csedsTbtBt" type="string">
+            <column name="CSEDS_TBT_BT" length="3" />
+        </property>
+        <many-to-one name="edsQcf" class="com.inetpsa.eds.dao.model.EdsQcf" fetch="select" lazy="false" cascade="all">
+            <column name="CSEDS_QCF" length="36" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

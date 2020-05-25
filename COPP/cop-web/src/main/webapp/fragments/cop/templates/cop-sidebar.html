@@ -1,0 +1,155 @@
+ <div>
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        
+
+        <div class="collapse in" id="top-level-menu" aria-expanded="true">
+            <div id="subMenu">
+
+                <div class="list-group panel" style="margin-bottom: 0px">
+                    <a id="home" href="#!/" class="list-group-item"><span
+                        class="glyphicon glyphicon-home menu-icon"></span>{{'application.view.cop.home'|localize}}</a>
+                </div>
+
+                <div class="list-group panel" style="margin-bottom: 0px">
+                    <a id="search" href="#!/cop/SearchMain" class="list-group-item"><span
+                        class="fa fa-search menu-icon"></span>{{'cop.menu.label.searchTVV'
+                        | localize }}</a>
+                </div>
+                <!-- Collapsable menu 1 -->
+                <div class="list-group panel" style="margin-bottom: 0px">
+                    <a id="creation" href="#sub-level-menu-1" 
+                        class="list-group-item collapsed" data-toggle="collapse"
+                        data-parent="#subMenu" aria-expanded="false"><span
+                        class="fa fa-plus menu-icon"></span>{{'cop.menu.label.creation' |
+                        localize }}</a>
+                    <div class="collapse" id="sub-level-menu-1" aria-expanded="false"
+                        style="height: 0px;">
+                        <a id="createTVV" href="#!/cop/CreateTvv"  data-ng-show = "hasCopRole('seed-w20','POCHRole')"
+                            class="list-group-item list-group-item-child"><span
+                            class="fa fa-pencil-square-o menu-child-icon"></span>{{'cop.menu.label.editTVV'
+                            | localize }} (creation)</a> 
+                            <a href="#!/cop/CreateTechnicalGroup"  data-ng-show = "hasCopRole('seed-w20','POCNRole')"
+                            class="list-group-item list-group-item-child"
+                            data-ng-click="editModal()"><span
+                            class="fa fa-pencil-square-o menu-child-icon"></span>{{'cop.menu.label.editTechnicalGroup'
+                            | localize }}</a> 
+                            <a href="#!/cop/CreateRegulationGroup"  data-ng-show = "hasCopRole('seed-w20','POCNRole')"
+                            class="list-group-item list-group-item-child"
+                            data-ng-click="createRg()"><span
+                            class="fa fa-pencil-square-o menu-child-icon"></span>{{'cop.menu.label.editRegulationGroup'
+                            | localize }}</a>
+                            <a id="sampleRule" href="#!/cop/SamplingRule" data-ng-show = "hasCopRole('seed-w20','POCHRole') || hasCopRole('seed-w20','POCMRole') || hasCopRole('seed-w20','POCNRole')"
+                            class="list-group-item list-group-item-child" href="#"><span
+                            class="fa fa-pencil-square-o menu-child-icon"></span>{{'cop.menu.label.editSamplingRule'
+                            | localize }}</a>
+                    </div>
+                </div>
+
+                <!-- Collapsable menu 2 -->
+                <div class="list-group panel" style="margin-bottom: 0px">
+                    <a id="referential" href="#sub-level-menu-2"
+                        class="list-group-item collapsed" data-toggle="collapse"
+                        data-parent="#subMenu" aria-expanded="false"> <span
+                        class="fa fa-book menu-icon"></span>{{'cop.menu.label.repositoryActivity'
+                        | localize }}
+                    </a>
+                    <div class="collapse" id="sub-level-menu-2" aria-expanded="false"
+                        style="height: 0px;">
+                        <a id="gbr" class="list-group-item list-group-item-child" 
+                            href="#!/cop/GlobalBusinessReference">{{'cop.menu.label.manageGbrData'
+                            | localize }}</a> 
+                            <a id="TvvStructure" data-ng-show = "hasCopRole('seed-w20','POCHRole') || hasCopRole('seed-w20','POCMRole') || hasCopRole('seed-w20','POCNRole')"
+                            class="list-group-item list-group-item-child"
+                            href="#!/cop/TvvDependentMain">{{'cop.menu.label.editTechnicalData'
+                            | localize }}</a> 
+                            <a id="createEs" href="#!/cop/CreateEmissionStandard" data-ng-show = "hasCopRole('seed-w20','POCMRole')"
+                            class="list-group-item list-group-item-child"
+                            data-ng-click="initializeEMS()">{{'cop.menu.label.createES'
+                            | localize }}</a> 
+                            <a id="emsDetail" data-ng-show = "hasCopRole('seed-w20','POCHRole') || hasCopRole('seed-w20','POCMRole') || hasCopRole('seed-w20','POCNRole')"
+                            href="#!/cop/EditEmissionStandard"
+                            class="list-group-item list-group-item-child" href="#">{{'cop.menu.label.editES'
+                            | localize }}</a>
+                             <!-- Link for statisticalRulesParameter file: #!/cop/StatisticaleRulesParameters -->
+                            <a id="statisticaleRulesParameters" 
+                            class="list-group-item list-group-item-child" href="#!/cop/StatisticaleRulesParameters">{{'cop.menu.label.ruleParameter'
+                            | localize }}</a>
+                            <!-- Link for preparation file: #!/cop/preparationFileStructure -->
+                            <a id="preparationfile" 
+                            class="list-group-item list-group-item-child" href="#!/cop/preparationFileStructure">{{'cop.menu.label.preparationfile'
+                            | localize }}</a>
+                    </div>
+                </div>
+
+                <div class="list-group panel" style="margin-bottom: 0px">
+                    <a id="setting" href="#!/cop/Settings" class="list-group-item" data-ng-show = "hasCopRole('seed-w20','POCHRole') || hasCopRole('seed-w20','POCMRole') || hasCopRole('seed-w20','POCNRole')"><span
+                        class="fa fa-wrench menu-icon"></span>{{'cop.menu.label.valuesforstatus'
+                        | localize }}</a>
+                </div>
+                <div class="list-group panel" style="margin-bottom: 0px">
+                    <a id="vehicle" href="#!/cop/Vehicle" class="list-group-item">
+                    <span class="fa fa-clipboard menu-icon"></span>{{'cop.menu.label.vehicle' | localize }}</a>
+                </div>
+                
+                <!-- lot2 -->
+               <div class="list-group panel" style="margin-bottom: 0px">
+                    <a class="list-group-item" href="#!/cop/Evacop">
+                    <span class="fa fa-cloud menu-icon"></span>{{'cop.menu.label.evacop' | localize }}</a>
+                </div>
+                
+                 <div class="list-group panel" style="margin-bottom: 0px">
+                    <a class="list-group-item" href="#!/cop/Return">
+                    <span class="fa fa-paper-plane menu-icon"></span>{{'cop.menu.label.restitutionvehicles' | localize }}</a>
+                </div>
+                
+                 <!-- Collapsable menu Archive -->
+                <div class="list-group panel" style="margin-bottom: 0px">
+                    <a id="referential" href="#sub-level-menu-archive"
+                        class="list-group-item collapsed" data-toggle="collapse"
+                        data-parent="#subMenu" aria-expanded="false"> <span class="fa fa-archive menu-icon"></span>{{'cop.menu.label.archiving'
+                        | localize }}
+                    </a>
+                    <div class="collapse" id="sub-level-menu-archive" aria-expanded="false"
+                        style="height: 0px;">
+                        <a id="archivebox" class="list-group-item list-group-item-child" 
+                            href="#!/cop/Archive">{{'cop.menu.label.archiving'
+                            | localize }}</a>
+                        <a id="archiveboxlist" class="list-group-item list-group-item-child" 
+                            href="#!/cop/archiveboxList">{{'cop.menu.label.archiving'
+                            | localize }}</a>  
+                            
+                    </div>
+                </div>
+                
+                
+                <!-- lot2 -->
+                <div class="list-group panal" style="margin-bottom:0px">
+                    <a id="statisticaleSample" href="#!/cop/StatisticaleSample" class="list-group-item">
+                    <span class="fa fa-line-chart menu-icon" ></span>
+                    {{'cop.menu.label.statisticalCurves' | localize}}
+                    </a>
+                </div>
+                <div class="list-group panal" style="margin-bottom:0px">
+                    <a id="basket" href="#!/cop/Basket" class="list-group-item">
+                    <span class="fa fa-shopping-cart menu-icon" ></span>
+                    {{'cop.menu.label.basket' | localize}}
+                    </a>
+                </div>
+                <div class="list-group panel" style="margin-bottom: 0px">
+                    <a id="export" class="list-group-item" data-ng-click="exportBCE()" onclick="window.open('./export/exportBCE', '_self')" style="cursor:pointer"><span
+                        class="fa fa-download menu-icon" ></span>{{'cop.menu.label.export' | localize }}</a>
+				</div>
+                
+            </div>
+        </div>
+
+
+    </div>
+<!-- /#sidebar-wrapper -->
+    
+</div>
+
+
+

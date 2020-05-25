@@ -1,0 +1,85 @@
+# Add web module configuration below
+
+# The following section is used by the web security to protect URLs patterns.
+# Check http://seedstack.org/docs/seed/manual/web/#security for more information.
+
+[]
+org.seedstack.w20.application.title = COPANTIPOL
+org.seedstack.w20.application.subtitle = 
+org.seedstack.w20.application.version = V 1.2
+org.seedstack.w20.timeout = 60
+org.seedstack.w20.cors-with-credentials = true
+org.seedstack.w20.masterpage-template = index.html
+
+# Uncomment to add basic auth
+[org.seedstack.seed.security.urls]
+/** = authcBasic, roles[POCRole]
+[org.seedstack.seed.security]
+realms = ${valo.web.org.seedstack.seed.security.realm}
+
+# COP Application Roles
+[org.seedstack.seed.security.roles]
+POCRole  = POC.Vehicle_Preparator, POC.Bench_Pilot, POC.Vehicle_Driver, POC.Park_Manager, POC.Serial_COP_Expert, POC.Serial_COP_Analyst, POC.Special_Tests_Analyst, POC.Special_Tests_Expert, POC.Special_Test_Schedule_Reader, POC.Serial_Test_Schedule_Reader, POC.Technical_Database_Manager, POC.Groups_Rules_Manager, POC.Global_Data_Manager
+POCARole = POC.Vehicle_Preparator
+POCBRole = POC.Bench_Pilot
+POCCRole = POC.Vehicle_Driver
+POCDRole = POC.Park_Manager
+POCERole = POC.Serial_COP_Expert
+POCFRole = POC.Serial_COP_Analyst
+POCGRole = POC.Special_Tests_Analyst
+POCHRole = POC.Special_Tests_Expert
+POCIRole = POC.Special_Test_Schedule_Reader
+POCJRole = POC.Serial_Test_Schedule_Reader
+POCMRole = POC.Technical_Database_Manager
+POCNRole = POC.Groups_Rules_Manager
+POCORole = POC.Global_Data_Manager
+
+
+[org.seedstack]
+jdbc.datasources = ${valo.tomcat.org.seedstack.seed.persistence.jdbc.datasources}
+jpa.units = ${valo.tomcat.org.seedstack.seed.persistence.jpa.units}
+
+
+
+
+####################################################################
+# Persistence
+####################################################################
+
+
+# Configure the application datasource
+[org.seedstack.jdbc.datasource.cop_ds]
+provider= HikariDataSourceProvider
+driver=${valo.batch.config.database.jdbc.driver}
+url= ${valo.tomcat.config.database.jdbc.url}
+user=${valo.tomcat.config.database.jdbc.user}
+password=${valo.tomcat.config.database.jdbc.password}
+property.sql.enforce_strict_size = ${valo.tomcat.config.database.sql.enforce}
+provider= HikariDataSourceProvider
+property.sql.enforce_strict_size = ${valo.tomcat.config.database.sql.enforce}
+
+# Configure the COP JPA unit
+[org.seedstack.jpa.unit.cop-domain]
+datasource= ${valo.tomcat.org.seedstack.seed.persistence.jdbc.datasources}
+property.hibernate.dialect= ${valo.tomcat.hibernate.dialect}
+
+# Define the JPA unit for classes under this package
+[com.inetpsa.poc00.domain.*]
+jpa-unit=${valo.tomcat.org.seedstack.seed.persistence.jpa.units}
+
+# Temp File Directory for Export BCE Functionality ex "H:/"
+[com.inetpsa.cop.export.exportbce]
+tempfiledirectory=${valo.web.export.exportbce.tempfiledirectory}
+
+# Temp File Directory for Reception File mail functionality ex "H:/"
+[com.inetpsa.cop.receptionFile.pdf]
+tempfiledirectory=${valo.web.receptionFile.pdf}
+email.from = ${valo.web.receptionfile.pdf.email.from}
+email.subject = ${valo.web.receptionfile.pdf.email.subject}
+
+# Email Properties
+[com.inetpsa.cop]
+email.host = ${valo.web.email.host}
+email.port = ${valo.web.email.port}
+email.userName = ${valo.web.email.userName}
+email.password = ${valo.web.email.password}

@@ -1,0 +1,289 @@
+<div class="padding-top-btm">
+
+		<!-- Moteur -->
+		<div class="panel padding-top-btm">
+
+
+			<div data-toggle="collapse"  data-target="#Moteur"
+				class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+			<a class="accordion-toggle" data-toggle="collapse" data-target="#Moteur"> <label>{{
+					'cop.genomedata.label.Engine' | localize }}</label>
+			</a>
+
+			<div id="Moteur" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div data-ui-grid="MoteurGridOptions" data-ui-grid-selection
+						data-ui-grid-edit data-ui-grid-auto-resize data-ui-grid-cellNav
+						 class="grid ui-responsive "></div>
+					<div class="custom-padding-top">
+						<button id="saveButton" class="btn btn-primary Valider" data-ng-show = "authorization('POCMRole')"
+							data-ng-disabled="MoteurButton"
+							data-ng-click="saveSelectedMoteurData()">{{
+							'cop.genomedata.label.addTorepository' | localize }}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- FuelType -->
+		<div class="panel padding-top-btm">
+
+
+
+			<div data-toggle="collapse" 
+				data-target="#FuelType"
+				class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+			<a class="accordion-toggle" data-toggle="collapse" data-target="#FuelType"> <label>{{
+					'cop.genomedata.label.FuelType' | localize }}</label>
+			</a>
+
+			<div id="FuelType" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div data-ui-grid="FuelTypeGridOptions" data-ui-grid-selection
+						data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize
+						class="grid"></div>
+					<div class="custom-padding-top">
+						<button id="saveButton" class="btn btn-primary Valider" data-ng-show = "authorization('POCMRole')"
+							data-ng-disabled="carburantButton"
+							data-ng-click=" saveSelectedCarburantData()">{{
+							'cop.genomedata.label.addTorepository' | localize }}</button>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Famille -->
+		<div class="panel padding-top-btm">
+
+
+			<div data-toggle="collapse" data-target="#Famille"
+				class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+			<a class="accordion-toggle" data-toggle="collapse" data-target="#FuelType"> <label>{{
+					'cop.genomedata.label.ProjectFamily' | localize }}</label>
+			</a>
+
+			<div id="Famille" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div data-ui-grid="FamilleGridOptions" data-ui-grid-selection
+						data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize
+						class="grid ui-responsive "></div>
+					<div class="custom-padding-top">
+						<button id="saveButton" class="btn btn-primary Valider" data-ng-show = "authorization('POCMRole')"
+							data-ng-disabled="FamilleButton"
+							data-ng-click="saveSelectedFamilleData()">{{
+							'cop.genomedata.label.addTorepository' | localize }}</button>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Silhouette -->
+
+		<div class="panel padding-top-btm">
+
+
+			<div data-toggle="collapse"
+				data-target="#Silhouette"
+				class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+			<a class="accordion-toggle" data-toggle="collapse" data-target="#Silhouette"> <label>{{
+					'cop.genomedata.label.BodyWork' | localize }}</label>
+			</a>
+
+			<div id="Silhouette" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div data-ui-grid="SilhouetteGridOptions" data-ui-grid-selection
+						data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize
+						class="grid"></div>
+					<div class="custom-padding-top">
+						<button id="saveButton" class="btn btn-primary Valider" data-ng-show = "authorization('POCMRole')"
+							data-ng-disabled="ShilhouetteButton"
+							data-ng-click="saveSelectedSilhouetteData()">{{
+							'cop.genomedata.label.addTorepository' | localize }}</button>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Constructeur -->
+
+		<div class="panel padding-top-btm">
+
+
+			<div data-toggle="collapse"
+				data-target="#Constructeur"
+				class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+			<a class="accordion-toggle" data-toggle="collapse" data-target="#Constructeur"> <label>{{
+					'cop.genomedata.label.CarBrand' | localize }}</label>
+			</a>
+
+			<div id="Constructeur" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div data-ui-grid="ConstructeurGridOptions" data-ui-grid-selection
+						data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize
+						class="grid"></div>
+					<div class="custom-padding-top">
+						<button id="saveButton" class="btn btn-primary Valider" data-ng-show = "authorization('POCMRole')"
+							data-ng-disabled="ConstructeurButton"
+							data-ng-click="saveSelectedConstructeurData()">{{
+							'cop.genomedata.label.addTorepository' | localize }}</button>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+
+	
+
+		<!-- Reglementation -->
+
+		<div class="panel padding-top-btm">
+
+
+			<div data-toggle="collapse"	data-target="#Reglementation"
+				class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+			<a class="accordion-toggle" data-toggle="collapse" data-target="#Reglementation"> <label>{{
+					'cop.genomedata.label.EmissionStandard' | localize }}</label>
+			</a>
+
+			<div id="Reglementation" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div data-ui-grid="ReglementationGridOptions"
+						data-ui-grid-selection data-ui-grid-edit data-ui-grid-cellnav
+						data-ui-grid-auto-resize class="grid"></div>
+					<div class="custom-padding-top">
+						<button id="saveButton" class="btn btn-primary Valider" data-ng-show = "authorization('POCMRole')"
+							data-ng-disabled="ReglemenrationButton"
+							data-ng-click="saveSelectedReglementationData()">{{
+							'cop.genomedata.label.addTorepository' | localize }}</button>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+		<!-- Bolte -->
+
+		<div class="panel padding-top-btm">
+
+
+			<div data-toggle="collapse" data-target="#Bolte"
+				class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+			<a class="accordion-toggle" data-toggle="collapse" data-target="#Bolte"> <label>{{
+					'cop.genomedata.label.Gear' | localize }}</label>
+			</a>
+
+			<div id="Bolte" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div data-ui-grid="BolteGridOptions" data-ui-grid-selection
+						data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize
+						class="grid"></div>
+					<div class="custom-padding-top">
+						<button id="saveButton" class="btn btn-primary Valider" data-ng-show = "authorization('POCMRole')"
+							data-ng-disabled="BolteButton"
+							data-ng-click="saveSelectedBolteData()">{{
+							'cop.genomedata.label.addTorepository' | localize }}</button>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+
+		<!-- FinalReduction -->
+
+		<div class="panel padding-top-btm">
+
+
+			<div data-toggle="collapse"
+				data-target="#FinalReduction"
+				class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+			<a class="accordion-toggle" data-toggle="collapse" data-target="#FinalReduction"> <label>{{
+					'cop.genomedata.label.FinalReduction' | localize }}</label>
+			</a>
+
+			<div id="FinalReduction" class="panel-collapse collapse">
+				<div class="panel-body">
+
+					<div data-ui-grid="FinalReductionGridOptions"
+						data-ui-grid-selection data-ui-grid-edit data-ui-grid-cellnav
+						data-ui-grid-auto-resize class="grid"></div>
+					<div class="custom-padding-top">
+						<button id="saveButton" class="btn btn-primary Valider" data-ng-show = "authorization('POCMRole')"
+							data-ng-disabled="FianlReductionButton"
+							data-ng-click="saveSelectedFinalReductionData()">{{
+							'cop.genomedata.label.addTorepository' | localize }}</button>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+</div>
+
+
+<!-- Old -->
+
+
+
+<div class="slide-resize col-lg-12 col-lg-10"
+	style="position: fixed;
+	/* top: 0px; */ bottom: 0px; background-color: #fff;">
+<label class="screenNo">{{'cop.genomedata.label.screenNo' | localize}}</label>
+	<div class="col-lg-12 padding-top-btm">
+	
+		<div class="col-lg-3"></div>
+
+		<div class="col-lg-6 text-center">
+			<button type="button" id="save" class="btn btn-primary" data-ng-show = "authorization('POCMRole')"
+				data-ng-click="SaveAllGenomeData()">{{
+				'cop.genomedata.label.save' | localize }}</button>
+			&nbsp; &nbsp;
+			<button type="reset" id="valider" class="btn btn-default" data-ng-show = "authorization('POCMRole')"
+				data-ng-click="refresh()">{{
+				'cop.technicalData.label.cancel' | localize }}</button>
+		</div>
+
+		<div class="col-lg-3 text-right">
+			<button type="button" id="History"
+				class="btn btn-default pull-right" data-ng-click="showHistoryData('COMMON_GENOME')">
+				{{ 'cop.technicalData.label.modificationHistory' | localize }}</button>
+		</div>
+	</div>
+</div>

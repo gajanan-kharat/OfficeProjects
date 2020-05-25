@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 sept. 2012 11:30:11 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsHighValidationFormData" table="OPLQTHVD">
+        <id name="hvfdId" type="string">
+            <column name="HVFD_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsValidationByHvfdDbeesClosedId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_DBEES_CLOSED_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select" lazy="false">
+            <column name="HVFD_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByHvfdDbeedClosedId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_DBEED_CLOSED_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+<!--         <many-to-one name="edsValidationByHvfdReConsolidateId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_RE_CONSOLIDATE_ID" length="36" not-null="true" unique="true" />
+        </many-to-one> -->
+<!--         <many-to-one name="edsValidationByHvfdReClosedId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_RE_CLOSED_ID" length="36" not-null="true" unique="true" />
+        </many-to-one> -->
+        <many-to-one name="edsValidationByHvfdDbeesConsolidateId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_DBEES_CONSOLIDATE_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByHvfdReRobustId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_RE_ROBUST_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByHvfdCadeClosedId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_CADE_CLOSED_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByHvfdCadeConsolidateId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_CADE_CONSOLIDATE_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByHvfdDbeedConsolidateId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_DBEED_CONSOLIDATE_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByHvfdSupplierDataId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_SUPPLIER_DATA_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByHvfdRsPrimaryId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="HVFD_RS_PRIMARY_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="hvfdStage" type="int">
+            <column name="HVFD_STAGE" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

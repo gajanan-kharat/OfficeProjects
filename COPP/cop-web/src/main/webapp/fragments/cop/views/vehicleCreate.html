@@ -1,0 +1,59 @@
+<div data-ng-controller="vehicleCreateController">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" data-ng-if="countermark.trim().length>0" style="margin-top: 1em;">
+            <label>{{'cop.vehicle.label.countermark' | localize}}</label><br /> <input class="form-control" type="text"
+                value="{{vehicle.counterMark}}" data-ng-disabled="true" />
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="padding-left: 1em; margin-top: 1em;" data-ng-if="vehicle.chasisNumber.trim().length>0">
+            <label>{{'cop.vehicle.label.chassis' | localize}}</label><br /> <input class="form-control" type="text" value="{{vehicle.chasisNumber}}"
+                data-ng-disabled="true" />
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" data-ng-if="vehicle.registrationNumber.trim().length>0" style="margin-top: 1em;">
+            <label>{{'cop.vehicle.label.registration' | localize}}</label><br /> <input class="form-control" type="text"
+                value="{{vehicle.registrationNumber}}" data-ng-disabled="true" />
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="padding-left: 1em; margin-top: 1em;" data-ng-if="vehicle.tvvLabel.trim().length>0">
+            <label>{{'cop.search.label.tvv' | localize}}</label><br /> <input class="form-control" type="text" value="{{vehicle.tvvLabel}}"
+                data-ng-disabled="true" />
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding-left: 1em; margin-top: 1em;">
+                <label>{{'cop.vehicle.label.manufacturingfactory' | localize}}<span style="color: red;">*</span></label><br />
+                <ui-select id="dropdownTypeofTest" data-ng-model="tvvFactoryList.selected" data-ng-change="onFactoryChange($select.selected)" reset-search-input="true" data-ng-disabled="disableEdit"> <ui-select-match
+                    placeholder="{{placeHolderFac}}">{{$select.selected.carFactoryLabel}} </ui-select-match> <ui-select-choices
+                    repeat="tvvFactory in tvvFactoryList | filter: $select.search">
+                <div ng-bind-html="tvvFactory.carFactoryLabel | highlight: $select.search "></div>
+                </ui-select-choices> </ui-select>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding-left: 1em; margin-top: 1em;">
+                <label>{{'cop.vehicle.label.modelyear' | localize}}<span style="color: red;">*</span></label><br /> <input class="form-control"
+                    type="text" data-ng-model="vehicle.modelYear" data-ng-maxlength="255" data-ng-change="onValueChange()" data-ng-readonly="disableEdit"/>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="padding-left: 1em; margin-top: 1em;">
+                <label>{{'cop.vehicle.label.mco2' | localize}}<span style="color: red;">*</span></label><br /> <input class="form-control"
+                    type="text" data-ng-model="vehicle.mCO2I" data-ng-maxlength="11"
+                    data-ng-change="vehicle.mCO2I = floatCheck(vehicle.mCO2I)" data-ng-readonly="disableEdit"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 custom-footer">
+        <div class="col-lg-12 padding-top-btm">
+
+
+            <div class="col-lg-3 col-md-3 text-center"></div>
+            <div class="col-lg-4 col-md-4 text-center">
+                <button type="button" class="btn btn-primary" data-ng-click="updateVehicle()">{{
+                    'cop.technicalData.label.validate' | localize }}</button>
+                      &nbsp;
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="loadVehicleFile()">{{
+                    'cop.technicalData.message.cancel' | localize }}</button>
+            </div>
+
+            <div class="col-lg-5 col-md-5 text-right no-padding">
+                <div class="btn-with-screen-no"></div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,169 @@
+<div>
+
+	<div data-cop-header></div>
+
+
+	<div id="wrapper" class="context-wrapper">
+		<div>
+			<div data-cop-sidebar></div>
+		</div>
+
+		<div class="col-lg-12 no-padding">
+			<div class="row no-margin">
+
+				<div
+					class="no-padding  tab-gbr-content-bottom slide-resize col-lg-10 col-lg-12"
+					style="position: fixed; z-index: 100; background-color: #fff;">
+					<div class="col-lg-12">
+
+						<div
+							class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content no-padding">
+							<!-- TAB 1 -->
+							<div id="specificCop"
+								class="tab-pane fade in active tab-padding specficCopTitle">
+
+
+								<label><b>> {{ 'cop.specificCop.heading'| localize }}</b></label>
+
+							</div>
+							<!-- TAB 2 -->
+							<div id="commonGenome"
+								class="tab-pane fade tab-padding commonGenomeTitle">
+
+
+								<label><b>> {{ 'cop.genomeData.heading'| localize }} </b></label>
+
+							</div>
+							<!-- TAB 3 -->
+							<div id="coastDown"
+								class="tab-pane fade tab-padding coastDownTitle">
+
+
+								<label><b>> {{ 'cop.coastDown.heading' | localize }}</b></label>
+
+
+							</div>
+						</div>
+
+						<div class="top-btm-padding">
+							<ul class="nav nav-pills nav-custom f-left custom-tab">
+								<li id="scop" class="active left"><a data-toggle="pill"
+									href="#specificCop" data-ng-click="specificCoptab()">{{
+										'cop.genomedata.label.specificCop' | localize }}</a></li>
+								<li id="cgenome"><a data-toggle="pill" href="#commonGenome"
+									data-ng-click="commonGenometab()">{{
+										'cop.genomedata.label.commonGenome' | localize }}</a></li>
+								<li id="cdown" class="right"><a data-toggle="pill" href="#coastDown"
+									data-ng-click="coastDowntab()">{{
+										'cop.coastdown.label.costdown' | localize }}</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div>
+
+
+					<div
+						class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content no-padding"
+						style="bottom: 43px; padding-top: 140px !important;">
+						<!-- TAB 1 -->
+						<div id="specificCop"
+							class="tab-pane fade in active tab-padding specificCop">
+
+
+							<ng-include src="'fragments/cop/views/specific-cop.html'"></ng-include>
+
+
+						</div>
+						<!-- TAB 2 -->
+						<div id="commonGenome"
+							class="tab-pane fade tab-padding in commonGenome">
+
+
+							<ng-include
+								src="'fragments/cop/views/global-businessreference/genome-data.html'"></ng-include>
+
+						</div>
+						<!-- TAB 3 -->
+						<div id="coastDown" class="tab-pane fade tab-padding in coastDown">
+
+
+							<ng-include src="'fragments/cop/views/coastdown.html'"></ng-include>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<div id="modelmsgbox" class="modal fade" tabindex="-1"
+	data-role="dialog" data-aria-labelledby="myModalLabel"
+	data-aria-hidden="true">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					data-aria-hidden="true"></button>
+				<h4 class="modal-title">{{msgHeader}}</h4>
+			</div>
+
+
+			<div class="modal-body">{{msgBody}}</div>
+
+
+			<div class="modal-footer align-center">
+
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal">OK</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modificationModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.common.message.dataModificationsMessage'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="confirmModification()">{{
+								'cop.creation.label.yes' | localize }}</button>
+								<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal" data-ng-click="removeModifications()">{{
+								'cop.creation.label.no' | localize }}</button>
+	
+							&nbsp; &nbsp;
+							
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+	
+<div data-cop-history></div>

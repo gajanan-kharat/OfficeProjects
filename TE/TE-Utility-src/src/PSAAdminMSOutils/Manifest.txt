@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: DBInterface.jar JavaTools.jar UniqueCOID.jar 
+Main-Class: com.psa.PSAAdminMSOutils.PSARequestController

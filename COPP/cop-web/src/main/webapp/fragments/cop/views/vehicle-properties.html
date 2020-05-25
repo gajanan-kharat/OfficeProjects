@@ -1,0 +1,198 @@
+<div class="row form-group">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.tvv' | localize }}</label> <input
+				type="text" id="tvvSelect" class="form-control"
+				data-ng-model="vehicleSearchRepresentation.tvvLabel"
+				reset-search-input="true" data-ng-enter="checkConditions()"/>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.projectVehicle' | localize
+				}}</label>
+
+			<ui-select multiple id="projectSelect"
+				data-ng-model="projectCodeFamilyList" reset-search-input="true"
+				on-select="setProjectVehicle($item)"
+				on-remove="removeProjectVehicle($item)"
+				> <ui-select-match placeholder="">
+			{{$item}} </ui-select-match> <ui-select-choices
+				repeat="project in vehicleModelRepresentation.projectCodeFamilyList | filter: $select.search">
+			<div ng-bind-html="project | highlight: $select.search "></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.bodywork' | localize }}</label>
+			<ui-select multiple id="projectSelect" data-ng-model="bodyWorkList"
+				reset-search-input="true" on-select="setBodyWork($item)"
+				on-remove="removeBodyWork($item)" >
+			<ui-select-match placeholder="">
+			{{$item}} </ui-select-match> <ui-select-choices
+				repeat="project in vehicleModelRepresentation.bodyWorkList | filter: $select.search">
+			<div
+				ng-bind-html="project | highlight: $select.search"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.carBrand' | localize }}</label>
+
+			<ui-select multiple id="projectSelect" data-ng-model="carBrandList"
+				reset-search-input="true" on-select="setCarBrand($item)"
+				on-remove="removeCarBrand($item)" >
+			<ui-select-match placeholder="">
+			{{$item}} </ui-select-match>
+			<ui-select-choices
+				repeat="project in vehicleModelRepresentation.carBrandList | filter: $select.search">
+			<div ng-bind-html="project | highlight: $select.search "></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.ems' | localize }}</label>
+
+			<ui-select multiple id="projectSelect" data-ng-model="emsList"
+				reset-search-input="true" on-select="setEmsId($item.entityId)"
+				on-remove="removeEmsId($item.entityId)" >
+			<ui-select-match placeholder=""> {{$item.esLabel}}</ui-select-match>
+			<ui-select-choices
+				repeat="project in vehicleModelRepresentation.emsList | filter: $select.search">
+			<div ng-bind-html="project.esLabel | highlight: $select.search "></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.engine' | localize }}</label>
+
+			<ui-select multiple id="projectSelect" data-ng-model="engineList"
+				reset-search-input="true"
+				on-select="setEngine($item)"
+				on-remove="removeEngine($item)" >
+			<ui-select-match placeholder="">
+			{{$item}} </ui-select-match> <ui-select-choices
+				repeat="project in vehicleModelRepresentation.engineList | filter: $select.search">
+			<div ng-bind-html="project | highlight: $select.search "></div>
+			</ui-select-choices> </ui-select>
+		</div>
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.gearBox' | localize }}</label>
+
+			<ui-select multiple id="projectSelect" data-ng-model="gearBoxList"
+				reset-search-input="true"
+				on-select="setGearBox($item)"
+				on-remove="removeGearBox($item)" >
+			<ui-select-match placeholder="">
+			{{$item}} </ui-select-match> <ui-select-choices
+				repeat="project in vehicleModelRepresentation.gearBoxList | filter: $select.search">
+			<div ng-bind-html="project | highlight: $select.search "></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.fuelType' | localize }}</label>
+
+			<ui-select multiple id="projectSelect" data-ng-model="fuelTypeList"
+				reset-search-input="true" on-select="setFuelType($item)"
+				on-remove="removeFuelType($item)" >
+			<ui-select-match placeholder="">
+			{{$item}} </ui-select-match> <ui-select-choices
+				repeat="project in vehicleModelRepresentation.fuelTypeList | filter: $select.search">
+			<div
+				ng-bind-html="project | highlight: $select.search "></div>
+			</ui-select-choices> </ui-select>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.fuel' | localize }}</label>
+
+			<ui-select multiple id="projectSelect" data-ng-model="fuelList"
+				reset-search-input="true" on-select="setFuel($item.entityId)"
+				on-remove="removeFuel($item.entityId)" >
+			<ui-select-match placeholder=""> {{$item.label}} </ui-select-match>
+			<ui-select-choices
+				repeat="project in vehicleModelRepresentation.fuelList | filter: $select.search">
+			<div ng-bind-html="project.label | highlight: $select.search "></div>
+			</ui-select-choices> </ui-select>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.country' | localize }}</label>
+
+			<ui-select multiple id="projectSelect" data-ng-model="countryList"
+				reset-search-input="true" on-select="setCountry($item.entityId)"
+				on-remove="removeCountry($item.entityId)" >
+			<ui-select-match placeholder="">
+			{{$item.countryLable}} </ui-select-match> <ui-select-choices
+				repeat="project in vehicleModelRepresentation.countryList | filter: $select.search">
+			<div ng-bind-html="project.countryLable | highlight: $select.search "></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.modelYear' | localize }}</label>
+
+			<ui-select multiple id="projectSelect" data-ng-model="modelYear"
+				reset-search-input="true" on-select="setModelYear($item)"
+				on-remove="removeModelYear($item)" >
+			<ui-select-match placeholder=""> {{$item}} </ui-select-match> <ui-select-choices
+				repeat="project in vehicleModelRepresentation.modelYear | filter: $select.search">
+			<div ng-bind-html="project | highlight: $select.search "></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.countermark' | localize }}</label> <input
+				type="text" id="tvvSelect" class="form-control"
+				data-ng-model="vehicleSearchRepresentation.counterMark"
+				reset-search-input="true" data-ng-enter="checkConditions()"/>
+		</div>
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.chassis' | localize }}</label> <input
+				type="text" id="tvvSelect" class="form-control"
+				data-ng-model="vehicleSearchRepresentation.chasisNumber"
+				reset-search-input="true" data-ng-enter="checkConditions()"/>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">{{'cop.vehicleFile.filter.registration' | localize }}</label>
+			<input type="text" id="tvvSelect" class="form-control"
+				data-ng-model="vehicleSearchRepresentation.registrationNumber"
+				reset-search-input="true" data-ng-enter="checkConditions()"/>
+		</div>
+
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis" class="ellipsis" title="{{'cop.vehicleFile.filter.status' | localize }}">{{'cop.vehicleFile.filter.status' | localize }}</label>
+            <ui-select multiple id="projectSelect" data-ng-model="statusList" reset-search-input="true"
+                on-select="setStatus($item.entityId)" on-remove="removeStatus($item.entityId)" append-to-body="true">
+            <ui-select-match placeholder="" > {{$item.label}} </ui-select-match> <ui-select-choices
+                repeat="project in vehicleModelRepresentation.statusList | filter: $select.search">
+            <div ng-bind-html="project.label | highlight: $select.search "></div>
+            </ui-select-choices> </ui-select>
+        </div>
+
+
+		<div class="col-lg-2 col-md-2 col-sm-4 col-xs-6 col-margin">
+			<label class="ellipsis">User ID</label> <input type="text" class="form-control"
+				id="tvvSelect" data-ng-model="vehicleSearchRepresentation.userId"
+				reset-search-input="true" data-ng-enter="checkConditions()"/>
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+</div>
+
+

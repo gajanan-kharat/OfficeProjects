@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10 oct. 2012 13:38:32 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsLowValidationFormData" table="OPLQTLVD">
+        <id name="lvfdId" type="string">
+            <column name="LVFD_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsValidationByLvfdClosedId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="LVFD_CLOSED_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByLvfdPreliminaryId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="LVFD_PRELIMINARY_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByLvfdRobustId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="LVFD_ROBUST_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByLvfdConsolidatedId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="LVFD_CONSOLIDATED_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsValidationByLvfdSupplierDataId" class="com.inetpsa.eds.dao.model.EdsValidation" fetch="select" lazy="false"
+            cascade="all">
+            <column name="LVFD_SUPPLIER_DATA_ID" length="36" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select" lazy="false">
+            <column name="LVFD_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="lvfdStage" type="int">
+            <column name="LVFD_STAGE" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

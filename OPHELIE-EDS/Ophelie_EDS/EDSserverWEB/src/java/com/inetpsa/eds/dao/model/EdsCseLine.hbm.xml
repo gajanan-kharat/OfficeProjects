@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 oct. 2012 11:37:19 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsCseLine" table="OPLQTCSL">
+        <id name="cselId" type="string">
+            <column name="CSEL_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsCseFormData" class="com.inetpsa.eds.dao.model.EdsCseFormData" fetch="select">
+            <column name="CSEL_CSE_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="cselNumber" type="int">
+            <column name="CSEL_NUMBER" not-null="true" />
+        </property>
+        <property name="cselDataname" type="string">
+            <column name="CSEL_DATANAME" length="128" not-null="true" />
+        </property>
+        <property name="cselLowerBound" type="java.lang.Float">
+            <column name="CSEL_LOWER_BOUND" precision="7" scale="0" />
+        </property>
+        <property name="cselUpperBound" type="java.lang.Float">
+            <column name="CSEL_UPPER_BOUND" precision="7" scale="0" />
+        </property>
+        <property name="cselUnit" type="string">
+            <column name="CSEL_UNIT" length="32" />
+        </property>
+        <property name="cselComment" type="string">
+            <column name="CSEL_COMMENT" length="256" />
+        </property>
+    </class>
+</hibernate-mapping>

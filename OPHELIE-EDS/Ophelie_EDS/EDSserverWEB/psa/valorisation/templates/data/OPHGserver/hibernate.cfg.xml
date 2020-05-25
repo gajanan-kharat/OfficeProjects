@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
+    <property name="hibernate.connection.driver_class">org.h2.Driver</property>
+    <property name="hibernate.default_schema">PUBLIC</property>
+    <property name="hibernate.connection.username">sa</property>
+    <property name="hibernate.connection.password">sa</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.show_sql">false</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>
+    <property name="hibernate.cache.use_second_level_cache">false</property>
+    <property name="hibernate.cache.use_query_cache">false</property>
+    <property name="hibernate.cache.region.factory_class">net.sf.ehcache.hibernate.EhCacheRegionFactory</property>
+    <mapping resource="com/inetpsa/gestion/local/model/L_SUser.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_DirectoryContainer.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_ContainerSnapshot.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_Snapshot.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_SnapshotNew.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_Directory.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_SnapshotModule.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_SnapshotIFile.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_IFile.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_IFileNew.hbm.xml"/>
+    <mapping resource="com/inetpsa/gestion/local/model/L_Container.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

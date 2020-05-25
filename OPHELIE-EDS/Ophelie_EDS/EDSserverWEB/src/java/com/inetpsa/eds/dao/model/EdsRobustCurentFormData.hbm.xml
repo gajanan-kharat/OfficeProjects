@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 ao?t 2012 11:57:49 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsRobustCurentFormData" table="OPLQTRCD">
+        <id name="rcedsId" type="string">
+            <column name="RCEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select" lazy="false">
+            <column name="RCEDS_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="rcComment" type="string">
+            <column name="RC_COMMENT" length="1024" />
+        </property>
+        <property name="rcImage" type="string">
+            <column name="RC_IMAGE" length="225" />
+        </property>
+        <set name="edsGrounds" inverse="true" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="G_RCEDS_ID" length="36" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsGround" />
+        </set>
+        <property name="rcChoixMasse" type="int">
+            <column name="RC_CHOIX_MASSE" />
+        </property>
+        <set name="edsSupplies" inverse="false" lazy="false" cascade="all">
+            <key>
+                <column name="S_RCEDS_ID" length="36" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsSupply" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27 juin 2012 18:41:13 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsSubscription" table="OPLQTSUB">
+        <id name="subId" type="string">
+            <column name="SUB_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="subEdsRef" type="string">
+            <column name="SUB_EDS_REF" length="32" not-null="true" />
+        </property>
+        <many-to-one name="edsUser" class="com.inetpsa.eds.dao.model.EdsUser" fetch="select">
+            <column name="SUB_U_ID" length="36" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

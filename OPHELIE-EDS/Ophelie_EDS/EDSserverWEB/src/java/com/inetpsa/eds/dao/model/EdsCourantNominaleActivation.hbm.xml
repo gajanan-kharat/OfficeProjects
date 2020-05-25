@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27 sept. 2012 18:58:20 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsCourantNominaleActivation" table="OPLQTCNA">
+        <id name="cnaedsId" type="string">
+            <column name="CNAEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="cnaedsName" type="string">
+            <column name="CNEDS_NAME" length="255" />
+        </property>
+        <property name="cnaedsRemove" type="boolean">
+            <column name="CNAEDS_REMOVE" />
+        </property>
+        <property name="cnaedsIEfficace" type="boolean">
+            <column name="CNAEDS_I_EFFICACE" />
+        </property>
+        <property name="cnaedsTminStabMnt" type="java.lang.Float">
+            <column name="CNAEDS_TMIN_STAB_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsIminStabMnt" type="java.lang.Float">
+            <column name="CNAEDS_IMIN_STAB_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmoyStabMnt" type="java.lang.Float">
+            <column name="CNAEDS_TMOY_STAB_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImoyStabMnt" type="java.lang.Float">
+            <column name="CNAEDS_IMOY_STAB_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmaxStabMnt" type="java.lang.Float">
+            <column name="CNAEDS_TMAX_STAB_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImaxStabMnt" type="java.lang.Float">
+            <column name="CNAEDS_IMAX_STAB_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsStabMntComment" type="string">
+            <column name="CNAEDS_STAB_MNT_COMMENT" length="1024" />
+        </property>
+
+        <property name="cnaedsTminPireCasMnt" type="java.lang.Float">
+            <column name="CNAEDS_TMIN_PIRE_CAS_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsIminPireCasMnt" type="java.lang.Float">
+            <column name="CNAEDS_IMIN_PIRE_CAS_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmoyPireCasMnt" type="java.lang.Float">
+            <column name="CNAEDS_TMOY_PIRE_CAS_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImoyPireCasMnt" type="java.lang.Float">
+            <column name="CNAEDS_IMOY_PIRE_CAS_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmaxPireCasMnt" type="java.lang.Float">
+            <column name="CNAEDS_TMAX_PIRE_CAS_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImaxPireCasMnt" type="java.lang.Float">
+            <column name="CNAEDS_IMAX_PIRE_CAS_MNT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsPireCasMntComment" type="string">
+            <column name="CNAEDS_PIRE_CAS_MNT_COMMENT" length="1024" />
+        </property>
+        <property name="cnaedsTminStab10Mt" type="java.lang.Float">
+            <column name="CNAEDS_TMIN_STAB_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsIminStab10Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMIN_STAB_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmoyStab10Mt" type="java.lang.Float">
+            <column name="CNAEDS_TMOY_STAB_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImoyStab10Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMOY_STAB_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmaxStab10Mt" type="java.lang.Float">
+            <column name="CNAEDS_TMAX_STAB_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImaxStab10Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMAX_STAB_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsStab10MtComment" type="string">
+            <column name="CNAEDS_STAB_10_MT_COMMENT" length="1024" />
+        </property>
+
+        <property name="cnaedsTminStab13Mt" type="java.lang.Float">
+            <column name="CNAEDS_TMIN_STAB_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsIminStab13Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMIN_STAB_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmoyStab13Mt" type="java.lang.Float">
+            <column name="CNAEDS_TMOY_STAB_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImoyStab13Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMOY_STAB_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmaxStab13Mt" type="java.lang.Float">
+            <column name="CNAEDS_TMAX_STAB_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImaxStab13Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMAX_STAB_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsStab13MtComment" type="string">
+            <column name="CNAEDS_STAB_13_MT_COMMENT" length="1024" />
+        </property>
+
+        <property name="cnaedsTminStab15Mt" type="java.lang.Float">
+            <column name="CNAEDS_TMIN_STAB_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsIminStab15Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMIN_STAB_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmoyStab15Mt" type="java.lang.Float">
+            <column name="CNAEDS_TMOY_STAB_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImoyStab15Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMOY_STAB_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmaxStab15Mt" type="java.lang.Float">
+            <column name="CNAEDS_TMAX_STAB_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImaxStab15Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMAX_STAB_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsStab15MtComment" type="string">
+            <column name="CNAEDS_STAB_15_MT_COMMENT" length="1024" />
+        </property>
+
+        <property name="cnaedsTminPireCas10Mt" type="java.lang.Float">
+            <column name="CNAEDS_MIN_PI_CAS_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsIminPireCas10Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMIN_PI_CAS_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmoyPireCas10Mt" type="java.lang.Float">
+            <column name="CNAEDS_MOY_PI_CAS_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImoyPireCas10Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMOY_PI_CAS_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmaxPireCas10Mt" type="java.lang.Float">
+            <column name="CNAEDS_MAX_PI_CAS_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImaxPireCas10Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMAX_PI_CAS_10_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsPireCas10MtComment" type="string">
+            <column name="CNAEDS_PIRE_CAS_10_MT_COM" length="1024" />
+        </property>
+
+        <property name="cnaedsTminPireCas13Mt" type="java.lang.Float">
+            <column name="CNAEDS_MIN_PI_CAS_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsIminPireCas13Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMIN_PI_CAS_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmoyPireCas13Mt" type="java.lang.Float">
+            <column name="CNAEDS_MOY_PI_CAS_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImoyPireCas13Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMOY_PI_CAS_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmaxPireCas13Mt" type="java.lang.Float">
+            <column name="CNAEDS_MAX_PI_CAS_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImaxPireCas13Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMAX_PI_CAS_13_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsPireCas13MtComment" type="string">
+            <column name="CNAEDS_PIRE_CAS_13_MT_COM" length="1024" />
+        </property>
+
+        <property name="cnaedsTminPireCas15Mt" type="java.lang.Float">
+            <column name="CNAEDS_MIN_PI_CAS_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsIminPireCas15Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMIN_PI_CAS_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmoyPireCas15Mt" type="java.lang.Float">
+            <column name="CNAEDS_MOY_PI_CAS_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImoyPireCas15Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMOY_PI_CAS_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsTmaxPireCas15Mt" type="java.lang.Float">
+            <column name="CNAEDS_MAX_PI_CAS_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImaxPireCas15Mt" type="java.lang.Float">
+            <column name="CNAEDS_IMAX_PI_CAS_15_MT" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsPireCas15MtComment" type="string">
+            <column name="CNAEDS_PIRE_CAS_15_MT_COM" length="1024" />
+        </property>
+
+        <property name="cnaedsTmoyDem" type="java.lang.Float">
+            <column name="CNAEDS_TMOY_DEM" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsImoyDem" type="java.lang.Float">
+            <column name="CNAEDS_IMOY_DEM" precision="7" scale="0" />
+        </property>
+        <property name="cnaedsDemComment" type="string">
+            <column name="CNAEDS_DEM_COMMENT" length="1024" />
+        </property>
+        <many-to-one name="edsCourantEfficace" class="com.inetpsa.eds.dao.model.EdsCourantEfficace" fetch="select" lazy="false" cascade="all">
+            <column name="CNAEDS_CE_ID" length="36" not-null="true" />
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>

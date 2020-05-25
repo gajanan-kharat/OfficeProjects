@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 oct. 2012 11:31:04 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsPsaMesureSupply" table="OPLQTPMS">
+        <id name="pmsedsId" type="string">
+            <column name="PMSEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="pmsedsRef" type="string">
+            <column name="PMSEDS_REF" length="36" not-null="true" />
+        </property>
+        <property name="pmsedsSupplyName" type="string">
+            <column name="PMSEDS_SUPPLY_NAME" length="10" />
+        </property>
+        <property name="pmsedsSupplyType" type="string">
+            <column name="PMSEDS_SUPPLY_TYPE" length="25" />
+        </property>
+        <property name="pmsedsTbtBt" type="string">
+            <column name="PMSEDS_TBT_BT" length="3" />
+        </property>
+        <set name="edsConsolidateSupplyProfile" inverse="false" table="OPLQTPMP" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JCSP_PMSEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsConsSupProfile">
+                <column name="JCSP_CSP_ID" length="36" unique="true" not-null="true" />
+            </many-to-many>
+        </set>
+        <!-- <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select" lazy = "false"> <column name="PMSEDS_EDS_ID" length="36" 
+            not-null="true" /> </many-to-one> -->
+        <set name="edsPmCourantAppelleActivations" inverse="false" table="OPLQTMSC" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JPMSCAAEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantAppelleActivation">
+                <column name="JPMSCAAEDS_CAA_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsPmReseauVeilleReveilleOrganeInactifs" inverse="false" table="OPLQTMSR" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JPMSRVROIEDS_RVROI_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsReseauVeilleReveilleOrganeInactif">
+                <column name="JPMSRVROIEDS_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsPmCourantNominaleActivations" inverse="false" table="OPLQTSSC" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JPMSCNAEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantNominaleActivation">
+                <column name="JPMSCNAEDS_CNA_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsPmCourantMiseSousTensions" inverse="false" table="OPLQTSCM" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JPMSCMSTEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantMiseSousTension">
+                <column name="JPMSCMSTEDS_CMST_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsPmModeParcs" inverse="false" table="OPLQTUMP" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JPMSMPEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsModeParc">
+                <column name="JPMSMPEDS_MP_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsPmModeMontages" inverse="false" table="OPLQTSMM" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JPMSMMEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsModeMontage">
+                <column name="JPMSMMEDS_MM_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsPmCourantBloqueCourantDysfonctionnements" inverse="false" table="OPLQTESC" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JPMSCBCDEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantBloqueCourantDysfonctionnement">
+                <column name="JPMSCBCDEDS_CBCD_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantCycles" inverse="false" table="OPLQTSCC" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JPMSCCDEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantCycle">
+                <column name="JPMSCCEDS_CC_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <many-to-one name="edsQcf" class="com.inetpsa.eds.dao.model.EdsQcf" fetch="select" lazy="false" cascade="all">
+            <column name="PMSEDS_QCF" length="36" not-null="true" />
+        </many-to-one>
+        <set name="edsSupplies" inverse="false" lazy="false" cascade="all">
+            <key>
+                <column name="S_PMSEDS_ID" length="36" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsSupply" />
+        </set>
+    </class>
+</hibernate-mapping>

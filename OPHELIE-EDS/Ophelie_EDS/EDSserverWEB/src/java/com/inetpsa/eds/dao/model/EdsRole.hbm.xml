@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 juin 2012 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsRole" table="OPLQTROL">
+        <id name="roId" type="string">
+            <column name="RO_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="roName" type="string">
+            <column name="RO_NAME" length="1024" not-null="true" unique="true" />
+        </property>
+        <property name="roActive" type="int">
+            <column name="RO_ACTIVE" />
+        </property>
+        <property name="roRights" type="string">
+            <column name="RO_RIGHTS" length="2048" />
+        </property>
+        <property name="roFormRights" type="string">
+            <column name="RO_FORM_RIGHTS" length="2048" />
+        </property>
+        <property name="roType" type="java.lang.Integer">
+            <column name="RO_TYPE" />
+        </property>
+        <set name="edsUsers" inverse="true">
+            <key>
+                <column name="U_RO_ID" length="36" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsUser" />
+        </set>
+    </class>
+</hibernate-mapping>

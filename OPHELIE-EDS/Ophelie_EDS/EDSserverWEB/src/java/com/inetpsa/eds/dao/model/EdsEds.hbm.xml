@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 juin 2012 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsEds" table="OPLQTEDS">
+        <id name="edsId" type="string">
+            <column name="EDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsUserByEdsManagerId" class="com.inetpsa.eds.dao.model.EdsUser" fetch="select" lazy="false">
+            <column name="EDS_MANAGER_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsUserByEdsOfficerId" class="com.inetpsa.eds.dao.model.EdsUser" fetch="select" lazy="false">
+            <column name="EDS_OFFICER_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsUserByEdsDriftValidatorId" class="com.inetpsa.eds.dao.model.EdsUser" fetch="select" lazy="false">
+            <column name="EDS_DRIFT_VALIDATOR_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsSupplier" class="com.inetpsa.eds.dao.model.EdsSupplier" fetch="select" lazy="false">
+            <column name="EDS_S_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsOrganFamily" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false">
+            <column name="EDS_W_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsAltSubFct" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false">
+            <column name="EDS_ALT_FUNC_ID" length="36" />
+        </many-to-one>
+
+        <many-to-one name="edsAltSubSys" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false">
+            <column name="EDS_ALT_SYS_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsBatSubFct" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false">
+            <column name="EDS_BAT_FUNC_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsBatSubSys" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false">
+            <column name="EDS_BAT_SYS_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsProject" class="com.inetpsa.eds.dao.model.EdsProject" fetch="select" lazy="false">
+            <column name="EDS_P_ID" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="edsUserByEdsAdminId" class="com.inetpsa.eds.dao.model.EdsUser" fetch="select" lazy="false">
+            <column name="EDS_ADMIN_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsComponentType" class="com.inetpsa.eds.dao.model.EdsComponentType" fetch="select" lazy="false">
+            <column name="EDS_CT_ID" length="36" not-null="true" />
+        </many-to-one>
+        <many-to-one name="edsUserByEdsModifUserId" class="com.inetpsa.eds.dao.model.EdsUser" fetch="select" lazy="false">
+            <column name="EDS_MODIF_USER_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsUserByEdsAffectationUserId" class="com.inetpsa.eds.dao.model.EdsUser" fetch="select" lazy="false">
+            <column name="EDS_AFF_USER_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsUserByEdsCreaUserId" class="com.inetpsa.eds.dao.model.EdsUser" fetch="select" lazy="false">
+            <column name="EDS_CREA_USER_ID" length="36" />
+        </many-to-one>
+        <property name="edsRef" type="string">
+            <column name="EDS_REF" length="256" not-null="true" />
+        </property>
+        <property name="edsMajorVersion" type="int">
+            <column name="EDS_MAJOR_VERSION" not-null="true" />
+        </property>
+        <property name="edsMinorVersion" type="int">
+            <column name="EDS_MINOR_VERSION" not-null="true" />
+        </property>
+        <property name="edsCreaDate" type="timestamp">
+            <column name="EDS_CREA_DATE" length="23" not-null="true" />
+        </property>
+        <property name="edsModifDate" type="timestamp">
+            <column name="EDS_MODIF_DATE" length="23" not-null="true" />
+        </property>
+        <property name="edsDriftValidationDate" type="timestamp">
+            <column name="EDS_DRIFT_VALIDATION_DATE" length="23" />
+        </property>
+        <property name="edsName" type="string">
+            <column name="EDS_NAME" length="256" not-null="true" />
+        </property>
+        <property name="edsDescription" type="string">
+            <column name="EDS_DESCRIPTION" length="256" not-null="false" />
+        </property>
+        <property name="edsValidLvl" type="java.lang.Integer">
+            <column name="EDS_VALID_LVL" />
+        </property>
+        <property name="edsSubtype1" type="java.lang.Integer">
+            <column name="EDS_SUBTYPE_1" />
+        </property>
+        <property name="edsSubtype2" type="java.lang.Integer">
+            <column name="EDS_SUBTYPE_2" />
+        </property>
+        <property name="edsIsBttbt" type="int">
+            <column name="EDS_IS_BTTBT" not-null="true" />
+        </property>
+        <property name="edsState" type="java.lang.Integer">
+            <column name="EDS_STATE" not-null="true" />
+        </property>
+
+        <set name="edsNumber96ks" inverse="false" table="OPLQTENN" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="EDSN_EDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsNumber96k">
+                <column name="EDSN_N_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+
+        <set name="edsChs" inverse="false" table="OPLQTECC" lazy="false">
+            <key>
+                <column name="EDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.Chs">
+                <column name="COMPONENT_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+   
+        <set name="edsPerimeters" inverse="false" table="OPLQTEPE" lazy="false">
+            <key>
+                <column name="EDSPE_EDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsPerimeter">
+                <column name="EDSPE_PE_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <property name="edsPLaunchCount" type="java.lang.Integer">
+            <column name="EDS_P_LAUNCH_COUNT" />
+        </property>
+        <property name="edsComments" type="string">
+            <column name="EDS_COMMENTS" length="2048" />
+        </property>
+        <property name="edsHasDrift" type="int">
+            <column name="EDS_HAS_DRIFT" not-null="true" />
+        </property>
+
+        <set name="edsProjectEdses" inverse="true" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="PEDS_EDS_ID" length="36" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsProjectEds" />
+        </set>
+        <set name="edsDriftInfos" inverse="true" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="DI_EDS_ID" length="36" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsDriftInfo" />
+        </set>
+		<set name="edsNumber96fcts" inverse="false" table="OPLQTFCT"
+			lazy="false">
+			<key>
+				<column name="EFCT_EDS_ID" length="36" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.inetpsa.eds.dao.model.EdsSAPReference">
+				<column name="EFCT_SAP_REFERENCE" length="32" not-null="true" />
+			</many-to-many>
+		</set>
+		<set name="edsNumber96fnrs" inverse="false" table="OPLQTFNR"
+			lazy="false">
+			<key>
+				<column name="EFNR_EDS_ID" length="36" not-null="true" />
+			</key>
+			<many-to-many entity-name="com.inetpsa.eds.dao.model.EdsSAPReference">
+				<column name="EFNR_SAP_REFERENCE" length="32" not-null="true" />
+			</many-to-many>
+		</set>
+        <set name="edsPinConnect" cascade="all-delete-orphan" table="OPLQTEPC" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="EDS_ID" not-null="true" />
+            </key>
+            <one-to-many not-found="ignore" class="com.inetpsa.eds.dao.model.EdsPinConnect" />
+        </set>
+        
+        <set name="edsTypeComment" cascade="all-delete-orphan" table="OPLQTETC" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="EDS_ID"/>
+            </key>
+            <one-to-many not-found="ignore" class="com.inetpsa.eds.dao.model.EdsPinTypeComment" />
+        </set>
+
+        
+        <set name="edsBsx" lazy="false" fetch="select" inverse="true" cascade="all">
+            <key>
+                <column name="EDS_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsBsx" />
+        </set>
+    </class>
+</hibernate-mapping>

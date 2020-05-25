@@ -1,0 +1,118 @@
+
+<div data-ng-controller="VehicleFileController">
+	<div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+			<div class="row no-margin">
+<!-- 				<label><b>{{'cop.vehicleFile.screenHeader.search' | -->
+<!-- 						localize }} </b></label> -->
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+					<data-ng-include
+						src="'fragments/cop/views/vehicle-properties.html'" />
+				</div>
+				<div class="container-fluid no-padding">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+						<div>
+							<div
+								class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content tab-content-top"
+								style="    margin-bottom: 0%;overflow-y: auto; max-height: 25vw;  padding-bottom: 10px;">
+								<div data-ng-repeat="vehicleFile in filteredVehicleItems"
+									class="col-lg-5 col-md-5 col-sm-5 col-xs-5 no-padding vehicleTvvBox"
+									id="vehSelected{{$index}}">
+									<div data-ng-click="selectVehicle(vehicleFile.entityId,$index)">
+                                        <div class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
+										<div
+											class="fa fa-car fa-2x col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+											<span style="font-size: 0.7em;" title="{{vehicleFile.displayTitle}}">({{vehicleFile.displayTitle}})</span><br>
+											<label  title="{{vehicleFile.guidisplyLabel}}">{{vehicleFile.guidisplyLabel}}</label>
+										</div>
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+											<span class="ellipsis" title="{{vehicleFile.typeOfTestLabel}}">{{vehicleFile.typeOfTestLabel}}</span> <i
+												class="fa fa-shopping-cart fa-2x pull-right"
+												data-ng-if="vehicleFile.inBasket" aria-hidden="true"></i>
+										</div>
+										<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding ellipsis">
+											<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5"
+												style="font-size: 0.8em;">{{vehicleFile.vehicleFileStatusLabel | localize}}</span> 
+											<span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 pull-right" style="font-size: 0.8em;">{{vehicleFile.userName}}</span>
+										</div>
+
+										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+										</div>
+                                        </div>
+                                        <div class="col-lg-2 col-sm-2 col-md-2 col-xs-2" style="top: 0.5vw;">
+                                        <i
+                                                class="fa fa-folder-open-o fa-2x pull-right" title="{{'cop.preparationList.title.openPreparationFile' | localize }}" 
+                                                data-ng-click="dblClickVehicleFile(vehicleFile)"></i>
+                                        </div>
+									</div>
+								</div>
+							</div>
+							<div
+								class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+							
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm">
+									<button class="btn btn-primary"
+										data-ng-click="checkConditions()">{{'cop.vehicleFile.search.button'
+										| localize }}</button>
+									&nbsp;
+									<button class="btn btn-default"
+										data-ng-click="resetAllFields()">{{'cop.vehicleFile.cancel.button'
+										| localize }}</button>
+									&nbsp;
+                                   
+									<button class="btn btn-primary" data-ng-click="addToBasket()" data-ng-show = "(!flag) && (hasCopRole('seed-w20','POCARole') || hasCopRole('seed-w20','POCBRole') || hasCopRole('seed-w20','POCCRole')|| hasCopRole('seed-w20','POCDRole')|| hasCopRole('seed-w20','POCERole')|| hasCopRole('seed-w20','POCFRole')|| hasCopRole('seed-w20','POCGRole')|| hasCopRole('seed-w20','POCHRole'))">{{'cop.vehicleFile.basket.button'
+										| localize }}</button>
+                                        
+                                            <label class="screenNo">Screen Number : SCR067</label>
+								</div>
+								
+								
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div id="ConfirmationPopUp" class="modal fade">
+	<div class="modal-dialog modal-md" style="border-radius: 0px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+				<h4>{{'cop.vehicleFile.filter.emptyMsg' | localize }}</h4>
+			</div>
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal"
+					data-ng-click="searchVehicleFile()">{{'cop.vehicleFile.filter.yesButton'
+					| localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal">{{'cop.vehicleFile.filter.noButton'
+					| localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+ <div id="searchVehicleErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ vehSearchEerrMessage }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

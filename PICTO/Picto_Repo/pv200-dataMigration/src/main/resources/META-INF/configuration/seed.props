@@ -1,0 +1,4 @@
+# This bootstrap configuration file tells Seed to scan the com.inetpsa.pv2 package
+
+[org.seedstack.seed]
+base-packages = com.inetpsa.pv2

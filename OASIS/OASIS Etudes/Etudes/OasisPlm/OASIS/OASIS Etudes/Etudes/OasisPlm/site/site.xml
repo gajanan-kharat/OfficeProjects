@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="Oasis/PLM-web">
+	
+    <skin>
+      <groupId>com.inetpsa.ciq.skins</groupId>
+      <artifactId>maven-psa-skin</artifactId>
+      <version>1.0.0</version>
+   </skin>
+	<publishDate position="left" format="dd MMM yyyy"/>
+	<bannerLeft>
+		<name>OASIS/PLM Web</name>
+	</bannerLeft>
+	<bannerRight>
+		<src>/images/logo_psa.jpg</src>
+	</bannerRight>
+	
+	<body>
+
+		<menu ref="parent" />
+
+		<menu ref="reports" />
+
+		<menu name="Links">
+			<item name="OASIS/PLM Home" href="index.html"/>
+		</menu>
+	
+		<menu name="Other reports">
+			<item name="PSA Dashboard" href="/psa-dashboard.html"/>
+		</menu>
+		
+	</body>
+</project>

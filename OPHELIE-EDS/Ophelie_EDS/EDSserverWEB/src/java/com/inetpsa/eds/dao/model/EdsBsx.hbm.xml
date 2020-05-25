@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 juin 2012 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsBsx" table="OPLQTBSX">
+        <id name="uId" type="string">
+            <column name="BSX_UID" length="36" />
+            <generator class="assigned" />
+        </id>
+        
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select" lazy="false" >
+            <column name="EDS_ID" not-null="true" />
+        </many-to-one>
+        
+        <property name="id" type="string">
+            <column name="BSX_ID" length="36" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="BSX_NAME" length="255" />
+        </property>
+        <property name="path" type="string">
+            <column name="BSX_PATH" length="255" />
+        </property>
+        <property name="comment" type="string">
+            <column name="BSX_COMMENT" length="255" />
+        </property>
+        
+        <set name="pin" table="OPLQTBPN" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="BSX_UID" not-null="true" />
+            </key>
+            <one-to-many not-found="ignore" class="com.inetpsa.eds.dao.model.EdsBsxPin" />
+        </set>
+    </class>
+</hibernate-mapping>

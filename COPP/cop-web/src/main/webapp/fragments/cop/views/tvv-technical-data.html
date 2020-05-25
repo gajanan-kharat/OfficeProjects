@@ -1,0 +1,122 @@
+<div class="padding-top-btm tvv-smalltabgroup-wrapp">
+    <ul class="nav nav-pills nav-custom f-left custom-tab">
+        <li class="active left"><a data-toggle="pill" href="#tab-static">{{'cop.tvv.label.FinalReductionratio'|localize}}({{filnalReductionselected}}/{{finalRuductionValue}})</a></li>
+        <li data-ng-repeat="pill in technicalLists"><a data-toggle="pill"
+            href="#pill{{$index}}">{{pill.label}}({{pill.editedValues}}/{{pill.valuedGenericDataLength}})</a></li>
+    </ul>
+</div>
+
+<div class="col-lg-12 tab-content no-padding">
+
+    <div class="tab-pane fade in active" id="tab-static">
+        <div class="padding-top-btm">
+            
+            <div class="col-lg-3 tab-content no-padding">
+            <label title="{{'cop.tvv.label.FinalReductionratio'|localize}} ">{{'cop.tvv.label.FinalReductionratio'|localize}}</label>
+            <div title=" {{$select.selected.finalReductionlabel}} ">
+            <ui-select id="finalReductionSelect" data-ng-model="tvvObject.finalReductionRatio" on-select="finalReductionSelectvalue($select.selected)" reset-search-input="true" title="{{tvvObject.finalReduction}}"  ng-disabled="!authorization('POCHRole')">
+            <ui-select-match placeholder="Valeur"> {{$select.selected.finalReductionlabel}}</ui-select-match> <ui-select-choices
+                repeat="finalReduction in FRRList | filter: $select.search">
+            <div ng-bind-html="finalReduction.finalReductionlabel | highlight: $select.search " title="{{finalReduction.finalReductionlabel}}"></div>
+            </ui-select-choices> </ui-select>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    <div data-ng-repeat="pill in technicalLists" id="pill{{$index}}"
+        class="tab-pane fade in" data-ng-click="callValidate(technicalLists,index)">
+        <div data-ng-repeat="data in pill.valuedGenericData">
+            <div
+            	class="col-lg-5 col-md-5 col-sm-5 col-xs-11 custom-card no-padding"
+            	style="min-height: 65px; max-height: 65px;">
+                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 no-padding"><span class="control-label">({{data.label}})</span></div>
+                
+<!--                    <span class="control-label"> -->
+                    
+<!--                    <editable model="data.defaultValue" data-ng-click="editDefaultValue(pill)"></editable> -->
+                       <!--  New editable functionality Starts -->
+                       
+                    <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 no-padding padding-top-btm">
+                    
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding card-lg-overflow" title="{{data.defaultValue}}" ng-show="!disableFeild('POCHRole')">
+                            <input class="form-control editableInput" data-ng-hide="editable" type="text"  ng-disabled="!disableFeild('POCHRole')"
+                                data-ng-enter="enterSave();editDefaultValue(pill)" data-ng-blur='save();editDefaultValue(pill)'
+                                data-ng-model="data.defaultValue"><b><span data-ng-show="editable"
+                                data-ng-click="">{{data.defaultValue}}</span></b>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding card-lg-overflow" title="{{data.defaultValue}}" ng-show="disableFeild('POCHRole')">
+                            <input class="form-control editableInput" data-ng-hide="editable" type="text"  ng-disabled="!disableFeild('POCHRole')"
+                                data-ng-enter="enterSave();editDefaultValue(pill)" data-ng-blur='save();editDefaultValue(pill)'
+                                data-ng-model="data.defaultValue"><b><span data-ng-show="editable"
+                                data-ng-click="edit()">{{data.defaultValue}}</span></b>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding card-lg-overflow" title="{{data.unit.value}}">
+                        <b>{{data.unit.value}}</b>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding" style="text-align: right" data-ng-click="editDefaultValue(pill);" data-ng-show = "disableFeild('POCHRole')">
+                            <span data-ng-click="edit()" data-ng-show="editable"><span
+                                class="fa fa-pencil fa-2x"></span></span> <span data-ng-click="save();editDefaultValue(pill)"
+                                data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                        </div>
+                    </div>
+
+                    <!--  New editable functionality ends -->
+            <!--                    </span> -->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="slide-resize col-lg-12 col-lg-10"
+        style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+<label class="screenNo" title="{{'cop.tvv.technicalData.label.screenNo' | localize}} ">{{'cop.tvv.technicalData.label.screenNo' | localize}}</label>
+        <div class="col-lg-12 col-md-12 col-sm-12  col-xs-12 padding-top-btm text-center">
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-hide = "!disableFeild('POCHRole')"                   
+                    data-ng-click="updateTDL()">{{
+                    'cop.technicalData.label.validate' | localize }}</button>
+                &nbsp; &nbsp;
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-hide = "!disableFeild('POCHRole')" data-ng-click="CancelOnConfirmationTDL();">{{
+                    'cop.technicalData.label.cancel' | localize }}</button>
+            </div>
+
+        
+        </div>
+    </div>
+<!-- Confirmation Message On Cancel Button -->
+<div id="ConfirmCancelTDModal" class="modal fade" tabindex="-1"
+    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{
+                    'cop.message.cancelUnsavedDataOnConfirmation'| localize }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;"
+                    class="btn btn-primary" data-dismiss="modal"
+                    data-ng-click="cancelModifiedTDChanges()">{{
+                    'cop.cancelUnsavedData.label.ok' | localize }}</button>
+                &nbsp; &nbsp;
+                <button type="button" style="border-radius: 0px;"
+                    class="btn btn-default" data-dismiss="modal">{{
+                    'cop.cancelUnsavedData.message.cancel' | localize }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Confirmation Message On Cancel Button-->
+
+

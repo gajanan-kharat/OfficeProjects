@@ -1,0 +1,51 @@
+{
+    "id": "picto-management",
+    "name": "SEED picto admin",
+    "modules": {
+        
+         
+        "home": {
+            "path": "{picto-management}/modules/home",
+            "autoload": true
+        },
+        "common": {
+            "path": "{picto-management}/modules/common",
+            "autoload": true,
+             "config": {
+                "apiUrl": "${seed-rest-path}"
+            }
+        },
+        "directives": {
+            "path": "{picto-management}/modules/directives",
+            "autoload": true
+        },
+        
+       "jqueryjs": {
+            "path": "{picto-management}/modules/jquery-ui.min",
+            "autoload": true
+        },
+    	
+        "home-style": {
+            "path": "[css]!{picto-management}/style/home.css",
+            "autoload": true
+        },
+        "jquerycss": {
+            "path": "[css]!{picto-management}/style/jquery-ui.min.css",
+            "autoload": true
+        }
+    
+    },
+    
+    "i18n": {
+        "en": ["{picto-management}/i18n/messages-en.json"],
+        "fr": ["{picto-management}/i18n/messages-fr.json"]
+    },
+    
+     "routes": {
+        "home": {
+            "templateUrl": "{picto-management}/views/home.html",
+            "controller": "HomeController",
+            "security": "isAuthenticated()"
+        }
+    }
+}

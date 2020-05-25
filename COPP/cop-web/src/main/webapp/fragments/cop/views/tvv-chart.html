@@ -1,0 +1,74 @@
+
+<div>
+    <!--fieldset-box start here -->
+    <div class="col-lg-12 top-btm-padding">
+        <fieldset class="custom-border">
+            <legend class="custom-border">{{'cop.editTechnicalGroup.samplingRule.lable' | localize }}</legend>
+
+            <div class="tvv-chart-inner">
+                <div class="col-lg-12">
+
+                    <div class="col-lg-4">
+
+                        <Label title=" {{samplingRuleList.samplingRuleRepresentationListTvv[0].label}} ">{{samplingRuleList.samplingRuleRepresentationListTvv[0].label}}</Label>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <p data-ng-repeat="tvvSamples in samplingRuleList.samplingRuleRepresentationListTvv">{{tvvSamples.description}}</p>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </fieldset>
+    </div>
+
+    <!--fieldset-box end here -->
+
+
+    <!--2nd fieldset-box start here   data-ng-repeat="tvvSamples in samplingRuleList.samplingRuleRepresentationList" -->
+    <div class="col-lg-12 top-btm-padding">
+        <fieldset class="custom-border">
+            <legend class="custom-border">{{'cop.editTvv.samplingRule.lable' | localize }}</legend>
+
+            <div class="tvv-chart-inner" style="height: 700px;">
+                <div class="col-lg-12">
+
+                    <div class="col-lg-4">
+                        <ui-select ng-model="selectedSamplingRule" data-ng-change="samplingRuleChange($select.selected)" ng-disabled="!authorization('POCNRole')"> <ui-select-match>{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="sample in samplingRuleLabelList | filter: $select.search">
+
+                        <div ng-bind-html="sample | highlight: $select.search"></div>
+
+                        </ui-select-choices> </ui-select>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="padding-top-btm custom-margin" ng-repeat="description in descriptionSampleRule">{{description}}</div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </fieldset>
+    </div>
+
+    <!--2nd fieldset-box end here -->
+    <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+        <label class="screenNo" title="Screen Number :SCR004">Screen Number :SCR039</label>
+        <div class="col-lg-12 padding-top-btm text-center">
+
+            <div class="col-lg-3"></div>
+
+            <div class="col-lg-6 text-center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-show = "authorization('POCNRole')" data-ng-click="updateSamplingRule()">Valider</button>
+                &nbsp; &nbsp;
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-show = "authorization('POCNRole')" data-ng-click="getSamplingRuleForTVV()">Annuler</button>
+            </div>
+        </div>
+    </div>
+</div>

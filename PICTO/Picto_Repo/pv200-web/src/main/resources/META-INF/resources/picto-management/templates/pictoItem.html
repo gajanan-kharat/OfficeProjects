@@ -1,0 +1,81 @@
+<div class="no-padding">
+    <div class="custom-picto-col picto-col custom-picto-col-central" id="{{ 'picto' +picto.familyID.referenceNum}}" data-ng-model="picto.pid" data-ng-repeat="picto in result = (items |  filter : searchFilter )" data-ng-class="{'none':picto.isVisible == '1','dashed-border':picto.isVisible == '0'}">
+        <div data-ng-click="pictoPropagation($event)" data-ng-init="checkNullCharte(picto.familyID.refCharte,picto.familyID.referenceNum)">
+            <div class="picto-border"> 
+                <div class="img-thumbnail custom-picto-box" data-ng-click="selectDeselectPicto(picto.familyID.referenceNum,picto.id,picto,$event)" data-ng-dblclick="downloadPictoAiFile(picto.familyID.referenceNum,picto.id,'centralArea')">
+                
+                 <div class="cust-border">
+                    <span data-ng-if="admin" data-ng-class="{'admin-info-red':picto.colorFlag == 'red','admin-info-yellow':picto.colorFlag == 'yellow', 'admin-info-none':picto.colorFlag == 'none',}" class="admin-info custom-fa-square"></span>
+                    <div class="custom-picto">
+                        <div style="width: 64px; height: 64px;">
+                            <img class="custom-img-size" src="{{picto.imageUrl}}" onerror="this.src='images/PictosClean-assets/Template.png'">
+                        </div>
+                    </div>
+                    <div class="custom-picto-right">
+                        <div class="information">
+                            <i class="fa" data-ng-class="{'info-nothing':picto.familyID.informationTypeLabel =='none',
+					  'info-valid':picto.familyID.informationTypeLabel =='info', 'info-warning':picto.familyID.informationTypeLabel =='warning'}"></i>
+                        </div>
+                        <div class="eye-slasher">
+                            <label data-ng-if="admin" class="eye-slash-label" data-ng-model="picto.isVisible"> <i class="fa" data-ng-disabled="disabled" data-ng-class="{'eye-open':picto.isVisible == '1','eye-cross-central':picto.isVisible == '0'}" title="{{ picto.isVisible ? 'Visible' : 'Invisible'}}" data-ng-click="picto.isVisible = !picto.isVisible; eyeSlasherCentral(picto)"></i>
+                            </label>
+                        </div>
+
+                        <div class="workforce">
+                            <i class="fa" data-ng-class="{'work-validate':picto.familyID.validationLevel == 'validate','work-in-progress':picto.familyID.validationLevel == 'work in progress'}"></i>
+                        </div>
+                    </div>
+                    <div class="custom-picto-bottom">
+                        <label id="picto-title" class="pic-title" style="direction: ltr !important;" title="{{picto.familyID.referenceNum}}_{{picto.familyID.refCharte}}{{picto.familyID.name}} [{{picto.variantType}}]">{{picto.familyID.referenceNum}}_{{picto.familyID.refCharte}}{{picto.familyID.name}} [{{picto.variantType}}<span data-ng-hide="picto.version == null">_</span>{{picto.version}}]
+                        </label>
+                    </div>
+                    </div>
+                    </div>
+                             </div>
+                <div class="custom-picto-options">
+                 <div data-ng-if="activatePictoOptionsBar(picto)">
+                    <div class="custom-picto-left" data-ng-class="{'vis-hidden': HideMultipleSelected==true}">
+
+                        <div data-ng-class="{'add-to-favorites-color':picto.familyID.favoriteFlag== '0','remove-from-favorites-color':picto.familyID.favoriteFlag == '1'}" style="padding-top: 4px !important;">
+                            <i>
+								<button class="fa btn font-awe btn-color"
+									style="padding: 0px;"
+                                    value={{picto.familyID.favoriteFlag}}
+									title="{{picto.familyID.favoriteFlag ?  (language==='fr' ? 'Retirer des favoris' : 'Remove from favorite') : (language==='en' ? 'Add to favorite' : 'Ajouter aux Favoris') }}"
+									id="{{ 'pro' +picto.familyID.referenceNum}}"
+									data-ng-disabled="disabled"
+									data-ng-model="picto.familyID.favoriteFlag"									
+									data-ng-class="{'add-to-favorites':picto.familyID.favoriteFlag== '0','remove-from-favorites':picto.familyID.favoriteFlag == '1'}"
+									data-ng-click="addToFavorites(picto.id,picto.familyID.favoriteFlag); picto.familyID.favoriteFlag = !picto.familyID.favoriteFlag"></button>
+							</i>
+                        </div>
+
+                        <div class="custom-cart-style" data-ng-class="{'add-to-cart-bgcolor':picto.cartFlag== '1'}">
+                            <i class="item">
+								<button class="fa btn font-awe btn-color"
+									style="padding: 0px;"
+									title="{{picto.cartFlag ?  (language==='fr' ? 'Enlever du panier' : 'Remove from Cart') : (language==='en' ? 'Add to Cart' : 'Ajouter au panier') }}"
+									id="{{ 'pro' +picto.familyID.referenceNum}}"
+									data-ng-disabled="disabled"
+									data-ng-model="picto.cartFlag"									
+									data-ng-class="{'add-to-cart':picto.cartFlag == '0','remove-from-cart':picto.cartFlag == '1'}"
+									data-ng-click="addPictoToCartList(picto.id,picto.cartFlag,$event); picto.cartFlag = !picto.cartFlag"></button>
+							</i>
+                        </div>
+
+                        <div style="padding: 4px 0px 0px 0px;">
+                            <i title="{{'picto.pictoItem.label.download' | localize}}">
+								<button class="fa download-files btn font-awe btn-color"
+									style="padding: 0px;"
+									id="{{ 'pro' +picto.familyID.referenceNum}}"
+									data-ng-disabled="disabled"
+									data-ng-click="downloadPictoModal(picto.id,picto.variantType,$event)"></button>
+							</i>
+                        </div>
+                    </div>
+                </div>
+                </div>
+   
+        </div>
+    </div>
+</div>

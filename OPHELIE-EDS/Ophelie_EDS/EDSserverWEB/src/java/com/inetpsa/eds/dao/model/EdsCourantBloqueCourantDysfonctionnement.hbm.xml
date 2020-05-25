@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27 sept. 2012 18:58:20 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsCourantBloqueCourantDysfonctionnement" table="OPLQTBCD">
+        <id name="cbcdedsId" type="string">
+            <column name="CBCDEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="cbcdedsTminIdys" type="java.lang.Float">
+            <column name="CBCDEDS_TMIN_IDYS" precision="7" scale="0" />
+        </property>
+        <property name="cbcdedsTmoyIdys" type="java.lang.Float">
+            <column name="CBCDEDS_TMOY_IDYS" precision="7" scale="0" />
+        </property>
+        <property name="cbcdedsTmaxIdys" type="java.lang.Float">
+            <column name="CBCDEDS_TMAX_IDYS" precision="7" scale="0" />
+        </property>
+        <property name="cbcdedsTminTdys" type="java.lang.Float">
+            <column name="CBCDEDS_TMIN_TDYS" precision="7" scale="0" />
+        </property>
+        <property name="cbcdedsTmoyTdys" type="java.lang.Float">
+            <column name="CBCDEDS_TMOY_TDYS" precision="7" scale="0" />
+        </property>
+        <property name="cbcdedsTmaxTdys" type="java.lang.Float">
+            <column name="CBCDEDS_TMAX_TDYS" precision="7" scale="0" />
+        </property>
+        <property name="cbcdedsOccurenceDefaillence" type="boolean">
+            <column name="CBCDEDS_OCC_DEFAILLENCE" />
+        </property>
+
+        <property name="cbcdedsOccurenceDefaillenceTdys" type="java.lang.Float">
+            <column name="CBCDEDS_OCC_DEFLLENCE_TDYS" precision="7" scale="0" />
+        </property>
+        <property name="cbcdedsComment" type="string">
+            <column name="CBCDEDS_COMMENT" length="1024" />
+        </property>
+        <property name="cbcdedsTitre" type="string">
+            <column name="CBCDEDS_TITRE" length="1024" />
+        </property>
+        <property name="cbcdedsRemove" type="boolean">
+            <column name="CBCDEDS_REMOVE" />
+        </property>
+    </class>
+</hibernate-mapping>

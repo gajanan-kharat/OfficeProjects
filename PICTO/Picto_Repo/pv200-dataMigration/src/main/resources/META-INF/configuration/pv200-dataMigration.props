@@ -1,0 +1,12 @@
+# Put configuration in this file
+
+
+# This empty section resets to keys without prefix
+[]
+
+[com.inetpsa.pv2.xml]
+file.xml.path=D:/@PICTO/Image
+
+
+[com.inetpsa.pv2.target]
+picto.file.target=D:/Destination_new

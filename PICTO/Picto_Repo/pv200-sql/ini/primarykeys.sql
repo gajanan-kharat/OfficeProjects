@@ -1,0 +1,12 @@
+source primarykeys/PV2QCTYP.sql;
+source primarykeys/PV2QCSCT.sql;
+source primarykeys/PV2QCCAT.sql;
+source primarykeys/PV2QCCOL.sql;
+source primarykeys/PV2QCDRA.sql;
+source primarykeys/PV2QCROU.sql;
+source primarykeys/PV2QCPFM.sql;
+source primarykeys/PV2QCPIC.sql;
+source primarykeys/PV2QCUSR.sql;
+source primarykeys/PV2QCIMG.sql;
+source primarykeys/PV2QCDIS.sql;
+source primarykeys/PV2QCNTF.sql;

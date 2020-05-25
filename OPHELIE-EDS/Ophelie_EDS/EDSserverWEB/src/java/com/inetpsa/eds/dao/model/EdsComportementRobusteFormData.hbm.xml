@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 juil. 2012 16:42:28 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsComportementRobusteFormData" table="OPLQTCRD">
+        <id name="crfdId" type="string">
+            <column name="CRFD_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select">
+            <column name="CRFD_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="crfdSynoptiqueFonctionnelImage" type="string">
+            <column name="CRFD_SYNOPTIQUE_FCT_IMAGE" length="256" />
+        </property>
+        <property name="crfdSynoptiqueFonctionnelCommentaire" type="string">
+            <column name="CRFD_SYNOPTIQUE_FCT_COMAIRE" length="2048" />
+        </property>
+        <property name="crfdSynoptiqueElectriqueImage" type="string">
+            <column name="CRFD_SYNOPTIQUE_ELEC_IMAGE" length="256" />
+        </property>
+        <property name="crfdSynoptiqueElectriqueCommentaire" type="string">
+            <column name="CRFD_SYNOPTIQUE_ELEC_COMAIRE" length="2048" />
+        </property>
+        <property name="crfdSynoptiqueElectriqueUrls" type="string">
+            <column name="CRFD_SYNOPTIQUE_ELEC_URLS" length="256" />
+        </property>
+        <property name="crfdSynoptiqueFonctionnelUrls" type="string">
+            <column name="CRFD_SYNOPTIQUE_FCT_URLS" length="256" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID">
+    <servlet>
+        <servlet-name>VaadinApplication</servlet-name>
+        <servlet-class>com.vaadin.terminal.gwt.server.ApplicationServlet</servlet-class>
+        <init-param>
+            <param-name>application</param-name>
+            <param-value>com.inetpsa.eds.EdsApplication</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>WS</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>com.inetpsa.eds.ws.resources</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>EDS-WS</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>com.inetpsa.eds.ws.eds</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WS</servlet-name>
+        <url-pattern>/resources/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EDS-WS</servlet-name>
+        <url-pattern>/eds-ws/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VaadinApplication</servlet-name>
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file />
+    </welcome-file-list>
+    <resource-ref>
+        <res-ref-name>mail/edsRef</res-ref-name>
+        <res-type>javax.mail.Session</res-type>
+        <mapped-name>mail/eds</mapped-name>
+    </resource-ref>
+    <context-param>
+        <description>Vaadin production mode</description>
+        <param-name>productionMode</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+
+</web-app>

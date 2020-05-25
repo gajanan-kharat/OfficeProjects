@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.ConsolidateSupplyEdsTension" table="OPLQTSET">
+        <id name="csEdsUId" type="string">
+            <column name="CSEDSU_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="operatingModeName" type="string">
+            <column name="CSEDSU_NAME" length="1024" />
+        </property>
+        <property name="csEdsUmin" type="java.lang.Float">
+            <column name="CSEDS_UMIN" precision="7" scale="0" />
+        </property>
+        <property name="csEdsUmoy" type="java.lang.Float">
+            <column name="CSEDS_UMOY" precision="7" scale="0" />
+        </property>
+        <property name="csEdsUmax" type="java.lang.Float">
+            <column name="CSEDS_UMAX" precision="7" scale="0" />
+        </property>
+        <property name="csEdsUminComment" type="string">
+            <column name="CSEDS_UMIN_COMMENT" length="1024" />
+        </property>
+        <property name="csEdsUmoyComment" type="string">
+            <column name="CSEDS_UMOY_COMMENT" length="1024" />
+        </property>
+        <property name="csEdsUmaxComment" type="string">
+            <column name="CSEDS_UMAX_COMMENT" length="1024" />
+        </property>
+    </class>
+</hibernate-mapping>

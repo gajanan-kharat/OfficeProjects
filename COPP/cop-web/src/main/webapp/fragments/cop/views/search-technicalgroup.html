@@ -1,0 +1,89 @@
+
+<div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+		<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 no-padding">
+			<button class="btn btn-primary" data-ng-click="searchTG()">{{'cop.search.label.searchButton'|localize }}</button>
+			&nbsp;
+			<button class="btn btn-default" data-ng-click="resetAllFieldsTG()">{{'cop.search.label.resetButton'|localize }}</button>
+			&nbsp;
+			<button class="btn btn-default" data-ng-disabled="true">{{'cop.search.label.addCriteriaButton'|localize }}</button>
+			<!-- <ul class="nav nav-pills nav-custom-control">
+							<li class="custom-li active"><a data-toggle="pill" href="#chercher">Chercher</a></li>
+							<li class="custom-li"><a data-toggle="pill" href="#reinit">Reinitialise les champs</a></li>
+							<li class="custom-li"><a data-toggle="pill" href="#ajouter">Ajouter un critere</a></li>
+						</ul> -->
+		<button type="button" class="btn btn-primary" ng-show="showAddTgButton" ng-click="saveRGforSelectedTG()">{{'cop.regulationGroup.addTechnicalGroup.label'|localize }}</button>
+		</div>
+
+		<div class="hidden-lg hidden-md col-sm-12 col-xs-12">&nbsp;</div>
+
+		<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 no-padding">
+			<select class="custom-emp-select" data-ng-model="selectedAction" data-ng-change="sortTG(selectedAction)" data-ng-disabled="tgList==null||tgList.length==0">
+				<option value="" disabled selected>{{'cop.search.select.label'|localize}}</option>
+				<option value="alphabet">{{'cop.search.label.sortAlphabetically'|localize}}</option>
+				<option value="date">{{'cop.search.label.sortByDate'|localize}}</option>
+			</select> <label>{{tgList.length}} {{'cop.search.label.result'|localize}}</label>
+
+		</div>
+	</div>
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+
+	<div class="col-lg-11 col-md-12 col-sm-12 col-xs-12 tab-content tab-content-top"  style="overflow-y: auto; max-height: 30vw;">
+
+		<div >
+			<div
+				class="col-lg-5 col-md-5 col-sm-5 col-xs-11 custom-card no-padding" data-ng-repeat="tg in tgList"
+				ng-click="addTG(tg)" id="card{{tg.entityId}}">
+				<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+					<label class="control-label custom-label">{{'cop.technicalGroup.envelope.label'|localize}}</label>
+					<div>
+						<label class="control-label card-text-overflow ellipsis"
+							title="{{tg.label}}">{{tg.label}}</label>
+					</div>
+				</div>
+
+				<div class="col-lg-5 col-md-5 col-sm-4 col-xs-6">
+					<label class="control-label custom-label ellipsis"
+						data-ng-class="{'color-red':tg.valid == '0'}">V{{tg.version}}({{tg.techgroupstatus.guiLabel}})</label>
+					<div>
+						<label class="control-label">{{tg.displayDate}}</label>
+					</div>
+				</div>
+
+
+
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 no-padding"
+					data-ng-click="editTechnicalGroup(tg)" style="padding-top: 2px;">
+					<div style="padding-top: 15px">
+						<span  class="fa fa-pencil custom-fa-size"></span>
+					</div>
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 no-padding">
+					<div style="padding-top: 15px">
+						<span id="icon-status" class="fa custom-fa-size"
+							data-ng-class="{'fa-check-square-o':tg.valid == '1','fa-wrench':tg.valid == '0'}"></span>
+						<div></div>
+					</div>
+
+
+				</div>
+
+
+				
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+</div>
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm">
+       <label class="screenNo">{{'cop.tg.serch.label.screenNo' | localize}}</label>
+    </div>
+
+
+</div>

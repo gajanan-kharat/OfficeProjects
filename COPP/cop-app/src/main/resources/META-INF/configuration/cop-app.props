@@ -1,0 +1,4 @@
+# Add application module configuration below
+[org.seedstack.seed.core]
+application-id = cop
+application-name = New-Cop

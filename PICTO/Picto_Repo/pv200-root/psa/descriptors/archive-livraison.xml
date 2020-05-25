@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ***************************************************************** -->
+<!-- Ce fichier permet de décrire de manière précise l'organisation -->
+<!-- de l'archive TAR qui va être construite par la JIP puis déposée -->
+<!-- automatiquement par la suite sur l'environnement de développement -->
+<!-- ***************************************************************** -->
+
+<!-- !!!! NOTE IMPORTANTE !!!! Il ne s'agit que d'un EXEMPLE qui ne fait pas office de convention PSA pour la structure des archives de livraison. -->
+
+<assembly>
+    <!-- Eviter de toucher aux quelques lignes suivantes -->
+    <id>livraison</id>
+    <formats>
+        <format>tar</format>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <!-- A partir de là, il s'agit de la description précises de l'archive -->
+    <fileSets>
+
+        <!-- On récupère les templates des fichiers externalisés et ceux-ci -->
+        <!-- seront valorisés pour l'environnement de dév grâce à la balise -->
+        <!-- "filtered" qui est mise à "true" -->
+
+        <!-- For copying the war to release directory -->
+        <fileSet>
+            <directory>../pv200-web/target</directory>
+            <includes>
+                <include>*.war</include>
+            </includes>
+            <outputDirectory>pv200/script/web</outputDirectory>
+            <filtered>false</filtered>
+        </fileSet>
+        <!-- And to provide them with the dictionary that was used to generate the externalized files -->
+        <!-- for the development environment -->
+        <!-- <fileSet> <directory>psa/valorisation/dictionaries</directory> <includes> <include>dico-dev.properties</include> </includes> <outputDirectory>/valuation/dictionaries</outputDirectory> 
+            </fileSet> -->
+        <fileSet>
+            <directory>../pv200-root/psa/valorisation/templates</directory>
+            <includes>
+                <include>pv200.xml</include>
+            </includes>
+            <outputDirectory>pv200/script/web</outputDirectory>
+            <filtered>true</filtered>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+
+
+		<!-- For copying the logback.xml to Data folder -->
+        <fileSet>
+            <directory>../pv200-dataMigration/src/main/resources</directory>
+            <outputDirectory>pv200/script/databatchmigration/data</outputDirectory>
+            <includes>               
+                <include>logback.xml</include>
+            </includes>
+            <filtered>false</filtered>
+        </fileSet>
+        
+        
+        <!-- For copying the pv200-app props to Data folder for migration batch-->
+        <fileSet>
+            <directory>../pv200-app/src/main/resources/META-INF/configuration</directory>
+            <outputDirectory>pv200/script/databatchmigration/data/META-INF/configuration</outputDirectory>
+            <filtered>false</filtered>
+        </fileSet>
+
+ 		<!-- For copying the batchDataMigration.bat release folder -->
+        <fileSet>
+            <directory>../pv200-dataMigration/src/main/resources</directory>
+            <outputDirectory>pv200/script/databatchmigration/</outputDirectory>
+            <includes>
+                <include>batchDataMigration.bat</include>
+            </includes>
+            <filtered>false</filtered>
+        </fileSet>
+
+        <!-- ********** SQL ************** -->
+        <!-- <fileSet> <directory>../pv200-sql/sql</directory> <outputDirectory>pv200/script/sql</outputDirectory> <filtered>false</filtered> </fileSet> -->
+        <fileSet>
+            <directory>psa/ressources-livraison/shell</directory>
+            <outputDirectory>/script</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+<!--  **** Picto Thick Client  Properties*********  -->
+	  <fileSet>
+            <directory>../pv200-pictoClient/src/main/resources/META-INF/properties</directory>
+	     <outputDirectory>pv200/src/main/resources/properties</outputDirectory>
+            <includes>
+                <include>Messages_en.properties</include>
+		<include>Messages_fr.properties</include>
+		<include>PictoConfig.properties</include>
+            	  </includes>
+           
+            <filtered>true</filtered>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+        
+		
+		
+		<!--  Added for Picto Web  
+         <fileSet> 
+          <directory>../pv200-web/src/main/resources/META-INF/configuration</directory>
+	     <outputDirectory>pv200/src/main/resources/configuration</outputDirectory>
+     		<includes>
+                <include>pv200-web.props</include>
+	      </includes>
+             <filtered>true</filtered>
+            <lineEnding>unix</lineEnding>
+        </fileSet>
+        
+        <!--End Added for Picto Web  -->
+    </fileSets>
+</assembly>

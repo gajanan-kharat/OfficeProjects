@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 mai 2013 10:30:30 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsCourantEfficace" table="OPLQTCOE">
+        <id name="ceedsId" type="string">
+            <column name="CEEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="ceedsTminIeff12" type="java.lang.Float">
+            <column name="CEEDS_TMIN_IEFF12" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTminTeff12" type="java.lang.Float">
+            <column name="CEEDS_TMIN_TEFF12" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmoyIeff12" type="java.lang.Float">
+            <column name="CEEDS_TMOY_IEFF12" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmoyTeff12" type="java.lang.Float">
+            <column name="CEEDS_TMOY_TEFF12" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmaxIeff12" type="java.lang.Float">
+            <column name="CEEDS_TMAX_IEFF12" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmaxTeff12" type="java.lang.Float">
+            <column name="CEEDS_TMAX_TEFF12" precision="7" scale="0" />
+        </property>
+        <property name="ceedsCom12v" type="string">
+            <column name="CEEDS_COM_12V" length="1024" />
+        </property>
+        <property name="ceedsTminIeff10" type="java.lang.Float">
+            <column name="CEEDS_TMIN_IEFF10" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmoyIeff10" type="java.lang.Float">
+            <column name="CEEDS_TMOY_IEFF10" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmaxIeff10" type="java.lang.Float">
+            <column name="CEEDS_TMAX_IEFF10" precision="7" scale="0" />
+        </property>
+        <property name="ceedsCom10v" type="string">
+            <column name="CEEDS_COM_10V" length="1024" />
+        </property>
+        <property name="ceedsTminIeff13" type="java.lang.Float">
+            <column name="CEEDS_TMIN_IEFF13" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmoyIeff13" type="java.lang.Float">
+            <column name="CEEDS_TMOY_IEFF13" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmaxIeff13" type="java.lang.Float">
+            <column name="CEEDS_TMAX_IEFF13" precision="7" scale="0" />
+        </property>
+        <property name="ceedsCom13v" type="string">
+            <column name="CEEDS_COM_13V" length="1024" />
+        </property>
+        <property name="ceedsTminIeff15" type="java.lang.Float">
+            <column name="CEEDS_TMIN_IEFF15" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmoyIeff15" type="java.lang.Float">
+            <column name="CEEDS_TMOY_IEFF15" precision="7" scale="0" />
+        </property>
+        <property name="ceedsTmaxIeff15" type="java.lang.Float">
+            <column name="CEEDS_TMAX_IEFF15" precision="7" scale="0" />
+        </property>
+        <property name="ceedsCom15v" type="string">
+            <column name="CEEDS_COM_15V" length="1024" />
+        </property>
+    </class>
+</hibernate-mapping>

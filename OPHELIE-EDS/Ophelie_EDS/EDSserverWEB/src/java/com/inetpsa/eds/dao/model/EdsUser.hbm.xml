@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 juin 2012 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsUser" table="OPLQTUSE">
+        <id name="UId" type="string">
+            <column name="U_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsPerimeter" class="com.inetpsa.eds.dao.model.EdsPerimeter" fetch="select" lazy="false">
+            <column name="U_PE_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsSupplier" class="com.inetpsa.eds.dao.model.EdsSupplier" fetch="select" lazy="false">
+            <column name="U_S_ID" length="36" />
+        </many-to-one>
+        <many-to-one name="edsRole" class="com.inetpsa.eds.dao.model.EdsRole" fetch="select" lazy="false">
+            <column name="U_RO_ID" length="36" />
+        </many-to-one>
+        <property name="UPsaId" type="string">
+            <column name="U_PSA_ID" length="32" not-null="true" unique="true" />
+        </property>
+        <property name="UFirstname" type="string">
+            <column name="U_FIRSTNAME" length="128" not-null="true" />
+        </property>
+        <property name="ULastname" type="string">
+            <column name="U_LASTNAME" length="128" not-null="true" />
+        </property>
+        <property name="UService" type="string">
+            <column name="U_SERVICE" length="256" />
+        </property>
+        <property name="UConf" type="clob">
+            <column name="U_CONF" />
+        </property>
+        <property name="UActive" type="int">
+            <column name="U_ACTIVE" not-null="true" />
+        </property>
+        <set name="edsEdsesForEdsOfficerId" inverse="true">
+            <key>
+                <column name="EDS_OFFICER_ID" length="36" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsEds" />
+        </set>
+        <set name="edsEdsesForEdsAdminId" inverse="true">
+            <key>
+                <column name="EDS_ADMIN_ID" length="36" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsEds" />
+        </set>
+        <set name="edsSubscriptions" inverse="true">
+            <key>
+                <column name="SUB_U_ID" length="36" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsSubscription" />
+        </set>
+        <set name="edsEdsesForEdsManagerId" inverse="true">
+            <key>
+                <column name="EDS_MANAGER_ID" length="36" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsEds" />
+        </set>
+    </class>
+</hibernate-mapping>

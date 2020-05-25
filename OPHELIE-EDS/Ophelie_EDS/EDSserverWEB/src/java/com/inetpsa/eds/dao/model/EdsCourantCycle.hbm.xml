@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 mai 2013 16:55:54 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsCourantCycle" table="OPLQTCOC">
+        <id name="ccedsId" type="string">
+            <column name="CCEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="ccedsName" type="string">
+            <column name="CCEDS_NAME" length="1024" />
+        </property>
+        <property name="ccedsTcycle" type="java.lang.Float">
+            <column name="CCEDS_TCYCLE" precision="7" scale="0" />
+        </property>
+        <property name="ccedsComent" type="string">
+            <column name="CCEDS_COMENT" length="1024" />
+        </property>
+        <property name="ccedsRemove" type="java.lang.Boolean">
+            <column name="CCEDS_REMOVE" />
+        </property>
+        <property name="ccedsWithModif" type="java.lang.Integer">
+            <column name="CCEDS_WITH_MODIF" />
+        </property>
+        <set name="edsProjects" inverse="false" table="OPLQTRCC" lazy="false" cascade="all">
+            <key>
+                <column name="PCC_CCEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsProject">
+                <column name="PCC_P_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

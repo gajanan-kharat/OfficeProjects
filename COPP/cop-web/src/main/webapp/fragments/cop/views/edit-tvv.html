@@ -1,0 +1,308 @@
+<div data-ng-controller="editController">
+<div class="tvv-secnd-secfix" >
+        <form>
+            <label title="{{'cop.tvv.screenHeader.edit' | localize }} "><b class="custom-menulist-left">{{'cop.tvv.screenHeader.edit' | localize }}</b></label>
+
+
+            <div class="col-lg-12 tab-gbr-content-bottom slide-resize tvv-second-sec-wrapp">
+            
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <Label title=" {{tvvObject.label}} ">{{tvvObject.label}}</Label>
+                    </div>
+                    <div class="col-lg-3">
+                        
+                       <div title="{{$select.selected.label}} "> 
+                        <ui-select data-ng-model="selectedAction" reset-search-input="true" on-select="takeAction($select.selected.value)"  ng-disabled ="!disableFeild('POCHRole')"> <ui-select-match
+                            placeholder="Actions"> {{$select.selected.label}} </ui-select-match> <ui-select-choices repeat="action in actions | filter: $select.search">
+                        <div ng-bind-html="action.label | highlight: $select.search"></div>
+                        </ui-select-choices> </ui-select>
+                        </div>
+                    </div>
+                    
+                   </div>
+                </div>
+
+            </div>
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 no-padding">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 ellipsis no-padding">
+                            <label class="ellipsis" style="color: red;" title="v{{tvvObject.version}}({{tvvObject.status.guiLabel }}{{tvvObject.testNature.type}})">v
+                                {{tvvObject.version}}({{tvvObject.status.guiLabel }}
+                                {{tvvObject.testNature.type}})</label> &nbsp;&nbsp;
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
+                        <span class="fa" data-ng-show = "disableFeild('POCHRole')"
+                            data-ng-class="{'fa-pencil-custom':tvvObject.status.label.toLowerCase() == 'draft','fa-pencil':tvvObject.status.label.toLowerCase()=='valid'}"></span>
+                    </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <label title=" {{displayDate}} ">{{displayDate}}</label>
+                    </div>
+                </div>
+
+                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding">
+
+
+                        <ul class="nav nav-pills fade in active">
+                            <li class="icon-option active" data-toggle="pill" href="#car" data-ng-click="initializeData()"><span class="fa fa-car fa-2x"></span>
+                                <div>{{'cop.esDependent.tab.TechnicalData' |localize}}</div></li>
+                            <li class="icon-option" data-toggle="pill" href="#cog" data-ng-click="getAllCoastDownData();initializeTVVDepTCL()"><span
+                                class="fa fa-cogs fa-2x"></span>
+                                <div>{{'cop.esDependent.tab.TestCondition'|localize}}</div></li>
+                            <li class="icon-option" data-toggle="pill" href="#flag" data-ng-click="initializePGL()"><span class="fa fa-flag fa-2x"></span>
+                                <div>{{'cop.esDependent.tab.Limits'|localize}}</div></li>
+                            <li class="icon-option" data-toggle="pill" href="#chart" data-ng-click="getSamplingRuleForTVV()" data-ng-disabled="true"><span class="fa fa-filter fa-2x"></span>
+                                <div>{{'cop.tvv.tab.samplingRule'|localize}}</div></li>
+                        
+                            <li class="icon-option" data-toggle="pill" href="#factor" data-ng-click="tvvValuedFactor()" data-ng-disabled="true"><span class="fa fa-line-chart fa-2x"></span>
+                                <div>{{'cop.esDependent.tab.Factors'|localize }}</div></li>
+                        
+                        </ul>
+
+
+
+                    </div>
+                    
+                     </div>
+                </div>
+        </form>
+    </div>
+
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content no-padding"></div>
+
+    <div class="col-lg-12 tab-content no-padding" style="padding-top:130px !important;padding-bottom:70px !important;">
+        <ng-include src="'fragments/cop/views/tvv-header.html'"></ng-include>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content tab-content-border no-padding"></div>
+        <div id="car" class="tab-pane fade in active">
+            <ng-include src="'fragments/cop/views/tvv-technical-data.html'"></ng-include>
+        </div>
+        <!-- TAB 2 -->
+        <div id="cog" class="tab-pane fade">
+            <ng-include src="'fragments/cop/views/tvv-test-condition.html'"></ng-include>
+        </div>
+        <!-- TAB 3 -->
+        <div id="flag" class="tab-pane fade">
+            <ng-include src="'fragments/cop/views/tvv-pollutant-list.html'"></ng-include>
+        </div>
+        <!-- TAB 4 -->
+        <div id="chart" class="tab-pane fade">
+            <ng-include src="'fragments/cop/views/tvv-chart.html'"></ng-include>
+        </div>
+        
+        <div id="factor" class="tab-pane fade">
+            <ng-include src="'fragments/cop/views/tvv-factors.html'"></ng-include>
+        </div>
+          
+    </div>
+
+
+<div id="errorDisplayModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="copyTVVModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" data-ng-click="cancelCreation(tvvCopyLabel,'copyTVVModal')"
+                    style="float: right; background-color: #fff;" aria-hidden="true"></button>
+                <h4 class="modal-title" id="tvvCopyLabel">{{ 'cop.ems.modal.duplicateTVV'| localize }}</h4>
+            </div>
+            <div class="modal-body" style="padding-top: 20px;">
+                <div>
+                    <label>{{ 'cop.tvv.copy.label'| localize }}</label><span class="astrik"></span>
+                </div>
+                <div>
+                    <input class="form-control" type="text" data-ng-model="tvvCopyLabel" />
+                </div>
+
+            </div>
+
+            <div class="modal-footer align-center">
+
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="checkTvvLabel()">{{
+                    'cop.technicalData.message.createTVV' |localize }}</button>
+                &nbsp; &nbsp;
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-ng-click="cancelCreation(tvvCopyLabel,'copyTVVModal')">{{
+                    'cop.technicalData.message.cancel' | localize }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="duplicateLabelModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ 'cop.tvv.message.duplicateLabel'| localize }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal" data-ng-click="">{{
+                    'cop.technicalData.label.ok' | localize }}</button>
+                &nbsp; &nbsp;
+                <!--  <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.message.cancel' |
+                    localize }}</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tvvVersionModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ 'cop.tvv.message.versionConfirmation'| localize }} {{tvvObject.label}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="createNewVersion()">{{
+                    'cop.technicalData.label.ok' | localize }}</button>
+                &nbsp; &nbsp;
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.technicalData.message.cancel' |
+                    localize }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteConfirmationModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ 'cop.tvv.message.deleteConfirmation'| localize }} {{tvvObject.label}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="deleteTVV()">{{
+                    'cop.technicalData.label.ok' | localize }}</button>
+                &nbsp; &nbsp;
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.technicalData.message.cancel' |
+                    localize }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="validationErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+                <div ng-repeat="message in errorMessageArray">
+                    <h5 class="modal-title" id="myModalLabel">{{$index+1}}) {{ message }}</h5>
+                </div>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="StatusChangeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ 'cop.tvv.status.change'|localize }} -{{tvvObject.label}}</h4>
+                <div class="col-lg-12">
+                    <div class="col-lg-12">&nbsp;&nbsp;</div>
+                    <div class="col-lg-9 align-center">
+                        <ui-select id="statusSelect" data-ng-model="tvvObject.statusToSave" reset-search-input="true" title="{{tvvObject.statusToSave}}"> <ui-select-match
+                            placeholder="Please Select Status"> {{$select.selected.displayLabel}} </ui-select-match> <ui-select-choices
+                            repeat="status in statusList | filter: $select.search">
+                        <div ng-bind-html="status.displayLabel| highlight: $select.search " title="{{status.displayLabel}}"></div>
+                        </ui-select-choices> </ui-select>
+                    </div>
+                </div>
+                <div class="col-lg-12">&nbsp;&nbsp;</div>
+                <div class="modal-footer align-center">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="changeTvvStatus()">{{
+                        'cop.technicalData.label.ok' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.technicalData.message.cancel' |
+                        localize }}</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="mandatoryValidationErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+                <div ng-repeat="message in errorMessageArray" class="col-gl-12">
+                    <h5 class="modal-title col-lg-6" id="myModalLabel">
+                        <b>{{$index+1}}) List Label : </b>{{message.listLabel}}
+                    </h5>
+                    <h5 class="modal-title col-lg-6" id="myModalLabel">
+                        <b>{{message.typeOfData}} : </b>{{message.dataLabel}}
+                    </h5>
+                </div>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="cancelCreationModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ 'cop.creation.cancel.message'| localize }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+            
+                <button type="button" style="border-radius: 0px;"  class="btn btn-primary" data-dismiss="modal" data-ng-click="continueCreation()">{{
+                    'cop.creation.label.yes' | localize }}</button>
+                &nbsp; &nbsp;
+                <button type="button" style="border-radius: 0px;"  class="btn btn-default" data-dismiss="modal">{{ 'cop.creation.label.no' | localize }}</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-cop-history></div>
+</div>

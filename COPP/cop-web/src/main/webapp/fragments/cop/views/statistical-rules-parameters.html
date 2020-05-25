@@ -1,0 +1,97 @@
+<div data-cop-header></div>
+
+<div id="wrapper" class="context-wrapper">
+    <div>
+        <div data-cop-sidebar></div>
+    </div>
+    <label style="margin-left: 1em; margin-top: 1em;"> >...>{{'cop.ruleParameter.label.pageHeading' | localize}}</label>
+   <div class="col-lg-11">
+   <h4>{{'cop.ruleParameter.label.acceptanceRule' | localize}}</h4>
+   <hr style="border-top: 2px solid #eee !important;">
+   
+     <div class="col-lg-12" style="margin-bottom: 4em;">
+        <span>{{'cop.ruleParameter.label.selectRule' | localize}}</span><br>
+        <div class="col-lg-4">
+        <ui-select id="dropdownStatisticalRule" reset-search-input="true" data-ng-model="statisticalRuleSelected" on-select="statisticalRuleSelection($select.selected)">
+        <ui-select-match placeholder="Select..">{{$select.selected.label}} </ui-select-match> 
+        <ui-select-choices repeat="statisticalRule in statisticalRuleList | filter: $select.search">
+        <div ng-bind-html="statisticalRule.label | highlight: $select.search "></div></ui-select-choices> 
+ </ui-select>
+     </div>
+     
+     <div class="col-lg-10" style="margin-top: 2em;">
+     <table class="table col-lg-12">
+     <tr>
+     <th>{{'cop.ruleParameter.label.pollutant' |localize}}</th>
+     <th>{{'cop.ruleParameter.label.uncerttaintyFactor' | localize}}<span class="astrik" data-ng-if="factorMandatory">*</span></th>
+     <th>{{'cop.ruleParameter.label.limit' | localize}} 1<span class="astrik" data-ng-if="limitMandatory">*</span></th>
+     <th>{{'cop.ruleParameter.label.limit' | localize}} 2<span class="astrik" data-ng-if="limitMandatory">*</span></th>
+     </tr>
+     <tr data-ng-repeat="pollutantGas in pollutantGasList">
+     <td>{{pollutantGas.label}}</td>
+     <td><input type="text" data-ng-disabled="fieldsDisabled || !authorization()" data-ng-model="pollutantGas.uncertainityFactor" data-ng-change="pollutantGas.uncertainityFactor=numValidation(pollutantGas.uncertainityFactor);pollutantGas.edited=true" class="form-control "></td>
+     <td><input type="text" data-ng-disabled="fieldsDisabled || !authorization()" data-ng-model="pollutantGas.limit1" data-ng-change="pollutantGas.limit1=numValidation(pollutantGas.limit1);pollutantGas.edited= true" class="form-control " /></td>
+     <td><input type="text" data-ng-disabled="fieldsDisabled || !authorization()" data-ng-model="pollutantGas.limit2" data-ng-change="pollutantGas.limit2=numValidation(pollutantGas.limit2);pollutantGas.edited= true" class="form-control " /></td>
+     </tr>
+     </table>
+     </div>
+     </div>
+    
+   </div>
+    <div class="slide-resize col-lg-12 col-lg-10"
+    style="position: fixed; bottom: 20px; background-color: #fff;">
+     
+     <div class="col-lg-12">
+     <div class="f-right" style="padding-left:10px; padding-top:5px;"> <label class="screenNo">{{'cop.ruleParameter.label.screenNo' | localize}}</label> </div>
+     
+     <div class="f-right">
+       <button class="btn btn-default pull-right" data-ng-click="showHistoryData('STATISTICAL_PARAM')">{{'cop.technicalData.label.modificationHistory' | localize}}</button>
+     </div>
+     <div style="width:200px;float:none;margin:0px auto;">
+       <button class="btn btn-primary" data-ng-click="validateRuleParameter()" data-ng-show = "authorization()">{{'cop.technicalData.label.validate' | localize}}</button>
+       <button class="btn btn-default" data-ng-click="refresh()" data-ng-show = "authorization()">{{'cop.technicalData.label.cancel' | localize}}</button>
+     </div>
+       
+      
+     </div>
+     
+     
+     </div>
+    </div>
+    
+    <div id="saveConfirmation" class="modal fade">
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">{{'cop.ruleParameter.modal.confirmation1' | localize}}{{statisticalRuleLabel}}{{'cop.ruleParameter.modal.confirmation2' | localize}}</h4>
+
+
+            <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="saveRuleParameter()">{{
+                    'cop.vehicleFile.filter.yesButton' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{
+                    'cop.vehicleFile.filter.noButton' | localize }}</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="ErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{errorMassage}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-cop-history></div>

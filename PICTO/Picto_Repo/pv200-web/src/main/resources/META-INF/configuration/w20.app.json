@@ -1,0 +1,36 @@
+{
+  "w20-core": {
+    	"modules": {
+      		"application": {
+                "id": "pv200",
+                "home": "/picto-management/home"
+            },
+     
+	     	"security": {        
+	        	"autoLogin": true
+	      	},
+	      
+	      	"notifications": {"position": "bottom-right"},
+		  
+		  	"culture": {
+		        "available": ["en", "fr"],
+		        "default": "fr"
+		  	}
+		 }    
+  },
+
+  "w20-components": {
+
+        "modules": {
+
+                "select":{}
+
+        }       
+
+        },
+
+  
+  "picto-management": {}
+
+
+}

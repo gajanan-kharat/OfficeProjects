@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 sept. 2012 13:59:43 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsCourantMiseSousTension" table="OPLQTMST">
+        <id name="cmstedsId" type="string">
+            <column name="CMSTEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="cmstedsName" type="string">
+            <column name="CMSTEDS_NAME" length="255" />
+        </property>
+        <property name="cmstedsTpirecasImst" type="java.lang.Float">
+            <column name="CMSTEDS_TPIRECAS_IMST" precision="7" scale="0" />
+        </property>
+        <property name="cmstedsTpirecasDt" type="java.lang.Float">
+            <column name="CMSTEDS_TPIRECAS_DT" precision="7" scale="0" />
+        </property>
+        <property name="cmstedsTpirecasImstComment" type="string">
+            <column name="CMSTEDS_TPIRECAS_IMST_COM" length="1024" />
+        </property>
+        <property name="cmstedsTpirecasDtComment" type="string">
+            <column name="CMSTEDS_TPIRECAS_DT_COMMENT" length="1024" />
+        </property>
+    </class>
+</hibernate-mapping>

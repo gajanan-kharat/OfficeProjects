@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+
+    <!-- Avoid touching the few following lines -->
+    <id>livraison</id>
+    <formats>
+        <format>tar</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+
+    <!-- Based on that, it is the accurate description of the archive -->
+    <fileSets>
+
+        <!-- ***************************** -->
+        <!-- FILES FOR THE WEB PART -->
+        <!-- ***************************** -->
+        <!-- We take the EAR and we insert it in "J2EE" directory -->
+        <fileSet>
+            <directory>../cop-web/target</directory>
+            <includes>
+                <include>*.war</include>
+            </includes>
+            <outputDirectory>/J2EE</outputDirectory>
+        </fileSet>
+
+        <!-- ***************************** -->
+        <!-- FILES FOR THE BATCH PART      -->
+        <!-- ***************************** -->
+        <fileSet>
+            <directory>../cop-batch/target</directory>
+            <includes>
+                <include>cop-batch-${pom.version}.jar</include>
+            </includes>
+            <outputDirectory>lib/java/</outputDirectory>
+        </fileSet>
+        
+        <!-- ***************************** -->
+        <!-- Properties and Dictionnaries  -->
+        <!-- ***************************** -->
+        <fileSet>
+            <directory>../cop-web/psa/valorisation/templates/META-INF/configuration</directory>
+            <outputDirectory>valorisation/web/templates/META-INF/configuration</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </fileSet>
+        <fileSet>
+            <directory>../cop-web/psa/valorisation/templates</directory>
+           <includes>
+             <include>*.properties</include>
+             <include>*.xml</include>
+             </includes>
+            <outputDirectory>valorisation/web/templates/</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </fileSet>
+        
+        <fileSet>
+            <directory>../cop-web/psa/valorisation/templates/tomCat</directory>
+            <outputDirectory>/J2EE</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </fileSet>
+        
+        <fileSet>
+            <directory>../cop-batch/psa/valorisation/templates/META-INF/configuration</directory>
+            <outputDirectory>valorisation/batch/templates/META-INF/configuration/</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </fileSet>
+        
+        <fileSet>
+            <directory>../cop-batch/psa/valorisation/templates/</directory>
+             <includes>
+             <include>*.properties</include>
+             <include>*.xml</include>
+             </includes>                       
+            <outputDirectory>valorisation/batch/templates/</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <filtered>true</filtered>
+        </fileSet>
+            
+        <fileSet>
+            <directory>../cop-batch/src/main/resources/META-INF/configuration</directory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0777</fileMode>
+            <directoryMode>0777</directoryMode>
+            <outputDirectory>valorisation/batch/templates/META-INF/configuration</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+        
+        <fileSet>
+            <directory>../cop-batch/src/main/resources/META-INF/spring</directory>
+            <lineEnding>unix</lineEnding>
+            <fileMode>0777</fileMode>
+            <directoryMode>0777</directoryMode>
+            <outputDirectory>valorisation/batch/templates/META-INF/spring</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>
+       
+        
+        <fileSet>
+            <directory>psa/valorisation/dictionaries</directory>
+            <outputDirectory>valorisation/dictionaries</outputDirectory>
+            <lineEnding>unix</lineEnding>
+            <includes><include>poc00.xml</include></includes>     
+            <filtered>true</filtered>       
+        </fileSet>
+
+        <!-- ***************************** -->
+        <!-- Scripts                       -->
+        <!-- ***************************** -->
+         <fileSet>
+            <directory>../cop-batch/psa/valorisation/templates/scripts</directory>
+            <lineEnding>unix</lineEnding>
+            <outputDirectory>scripts/batch</outputDirectory>
+            <fileMode>0777</fileMode>
+            <directoryMode>0777</directoryMode>
+            <filtered>true</filtered>
+        </fileSet>
+        
+        
+        <!--* ***************************** -->
+        <!-- FILES FOR SQLPART -->
+        <!-- ***************************** -->
+        <fileSet>
+            <directory>../cop-sql/ini</directory>
+            <includes>
+                <include>**/*.*</include>
+            </includes>
+            <outputDirectory>/sql/ini</outputDirectory>
+        </fileSet>
+        <fileSet>
+            <directory>../cop-sql/update</directory>
+            <includes>
+                <include>**/*.*</include>
+            </includes>
+            <outputDirectory>/sql/update</outputDirectory>
+        </fileSet>
+    </fileSets>
+</assembly>

@@ -1,0 +1,12 @@
+# Put configuration in this file
+
+[org.seedstack.seed.core]
+application-id = pv200-pictoClient
+
+[org.seedstack.samples.store.mail]
+template = "Test Template"
+from = "GLId@geometricglobal.com"
+
+
+# This empty section resets to keys without prefix
+[]

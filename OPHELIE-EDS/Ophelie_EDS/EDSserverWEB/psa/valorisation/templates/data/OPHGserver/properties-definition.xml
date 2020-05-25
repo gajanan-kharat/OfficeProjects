@@ -1,0 +1,2932 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+    <category id="BDD">
+        <definition id="coef-temp-drain">
+            <name>coef-temp-drain</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="color-blue">
+            <name>color-blue</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="color-green">
+            <name>color-green</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="color-red">
+            <name>color-red</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="density">
+            <name>density</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="emissivity">
+            <name>emissivity</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="heat">
+            <name>heat</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="heat-storage-capacity">
+            <name>heat-storage-capacity</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="iccimp">
+            <name>iccimp</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="insulation-size-min">
+            <name>insulation-size-min</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="melting-point-metal">
+            <name>melting-point-metal</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="outside-diameter">
+            <name>outside-diameter</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="rcc">
+            <name>rcc</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="resistance-drain-max">
+            <name>resistance-drain-max</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="resistance-drain-min">
+            <name>resistance-drain-min</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="resistivity-coefficient">
+            <name>resistivity-coefficient</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="rimp">
+            <name>rimp</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="rint">
+            <name>rint</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="rlinear">
+            <name>rlinear</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="rsplice">
+            <name>rsplice</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="security-coefficient">
+            <name>security-coefficient</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="size">
+            <name>size</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="strand-diameter">
+            <name>strand-diameter</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="strand-quantity">
+            <name>strand-quantity</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="temp-max">
+            <name>temp-max</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="temp-min">
+            <name>temp-min</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="temperature">
+            <name>temperature</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="thermal-conductivity">
+            <name>thermal-conductivity</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="vbat-degrade-min">
+            <name>vbat-degrade-min</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="vbat-max">
+            <name>vbat-max</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="wire-resistivity">
+            <name>wire-resistivity</name>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+    </category>
+    <category id="Batterie">
+        <definition id="primaryresistor-resistance">
+            <name>primaryresistor-resistance</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-primaryresistor-voltage-cut">
+            <name>step2-primaryresistor-voltage-cut</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="voltage-nominal-min">
+            <name>voltage-nominal-min</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+    </category>
+    <category id="Charge">
+        <definition id="mloadname">
+            <name>Num&amp;#233;ro d&amp;apos;organe</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="mpinname">
+            <name>Nom de la cavit&amp;#233;</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Episure" filters="pinin,pinout"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="supplierpartnumber">
+            <name>Ref. SDP</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="optionexpression">
+            <name>Options</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="cc-resistance">
+            <name>Resistance de court-circuit</name>
+            <unit>mOhms</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="load-short_circuit_resistance" filters=""/>
+                <value name="short_circuit_resistance" filters=""/>
+            </property-alias>
+            <style-alias style-name="default" filters=""/>
+        </definition>
+        <definition id="checking_rules_step">
+            <name>checking_rules_step</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-trigger-text">
+            <name>Texte du d&amp;#233;clenchement de la protection</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="current-max">
+            <name>Imax</name>
+            <unit>A</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connector-peak_current" filters=""/>
+                <value name="load-peak_current" filters=""/>
+                <value name="pinin-peak_current" filters=""/>
+                <value name="peak_current" filters=""/>
+                <value name="imax" filters=""/>
+            </property-alias>
+            <style-alias style-name="Charge_carac" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="current-min">
+            <name>Imin</name>
+            <unit>A</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="load-imin" filters=""/>
+            </property-alias>
+            <style-alias style-name="Charge_carac" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="current-nominal">
+            <name>Inom</name>
+            <unit>A</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="load-nominal_current" filters=""/>
+                <value name="pinin-nominal_current" filters=""/>
+                <value name="nominal_current" filters=""/>
+                <value name="wirenominalcurrent" filters=""/>
+            </property-alias>
+            <style-alias style-name="Charge_carac" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="dim-step2">
+            <name>dim-step2</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="dim-step3">
+            <name>dim-step3</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="duration-max">
+            <name>Timax</name>
+            <unit>s</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connector-peak_current_duration" filters=""/>
+                <value name="load-peak_current_duration" filters=""/>
+                <value name="pinin-peak_current_duration" filters=""/>
+                <value name="peak_current_duration" filters=""/>
+                <value name="timax" filters=""/>
+            </property-alias>
+            <style-alias style-name="Charge_carac" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="functional-impedance">
+            <name>impedance f</name>
+            <unit>mOhms</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="functionalimpedance" filters=""/>
+                <value name="loadfunctionalimpedance" filters=""/>
+            </property-alias>
+            <style-alias style-name="mode-degradre" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="organe-name">
+            <name>Nom de l&amp;apos;organe</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="organename" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="organe-name-short">
+            <name>Nom court de l&amp;apos;organe</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="organenameshort" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-partnumber">
+            <name>box-partnumber</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-name">
+            <name>box-name</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-version">
+            <name>box-version</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-partnumber-chs">
+            <name>box-partnumber-chs</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-description">
+            <name>box-description</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pinname">
+            <name>Nom de la pin</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="profile">
+            <name>Type de profil</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep2-current-nominal-factor">
+            <name>pstep2-current-nominal-factor</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep2-dim">
+            <name>pstep2-dim</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep2-text">
+            <name>Param&amp;#232;tres sp&amp;#233;cifiques de l&amp;apos;&amp;#233;tape 2</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep2-with-voltagecut">
+            <name>pstep2-with-voltagecut</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep3-cc-current">
+            <name>pstep3-cc-current</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep3-cc-type">
+            <name>pstep3-cc-type</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="typecc" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep3-dim">
+            <name>pstep3-dim</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep3-impedance">
+            <name>pstep3-impedance</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep3-text">
+            <name>Param&amp;#232;tres sp&amp;#233;cifiques de l&amp;apos;&amp;#233;tape 3</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep3-with-overtclass">
+            <name>pstep3-with-overtclass</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="requirement-id">
+            <name>Exigence</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="requirementid" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-nominal-text">
+            <name>Texte de la mont&amp;#233; en temp&amp;#233;rature avec les courants nominaux</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-profil-text">
+            <name>Texte de la mont&amp;#233; en temp&amp;#233;rature avec profil</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-voltage-cutsum">
+            <name>dUtot</name>
+            <unit>V</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="loadvoltagecutsum" filters=""/>
+            </property-alias>
+            <style-alias style-name="chute de tension tot" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-voltage-nominal">
+            <name>Vnom</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="chute de tension tot" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-degrade1-text">
+            <name>Texte du comportement thermique</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-degrade2-text">
+            <name>Texte de l&amp;apos;&amp;#233;volution du courant</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-fuse-break-time">
+            <name>Tclac</name>
+            <unit>s</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="loadfusebreaktime" filters=""/>
+            </property-alias>
+            <style-alias style-name="mode-degradre"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-trigger-load-text">
+            <name>Texte du d&amp;#233;clenchement de la charge</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default" filters=""/>
+        </definition>
+        <definition id="supply-type">
+            <name>Type d&amp;apos;alimentation</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="supplytype" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="test-type">
+            <name>Type de test</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="typetest" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="type">
+            <name>type</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+    </category>
+    <category id="Commun">
+        <definition id="step2-resistance-sum">
+            <name>step2-resistance-sum</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-primaryresistor-resistance">
+            <name>step2-primaryresistor-resistance</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="name-processed">
+            <name>Nom (automatique)</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Episure" filters="splice,connector,interconnector"/>
+            <style-alias style-name="default" filters="pinin,pinout"/>
+            <style-alias style-name="batterie" filters="battery"/>
+            <style-alias style-name="Nom" filters=""/>
+        </definition>
+        <definition id="ambient-temp-max">
+            <name>Tamb=</name>
+            <unit>&amp;#176;C</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="fuse-maximal_ambient_temperature" filters=""/>
+                <value name="smartfuse-maximal_ambient_temperature" filters=""/>
+                <value name="wire-maximal_ambient_temperature" filters=""/>
+                <value name="maximal_ambient_temperature" filters=""/>
+                <value name="ambienttempmax" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fil_carac" filters="wire"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="ambient-temp-min">
+            <name>Temp&amp;#233;rature ambiente minimum</name>
+            <unit>&amp;#176;C</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="fuse-minimal_ambient_temperature" filters=""/>
+                <value name="smartfuse-minimal_ambient_temperature" filters=""/>
+                <value name="minimal_ambient_temperature" filters=""/>
+                <value name="ambienttempmin" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-description">
+            <name>Description du bo&amp;#238;tier</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-name">
+            <name>Nom du bo&amp;#238;tier</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-name-chs">
+            <name>Description du bo&amp;#238;tier (CHS)</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-partnumber">
+            <name>Partnumber du bo&amp;#238;tier</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-partnumber-chs">
+            <name>Partnumber du bo&amp;#238;tier (CHS)</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="box-step">
+            <name>Version du bo&amp;#238;tier</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="color">
+            <name>Couleur</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-color" filters=""/>
+                <value name="element-color" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="connectorground-nbpins">
+            <name>Nombre de cavites du connecteur de masse</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connectorground-pinsnumber" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="connectorsupply-nbpins">
+            <name>Nombre de cavites du connecteur de charge</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connectorsupply-pinsnumber" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-fuses-graph">
+            <name>count-fuses-graph</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-fuses-topology">
+            <name>count-fuses-topology</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-pins-bsx">
+            <name>count-pins-bsx</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-pins-topology">
+            <name>count-pins-topology</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-pins-xml">
+            <name>count-pins-xml</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-pins-xml-covered">
+            <name>count-pins-xml-covered</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-smartfuses-graph">
+            <name>count-smartfuses-graph</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-smartfuses-topology">
+            <name>count-smartfuses-topology</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-wires-graph">
+            <name>count-wires-graph</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="count-wires-topology">
+            <name>count-wires-topology</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="cut">
+            <name>Num&amp;#233;ro de d&amp;#233;coupage</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="decoupe"/>
+        </definition>
+        <definition id="data_source">
+            <name>data_source</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="database_id">
+            <name>database_id</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="design-name">
+            <name>Nom du design</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="design-shortdescription">
+            <name>Description courte du design</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="design-step">
+            <name>Version du design</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="dim-step1">
+            <name>dim-step1</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="editmode">
+            <name>editmode</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="generation_date">
+            <name>generation_date</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="harness-name">
+            <name>Nom du faisceau</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="branch-harness_family_name" filters=""/>
+                <value name="connector-harness_family_name" filters=""/>
+                <value name="fuse-harness_family_name" filters=""/>
+                <value name="interconnection-harness_family_name" filters=""/>
+                <value name="load-harness_family_name" filters=""/>
+                <value name="multiple_crimp-harness_family_name" filters=""/>
+                <value name="pinin-harness_family_name" filters=""/>
+                <value name="pinout-harness_family_name" filters=""/>
+                <value name="resistive_contact-harness_family_name" filters=""/>
+                <value name="resistive_element-harness_family_name" filters=""/>
+                <value name="smartfuse-harness_family_name" filters=""/>
+                <value name="splice-harness_family_name" filters=""/>
+                <value name="wire-harness_family_name" filters=""/>
+                <value name="harness_family_name" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="harness-name-full">
+            <name>Nom complet du faisceau</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="element-harness" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="name">
+            <name>Nom</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="branch-name" filters=""/>
+                <value name="connector-name" filters=""/>
+                <value name="fuse-name" filters=""/>
+                <value name="interconnection-name" filters=""/>
+                <value name="load-name" filters=""/>
+                <value name="loadname" filters=""/>
+                <value name="multiple_crimp-name" filters=""/>
+                <value name="pinin-name" filters=""/>
+                <value name="pinout-name" filters=""/>
+                <value name="resistive_contact-name" filters=""/>
+                <value name="resistive_element-name" filters=""/>
+                <value name="smartfuse-name" filters=""/>
+                <value name="splice-name" filters=""/>
+                <value name="wire-name" filters=""/>
+                <value name="rootsupply-name" filters=""/>
+                <value name="rootground-name" filters=""/>
+                <value name="batterygroundname" filters=""/>
+                <value name="batterysupplyname" filters=""/>
+                <value name="emptyname" filters=""/>
+                <value name="primaryresistorname" filters=""/>
+                <value name="resistorname" filters=""/>
+                <value name="splitname" filters=""/>
+            </property-alias>
+            <style-alias style-name="Nom" filters="pinin"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="nbpins">
+            <name>Nombre de cavit&amp;#233;s</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="element-nbpins" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="partnumber">
+            <name>Partnumber</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="element-partnumber" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pin-name">
+            <name>Nom de la cavite</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connector-pinname" filters=""/>
+                <value name="load-pinname" filters=""/>
+                <value name="multiple_crimp-pinname" filters=""/>
+                <value name="pinin-pinname" filters=""/>
+                <value name="pinout-pinname" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pin-type">
+            <name>Type de cavite</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connector-pin_type" filters=""/>
+                <value name="pinin-pin_type" filters=""/>
+                <value name="pinout-pin_type" filters=""/>
+                <value name="pin_type" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-dim">
+            <name>step1-dim</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-dim">
+            <name>step1-dim</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-dim">
+            <name>step1-dim</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep1-dim">
+            <name>pstep1-dim</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep1-risk-allowed">
+            <name>pstep1-risk-allowed</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep1-risk-allowed-text">
+            <name>Risque sp&amp;#233;cifique autoris&amp;#233;</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep1-text">
+            <name>Param&amp;#232;tres sp&amp;#233;cifiques de l&amp;apos;&amp;#233;tape 1</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="resistance">
+            <name>R&amp;#233;sistance</name>
+            <unit>mOhms</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connector-internal_resistance" filters=""/>
+                <value name="interconnection-internal_resistance" filters=""/>
+                <value name="multiple_crimp-internal_resistance" filters=""/>
+                <value name="pinin-internal_resistance" filters=""/>
+                <value name="pinout-internal_resistance" filters=""/>
+                <value name="resistive_contact-internal_resistance" filters=""/>
+                <value name="resistive_element-internal_resistance" filters=""/>
+                <value name="splice-internal_resistance" filters=""/>
+                <value name="internal_resistance" filters=""/>
+                <value name="resistorresistance" filters=""/>
+            </property-alias>
+            <style-alias style-name="Protect_result" filters="resistiveexternal,resistiveinternal"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="resistance-processed">
+            <name>resistance-processed</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="results-problematic_parameters">
+            <name>results-problematic_parameters</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="results-verifying_rule">
+            <name>results-verifying_rule</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="results-wc_blowing_time">
+            <name>results-wc_blowing_time</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="results-wc_current_load">
+            <name>results-wc_current_load</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="results-wc_protection_ok">
+            <name>results-wc_protection_ok</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="results-wc_transient_current_load">
+            <name>results-wc_transient_current_load</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="shortdescription">
+            <name>Description courte</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="batterie" filters=""/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="side">
+            <name>Cote</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="branch-side" filters=""/>
+                <value name="connector-side" filters=""/>
+                <value name="fuse-side" filters=""/>
+                <value name="interconnection-side" filters=""/>
+                <value name="load-side" filters=""/>
+                <value name="multiple_crimp-side" filters=""/>
+                <value name="pinin-side" filters=""/>
+                <value name="pinout-side" filters=""/>
+                <value name="resistive_contact-side" filters=""/>
+                <value name="resistive_element-side" filters=""/>
+                <value name="smartfuse-side" filters=""/>
+                <value name="splice-side" filters=""/>
+                <value name="wire-side" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="status">
+            <name>status</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-number-false-points">
+            <name>Nombre de points erron&amp;#233;s (Etape 1)</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-risk-allowed">
+            <name>step1-risk-allowed</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-risk-allowed-text">
+            <name>step1-risk-allowed-text</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-risk-taken">
+            <name>step1-risk-taken</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-risk-taken-text">
+            <name>Risque encouru</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-dim">
+            <name>step2-dim</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias>
+                <value name="results-wc_temp_rise_ok" filters=""/>
+                <value name="results-wc_voltage_drop_ok" filters="load"/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-resistance">
+            <name>Zfonc</name>
+            <unit>mOhms</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="chute de tension tot" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-voltage-cut">
+            <name>dU</name>
+            <unit>V</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wirevoltagecut" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fil_cara_Nom" filters="wire"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-cca-risk-max">
+            <name>Icc max</name>
+            <unit>A</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="loadccamaxrisk" filters=""/>
+                <value name="wireccamaxrisk" filters=""/>
+                <value name="results-wc_short_circuit_current" filters=""/>
+            </property-alias>
+            <style-alias style-name="mode-degradre" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-cca-risk-min">
+            <name>Icc min</name>
+            <unit>A</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="loadccaminrisk" filters=""/>
+                <value name="wireccaminrisk" filters=""/>
+            </property-alias>
+            <style-alias style-name="mode-degradre" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="uuid">
+            <name>UUID</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="branch-uuid" filters=""/>
+                <value name="connector-uuid" filters=""/>
+                <value name="fuse-uuid" filters=""/>
+                <value name="interconnection-uuid" filters=""/>
+                <value name="load-uuid" filters=""/>
+                <value name="multiple_crimp-uuid" filters=""/>
+                <value name="pinin-uuid" filters=""/>
+                <value name="pinout-uuid" filters=""/>
+                <value name="resistive_contact-uuid" filters=""/>
+                <value name="resistive_element-uuid" filters=""/>
+                <value name="splice-uuid" filters=""/>
+                <value name="wire-uuid" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="vehicule">
+            <name>V&amp;#233;hicule</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="element-vehicule" filters=""/>
+                <value name="number" filters=""/>
+                <value name="vehicle_name"/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step_number">
+            <name>step_number</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="voltage-nominal">
+            <name>Tension nominale</name>
+            <unit>V</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="nominal_voltage"/>
+            </property-alias>
+            <style-alias style-name="chute de tension tot"/>
+            <style-alias style-name="default"/>
+        </definition>
+    </category>
+    <category id="Fil">
+        <definition id="class-auto">
+            <name>class-auto</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-class-auto" filters=""/>
+                <value name="wireclassauto" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="class-index">
+            <name>class-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="class-text">
+            <name>Classe</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-insulator_class" filters=""/>
+                <value name="insulator_class" filters=""/>
+                <value name="wireclass-text" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fil_carac2" filters="wire"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="code">
+            <name>Code fil</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connector-connector_code" filters=""/>
+                <value name="interconnection-connector_code" filters=""/>
+                <value name="pinin-connector_code" filters=""/>
+                <value name="pinout-connector_code" filters=""/>
+                <value name="connector_code" filters=""/>
+                <value name="wire-code" filters=""/>
+                <value name="element-code" filters=""/>
+                <value name="wire-wire_material_code" filters=""/>
+                <value name="wire_material_code" filters=""/>
+                <value name="material-code" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="color-index">
+            <name>color-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="description">
+            <name>Description</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="load-description" filters=""/>
+                <value name="wire-wirename" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="description-short">
+            <name>Description courte</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-wirenameshort" filters=""/>
+                <value name="shortdescription" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="insulating-index">
+            <name>insulating-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-insulating" filters=""/>
+                <value name="wireinsulating" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="insulating-text">
+            <name>Isolant</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-insulator_type" filters=""/>
+                <value name="insulator_type" filters=""/>
+                <value name="wireinsulating-text" filters=""/>
+            </property-alias>
+            <style-alias style-name="default" filters=""/>
+        </definition>
+        <definition id="length">
+            <name>Longueur</name>
+            <unit>mm</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-wire_length" filters=""/>
+                <value name="wire_length" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fil_carac2" filters="wire"/>
+            <style-alias style-name="default" filters=""/>
+        </definition>
+        <definition id="material-index">
+            <name>material-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-material" filters=""/>
+                <value name="wirematerial" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="harnessfamily-index">
+            <name>harnessfamily-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias />
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="material-text">
+            <name>Mat&amp;#233;riau de l&amp;apos;&amp;#226;me</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-conductor_material" filters=""/>
+                <value name="conductor_material" filters=""/>
+                <value name="wirematerial-text" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="pstep2-text">
+            <name>pstep2-text</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type></type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="ref96">
+            <name>R&amp;#233;f&amp;#233;rence en 96xxx</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="element-ref96" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="section-auto">
+            <name>section-auto</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-section-auto" filters=""/>
+                <value name="wiresectionauto" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="section-index">
+            <name>section-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-section" filters=""/>
+                <value name="wiresection" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="section-text">
+            <name>Section :</name>
+            <unit>mm&amp;#178;</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-commercial_cross_section" filters=""/>
+                <value name="commercial_cross_section" filters=""/>
+                <value name="wire-section-text" filters=""/>
+                <value name="wiresection-text" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fil_carac" filters="wire"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="shape">
+            <name>Forme du fil</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wire-wire_shape" filters=""/>
+                <value name="wire_shape" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-class-index">
+            <name>step2-class-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-class-text">
+            <name>Classe calc.</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Fil_carac2" filters="wire"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-current-nominal">
+            <name>Courant nominal (Etape 2)</name>
+            <unit>A</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="results-wc_permanent_current" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-section-index">
+            <name>step2-section-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-section-text">
+            <name>Section (Etape 2)</name>
+            <unit>mm&amp;#178;</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Fil_carac2" filters=""/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-temp-max">
+            <name>Tmax</name>
+            <unit>&amp;#176;C</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wirenominalmaxtemp" filters=""/>
+                <value name="results-wc_peak_temperature" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fil_cara_Nom"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-temp-stable">
+            <name>Tstab</name>
+            <unit>&amp;#176;C</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="results-wc_permanent_temperature" filters=""/>
+                <value name="wirenominalstabletemp" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fil_cara_Nom" filters=""/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step2-temp-surface">
+            <name>Temp&amp;#233;rature de surface</name>
+            <unit>&amp;#176;C</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-class-index">
+            <name>step3-class-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-class-text">
+            <name>Classe de temp&amp;#233;rature (Etape 3)</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Fil_carac2"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-dim">
+            <name>step3-dim</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias>
+                <value name="results-wc_short_circuit_ok" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-fuse-break-temp">
+            <name>Tmax CC</name>
+            <unit>&amp;#176;C</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wiretempfusebreak" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fil_cara_Nom"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-section-index">
+            <name>step3-section-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-section-text">
+            <name>Section (Etape 3)</name>
+            <unit>mm&amp;#178;</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Fil_carac2"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-temp-nofuse-max">
+            <name>Temp&amp;#233;rature sans la protection</name>
+            <unit>&amp;#176;C</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wiremaxtempnofuse" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-trigger-cross-current">
+            <name>Courant de croisement</name>
+            <unit>A</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wiretriggercrosscurrent" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-trigger-cross-duration">
+            <name>temp de croisement</name>
+            <unit>s</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="wiretriggercrossduration" filters=""/>
+            </property-alias>
+            <style-alias style-name="mode-degradre" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step3-trigger-wire-text">
+            <name>Texte de d&amp;#233;clenchement du fil</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="voltage-min">
+            <name>Vmin</name>
+            <unit>V</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connector-minimal_supply_voltage" filters=""/>
+                <value name="load-minimal_supply_voltage" filters=""/>
+                <value name="pinin-minimal_supply_voltage" filters=""/>
+                <value name="minimal_supply_voltage" filters=""/>
+                <value name="loadminvoltage" filters=""/>
+            </property-alias>
+            <style-alias style-name="Tension min" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+         <definition id="voltage-max">
+            <name>Vmax</name>
+            <unit>V</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Tension min" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="voltage-degrade-cc">
+            <name>VdegradeCC</name>
+            <unit>V</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Tension min" filters="load"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="voltage-type">
+            <name>BT/TBT</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="wc_voltage_drop_ok">
+            <name>wc_voltage_drop_ok</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="results-wc_voltage_drop_ok" filters="wire"/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+    </category>
+    <category id="Fusible">
+        <definition id="caliber-auto">
+            <name>caliber-auto</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias>
+                <value name="fuse-caliber-auto" filters=""/>
+                <value name="fusecaliberauto" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="caliber-index">
+            <name>caliber-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="fuse-caliber" filters=""/>
+                <value name="fusecaliber" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="caliber-text">
+            <name>Calibre</name>
+            <unit>A</unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias>
+                <value name="fuse-fuse_rating" filters=""/>
+                <value name="fuse_rating" filters=""/>
+                <value name="fusecaliber-text" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="caliber-vtext">
+            <name>Calibre</name>
+            <unit>A</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Fuse_carac" filters="protection"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="family-auto">
+            <name>family-auto</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias>
+                <value name="fuse-family-auto" filters=""/>
+                <value name="fusefamilyauto" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="family-index">
+            <name>family-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="fuse-family" filters=""/>
+                <value name="fusefamily" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="family-text">
+            <name>Famille</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="fuse-fuse_family" filters=""/>
+                <value name="fuse_family" filters=""/>
+                <value name="fusefamily-text" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fuse_carac" filters="protection"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-caliber-index">
+            <name>step1-caliber-index</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-caliber-text">
+            <name>step1-caliber-text</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-caliber-vtext">
+            <name>Calibre calc</name>
+            <unit>A</unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints/>
+            <property-alias/>
+            <style-alias style-name="Protect_result"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-family-index">
+            <name>step1-family-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-family-text">
+            <name>Famille (Etape 1)</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Protect_result"/>
+            <style-alias style-name="default"/>
+        </definition>
+    </category>
+    <category id="Interconnection">
+        <definition id="code2">
+            <name>Code fil (partie droite)</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connector-connector_code2" filters=""/>
+                <value name="interconnection-connector_code2" filters=""/>
+                <value name="connector_code2" filters=""/>
+                <value name="element-code2" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="color2">
+            <name>Couleur (partie droite)</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="harness-name2">
+            <name>Nom du faisceau (partie droite)</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="connector-harness_family_name2" filters=""/>
+                <value name="interconnection-harness_family_name2" filters=""/>
+                <value name="harness_family_name2" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="nbpins2">
+            <name>Nombre de cavit&amp;#233;s (partie droite)</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="resistance2">
+            <name>R&amp;#233;sistance (partie droite)</name>
+            <unit>mOhms</unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+    </category>
+    <category id="SmartFuse">
+        <definition id="reference-auto">
+            <name>reference-auto</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>boolean</type>
+            </property-constraints>
+            <property-alias>
+                <value name="smartfuse-reference-auto" filters=""/>
+                <value name="smartfusereferenceauto" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="reference-index">
+            <name>reference-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias>
+                <value name="smartfuse-reference" filters=""/>
+                <value name="smartfusereference" filters=""/>
+            </property-alias>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="soft-ok-ov1-current">
+            <name>soft-ok-ov1-current</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias />
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="soft-ok-ov2-current">
+            <name>soft-ok-ov2-current</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias />
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="soft-ok-ov2-duration">
+            <name>soft-ok-ov2-duration</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias />
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="soft-ok-ov3-current">
+            <name>soft-ok-ov3-current</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias />
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="soft-ok-ov3-duration">
+            <name>soft-ok-ov3-duration</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias />
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="soft-ko-ov2-current">
+            <name>soft-ko-ov2-current</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias />
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="soft-ko-ov3-current">
+            <name>soft-ko-ov3-current</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias />
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="soft-ko-ov3-duration">
+            <name>soft-ko-ov3-duration</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>double</type>
+            </property-constraints>
+            <property-alias />
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="reference-text">
+            <name>R&amp;#233;f.</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>false</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias>
+                <value name="smartfuse-smart_part_number" filters=""/>
+                <value name="smart_part_number" filters=""/>
+                <value name="smartfuse-reference-text" filters=""/>
+                <value name="smartfusereference-text" filters=""/>
+            </property-alias>
+            <style-alias style-name="Fuse_carac"/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-reference-index">
+            <name>step1-reference-index</name>
+            <unit></unit>
+            <category>0</category>
+            <internal-value>true</internal-value>
+            <common>false</common>
+            <property-constraints>
+                <type>integer</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="default"/>
+        </definition>
+        <definition id="step1-reference-text">
+            <name>R&amp;#233;f&amp;#233;rence (Etape 1)</name>
+            <unit></unit>
+            <category>1</category>
+            <internal-value>false</internal-value>
+            <common>true</common>
+            <property-constraints>
+                <type>string</type>
+            </property-constraints>
+            <property-alias/>
+            <style-alias style-name="Protect_result"/>
+            <style-alias style-name="default"/>
+        </definition>
+    </category>
+</content>

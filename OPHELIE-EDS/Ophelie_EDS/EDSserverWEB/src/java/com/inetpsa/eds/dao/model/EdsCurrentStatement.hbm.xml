@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24 sept. 2012 16:19:49 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsCurrentStatement" table="OPLQTCUS">
+        <id name="csId" type="string">
+            <column length="36" name="CS_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one class="com.inetpsa.eds.dao.model.EdsSupply" fetch="select" lazy="false" name="edsSupply">
+            <column length="36" name="CS_SEDS_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one class="com.inetpsa.eds.dao.model.EdsMissionActivationFormData" fetch="select" name="edsMissionActivationFormData">
+            <column length="36" name="CS_MAFD_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one class="com.inetpsa.eds.dao.model.EdsUser" fetch="select" lazy="false" name="edsUserId">
+            <column length="36" name="CS_USER_ID" />
+        </many-to-one>
+        <property name="csName" type="string">
+            <column length="128" name="CS_NAME" not-null="true" />
+        </property>
+        <property name="csXyData" type="string">
+            <column length="4096" name="CS_XY_DATA" />
+        </property>
+        <property name="csComment" type="string">
+            <column length="1024" name="CS_COMMENT" />
+        </property>
+        <property name="csDocInfoUrl" type="string">
+            <column length="1024" name="CS_DOC_INFO_URL" />
+        </property>
+        <property name="csStatementType" type="java.lang.Integer">
+            <column name="CS_STATEMENT_TYPE" />
+        </property>
+    </class>
+</hibernate-mapping>

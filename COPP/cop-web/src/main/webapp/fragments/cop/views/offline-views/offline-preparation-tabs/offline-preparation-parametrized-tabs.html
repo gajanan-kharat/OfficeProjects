@@ -1,0 +1,102 @@
+<div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div data-ng-repeat="result in checkList.preparationResultList | orderBy:'order'">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 custom-card-block no-padding" style="padding: 10px 0px !important">
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 custom-card-paramTab">
+                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 no-padding">
+                        <span class="ellipsis" title="{{result.label}}">{{result.label}}</span>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding"
+                        style="text-align: right;">
+                        <input type="checkbox" data-ng-show="result.dataType === 'BOOLEAN'" data-ng-model='result.value' data-ng-true-value="'true'" ng-false-value="'false'" title="{{result.value}}"/>
+                            
+                    </div>
+                   <div data-ng-hide="result.dataType === 'BOOLEAN' || result.dataType === 'DATE' || result.dataType === 'HOUR' ">
+                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 no-padding" style="top: 5px;" >
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding ellipsis">
+                            <input class="form-control editableInput" data-ng-hide="editable"
+                                type="text" data-ng-enter="enterSave();"
+                                data-ng-blur='save();' data-ng-model="result.value" title="{{result.value}}" ><b>
+                                <span data-ng-show="editable" data-ng-click="edit()" title="{{result.value}}" >{{result.value}}</span></b>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <span class="ellipsis" title="{{result.unit}}"><b>{{result.unit}}</b></span>
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding">
+                        <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                            data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o 
+                    fa-2x"></span></span>
+                    </div>
+                   </div>
+                     <!-- Date -->                 
+                   <div data-ng-show="result.dataType === 'DATE'">
+                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 no-padding" style="top: 5px;" >
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding ellipsis">
+                            <input class="form-control editableInput" data-ng-hide="editable"
+                                type="text" data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="result.value" placeholder="dd/mm/yyyy"><b><span
+                                data-ng-show="editable" data-ng-click="edit()" title="{{result.value}}">{{result.value}}</span></b>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <span class="ellipsis" title=" " ><b>{{result.unit}}</b></span>
+                        </div>
+
+
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding">
+                        <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                            data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o 
+                    fa-2x"></span></span>
+                    </div>
+                   </div>
+  <!-- Hour --> 
+                    <div data-ng-show="result.dataType === 'HOUR'">
+                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 no-padding" style="top: 5px;">
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 no-padding ellipsis">
+                                <input class="form-control editableInput" data-ng-hide="editable" type="text" data-ng-enter="enterSave();"
+                                    data-ng-blur='save();' data-ng-model="result.value" placeholder="hh:mm" title="{{result.value}}">
+                                    <b><span data-ng-show="editable" data-ng-click="edit()" title="{{result.value}}">{{result.value}}</span></b>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <span class="ellipsis" title="{{result.unit}}"><b>{{result.unit}}</b></span>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding">
+                            <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> 
+                            <span data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-sm-5" style="padding-top: 15px;padding-left: 5px; padding-right: 5px;">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding custom-status-color">
+                        <span class="fa fa-2x" data-ng-class="{'fa-asterisk':result.value.length == '0' || result.value == null,'fa-check-circle':result.value.length >= '1'}" data-ng-show="result.mandatory"></span>
+                    </div>
+
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <textarea type="text" class="form-control"
+                            data-ng-show="result.authorizedComment"
+                            data-ng-model="result.comment" title="{{result.comment}}" ></textarea>
+                    </div>
+
+                </div>
+
+                <span class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding ellipsis custom-help-text" title="{{result.helpText}}" >{{result.helpText}}</span>
+                
+                </div>
+
+
+            </div>
+    </div>
+</div>
+
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+<label class="screenNo" title="Screen Number :SCR044a">Screen Number :SCR044a</label>
+<div class="padding-top-btm">
+<button class="btn btn-primary" data-ng-click="saveParametrized(checkList,$index)">Valider</button>
+<a href="#!/cop/SearchVehicle"><button class="btn btn-default" >Annular</button></a>
+</div>
+</div>

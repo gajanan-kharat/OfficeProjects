@@ -1,0 +1,15 @@
+<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 no-padding">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-col-padding" data-ng-repeat="tc in tcList">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-vehicle-card">
+
+            <div style="padding: 5px 15px 0px 0px;text-align: right;">
+                <span class="fa fa-remove fa-2x custom-cross-conditions" 
+                    data-ng-click="showDeleteListModal(list,list.label,$index)"></span>
+            </div>
+
+            <h5>{{tc.label}}</h5>
+            <label>&nbsp;{{tc.Value}}</label>
+        </div>
+    </div>
+</div>
+

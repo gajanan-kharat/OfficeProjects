@@ -1,0 +1,211 @@
+<div data-ng-controller="ReturnVehicleController">
+    <div data-cop-header></div>
+
+
+    <div id="wrapper" class="context-wrapper">
+        <div>
+            <div data-cop-sidebar></div>
+        </div>
+        <div>
+            <div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+
+                    <div class="row no-margin col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+
+
+                            <div
+                                class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-10 col-sm-10 col-xs-10 custom-top-pad custom-page-header custom-return col-lg-10">
+                                <div class="padding-top-btm">
+                                    <label class="" title="{{'cop.evacop.title.vehicleSearch' | localize}}">>..>
+                                        {{'cop.return.title.returnVehicles' | localize}}</label> </br>
+                                    <button type="button" class="btn btn-default" data-ng-click="showAddGPLModel()" style="border-radius: 8px;">
+                                        <i class="fa fa-plus-square-o fa-lg blackiconcolor"></i><span style="padding-left: 1em;"
+                                            title="Ajouter un bloc">{{'cop.return.title.addVehcile' | localize}}</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="container-fluid no-padding" style="padding-top: 80px !important;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding custom-return" data-ng-repeat="returnVehile in typeTestGroup">
+                                <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-top-pad">{{returnVehile.typeOfTestLabel}}</label>
+
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 " data-ng-repeat="returnedVehicles in returnVehile.vehicleFileDetail" style="margin-bottom: 1em;">
+                                    <div class="custom-card-paramTab">
+                                        <div class="fa fa-car fa-2x col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding" style="margin: 0.3em;"></div>
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding: 0px;"
+                                            data-ng-if="returnedVehicles.registrationNumber!==null">
+                                            <span style="font-size: 0.8em;" class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                                                title="{{'cop.basket.label.registrationNumber' | localize}}">({{'cop.basket.label.registrationNumber'
+                                                | localize}})</span> </br> <label class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                                                title="{{returnedVehicles.registrationNumber}}">{{returnedVehicles.registrationNumber}}</label>
+
+                                        </div>
+
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding: 0px;"
+                                            data-ng-if="(returnedVehicles.chasisNumber!==null) &&(returnedVehicles.registrationNumber===null)">
+                                            <span style="font-size: 0.8em;" class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                                                title="{{'cop.basket.label.chasisNumber' | localize}}">({{'cop.basket.label.chasisNumber' |
+                                                localize}})</span> </br> <label class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                                                title="{{returnedVehicles.chasisNumber}}">{{returnedVehicles.chasisNumber}}</label>
+
+                                        </div>
+
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding: 0px;"
+                                            data-ng-if="(returnedVehicles.counterMark!==null)&&(returnedVehicles.chasisNumber===null) &&(returnedVehicles.registrationNumber===null)">
+                                            <span style="font-size: 0.8em;" class="ellipsis no-padding col-lg-6 col-md-6 col-sm-6 col-xs-6"
+                                                title="{{'cop.basket.label.countermarkNumber' | localize}}">({{'cop.basket.label.countermarkNumber'
+                                                | localize}})</span> </br> <label class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                                                title="{{returnedVehicles.counterMark}}">{{returnedVehicles.counterMark}}</label>
+
+                                        </div>
+                                        <div class="fa fa-trash fa-lg col-lg-1 col-md-1 col-sm-1 col-xs-1 pull-right"
+                                            style="margin-top: 0.9em; padding: 0px;"  data-ng-click="deleteConfirmation(returnedVehicles.entityId)" data-ng-show = "hasCopRole('seed-w20','POCDRole')"> {{returnedVehicles.entityId}}</div>
+                                            <!-- data-ng-show = "hasCopRole('seed-w20','POCDRole')" -->
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+
+            <div class="col-lg-12 padding-top-btm">
+
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 text-center">
+                    <button type="button" id="save" class="btn btn-primary" data-ng-click="SaveAll()">{{ 'cop.genomedata.label.save' |
+                        localize }}</button>
+
+                    &nbsp; &nbsp;
+
+                    <button type="reset" id="valider" class="btn btn-default" data-ng-click="getReturnVehicles()">{{ 'cop.technicalData.label.cancel' |
+                        localize }}</button>
+                </div>
+
+                <div class="col-lg-3 text-right">
+                            <label class="screenNo">Screen Number :SCR041a</label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div id="deleteVehicle" class="modal fade">
+    <div class="modal-dialog modal-md" style="width: 500px;" >
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px; width: 500px;">
+            <h4 > {{'cop.returnVehicleFile.model.return' | localize}}</h4>
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em; ">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="returnVehicleFile()">{{ 'cop.creation.label.yes' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.creation.label.no' | localize }}</button>
+                </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Modal -->
+  <div id="ReturnVehicleModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-md">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+        <div class="row">
+        <div class="col-md-11 ">
+         <!--  <h4 class="modal-title">Modal Header</h4> -->
+          <div class="row">
+           <div class="col-md-6 ">
+               <h4>
+               <label class="ellipsis" title=""> {{'cop.addVehicle.returnModal.label.returnVehicle' | localize }} </label>
+               </h4>
+            </div>
+             <div class="col-md-6 ">
+               <h4>
+               <label class="ellipsis text-right" title="" data-ng-click="modaldatetime()" >{{date | date :'dd/MM/yyyy HH:mm'}} </label>
+               </h4>
+            </div>
+        
+          </div>
+         </div>
+          <div class="col-md-1 ">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+         </div>
+        </div>
+        <div class="modal-body">
+          <div class="row margintop-10">
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ">
+                     <input type="text" id="" class="form-control"  value=" ">
+                 </div>
+                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ">
+                    <label class="ellipsis" title="">{{'cop.addVehicle.returnModal.label.Name' | localize }}</label> 
+                 </div>
+           </div>      
+           <div class="row margintop-10">        
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <label class="ellipsis" title="">{{'cop.addVehicle.returnModal.label.countermark' | localize }}</label> 
+                    <input type="text" id="" class="form-control"  value=" ">
+                 </div> 
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <label class="ellipsis" title="">{{'cop.addVehicle.returnModal.label.chassis' | localize }}</label> 
+                    <input type="text" id="" class="form-control"  value=" ">
+                 </div> 
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <label class="ellipsis" title="">{{'cop.addVehicle.returnModal.label.registration' | localize }}</label> 
+                    <input type="text" id="" class="form-control"  value=" ">
+                 </div> 
+            </div>   
+                 
+            <div class="row margintop-10"> 
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                 <button type="button" class="btn btn-primary">{{'cop.addVehicle.returnModal.label.save' | localize }}</button>
+             </div> 
+            </div> 
+                
+                <!-- fieldsets  -->
+                 <div class="row margintop-10"> 
+                   <div class="col-lg-12 ">
+                        <fieldset class="custom-border">
+                            <legend class="custom-border">{{'cop.addVehicle.returnModal.label.cancel' | localize }}</legend>
+                           
+                                <div class="col-lg-12">
+                                       <!-- data -->                                  
+                                </div>
+                         
+                        </fieldset>
+                    </div>
+                  </div>  
+                  <div class="row margintop-10">    
+                    <div class="col-lg-12 ">
+                        <fieldset class="custom-border">
+                            <legend class="custom-border">{{'cop.addVehicle.returnModal.label.observation' | localize }}</legend>
+                           
+                                <div class="col-lg-12">
+                                       <!-- data -->                                  
+                                </div>
+                         
+                        </fieldset>
+                    </div>
+                  </div>
+          </div>
+          <div class="modal-footer margintop-10">
+            <button type="button" class="btn btn-default pull-left" >{{'cop.addVehicle.returnModal.label.cancel' | localize }}</button>
+            <button type="button" class="btn btn-primary" >{{'cop.addVehicle.returnModal.label.validate' | localize }}</button>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+    
+    
+</div>
+
+

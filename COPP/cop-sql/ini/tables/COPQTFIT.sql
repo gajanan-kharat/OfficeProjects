@@ -1,0 +1,6 @@
+CREATE
+    TABLE COPQTFIT (
+	ID                      BIGINT(20)  UNIQUE NOT NULL AUTO_INCREMENT ,   
+	LABEL 			            VARCHAR(100) ,
+	DESCRIPTION 	          VARCHAR(100) 
+	);

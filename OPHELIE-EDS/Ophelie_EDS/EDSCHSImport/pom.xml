@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.inetpsa.ciq</groupId>
+        <artifactId>psa-java-root</artifactId>
+        <version>3.2.1</version>
+    </parent>
+
+    <groupId>com.inetpsa.opl00</groupId>
+    <artifactId>eds-chs-import</artifactId>
+    <version>1.0.2-SNAPSHOT</version>
+    <name>EDSCHSImport</name>
+    <description>Batch to import CHS elements to EDS database</description>
+
+    <properties>
+        <envInst>opl00</envInst>
+        <jiraBU>RDIS</jiraBU>
+        
+        <svnUser>mdeopl00</svnUser>
+        <svnRoot>/svn/oph00/Etudes/OPHELIE/trunk/Ophelie_EDS/</svnRoot>
+        <svnModuleName>EDSCHSImport</svnModuleName>
+        <svnInstance>2</svnInstance>
+
+        <!-- Directory containing filtered local configuration -->
+        <resourcesOutsourcedDirectory>${basedir}/target/valorisation</resourcesOutsourcedDirectory>
+
+        <javaSourceCompatibility>1.6</javaSourceCompatibility>
+        <javaTargetCompatibility>1.6</javaTargetCompatibility>
+        <currentJavaPath>${javaPath_16}</currentJavaPath>
+        <sourceEncoding>UTF-8</sourceEncoding>
+        <runtimeEncoding>UTF-8</runtimeEncoding>
+
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+        <buildDate>${maven.build.timestamp}</buildDate>
+    </properties>
+
+    <dependencies>
+        <!-- dépendance pour le Logger -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.14</version>
+        </dependency>
+        <dependency>
+            <groupId>oracle.jdbc-driver</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>12.1.0.1</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Directory for source code -->
+        <sourceDirectory>${basedir}/src/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/resources</directory>
+            </resource>
+        </resources>
+
+        <!-- Directory for unit test source code -->
+        <testSourceDirectory>${basedir}/test/java</testSourceDirectory>
+
+        <testResources>
+            <testResource>
+                <directory>${basedir}/test/resources</directory>
+            </testResource>
+        </testResources>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <extraJvmArguments>-server</extraJvmArguments>
+                    <programs>
+                        <program>
+                            <mainClass>com.inetpsa.eds.chs.ReadCHSData</mainClass>
+                            <id>edschsimport</id>
+                        </program>
+                    </programs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>psaArchive</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <configuration>
+                            <finalName>${project.artifactId}-${project.version}</finalName>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.inetpsa.jip.plugins</groupId>
+                        <artifactId>maven-psa-archive-plugin</artifactId>
+                        <configuration>
+                            <!-- -->
+                            <!-- Elements de configuration pour le transfert de l'archive sur le serveur -->
+                            <!-- EDIT : se reporter à la documentation du plugin pour plus d'infos -->
+                            <!-- -->
+                            <hostName>yval1d70.inetpsa.com</hostName>
+                            <userName>mdeopl00</userName>
+
+                            <passwordName>yval1d70.mdeopl00</passwordName>
+                            <deliveryFolder>/usersdev2/opl/delivery</deliveryFolder>
+                            <archiveFileFinalName>${project.artifactId}-${project.version}-livraison.tar.gz</archiveFileFinalName>
+                            <!-- postDeliveryUserScript>/usersdev/jip/.maven-files/scripts/FinalisationLivraisonIndus.sh</postDeliveryUserScript -->
+                            <connectionType>SSH</connectionType>
+                            <ftpConnectionType>SFTP</ftpConnectionType>
+                            <isBatch>true</isBatch>
+                            <classpathRoot>lib</classpathRoot>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>psaPublish</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.inetpsa.jip.plugins</groupId>
+                        <artifactId>maven-publisher-plugin</artifactId>
+                        <configuration>
+                            <publishFiles>
+                                <!-- Publication d'une archive générée dans le répertoire targer à l'aide du plugin assembly (exécution précédemment) -->
+                                <publishFile>target/${project.artifactId}-${project.version}-livraison.tar.gz</publishFile>
+                                <!-- Publication d'un second fichier situé à la racine projet -->
+                                <!-- <publishFile>NOTES.txt</publishFile> -->
+                            </publishFiles>
+                            <!-- Non publication de l'artifact principal, dans un projet de type 'pom' cela est obligatoire car aucun fichier n'est généré 
+                                par défaut. -->
+                            <publishMainArtifact>false</publishMainArtifact>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <distributionManagement>
+        <site>
+            <id>projectSite</id>
+            <url>${urlProjectSite}</url>
+        </site>
+    </distributionManagement>
+</project>

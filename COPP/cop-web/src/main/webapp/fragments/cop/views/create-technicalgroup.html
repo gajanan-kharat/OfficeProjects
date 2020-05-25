@@ -1,0 +1,122 @@
+
+<div data-cop-header></div>
+<div id="wrapper" class="context-wrapper">
+	<div>
+		<div data-cop-sidebar></div>
+
+		<div id="createTechnicalGroupModal" class="modal in" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			style="display: block;">
+			<div class="modal-dialog modal-md" style="width: 500px;">
+				<div class="modal-content" style="border-radius: 0px; width: 500px;">
+					<form name="myForm3">
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								 ng-click="cancelCreation()" aria-hidden="true"></button>
+							<h4 class="modal-title" id="modalLabel">{{
+								'cop.technicalGroup.label.createTechnicalGroup'| localize }}</h4>
+						</div>
+						<div class="modal-body" style="padding-top: 20px;">
+							<div>
+								<label> {{ 'cop.technicalGroup.text.label'| localize }}</label><span
+									class="astrik">*</span>
+							</div>
+							<div>
+								<input title="{{technicalGroup.label}}" type="text" id="tgLabel"
+									data-ng-model="technicalGroup.label"
+									ng-keydown="changeTechnicalGroupName()" class="form-control"
+									data-ng-maxlength="255" maxlength="255" required />
+							</div>
+							<br>
+							<div>
+								<label>{{ 'cop.technicalGroup.text.Description'|
+									localize }}</label>
+
+							</div>
+							<div>
+								<textarea title="{{technicalGroup.description}}"
+									class="form-control" data-ng-model="technicalGroup.description"
+									data-ng-maxlength="255" maxlength="255"></textarea>
+							</div>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+							<button type="submit" style="border-radius: 0px;"
+								class="btn btn-primary" data-ng-click="addTechnicalGroup()">{{
+								'cop.technicalData.message.create' |localize }}</button>
+
+							&nbsp; &nbsp;
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-ng-click="cancelCreation()">{{
+								'cop.technicalData.message.cancel' | localize }}</button>
+
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="modifyTechnicalGroupModal" class="modal fade" tabindex="-1"
+			role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+			data-backdrop="false">
+			<div class="modal-dialog modal-md" style="width: 500px;">
+				<div class="modal-content" style="border-radius: 0px; width: 500px;">
+					<form name="myForm3">
+						<div class="modal-body" style="padding-top: 20px;">
+							{{'cop.technicalGroup.modify.message'|localize}}</div>
+						<div class="modal-footer align-center">
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-ng-click="showEditTechGroupModal()">{{'cop.regulationGroup.modalOption.yes'|localize}}</button>
+
+							&nbsp; &nbsp;
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal"
+								data-ng-click="hideModifyTechnicalGroupModal()">{{'cop.regulationGroup.modalOption.No'|localize}}</button>
+
+
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="cancelCreationModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.creation.cancel.message'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="continueCreation()">{{
+								'cop.creation.label.yes' | localize }}</button>
+							&nbsp; &nbsp;
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal">{{
+								'cop.creation.label.no' | localize }}</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>

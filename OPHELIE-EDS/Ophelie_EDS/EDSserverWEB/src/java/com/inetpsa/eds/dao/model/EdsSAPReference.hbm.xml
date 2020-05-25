@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10 may 2015 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+	<class name="com.inetpsa.eds.dao.model.EdsSAPReference" table="OPLQTSAP">
+		<meta attribute="class-description">
+         This class contains the SAP reference and revision data. 
+      	</meta>
+		<id name="referenceRevision" type="string">
+			<column name="REFERENCE_REVISION" length="32"/>
+			<generator class="assigned" />
+		</id>
+		<property name="reference" type="string">
+			<column name="REFERENCE" length="32"/>
+		</property>
+		<property name="revision" type="string">
+			<column name="REVISION" length="32"/>
+		</property>
+	</class>
+</hibernate-mapping>

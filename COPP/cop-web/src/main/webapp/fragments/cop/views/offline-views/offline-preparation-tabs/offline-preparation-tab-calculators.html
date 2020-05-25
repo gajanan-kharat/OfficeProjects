@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no-padding">
+            <b title="{{checkList.label}}" >{{checkList.label}}</b>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding custom-top-btm-padding"
+                data-ng-repeat="result in checkList.preparationResultList">
+                <div class="col-lg-7 col-md-7 col-sm-8 col-xs-8 custum-card-calc">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis no-padding">
+                        <span title="{{result.label}} ">({{result.label}})</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis no-padding">
+                        <input class="form-control editableInput custom-form-control-prep" data-ng-hide="editable" type="text" data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="result.value" ng-change="result.value=result.value.toUpperCase();">
+                            <b class="custom-value-font" >
+                            <span data-ng-show="editable" data-ng-click="edit()" title="{{result.value.toUpperCase()}}">{{result.value.toUpperCase()}}
+                            </span>
+                            </b>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color" data-ng-show="result.mandatory">
+                            <span class="fa fa-2x"
+                                data-ng-class="{'fa-asterisk':result.value.length == '0' || result.value == null,'fa-check-circle':result.value.length >= '1'}" data-ng-show="result.mandatory"></span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-4" style="padding-top: 20px">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                        <b class="custom-value-blue ellipsis" title="{{result.tvvValuedTDLValue.toUpperCase()}}" data-ng-bind="result.tvvValuedTDLValue.toUpperCase();"></b>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding custom-status-color">
+                        <span class="fa fa-2x" data-ng-class="{'fa-check-circle':result.value == result.tvvValuedTDLValue.toUpperCase(),'fa-minus-circle':result.value !== result.tvvValuedTDLValue.toUpperCase()}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 no-padding">
+            <b title="{{preparationFile.prepCheckListRepresentation[$index+1].label}}">{{preparationFile.prepCheckListRepresentation[$index+1].label}} </b>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding custom-top-btm-padding"
+                data-ng-repeat="result in preparationFile.prepCheckListRepresentation[$index+1].preparationResultList">
+                <div class="col-lg-7 col-md-7 col-sm-8 col-xs-8 custum-card-calc">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis no-padding">
+                        <span title="{{result.label}}">({{result.label}})</span>
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis no-padding">
+                        <input class="form-control editableInput custom-form-control-prep" data-ng-hide="editable" type="text"
+                            data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="result.value" ng-change="result.value=result.value.toUpperCase();" title="{{result.value}}">
+                            <b class="custom-value-font"><span data-ng-show="editable" data-ng-click="edit()" title="{{result.value.toUpperCase()}}">{{result.value.toUpperCase()}}</span></b>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 no-padding">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color" data-ng-show="result.mandatory">
+                            <span class="fa fa-2x"
+                                data-ng-class="{'fa-asterisk':result.value.length == '0' || result.value == null,'fa-check-circle':result.value.length >= '1'}" data-ng-show="result.mandatory"></span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-4" style="padding-top: 20px">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                        <b class="custom-value-blue ellipsis" title="{{result.tvvValuedTDLValue.toUpperCase()}}" data-ng-bind="result.tvvValuedTDLValue.toUpperCase();"></b>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding custom-status-color">
+                        <span class="fa fa-2x" data-ng-class="{'fa-check-circle':result.value == result.tvvValuedTDLValue.toUpperCase(),'fa-minus-circle':result.value !== result.tvvValuedTDLValue.toUpperCase()}"></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+    <label class="screenNo" title="Screen Number :SCR044b">Screen Number :SCR044b</label>
+    <div class="padding-top-btm">
+        <button class="btn btn-primary" data-ng-click="saveCalculators(checkList,preparationFile.prepCheckListRepresentation[$index+1],$index)">Valider</button>
+        <a href="#!/cop/SearchVehicle"><button class="btn btn-default">Annuler</button></a>
+    </div>
+</div>

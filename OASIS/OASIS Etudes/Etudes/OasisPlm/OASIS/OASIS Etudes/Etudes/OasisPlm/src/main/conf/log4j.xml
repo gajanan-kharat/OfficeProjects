@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="FILE_APPENDER" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="C:/TEMP/oasis_tmp/oaz00.log"/>
+        <param name="MaxBackupIndex" value="10"/>
+        <param name="MaxFileSize" value="512KB"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%t][%d{HH:mm:ss}:%-5.5p][%c:%L]: %m%n"/>
+        </layout>
+    </appender>
+    <appender name="CONSOLE_APPENDER" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%t][%d{HH:mm:ss}:%-5.5p][%c:%L]: %m%n"/>
+        </layout>
+    </appender>
+    <logger name="com.inetpsa.cxl" additivity="true">
+        <level value="WARN"/>
+    </logger>
+    <logger name="org.springframework" additivity="true">
+        <level value="WARN"/>
+    </logger>
+    <logger name="org.apache.commons.digester" additivity="true">
+        <level value="WARN"/>
+    </logger>
+    <logger name="org.apache.catalina" additivity="true">
+        <level value="WARN"/>
+    </logger>
+    <logger name="org.apache.jasper" additivity="true">
+        <level value="WARN"/>
+    </logger>
+    <logger name="org.quartz" additivity="true">
+        <level value="WARN"/>
+    </logger>
+    <logger name="org.apache.xml.security" additivity="true">
+        <level value="WARN"/>
+    </logger>
+    <logger name="org.codehaus.xfire.spring.ServiceBean" additivity="true">
+        <level value="INFO"/>
+    </logger>
+    <root>
+        <priority value="WARN"/>
+        <appender-ref ref="CONSOLE_APPENDER"/>
+        <appender-ref ref="FILE_APPENDER"/>
+    </root>
+</log4j:configuration>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} [accountservices] %t %p %C{0} - %M %L : %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<logger name="com.citi" level="debug" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="org.springframework" level="info">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="org.hibernate" level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="org.hibernate.type" level="ERROR">
+		<appender-ref ref="STDOUT" />
+	</logger>
+<!-- 	<root level="error">
+		<appender-ref ref="STDOUT" />
+	</root>
+ -->
+</configuration>

@@ -1,0 +1,149 @@
+<div data-cop-header></div>
+
+
+<div id="wrapper" class="context-wrapper">
+	<div>
+		<div data-cop-sidebar></div>
+	</div>
+
+	<div class="col-lg-12 no-padding">
+		<div class="row no-margin">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+			<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><b>{{'cop.tvv.screenHeader.search' | localize }} </b></label>
+
+			<!-- Custom Tabs -->
+
+			<div class="container-fluid">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+					<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 no-padding">
+						<ul class="nav nav-pills nav-custom f-left custom-tab">
+							<li id="tvvTab" class="active left"><a id="tabTvvList" data-toggle="pill" href="#tvv"
+								data-ng-click="tvv()">{{'cop.search.label.tvv'|localize}}</a></li>
+							<li id="envelopeTab"><a id="tabEnvList" data-toggle="pill" href="#envelope"
+								data-ng-click="envelopee()">{{'cop.search.label.technicalGroup'|localize}}</a></li>
+							<li><a id="tabFamList" data-toggle="pill" href="#famille"
+								data-ng-click="famille()">{{'cop.search.label.regulationGroup'|localize}}</a></li>
+						    <li id="vehicleTab" class="right"><a id="tabSearchVehicle" data-toggle="pill" href="#searchVehicles"  data-ng-click="getVehicleSearchRep();getVehicleSearchFlags()" data-ng-show = "hasCopRole('seed-w20','POCARole') || hasCopRole('seed-w20','POCBRole') || hasCopRole('seed-w20','POCCRole')|| hasCopRole('seed-w20','POCDRole')|| hasCopRole('seed-w20','POCERole')|| hasCopRole('seed-w20','POCFRole')|| hasCopRole('seed-w20','POCGRole')|| hasCopRole('seed-w20','POCHRole') || hasCopRole('seed-w20','POCIRole') || hasCopRole('seed-w20','POCJRole') || hasCopRole('seed-w20','POCMRole') || hasCopRole('seed-w20','POCNRole') || hasCopRole('seed-w20','POCORole')">{{'cop.search.label.vehicle'|localize}}</a></li>
+						</ul>
+					</div>
+
+					<div class="hidden-lg hidden-md hidden-sm col-xs-12">&nbsp;</div>
+
+					<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6">
+						<input id="searchAttribute" class="form-control" type="text"
+							title="{{searchTvvlabel}}" data-ng-show="tvvActive"
+							placeholder="Saisir un TVV" data-ng-model="searchTvvlabel" data-ng-keypress="myFunction($event)">
+						<input id="searchAttribute" class="form-control"
+							title="{{searchTGlabel}}" data-ng-show="tgActive" type="text"
+							placeholder="Saisir un code enveloppe"
+							data-ng-model="searchTGlabel" data-ng-keypress="myFunction($event)"> <input
+							id="searchAttribute" class="form-control"
+							title="{{searchRGlabell}}" data-ng-show="rgActive" type="text"
+							placeholder="Saisir un code famille"
+							data-ng-model="searchRGlabel" data-ng-keypress="myFunction($event)">
+					</div>
+
+					<div class="col-lg-2 col-md-2 col-sm-6 col-xs-6" ng-show="authorization('POCNRole')">
+                     <button class="btn btn-info" data-ng-if="btnVisibile"  data-ng-show="tgActive"
+							data-ng-click="testModal()">{{'cop.search.button.createTG' | localize}}</button>
+                            <button class="btn btn-info" data-ng-if="btnVisibile"  data-ng-show="rgActive"
+                            data-ng-click="testModal()">{{'cop.search.button.createRG' | localize}}</button>
+					</div>
+
+				</div>
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+				<div
+					class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content tab-content-border no-padding"></div>
+
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+				<div class="col-lg-12 tab-content no-padding">
+					<!-- TAB 1 -->
+
+					<div
+						class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content no-padding"></div>
+					<div id="tvv" class="tab-pane fade in active">
+                    <div data-cop-search></div>
+						<data-ng-include src="'fragments/cop/views/search-tvv.html'" />
+					</div>
+					<!-- TAB 2 -->
+					<div id="envelope" class="tab-pane fade in">
+                    <div data-cop-search></div>
+						<data-ng-include src="'fragments/cop/views/search-technicalgroup.html'" />
+					</div>
+					<!-- TAB 3 -->
+					<div id="famille" class="tab-pane fade in">
+                    <div data-cop-search></div>
+						<data-ng-include src="'fragments/cop/views/search-regulationgroup.html'" />
+					</div>
+                                        <!-- TAB 4 -->
+                    <div id="searchVehicles" class="tab-pane fade in" data-ng-show = "hasCopRole('seed-w20','POCARole') || hasCopRole('seed-w20','POCBRole') || hasCopRole('seed-w20','POCCRole')|| hasCopRole('seed-w20','POCDRole')|| hasCopRole('seed-w20','POCERole')|| hasCopRole('seed-w20','POCFRole')|| hasCopRole('seed-w20','POCGRole')|| hasCopRole('seed-w20','POCHRole') || hasCopRole('seed-w20','POCIRole') || hasCopRole('seed-w20','POCJRole') || hasCopRole('seed-w20','POCMRole') || hasCopRole('seed-w20','POCNRole') || hasCopRole('seed-w20','POCORole')">
+                        <data-ng-include src="'fragments/cop/views/search-vehicle.html'" />
+                    </div>
+				</div>
+			</div>
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+
+			<!-- Control 2 -->
+
+
+			<!-- Modal -->
+
+
+		</div>
+	</div>
+</div>
+
+
+<div id="errorDisplayModal" class="modal fade" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 400px;">
+		<div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+			<div class="modal-header">
+				<button type="button" class="btn fa fa-remove"
+					style="float: right; background-color: #fff;" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal">{{
+					'cop.technicalData.label.ok' | localize }}</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="WarningModal" class="modal fade" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 400px;">
+		<div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+			<div class="modal-header">
+				<button type="button" class="btn fa fa-remove"
+					style="float: right; background-color: #fff;" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">Le TVV {{tvvObject.label}} {{ 'cop.rg.message.emsWarning'|localize }} {{tvvObject.emissionStandard.esLabel}} {{ tvvObject.emissionStandard.version}}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal" data-ng-click="saveRGforSelectedTG(false)">{{
+					'cop.technicalData.label.ok' | localize }}</button>
+					
+					<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal">{{
+					'cop.technicalData.label.cancel' | localize }}</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+

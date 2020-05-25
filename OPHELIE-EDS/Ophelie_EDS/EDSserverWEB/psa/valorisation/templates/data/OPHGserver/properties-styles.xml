@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+    <style id="Charge_carac" font-name="Arial Italique"
+        font-bold="false" font-italic="true" font-size="10" red="0"
+        green="0" blue="153" red-selected="255" green-selected="0"
+        blue-selected="0" format-drawing="{0}={1} {2}" position="2"/>
+    <style id="Element_Res" font-name="Arial" font-bold="false"
+        font-italic="false" font-size="10" red="0" green="0" blue="0"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="{1}" position="3"/>
+    <style id="Episure" font-name="Arial Gras Italique" font-bold="true"
+        font-italic="true" font-size="8" red="255" green="153"
+        blue="102" red-selected="255" green-selected="0"
+        blue-selected="0" format-drawing="{1}" position="3"/>
+    <style id="Etape 1" font-name="Arial" font-bold="false"
+        font-italic="false" font-size="10" red="0" green="0" blue="0"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="{1}{2}" position="3"/>
+    <style id="Etape 2" font-name="Arial" font-bold="false"
+        font-italic="false" font-size="10" red="0" green="0" blue="0"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="{1}{2}" position="3"/>
+    <style id="Fil_cara_Nom" font-name="Arial Italique"
+        font-bold="false" font-italic="true" font-size="10" red="153"
+        green="153" blue="255" red-selected="255" green-selected="0"
+        blue-selected="0" format-drawing="{0}={1}{2}" position="3"/>
+    <style id="Fil_carac" font-name="Arial Gras Italique"
+        font-bold="true" font-italic="true" font-size="10" red="0"
+        green="0" blue="0" red-selected="255" green-selected="0"
+        blue-selected="0" format-drawing="{0} {1} {2}" position="4"/>
+    <style id="Fil_carac2" font-name="Arial Gras Italique"
+        font-bold="true" font-italic="true" font-size="10" red="0"
+        green="0" blue="0" red-selected="255" green-selected="0"
+        blue-selected="0" format-drawing="{1}{2}" position="4"/>
+    <style id="Fuse_carac" font-name="Arial" font-bold="false"
+        font-italic="false" font-size="10" red="0" green="0" blue="0"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="{0} = {1} {2}" position="4"/>
+    <style id="Nom" font-name="Arial Gras" font-bold="true"
+        font-italic="false" font-size="11" red="0" green="0" blue="153"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="{1}" position="3"/>
+    <style id="Protect_result" font-name="Arial Italique"
+        font-bold="false" font-italic="true" font-size="10" red="51"
+        green="102" blue="255" red-selected="255" green-selected="0"
+        blue-selected="0" format-drawing="{1}{2}" position="4"/>
+    <style id="Tension min" font-name="Arial Italique" font-bold="false"
+        font-italic="true" font-size="10" red="0" green="0" blue="153"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="{0}={1}{2}" position="2"/>
+    <style id="batterie" font-name="Arial" font-bold="false"
+        font-italic="false" font-size="11" red="0" green="0" blue="204"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="{1}" position="4"/>
+    <style id="chute de tension tot" font-name="Arial Italique"
+        font-bold="false" font-italic="true" font-size="10" red="0"
+        green="204" blue="51" red-selected="255" green-selected="0"
+        blue-selected="0" format-drawing="{0}={1}{2}" position="2"/>
+    <style id="decoupe" font-name="Arial" font-bold="false"
+        font-italic="false" font-size="14" red="153" green="0" blue="51"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="" position="3"/>
+    <style id="default" font-name="Arial" font-bold="false"
+        font-italic="false" font-size="10" red="0" green="0" blue="0"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="" position="4"/>
+    <style id="load" font-name="Arial" font-bold="false"
+        font-italic="false" font-size="10" red="102" green="0"
+        blue="102" red-selected="255" green-selected="0"
+        blue-selected="0" format-drawing="{1}" position="3"/>
+    <style id="mode-degradre" font-name="Arial Italique"
+        font-bold="false" font-italic="true" font-size="10" red="51"
+        green="153" blue="0" red-selected="255" green-selected="0"
+        blue-selected="0" format-drawing="{0}={1}{2}" position="2"/>
+    <style id="splice_nom" font-name="Arial" font-bold="false"
+        font-italic="false" font-size="8" red="102" green="0" blue="102"
+        red-selected="255" green-selected="0" blue-selected="0"
+        format-drawing="{1}" position="3"/>
+</content>

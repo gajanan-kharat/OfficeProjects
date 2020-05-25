@@ -1,0 +1,581 @@
+/* 
+    Document   : psa
+    Created on : 12 juin 2012, 11:37:19
+    Author     : Max PAVAGEAU <max@vaushell.com>
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+@import "../runo/styles.css";
+
+/* HEADER */
+.v-app .header-title {
+    background: rgb(76, 76, 76); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(76, 76, 76, 1)), color-stop(100%, rgba(19, 19, 19, 1)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(76, 76, 76, 1) 0%, rgba(19, 19, 19, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(  startColorstr='#4c4c4c', endColorstr='#131313', GradientType=0); /* IE6-9 */
+}
+
+.v-app .B2bheader-shorcuts {
+    filter: progid:DXImageTransform.Microsoft.gradient(  startColorstr='#FFFFFF', endColorstr='#FFFFFF', GradientType=0); /* IE6-9 */
+}
+
+.v-app .B2bheader-shorcuts .v-link,.v-app .B2bheader-shorcuts .v-link a {
+    color: white;
+    font-size: 10pt;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 7px;
+}
+
+.v-app .B2bheader-shorcuts .v-link span {
+    margin-left: 3px;
+    text-decoration: none;
+}
+
+.v-app .B2bheader-shorcuts .v-nativebutton {
+    background: #B7C6DD;
+    display: inline;
+    border: none;
+    text-align: center;
+    min-height: 20px;
+    min-width: 40px;
+    color: white;
+    font-weight: bold;
+}
+
+.v-app .login-error {
+    color: red;
+    font-size: 50pt;
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.red-text {
+    color: red;
+    font-size: 30pt;
+    text-align: center;
+}
+
+.v-app .v-label-chronogram-date {
+    min-height: 23px;
+}
+
+.v-table .v-textfield-readonly {
+    cursor: pointer;
+}
+
+.v-table-cell-wrapper {
+    white-space: normal;
+}
+
+.containers-browser .v-table-cell-wrapper {
+    white-space: nowrap; /* Normal behavior */
+}
+
+.v-app .header-shorcuts .v-link,.v-app .header-shorcuts .v-link a {
+    color: white;
+    font-size: 11pt;
+    text-decoration: none;
+    margin-right: 7px;
+}
+
+.v-app .header-shorcuts {
+    background-image: url(icons/header-gradient2.png);
+}
+
+.v-app .header-shorcuts .v-link span {
+    margin-left: 3px;
+    text-decoration: none;
+}
+
+/* MENUBAR */
+.v-app .v-menubar {
+    color: white;
+}
+
+/* MAIN LAYOUT SHADOW */
+.v-app .main-layout {
+    background: #f9f9f9 top url(icons/back-shadow.png) repeat-x;
+}
+
+/* SPLITTER */
+.v-app .v-splitpanel-hsplitter,.v-app .v-splitpanel-hsplitter div {
+    width: 0.5px;
+}
+
+/* FOOTER */
+.v-app .footer .v-label {
+    font-size: 8pt;
+    color: dimgray;
+    font-style: italic;
+}
+
+/* TABLE */
+/*.v-app .psa-overall .v-selected
+{
+    background-color: #D45500;
+}*/
+.v-panel-deco:before {
+    background: none;
+}
+
+.v-panel-deco {
+    background: none;
+}
+
+.v-button .v-button-wrap,.v-disabled.v-button .v-button-wrap {
+    border-radius: 2px;
+}
+
+.v-label-validation-none,.v-app .validation-none .v-button-wrap {
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    background: gray;
+    text-shadow: 0 1px 0 rgb(57, 58, 60);
+    border: black 1px solid;
+    border-radius: 1px;
+    padding: 1px;
+    text-align: center;
+}
+
+.v-label-validation-strict-nok,.v-app .validation-strict-nok .v-button-wrap {
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    background: crimson;
+    text-shadow: 0 1px 0 rgb(57, 58, 60);
+    border: black 1px solid;
+    border-radius: 1px;
+    padding: 1px;
+    text-align: center;
+}
+
+.v-label-validation-weak-nok,.v-app .validation-weak-nok .v-button-wrap {
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    background: darkorange;
+    text-shadow: 0 1px 0 rgb(57, 58, 60);
+    border: black 1px solid;
+    border-radius: 1px;
+    padding: 1px;
+    text-align: center;
+}
+
+.v-label-validation-ok,.v-app .validation-ok .v-button-wrap {
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    background: yellowgreen;
+    text-shadow: 0 1px 0 rgb(57, 58, 60);
+    border: black 1px solid;
+    border-radius: 1px;
+    padding: 1px;
+    text-align: center;
+}
+
+.v-panel-caption img.v-icon {
+    margin-right: 10px;
+}
+
+.v-app .validation-none .v-button-wrap:hover,.v-app .validation-strict-nok .v-button-wrap:hover,.v-app .validation-weak-nok .v-button-wrap:hover,.v-app .validation-ok .v-button-wrap:hover
+    {
+    color: lightgrey;
+    text-shadow: 0 -1px 0 rgb(57, 58, 60);
+}
+
+.v-label-edition-tag {
+    font-size: 8pt;
+    font-style: italic;
+}
+
+.v-label-validation-header {
+    font-size: 12pt;
+    color: rgb(57, 58, 60);
+    text-shadow: 0px 1px 0px rgb(255, 255, 255);
+    padding: 3px;
+    text-align: center;
+}
+
+.v-label-validation-header { /*    background-color: gainsboro;*/
+    background: url("../runo/table/img/header-bg.png") repeat-x scroll 0% 0% rgb(231, 233, 234);
+    background-size: auto 100%;
+}
+
+.v-label-validation-header-top {
+    border-top: solid 1px slategray;
+    border-right: solid 1px slategray;
+}
+
+.v-label-validation-header-top-first {
+    border-left: solid 1px slategray;
+}
+
+.v-label-validation-header-left {
+    border-bottom: solid 1px slategray;
+    border-left: solid 1px slategray;
+}
+
+.v-label-validation-header-left-first {
+    border-top: solid 1px slategray;
+}
+
+.v-app .v-label-large {
+    font-size: 14pt;
+    text-align: center;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.v-app .v-label-centered {
+    text-align: center;
+}
+
+.v-app .v-horizontallayout-validation-tag {
+    border-left: 1px dashed slategray;
+}
+
+/**Pilote dérive**/
+.v-label-drift-validated {
+    font-weight: bold;
+    color: white;
+    background-color: yellowgreen;
+}
+
+.v-label-drift-alert {
+    font-weight: bold;
+    color: white;
+    background-color: crimson;
+}
+
+.v-label-drift-warning {
+    font-weight: bold;
+    color: white;
+    background-color: darkorange;
+}
+
+/** Consolidate Stage **/
+.v-label-operating-mode {
+    font-size: 16px;
+    text-decoration: underline;
+    
+}
+
+.v-label-operating-mode-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* treenode */
+.v-tree-node-caption-eds-node {
+    font-weight: bold;
+    color: rgb(241, 76, 26);
+}
+
+/* Lay the options horizontally */
+.v-select-optiongroup-horizontal .v-select-option {
+    display: inline-block;
+}
+
+/* Avoid wrapping if the layout is too tight */
+.v-select-optiongroup-horizontal {
+    white-space: nowrap;
+}
+
+/* Some extra spacing is needed */
+.v-select-optiongroup-horizontal
+.v-select-option.v-radiobutton {
+    padding-right: 10px;
+}
+
+.v-app .header-user {
+    background-color: #323336;
+}
+
+.v-verticallayout-bordered {
+    border-left: solid 1px black;
+    border-bottom: solid 1px black;
+    border-right: solid 1px black;
+}
+
+.v-horizontallayout-bordered {
+    border-left: solid 1px black;
+    border-bottom: solid 1px black;
+    border-right: solid 1px black;
+}
+
+.v-label-title {
+    font-size: 18pt;
+    color: rgb(241, 76, 26);
+    padding: 10px;
+}
+
+.v-label-comment {
+    white-space: pre-wrap; /* css-3*/
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
+
+/*
+Style des boutons de la barre d'action
+*/
+.eds-action-bar .v-nativebutton {
+    display: block;
+    background: transparent;
+    border: none;
+    text-align: center;
+    min-height: 65px;
+    min-width: 70px;
+}
+
+.eds-action-bar .v-nativebutton:hover {
+    background: url(icons/cadre.png) no-repeat;
+}
+
+.eds-action-bar .v-nativebutton img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2px;
+}
+
+.eds-action-bar .v-nativebutton span {
+    font-size: xx-small;
+    text-shadow: #fafafa 1px 1px 0;
+    white-space: pre;
+    line-height: 100%;
+    line-height: 160%!ie; /*hack pour ie*/
+}
+
+.v-caption-red-text,.red-text .v-button-wrap {
+    color: red;
+}
+
+.v-label-green-text,.green-text .v-button-wrap {
+    color: green;
+}
+
+.picture-layout {
+    border: 2px solid black;
+}
+
+.picture img {
+    max-width: 450px;
+    max-height: 450px;
+    cursor: pointer;
+    display: block;
+    /*margin: auto;*/
+}
+
+.horizontal {
+    display: inline-block;
+}
+
+.moteur_tournant {
+    background-color: #CED8F6;
+    background-repeat: repeat-y;
+    background-repeat: repeat-x;
+}
+
+.moteur_non_tournant {
+    background-color: #CEF6F5;
+    background-repeat: repeat-y;
+    background-repeat: repeat-x;
+}
+
+.Tmin_Tmax {
+    background-color: #FFBF00;
+    background-repeat: repeat-y;
+}
+
+.moteur_demarrage {
+    background-color: #F5A9A9;
+    background-repeat: repeat-y;
+    background-repeat: repeat-x;
+}
+
+.Champs_non_renseigner {
+    background-color: #FAAC58;
+    background-repeat: repeat-y;
+}
+
+.separator {
+    padding-bottom: 10px;
+    border-bottom: 3px solid gray;
+}
+
+.table-title {
+    font-weight: bold;
+    font-size: 13px;
+    color: #323336;
+}
+
+/********Table style**********/
+/* Center the text in header. */
+.v-table {
+    border-collapse: collapse;
+}
+
+.v-table-header-cell {
+    text-align: center;
+}
+
+/* Basic style for all cells. */
+.v-table-checkerboard .v-table-cell-content {
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 12px;
+    width: 20px;
+    height: 28px;
+}
+
+/* Style specifically for the row header cells. */
+.v-table-cell-content-rowheader {
+    background: #E7EDF3 url(../default/table/img/header-bg.png) repeat-x scroll 0 0;
+}
+/* Previous style doesn't seem to have the image */
+.v-table-cell-content-rowheader-light {
+    background: #E7EDF3 url(icons/header-gradient1.png) repeat-x scroll 0 0;
+}
+
+/* Style specifically for the "white" cells. */
+.v-table-cell-content-white {
+    background: white;
+    color: black;
+    font-weight: bold;
+}
+
+/* Style specifically for the "black" cells. */
+.v-table-cell-content-black {
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+
+.v-table-cell-content-gray {
+    background-color: gray;
+    font-weight: bold;
+}
+
+.v-table-cell-content-cadetblue {
+    background-color: #F5A9A9;
+    font-weight: bold;
+}
+
+.v-table-cell-content-c1 {
+    background: #8A8A8A;
+    font-weight: bold;
+}
+
+.v-table-cell-content-c2 {
+    background: #F0F0F0;
+    font-weight: bold;
+}
+
+.v-table-cell-content-c3 {
+    background: #9B9B9B;
+    font-weight: bold;
+}
+
+.v-table-cell-content-c4 {
+    background: #AEAEAE;
+    font-weight: bold;
+}
+
+.v-table-cell-content-c5 {
+    background: #E6E6E6;
+    font-weight: bold;
+}
+
+.v-table-cell-content-c6 {
+    background: #D6D6D6;
+    font-weight: bold;
+}
+
+.gras {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.fullBorder {
+    border: gray 2px solid;
+    padding: 2px;
+    margin: 3px;
+}
+
+.absolute {
+    position: relative;
+}
+
+.indent {
+    text-indent: 10px;
+}
+
+.souligne {
+    text-decoration: underline;
+}
+
+/* Accordeons special header style */
+.v-accordion-item-open .v-panel-captionwrap {
+    display: none;
+}
+
+/* Special style for empty panel header */
+.v-panel-no-empty .v-panel-nocaption {
+    display: none;
+}
+
+/* Special style for panel bottom decoration */
+.v-panel-deco-no-empty,.v-panel-deco-no-empty:before {
+    display: none;
+}
+
+.check-ok {
+    color: green;
+}
+
+.check-ko {
+    color: red;
+}
+
+.v-caption-margin-top {
+    margin-top: 10px;
+}
+
+.hideAccordion{
+    visibility:hidden;
+}
+
+.edit-field{
+    background:url(icons/edit-field.png);
+    border:none !important;
+}
+
+.v-table-cell-content-green {
+    background-color: rgb(80, 150, 80);
+    color: white;
+    border-bottom: 1px solid white; 
+}
+
+.v-verticallayout-bsx-info-vlayout {
+    padding-left: 10px;
+}
+
+.validate-chs-error{
+    border-color:red;
+}
+

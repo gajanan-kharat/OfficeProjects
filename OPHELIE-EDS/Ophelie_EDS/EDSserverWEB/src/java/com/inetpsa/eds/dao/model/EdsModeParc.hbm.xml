@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 sept. 2012 11:05:57 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsModeParc" table="OPLQTMOP">
+        <id name="mpedsId" type="string">
+            <column name="MPEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        
+        <property name="mpedsName" type="string">
+            <column name="MPEDS_NAME" length="255" />
+        </property>
+        <property name="mpedsQcf1" type="string">
+            <column name="MPEDS_QCF1" length="5" />
+        </property>
+        <property name="mpedsTmoyModeParc" type="java.lang.Float">
+            <column name="MPEDS_TMOY_MODE_PARC" precision="7" scale="0" />
+        </property>
+        <property name="mpedsTmaxModeParc" type="java.lang.Float">
+            <column name="MPEDS_TMAX_MODE_PARC" precision="7" scale="0" />
+        </property>
+        <property name="mpedsTmoyModeParcComment" type="string">
+            <column name="MPEDS_TMOY_MODE_PARC_COMMENT" length="1024" />
+        </property>
+    </class>
+</hibernate-mapping>

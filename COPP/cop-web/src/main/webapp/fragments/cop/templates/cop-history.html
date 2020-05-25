@@ -1,0 +1,28 @@
+
+<div id="showHistoryBox" class="modal fade" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content" style="border-radius: 0px;">
+
+			<div class="modal-header">
+				<button type="button" class="btn fa fa-remove"
+					style="float: right; background-color: #fff;" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.history.popUp.header'| localize }}</h4>
+			</div>
+
+			<div class="modal-body">
+				<div data-ui-grid="HistoryGridOptions" data-ui-grid-auto-resize></div>
+
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary pull-left" data-dismiss="modal">{{
+					'cop.history.button.close' | localize }}</button>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,360 @@
+
+<div data-cop-header></div>
+<div id="wrapper" class="context-wrapper">
+<div>
+<div data-cop-sidebar></div>
+<div class="col-lg-12 no-padding">
+
+<div  id="editTechnicalGroupModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" >
+	<div class="modal-dialog modal-md" style="width: 600px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+<form name="myForm3">
+			<div class="modal-body" style="padding-top: 20px;">
+			{{'cop.editTechnicalGroup.label.warningMessage'|localize}} {{technicalGroup.label}}  {{technicalGroup.version}} {{technicalGroup.techgroupstatus.label}}
+			</div>
+			<div class="modal-footer align-center">
+				
+           <button type="button"  style="border-radius: 0px;" class="btn btn-default"   data-ng-click="deleteTechGroup()">{{'cop.regulationGroup.modalOption.yes'|localize}}</button>
+								
+					&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal"  >{{'cop.regulationGroup.modalOption.No'|localize}}</button>
+					
+
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<div id="errorDisplayModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 400px;">
+		<div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{
+					'cop.technicalData.label.ok' | localize }}</button>
+				
+			</div>
+		</div>
+	</div>
+	</div>
+<div id="editTechnicalVersionStatusModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+	<div class="modal-dialog modal-md" style="width: 600px;">
+		<div class="modal-content" style="border-radius: 0px; width: 600px;">
+<form name="myForm3">
+			<div class="modal-header">
+				<button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalLabel">{{'cop.editTechnicalGroup.editStatusVersion.label'|localize}}</h4>
+			</div>
+			<div class="modal-body" style="margin-bottom: 6%;">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="col-lg-2">
+					<label >{{'cop.editTechnicalGroup.statusDropdown.label'|localize}}</label> 
+				</div>
+				<div class="col-lg-4">
+				
+				<ui-select id="statusSelect" data-ng-model="technicalGroup.techgroupstatus" reset-search-input="true"> <ui-select-match
+							placeholder="Select Status"> {{$select.selected.label}} </ui-select-match> <ui-select-choices repeat="status in technicalGroupStatus | filter: $select.search">
+						<div ng-bind-html="status.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+				</div>
+				<div class="col-lg-1"></div>
+				<div class="col-lg-4">
+				{{'cop.editTechnicalGroup.incrementVersion.label'|localize}}	&nbsp; &nbsp;			
+				<input id="versionCheckbox" ng-model="isVersionCreated" type="checkbox" name="version" value=false>
+				</div>
+				
+			</div>
+            </div>
+            
+			<div class="modal-footer align-center">
+					<button type="button"  style="border-radius: 0px;" class="btn btn-primary"   data-ng-click="setSelectedVersionandStatus()">{{'cop.regulationGroup.modal.ok'|localize}}</button>
+					&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;" class="btn btn-default" data-ng-click="cancelVersionAndStatus()" >{{'cop.regulationGroup.modal.cancel'|localize}}</button>
+					
+
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="worstCaseModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+<form name="myForm3">
+			<div class="modal-header">
+				<button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title" id="modalLabel">{{'cop.editTechnicalGroup.worstCase.lable' |localize }}</h4>
+			</div>
+			<div class="col-lg-11 col-md-12 col-sm-12 col-xs-12 tab-content">
+
+		<div>
+			<div  data-ng-repeat="tvvObj in technicalGroup.tvvRepresentations" id="card{{tvvObj.entityId}}"
+			class="col-lg-5 col-md-5 col-sm-5 col-xs-11 custom-card no-padding" data-ng-click="selectWorstCase(tvvObj)">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<label class="control-label">{{ 'cop.technicalGroup.tvv.label' |localize }}</label>
+					<div>
+						<label class="control-label card-text-overflow" title="{{tvvObj.label}}">{{tvvObj.label}}</label>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+					<label class="control-label">{{tvvObj.version}} ({{tvvObj.status.guiLabel}})</label>
+					<span data-ng-class="{'fa-worst':tvvObj.worstcaseSelected }"></span>
+					<div>
+						<label class="control-label">{{tvvObj.displayDate}}</label>
+
+					</div>
+				</div>
+
+				<div class="col-lg-2 col-md-2col-sm-2 col-xs-6 card-icon">
+				
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 " data-ng-click="editTVV(tvvObj)">
+					<span class="fa fa-pencil" ></span>
+				</div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 no-padding" data-ng-click="deleteTechnicalGroupInRg(tg)" data-ng-show = "authorization('POCNRole')">
+                                                        <div style="padding-top: 15px" title="Delete">
+                                                            <span class="fa fa-trash custom-fa-size"></span>
+                                                        </div>
+                                                    </div>
+                
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 ">
+					<span id="icon-status" class="fa fa-2x"
+						data-ng-class="{'fa-check-square-o':tvv.status.label.toLowerCase() == 'valid','fa-archive':tvv.status.label.toLowerCase() == 'archive', 'fa-wrench':tvv.status.label.toLowerCase() == 'draft'}"></span>
+				</div></div>
+				
+				
+				</div>
+			</div>
+  
+		</div>
+            
+			<div class="modal-footer" style="text-align:left;">
+				
+
+					<button type="button"  style="border-radius: 0px;" class="btn btn-primary"   data-ng-click="settWorstCase()">{{'cop.technicalGroup.validate.label'|localize}}</button>
+								
+					&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal"  ng-click="cancelWorstCase()">{{'cop.regulationGroup.modal.cancel'|localize}}</button>
+					
+
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="row no-margin">
+
+<div class="no-padding slide-resize col-lg-10 col-lg-12" style="position: fixed; z-index: 100; background-color: #fff;">
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+<div class="col-lg-3 padding-top-btm">
+<b>{{'cop.editTechnicalGroup.title.lable'| localize}}</b>
+</div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+<div class="col-lg-3">
+{{'cop.editTechnicalGroup.envelope.lable'|localize}}
+</div>
+
+<div class="col-lg-12 no-padding">
+<div class="col-lg-3" >
+<div class="form-control">
+<div class="col-lg-10 no-padding">
+<label class="card-text-overflow" style="white-space: nowrap;" title="{{technicalGroup.label}} {{technicalGroup.version}} {{technicalGroup.techgroupstatus.label}} ">{{technicalGroup.label}} {{technicalGroup.version}} {{technicalGroup.techgroupstatus.label}} </label>
+</div>
+
+<div class="col-lg-2">
+    <span  class="fa fa-pencil" style="line-height:inherit" data-ng-click="showEditStatusVersionModal()" data-ng-show = "authorization('POCNRole')"></span>
+</div>
+</div>
+</div>
+											
+
+<div class="col-lg-2">
+<!-- <select class="form-control" data-ng-model="selectedAction" data-ng-change="takeAction()">
+<option>Supprimer</option>
+</select> -->
+	<ui-select data-ng-model="selectedAction" reset-search-input="true" on-select="takeAction()" data-ng-show = "authorization('POCNRole')">
+					<ui-select-match placeholder="{{'cop.actions.options.actions'|localize}}">
+						{{$select.selected}} 
+					</ui-select-match> 
+					<ui-select-choices repeat="action in actions | filter: $select.search">
+						<div ng-bind-html="action | highlight: $select.search"></div>
+					</ui-select-choices>
+				</ui-select>
+</div>
+<div class="col-lg-3">
+<button class="form-control btn btn-default" data-ng-click="selectWorstCaseModal()" data-ng-show = "authorization('POCNRole')">{{'cop.editTechnicalGroup.worstCase.lable'|localize}}</button>
+</div>
+</div>
+
+
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+<div class="col-lg-3">
+{{'cop.editTechnicalGroup.family.lable'|localize}}
+</div>
+<div class="col-lg-12 no-padding">
+<div class="col-lg-4">
+				
+				<ui-select id="regulationGroupSelect" data-ng-model="technicalGroup.regulationGroupRepresent" ng-disabled="!authorization('POCNRole')" reset-search-input="true" > <ui-select-match
+							placeholder="Select Regulation Group"> {{$select.selected.label}} </ui-select-match> <ui-select-choices repeat="regulation in regulationGroupList | filter: $select.search">
+						<div ng-bind-html="regulation.label | highlight: $select.search"></div>
+						</ui-select-choices> </ui-select>
+						
+				
+				</div>
+</div>
+
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+<div class="col-lg-12">
+<fieldset class="custom-border">
+<legend class="custom-border">{{'cop.editTechnicalGroup.samplingRule.lable'|localize}} </legend>
+<div class="col-lg-3 padding-top-btm">
+<ui-select   id="statusSelect"  data-ng-model="technicalGroup.samplingLabel" ng-disabled="!authorization('POCNRole')" reset-search-input="true" on-select="setSelectedSamplingRule($select.selected.label,$select.selected.descriptions)">
+			 <ui-select-match placeholder="Select Sampling Rule"> {{$select.selected}} </ui-select-match> 
+							<ui-select-choices repeat="sampling in samplingDropdown  | filter: $select.search">
+						<div ng-bind-html="sampling.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+
+
+</div>
+
+<div class="col-lg-6">
+<div class="padding-top-btm custom-margin" ng-repeat="description in descriptions  ">
+{{description}}
+</div>
+</div>
+
+
+</fieldset>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+<div class="col-lg-3">
+<button type="button" style="border-radius: 8px;" class="btn" ng-click="addTvv()" data-ng-show = "authorization('POCNRole')"><span class="fa fa-plus-square-o fa-custom-pad" ></span>{{'cop.editTechnicalGroup.addTvvLabel'|localize}}</button>
+
+</div>
+
+<div class="col-lg-11 col-md-12 col-sm-12 col-xs-12 tab-content">
+
+		<div data-ng-repeat="tvvObj in technicalGroup.tvvRepresentations">
+			<div class="col-lg-5 col-md-5 col-sm-5 col-xs-11 custom-card no-padding">
+				<div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+					<label class="control-label">{{ 'cop.technicalGroup.tvv.label' |localize }}</label>
+					<div>
+						<label class="control-label  card-text-overflow" title="{{tvvObj.label}}">{{tvvObj.label}}</label>
+						
+					</div>
+				</div>
+
+				<div class="col-lg-5 col-md-5 col-sm-4 col-xs-6">
+					<label class="control-label">{{tvvObj.version}} ({{tvvObj.status.guiLabel}})</label>
+					<span data-ng-class="{'fa-worst':tvvObj.worstcaseSelected }"></span>
+					<div>
+						<label class="control-label">{{tvvObj.displayDate}}</label>
+
+					</div>
+				</div>
+
+				<div class="col-lg-1 col-md-1 col-sm-2 col-xs-6 card-icon" data-ng-show = "authorization('POCNRole')">
+				
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 " data-ng-click="editTVV(tvvObj)">
+					<span class="fa fa-pencil" ></span>
+				</div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 no-padding" data-ng-click="deleteTvv(tvvObj)" data-ng-show = "authorization('POCNRole')">
+                                                        <div style="padding-top: 15px" title="Delete">
+                                                            <span class="fa fa-trash custom-fa-size"></span>
+                                                        </div>
+                                                    </div>
+                
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 ">
+					<span id="icon-status" class="fa fa-2x"
+						data-ng-class="{'fa-check-square-o':tvv.status.label.toLowerCase() == 'valid','fa-archive':tvv.status.label.toLowerCase() == 'archive', 'fa-wrench':tvv.status.label.toLowerCase() == 'draft'}"></span>
+				</div></div>
+				
+				
+				</div>
+			</div>
+   </div>
+
+</div>
+
+
+		
+
+		<div class="slide-resize col-lg-12 col-lg-10"
+	style="position: fixed;
+	/* top: 0px; */ bottom: 0px; background-color: #fff;">
+<label class="screenNo">{{'cop.tg.edit.label.screenNo' | localize}}</label>
+	<div class="col-lg-12 padding-top-btm">
+
+		<div class="col-lg-3"></div>
+
+		<div class="col-lg-6 text-center">
+
+			<button type="button" class="btn btn-primary" data-ng-show = "authorization('POCNRole')"
+				data-ng-click="saveEditedTechnicalGroup()">{{ 'cop.technicalData.label.validate' |
+					localize }}</button>
+
+			&nbsp; &nbsp;
+
+			<button type="button" class="btn btn-default " data-ng-show = "authorization('POCNRole')"
+				data-ng-click="CancelOnConfirmationTG()">{{ 'cop.technicalData.label.cancel' |
+					localize }}</button>
+		</div>
+
+
+		<div class="col-lg-3 text-right">
+
+		</div>
+	</div>
+</div>
+
+
+	</div>
+</div>
+</div>
+<!-- Confirmation Message On Cancel Button -->
+<div id="ConfirmCancelTGModal" class="modal fade" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.message.cancelUnsavedDataOnConfirmation'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal"
+					data-ng-click="cancelModifiedTGChanges()">{{
+					'cop.cancelUnsavedData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal">{{
+					'cop.cancelUnsavedData.message.cancel' | localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Confirmation Message On Cancel Button-->
+ </div>

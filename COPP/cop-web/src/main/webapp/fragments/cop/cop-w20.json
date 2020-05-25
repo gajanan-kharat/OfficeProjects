@@ -1,0 +1,375 @@
+	{
+	    "id": "cop",
+	    "name": "Conformity Of Production",
+	    "version": "1.0.0",
+	    "author": "FJV1",
+	    "description": "Main fragment of COP application",
+	    "title": "Conformity Of Production",
+	    "home": "/Home",
+
+	    "modules": {
+	        "Home": {
+	            "path": "{cop}/modules/js/home",
+	            "autoload": true
+	        },
+	        
+	         "Directives": {
+	            "path": "{cop}/modules/js/directives",
+	            "autoload": true
+	        },
+	         
+	        "Common": {
+	            "path": "{cop}/modules/js/common",
+	            "autoload": true
+	        },
+	        
+	          "specificCopModule": {
+	            "path": "{cop}/modules/js/specific-cop",
+	            "autoload": true
+	        },	
+	        "genomeData": {
+	       		 "path": "{cop}/modules/js/genome-data",
+	       		 "autoload": true
+	        }, 
+	        "coastdown": {
+	       		 "path": "{cop}/modules/js/coastdown",
+	       		 "autoload": true
+	        },        
+	        
+	        "EditTvv": {
+	            "path": "{cop}/modules/js/edit-tvv",
+	            "autoload": true
+	        },
+			
+	        "TvvDependentMain": {
+	            "path": "{cop}/modules/js/tvv-dependent-main",
+	            "autoload": true
+	        },
+	        
+	        
+	        "GlobalBusinessReference": {
+	            "path": "{cop}/modules/js/global-businessreference",
+	            "autoload": true
+	        },
+
+	        
+	        "SearchMain": {
+	            "path": "{cop}/modules/js/search-main",
+	            "autoload": true
+	        },
+	        
+	        
+	        "CreateEmissionStandard": {
+	            "path": "{cop}/modules/js/create-emissionstandard",
+	            "autoload": true
+	        },
+	        
+	        "EditEmissionStandard": {
+	            "path": "{cop}/modules/js/edit-emissionstandard",
+	            "autoload": true
+	        },
+	        
+	        "SamplingRule": {
+	            "path": "{cop}/modules/js/samplingrule",
+	            "autoload": true
+	        },
+	        
+
+	        "CreateTechnicalGroup": {
+	            "path": "{cop}/modules/js/technicalgroup",
+	            "autoload": true
+	        },
+	        
+	        
+	        "CreateRegulationGroup": {
+	            "path": "{cop}/modules/js/regulationgroup",
+	            "autoload": true
+	        },
+	        
+	        "Settings": {
+	            "path": "{cop}/modules/js/settings",
+	            "autoload": true
+	        },
+	        
+	        
+	        "CreateTvv": {
+	            "path": "{cop}/modules/js/create-tvv",
+	            "autoload": true
+	        },
+
+	        "EditTechnicalGroup": {
+	            "path": "{cop}/modules/js/edit-technicalgroup",
+	            "autoload": true
+	        },
+	        
+	        "EditRegulationGroup": {
+	            "path": "{cop}/modules/js/edit-regulationggroup",
+	            "autoload": true
+	        },
+	        "Vehicle": {
+                "path": "{cop}/modules/js/vehicle",
+                "autoload": true
+            },
+	        
+	        "cop-style": {
+	            "path": "[css]!{cop}/style/cop.css",
+	            "autoload": true
+	        },"Basket": {
+                "path": "{cop}/modules/js/basket",
+                "autoload": true
+            },
+            "SearchVehicle": {
+                "path": "{cop}/modules/js/vehiclefile",
+                "autoload": true
+            },
+             "preparationFileStructure": {
+                "path": "{cop}/modules/js/preparation-file-structure",
+                "autoload": true
+            }
+            , 
+             "ReceptionFile": {
+                "path": "{cop}/modules/js/reception-file",
+                "autoload": true
+            },
+            "menu-list": {
+                "path": "{cop}/modules/js/menu-list",
+                "autoload": true
+            },
+            "preparation-list": {
+                "path": "{cop}/modules/js/preparation-list",
+                "autoload": true
+            },
+            "history-menulist": {
+                "path": "{cop}/modules/js/history-menulist",
+                "autoload": true
+            },
+            "ResultTestPollutant": {
+                "path": "{cop}/modules/js/result-testpollutant",
+                "autoload": true
+            },
+            "StatisticaleSample": {
+                "path": "{cop}/modules/js/statisticale-sample",
+                "autoload": true
+            },  
+            "VehicleFilehistory": {
+                "path": "{cop}/modules/js/vehiclefile-history",
+                "autoload": true
+            },  
+            "StatisticaleRulesParameters": {
+                "path": "{cop}/modules/js/statistical-rules-parameters",
+                "autoload": true
+            },
+            "ExportStatisticalCurve": {
+                "path": "{cop}/modules/js/export-statistic-curve",
+                "autoload": true
+            },
+            "vehicleCreate": {
+                "path": "{cop}/modules/js/vehicleCreate",
+                "autoload": true
+            },
+            "test-conditions": {
+                "path": "{cop}/modules/js/display-testconditions",
+                "autoload": true
+            },
+            "vehicle-expertise": {
+                "path": "{cop}/modules/js/vehicle-expertise",
+                "autoload": true
+            },
+            "vehicle-conditioning": {
+                "path": "{cop}/modules/js/vehicle-expertise",
+                "autoload": true
+            },
+            "archive-vehicle": {
+                "path": "{cop}/modules/js/archive-vehicleFile",
+                "autoload": true
+            },
+            "return-vehicle": {
+                "path": "{cop}/modules/js/vehicle-return",
+                "autoload": true
+            },
+            "Evacop": {
+                "path": "{cop}/modules/js/evacop",
+                "autoload": true
+            },
+            "archive-search" : {
+                "path" : "{cop}/modules/js/archive-cardboard-search",
+                "autoload" : true
+            },
+            "archiveboxList" : {
+                "path" : "{cop}/modules/js/archivebox-list",
+                "autoload" : true
+            }
+            
+	    },
+
+
+	    "i18n": {
+	        "en": ["{cop}/i18n/messages-en.json"],
+	        "fr": ["{cop}/i18n/messages-fr.json"]
+	    },
+	    
+
+	    "routes": {
+	        "Home": {
+	            "templateUrl": "{cop}/views/home.html",
+	            "controller": "HomeController",
+	            "security": "isAuthenticated()"
+	        },	        
+
+	        "SearchMain": {
+	            "templateUrl": "{cop}/views/search-main.html",
+	            "hidden": false,
+	            "controller": "SearchController"
+	        },
+	        
+	        "CreateTvv": {
+	            "templateUrl": "{cop}/views/create-tvv.html",
+	            "hidden": false,
+	            "controller": "TVVModuleController"
+	        },
+	        
+	         "EditTvv": {
+	            "templateUrl": "{cop}/views/edit-tvv-main.html",
+	            "hidden": false,
+	            "controller": "editController"
+
+	          
+	        },
+			
+			"CreateTechnicalGroup": {
+	            "templateUrl": "{cop}/views/create-technicalgroup.html",
+	            "hidden": false,
+	            "controller": "TechnicalGroupController"
+	        },
+	        
+	        "EditTechnicalGroup": {
+	            "templateUrl": "{cop}/views/edit-technicalgroup.html",
+	            "hidden": false,
+	            "controller": "EditTechnicalGroupController"
+	        },
+	        
+	        "CreateRegulationGroup": {
+	            "templateUrl": "{cop}/views/create-regulationgroup.html",
+	            "controller": "RegulationGroupController"
+	        },
+	        
+	        "EditRegulationGroup": {
+	            "templateUrl": "{cop}/views/edit-regulationggroup.html",
+	            "controller": "EditRegulationGroupController"
+	        },
+	         
+	        "SamplingRule": {
+	            "templateUrl": "{cop}/views/samplingrule.html",
+	            "controller": "EditSamplingController"
+	        },
+	        
+	        "GlobalBusinessReference": {
+				"templateUrl": "{cop}/views/global-businessreference/global-businessreference.html",
+				"controller": "GlobalController"
+			},
+	        
+	        "TvvDependentMain": {
+	            "templateUrl": "{cop}/views/tvv-dependent-main.html",
+	            "controller": "TvvStructureController",
+	            "security": "isAuthenticated()"
+	        },
+	        
+	        "CreateEmissionStandard": {
+	            "templateUrl": "{cop}/views/create-emissionstandard.html",
+	            "controller": "EMSModuleController",
+	            "security": "isAuthenticated()"
+	        },
+	        
+	        "EditEmissionStandard": {
+	            "templateUrl": "{cop}/views/edit-emissionstandard.html",
+	            "controller": "esDetailsModuleController"
+	        },
+	        
+	        "Settings": {
+	            "templateUrl": "{cop}/views/settings.html",
+	            "hidden": false,
+	            "controller": "SettingsController"
+	        },
+            
+            "Vehicle": {
+                "templateUrl": "{cop}/views/vehicle.html",
+                "hidden": false,
+                "controller": "VehicleController"
+            },
+             "Basket": {
+                "templateUrl": "{cop}/views/basket.html",
+                "hidden": false,
+                "controller": "BasketController"
+            },
+           
+            "SearchVehicle": {
+                "templateUrl": "{cop}/views/search-vehicle.html",
+                "hidden": false,
+                 "controller": "VehicleFileController"
+            },
+             "preparationFileStructure": {
+                "templateUrl": "{cop}/views/preparation-file-structure.html",
+                "hidden": false,
+                "controller": "PFSController"
+            }
+            ,
+             "ReceptionFile": {
+                "templateUrl": "{cop}/views/reception-file.html",
+                "controller": "ReceptionFileController"
+            },
+            "menu-list":{
+            	"templateUrl": "{cop}/views/menu-list.html",
+            	"controller": "menuListController"
+            		},
+					
+			"ResultTestPollutant": {
+                "templateUrl": "{cop}/views/result-testpollutant.html",
+                 "hidden": false,
+                "controller": "ResultTestPollutantController"
+            },
+                    
+            "StatisticaleSample": {
+                "templateUrl": "{cop}/views/statisticale-sample.html",
+                 "hidden": false,
+                "controller": "StatisticalSampleController"
+            },
+            
+            "StatisticaleRulesParameters": {
+                "templateUrl": "{cop}/views/statistical-rules-parameters.html",
+                 "hidden": false,
+                "controller": "statisticalRuleParameterController"
+            },
+             "ExportStatisticalCurve": {
+                "templateUrl": "{cop}/views/export-statistic-curve.html",
+                "controller": "ExportStatisticalCurveController"
+            },
+            "Archive": {
+                "templateUrl": "{cop}/views/archive-vehicleFile.html",
+                "controller": "ArchiveVehicleController"
+            },
+            "Evacop": {
+                "templateUrl": "{cop}/views/evacop.html",
+                "controller": "EvaCopController"
+            },
+            "Return": {
+                "templateUrl": "{cop}/views/vehicle-return.html",
+                "controller": "ReturnVehicleController"
+            },
+            "vehicle-expertise": {
+                  "templateUrl": "{cop}/views/vehicle-expertise.html",
+                "controller": "vehicleExpertiseController"
+            },
+            "archive-search": {
+                "templateUrl": "{cop}/views/archive-cardboard-search.html",
+                "controller": "archiveSearchController"
+            },
+            "archiveboxList": {
+                "templateUrl": "{cop}/views/archivebox-list.html",
+                "controller": "archiveBoxListController"
+            }
+            
+            
+            
+
+	    }
+	}

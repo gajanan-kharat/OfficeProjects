@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 7 nov. 2012 10:07:50 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsConsolidateSupplyMesure" table="OPLQTCSM">
+        <id name="csmedsId" type="string">
+            <column name="CSMEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="csmedsTmin" type="java.lang.Float">
+            <column name="CSMEDS_TMIN" precision="7" scale="0" />
+        </property>
+        <property name="csmedsTmoy" type="java.lang.Float">
+            <column name="CSMEDS_TMOY" precision="7" scale="0" />
+        </property>
+        <property name="csmedsTmax" type="java.lang.Float">
+            <column name="CSMEDS_TMAX" precision="7" scale="0" />
+        </property>
+
+        <property name="csmedsNombrePieceTester" type="java.lang.Float">
+            <column name="CSMEDS_NBR_PIECE_TEST" precision="7" scale="0" />
+        </property>
+        <property name="csmedsEchantillonDeTest" type="string">
+            <column name="CSMEDS_ECHANTILLON_DE_TEST" length="25" />
+        </property>
+        <property name="csmedsTminIformBy" type="string">
+            <column name="CSMEDS_TMIN_IFORM_BY" length="1024" />
+        </property>
+        <property name="csmedsTmaxIformBy" type="string">
+            <column name="CSMEDS_TMAX_IFORM_BY" length="1024" />
+        </property>
+        <property name="csmedsNombrePieceTesterIformBy" type="string">
+            <column name="CSMEDS_NBR_PIECE_TEST_IF_BY" length="1024" />
+        </property>
+        <property name="csmedsEchantillonDeTestIformBy" type="string">
+            <column name="CSMEDS_ECHAN_DE_TEST_IF_BY" length="1024" />
+        </property>
+
+        <property name="csmedsTminComment" type="string">
+            <column name="CSMEDS_TMIN_COMMENT" length="1024" />
+        </property>
+        <property name="csmedsTmoyComment" type="string">
+            <column name="CSMEDS_TMOY_COMMENT" length="1024" />
+        </property>
+        <property name="csmedsTmaxComment" type="string">
+            <column name="CSMEDS_TMAX_COMMENT" length="1024" />
+        </property>
+        <property name="csmedsNombrePieceTesterComment" type="string">
+            <column name="CSMEDS_NBR_PIECE_TEST_COM" length="1024" />
+        </property>
+        <property name="csmedsEchantillonDeTestComment" type="string">
+            <column name="CSMEDS_ECHAN_DE_TEST_COM" length="1024" />
+        </property>
+        <set name="edsConsolidateSupplyProfile" inverse="false" table="OPLQTSMP" lazy="false" cascade="all,delete-orphan" order-by="JCSP_INSERT_ORDER asc">
+            <key>
+                <column name="JCSP_CSMEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsConsSupProfile">
+                <column name="JCSP_CSP_ID" length="36" unique="true" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantBloqueCourantDysfonctionnementMesures" inverse="false" table="OPLQTUMC" lazy="false" cascade="all,delete-orphan" order-by="JCSMCBCDEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSMCBCDEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantBloqueCourantDysfonctionnement">
+                <column name="JCSMCBCDEDS_CBCD_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsModeMontageMesures" inverse="false" table="OPLQTMMM" lazy="false" cascade="all,delete-orphan" order-by="JCSMMMEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSMMMEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsModeMontage">
+                <column name="JCSMMMEDS_MM_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantNominaleActivationMesures" inverse="false" table="OPLQTPMC" lazy="false" cascade="all,delete-orphan" order-by="JCSMCNAEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSMCNAEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantNominaleActivation">
+                <column name="JCSMCNAEDS_CNA_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantAppelleActivationMesures" inverse="false" table="OPLQTSMC" lazy="false" cascade="all,delete-orphan" order-by="JCSMCAAEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSMCAAEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantAppelleActivation">
+                <column name="JCSMCAAEDS_CAA_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantMiseSousTensionMesures" inverse="false" table="OPLQTMCM" lazy="false" cascade="all,delete-orphan" order-by="JCSMCMSTEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSMCMSTEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantMiseSousTension">
+                <column name="JCSMCMSTEDS_CMST_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsReseauVeilleReveilleOrganeInactifMesures" inverse="false" table="OPLQTSMR" lazy="false" cascade="all,delete-orphan" order-by="JCSMRVROIEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSMRVROIEDS_RVROI_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsReseauVeilleReveilleOrganeInactif">
+                <column name="JCSMRVROIEDS_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsModeParcMesures" inverse="false" table="OPLQTMMP" lazy="false" cascade="all,delete-orphan" order-by="JCSMMPEDS_INSERT_ORDER asc">
+            <key>
+                <column name="JCSMMPEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsModeParc">
+                <column name="JCSMMPEDS_MP_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="consolidateSupplyEdsTensions" inverse="false" table="OPLQTSMT" lazy="false" cascade="all,delete-orphan" order-by="JCSU_CSU_INSERT_ORDER asc">
+            <key>
+                <column name="JCSMU_CSMEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.ConsolidateSupplyEdsTension">
+                <column name="JCSU_CSU_ID" length="36" unique="true" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

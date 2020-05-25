@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10 ao?t 2012 10:14:58 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsRobustSupply" table="OPLQTROS">
+        <id name="rsedsId" type="string">
+            <column name="RSEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="rsedsRef" type="string">
+            <column name="RSEDS_REF" length="36" not-null="true" />
+        </property>
+        <property name="rsedsSupplyName" type="string">
+            <column name="RSEDS_SUPPLY_NAME" length="225" />
+        </property>
+        <property name="rsedsUseCaseName" type="string">
+            <column name="RSEDS_USE_CASE_NAME" length="225" />
+        </property>
+        <property name="rsedsTbtBt" type="string">
+            <column name="RSEDS_TBT_BT" length="3" />
+        </property>
+        <property name="rsedsUcaracName" type="string">
+            <column name="RSEDS_U_CARAC_NAME" length="3" />
+        </property>
+        <property name="rsedsIVeille" type="java.lang.Float">
+            <column name="RSEDS_I_VEILLE" precision="7" scale="0" />
+        </property>
+        <property name="rsedsIReveilleInactif" type="java.lang.Float">
+            <column name="RSEDS_I_REVEILLE_INACTIF" precision="7" scale="0" />
+        </property>
+        <property name="rsedsINomStab" type="java.lang.Float">
+            <column name="RSEDS_I_NOM_STAB" precision="7" scale="0" />
+        </property>
+        <property name="rsedsIPirecasStab" type="java.lang.Float">
+            <column name="RSEDS_I_PIRECAS_STAB" precision="7" scale="0" />
+        </property>
+        <property name="rsedsUMin" type="java.lang.Float">
+            <column name="RSEDS_U_MIN" precision="7" scale="0" />
+        </property>
+        <property name="rsedsUMoy" type="java.lang.Float">
+            <column name="RSEDS_U_MOY" precision="7" scale="0" />
+        </property>
+        <property name="rsedsUMax" type="java.lang.Float">
+            <column name="RSEDS_U_MAX" precision="7" scale="0" />
+        </property>
+        <property name="rsedsIMax" type="java.lang.Float">
+            <column name="RSEDS_I_MAX" precision="7" scale="0" />
+        </property>
+        <property name="rsedsTIMax" type="java.lang.Float">
+            <column name="RSEDS_T_IMAX" precision="7" scale="0" />
+        </property>
+        <property name="rsedsUcaracValue" type="java.lang.Float">
+            <column name="RSEDS_U_CARAC_VALUE" precision="7" scale="0" />
+        </property>
+        <property name="rsedsSupplyNameIformBy" type="string">
+            <column name="RSEDS_SUPPLY_NAME_IFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsSupplyTypeSupplyNameIformBy" type="string">
+            <column name="RSEDS_SUP_TYPE_SUP_NAM_IF_BY" length="1024" />
+        </property>
+        <property name="rsedsIVeilleIformBy" type="string">
+            <column name="RSEDS_I_VEILLE_IFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsReveilleIformBy" type="string">
+            <column name="RSEDS_REVEILLE_IFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsINomStabIformBy" type="string">
+            <column name="RSEDS_I_NOM_STAB_IFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsIPirecasStabIformBy" type="string">
+            <column name="RSEDS_I_PIRECAS_STAB_IF_BY" length="1024" />
+        </property>
+        <property name="rsedsUMinInformBy" type="string">
+            <column name="RSEDS_U_MIN_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsUMoyInformBy" type="string">
+            <column name="RSEDS_U_MOY_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsUMaxInformBy" type="string">
+            <column name="RSEDS_U_MAX_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsIMaxInformBy" type="string">
+            <column name="RSEDS_I_MAX_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsTIMaxInformBy" type="string">
+            <column name="RSEDS_T_IMAX_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsUcaracInformBy" type="string">
+            <column name="RSEDS_U_CARAC_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsSupplyNameComment" type="string">
+            <column name="RSEDS_SUPPLY_NAME_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsSupplyTypeSupplyNameComment" type="string">
+            <column name="RSEDS_SUP_TYPE_SUP_NAM_COM" length="1024" />
+        </property>
+        <property name="rsedsIVeilleComment" type="string">
+            <column name="RSEDS_I_VEILLE_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsReveilleComment" type="string">
+            <column name="RSEDS_REVEILLE_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsINomStabComment" type="string">
+            <column name="RSEDS_I_NOM_STAB_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsIPirecasComment" type="string">
+            <column name="RSEDS_I_PIRECAS_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsUMinComment" type="string">
+            <column name="RSEDS_U_MIN_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsUMoyComment" type="string">
+            <column name="RSEDS_U_MOY_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsUMaxComment" type="string">
+            <column name="RSEDS_U_MAX_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsIMaxComment" type="string">
+            <column name="RSEDS_I_MAX_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsTIMaxComment" type="string">
+            <column name="RSEDS_T_IMAX_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsUcaracComment" type="string">
+            <column name="RSEDS_U_CARAC_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsIConsoParc" type="java.lang.Float">
+            <column name="RSEDS_I_CONSO_PARC" precision="7" scale="0" />
+        </property>
+        <property name="rsedsIConsoParcInformBy" type="string">
+            <column name="RSEDS_I_CONSO_PARC_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsIConsoParcComment" type="string">
+            <column name="RSEDS_I_CONSO_PARC_COMMENT" length="1024" />
+        </property>
+
+        <property name="rsedsOrgane" type="string">
+            <column name="RSEDS_ORGANE" length="1024" />
+        </property>
+
+        <!-- New values -->
+        <property name="rsedsTNomStab" type="java.lang.Float">
+            <column name="RSEDS_T_NOM_STAB" precision="7" scale="0" />
+        </property>
+        <property name="rsedsTPireCas" type="java.lang.Float">
+            <column name="RSEDS_T_PIRE_CAS" precision="7" scale="0" />
+        </property>
+        <property name="rsedsIdysf" type="java.lang.Float">
+            <column name="RSEDS_I_DYSF" precision="7" scale="0" />
+        </property>
+        <property name="rsedsTdysf" type="java.lang.Float">
+            <column name="RSEDS_T_DYSF" precision="7" scale="0" />
+        </property>
+        <property name="rsedsImst" type="java.lang.Float">
+            <column name="RSEDS_I_MST" precision="7" scale="0" />
+        </property>
+        <property name="rsedsTmst" type="java.lang.Float">
+            <column name="RSEDS_T_MST" precision="7" scale="0" />
+        </property>
+
+        <property name="rsedsTnomStabInformBy" type="string">
+            <column name="RSEDS_T_NOM_STAB_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsTpireCasInformBy" type="string">
+            <column name="RSEDS_T_PIRE_CAS_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsIdysfInformBy" type="string">
+            <column name="RSEDS_I_DYSF_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsTdysfInformBy" type="string">
+            <column name="RSEDS_T_DYSF_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsImstInformBy" type="string">
+            <column name="RSEDS_I_MST_INFORM_BY" length="1024" />
+        </property>
+        <property name="rsedsTmstInformBy" type="string">
+            <column name="RSEDS_T_MST_INFORM_BY" length="1024" />
+        </property>
+
+        <property name="rsedsTnomStabComment" type="string">
+            <column name="RSEDS_T_NOM_STAB_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsTpireCasComment" type="string">
+            <column name="RSEDS_T_PIRE_CAS_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsIdysfComment" type="string">
+            <column name="RSEDS_I_DYSF_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsTdysfComment" type="string">
+            <column name="RSEDS_T_DYSF_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsImstComment" type="string">
+            <column name="RSEDS_I_MST_COMMENT" length="1024" />
+        </property>
+        <property name="rsedsTmstComment" type="string">
+            <column name="RSEDS_T_MST_COMMENT" length="1024" />
+        </property>
+
+        <many-to-one name="wording" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false">
+            <column name="RSEDS_W_ID" length="36" not-null="true" />
+        </many-to-one>
+
+        <set name="useCases" inverse="true" lazy="false" cascade="all" order-by="RSUC_INSERT_ORDER asc">
+            <key column="RSUC_RS_ID" />
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsRobustSupplyUseCase" />
+        </set>
+
+
+
+    </class>
+</hibernate-mapping>

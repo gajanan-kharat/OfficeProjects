@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 juin 2012 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsComponentType" table="OPLQTCOT">
+        <id name="ctId" type="string">
+            <column name="CT_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="ctName" class="com.inetpsa.eds.dao.model.EdsWording" fetch="select" lazy="false" cascade="all">
+            <column name="CT_NAME" length="36" not-null="true" />
+        </many-to-one>
+        <property name="ctIndex" type="int">
+            <column name="CT_INDEX" not-null="true" />
+        </property>
+        <property name="ctBttbtOkFormset" type="string">
+            <column name="CT_BTTBT_OK_FORMSET" length="512" />
+        </property>
+        <property name="ctBttbtKoFormset" type="string">
+            <column name="CT_BTTBT_KO_FORMSET" length="512" />
+        </property>
+        <set name="edsEdses" inverse="true">
+            <key>
+                <column name="EDS_CT_ID" length="36" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsEds" />
+        </set>
+    </class>
+</hibernate-mapping>

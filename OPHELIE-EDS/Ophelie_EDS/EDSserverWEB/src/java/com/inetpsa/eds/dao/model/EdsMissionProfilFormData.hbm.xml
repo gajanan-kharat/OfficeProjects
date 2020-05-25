@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10 juil. 2012 14:11:21 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsMissionProfilFormData" table="OPLQTMPD">
+        <id name="mpfdId" type="string">
+            <column name="MPFD_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select">
+            <column name="MPFD_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+
+        <set inverse="false" lazy="false" name="edsMissionProfils" cascade="all, delete-orphan">
+            <key>
+                <column length="36" name="MP_MPFD_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsMissionProfil" />
+        </set>
+
+    </class>
+</hibernate-mapping>

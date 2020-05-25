@@ -1,0 +1,436 @@
+<nav class="navbar navbar-default" style="margin-bottom: 0px;height : 134px !important;">
+    <div>
+        <div class="col-lg-12 col-md-12 col-sm-12 no-padding" style="height : 66px !important;">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <!--                Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav ui-pad">
+                        <li class="page-scroll left-slash right-slash" title="{{'picto.navbar.label.help' | localize}}" data-ng-click="helpModal()"><a
+                            class="li-pad"><span class="fa custom-question font-size-em"></span></a></li>
+
+                        <li class="page-scroll right-slash dropdown" title="{{'picto.navbar.label.langSelect' | localize}}"
+                            data-ng-controller="W20CultureActionController" id="ddlanguage"><a class="li-pad dropdown-toggle"><span
+                                class=" font-size-em"></span></a> <a class="fa dropdown-toggle li-pad" data-ng-class="{'custom-fr': currentLanguage == 'fr','custom-en': currentLanguage == 'en'}"   id="ddlanguage-link"
+                            data-toggle="dropdown" data-target="#" data-role="button" aria-expanded="true"> </a>
+                            <ul id="ddlanguage-menu" class="dropdown-menu" data-role="menu">
+                                <li data-ng-repeat="culture in availableCultures()" id="{{'lang'+culture.name}}"><a
+                                    data-ng-click="switchCulture(culture.name); switchCultureCheck(culture.name)">{{culture.name}}</a></li>
+                            </ul></li>
+
+                        <li class="page-scroll right-slash" title="{{'picto.navbar.label.cartModal' | localize}}" data-ng-click="inCartModal()"><a
+                            class="li-pad"> <span class="shopping-cart fa custom-shoppingcart font-size-em" style="position: relative;"> 
+                                    <span class="fa fa-stack-1x custom-stack"
+                                    style="color: #291639; padding: 0px; font-size: 15px; white-space: nowrap;  top: -14px; font-family: Calibri;" id="test1" >{{cartPictosFromServer.length}}</span>
+                            </span>
+                        </a></li>
+                        <li data-ng-if="admin" title="{{'picto.navbar.label.notification' | localize}}" data-ng-click="notifModal()"
+                            class="page-scroll right-slash"><a class="li-pad"><span class="fa custom-envelope font-size-em"
+                                style="position: relative;">
+                                <span class="fa fa-stack-1x custom-stack"
+                                    style="color: #291639; padding: 0px; font-size: 15px; white-space: nowrap; top: -14px; font-family: Calibri;" id="test1">{{notification.length}}</span>
+                            </span></a>
+                            </li>
+                         <div class="header-name" id="header">&nbsp;&nbsp;&nbsp;&nbsp;{{'picto.navbar.label.header' | localize}}</div>   
+                    </ul>
+                </div>
+            </div>
+            <!-- /.navbar-collapse -->
+            <div class="no-padding">
+                <h4 style="margin: 0px; line-height: inherit;">
+<!--                     App ID: {{appid}} -->
+<!--                      Version:{{version}} -->
+                </h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- For Adobe illustration area -->
+    <!-- PB - Added - 2-Aug-16 - Start -->
+    <div class="ai-icon">
+        <img data-ng-if="admin" src="images/PictosClean-assets/BirdPlus.png" class="ai-icon-logo"  title="{{'picto.navbar.label.toAddPicto' | localize}}"
+            data-ng-click="addNewPicto()" style="cursor:pointer"/>
+         <img data-ng-if="contribUser()" src="images/PictosClean-assets/BirdOnly.png" class="ai-icon-logo" /> 
+<!--          <img class="add-new-picto" -->
+<!--             src="images/PictosClean-assets/23_plus.png" data-ng-if="admin"> -->
+    </div>
+    <!-- PB - Added - 2-Aug-16 - End -->
+
+    <!-- Row 2 -->
+    <!-- /.container-fluid -->
+    <div class="row nav-header">
+        <div class="col-lg-12 col-md-12 col-sm-12 top-mid-bar padding-right" style="cursor: pointer;">
+            <div class="col-lg-3 col-md-3 col-sm-3 no-padding  bgr-blue header-bar-height" style="z-index: 2; position: relative;">
+
+
+
+
+                <div class="panel-group panel-border-cust " style="margin-bottom: 0px !important">
+                    <div class="panel panel-default navbar-panel">
+                        <div class="nav-panel
+                            title="{{
+                                        'picto.navbar.label.filter' | localize }}"
+                            data-ng-click="filterClick()" data-toggle="collapse" href="#filter" style="height : 29px;">
+                            <h4 class="panel-title" style="text-align: center;">
+                                <a><span><i class="fa"></i> &nbsp; <span class="header-font-size">{{ 'picto.navbar.label.filter' |
+                                            localize }} <span ng-hide="filterObj.filterCount==0"  style="background-color: #1f94bf; padding:0px 5px;">{{filterObj.filterCount}} </span></span></span></a>
+                            </h4>
+                        </div>
+
+                        <!--                        Filter List -->
+                        <div id="filter" class="panel-collapse collapse">
+                            <div class="panel-body right-info-block" style="width: 18.3%;top: 99px;bottom: 8px;">
+
+                                
+                                
+                                 <div class="filter-padding-box checkbox" style="background-color: #D2E0E8; margin-top: 0px; margin-bottom: 0px;">
+                                 <label style="padding-left: 0px;"><input id="defaultFilter" class="checkbox-custom"
+                                                                    type="checkbox" data-ng-click="defaultFilterFun()" data-ng-model="PictoFilterRepresentation.defaultFilter">
+                                                                    <label style="padding-left: 0px;" for="defaultFilter"
+                                                                    class="checkbox-custom-label-blue color-checkbox-blue"></label>
+                                                                    <div class="custom-v-align" style="padding-top: 1px;">{{ 'picto.filter.label.filterByDefault' | localize }}</div>
+                                                                    </label>
+                                                                  
+                                                                    </div>
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+
+                                <div class="padding-box" style="overflow-y: auto;background-color: #FFF;">
+                                    <div class="col-lg-12"></div>
+                                    <div>
+                                        <h6 class="filter-context-title color-black">{{ 'picto.filter.label.category' | localize }}</h6>
+                                        <div class="filter-context-content">
+                                             <select  data-ng-show="language === 'fr'" class="form-control custom-dropdown-bg custom-input-stroke" ng-change="filterPictos()" 
+                                                ng-options="item.categoryFr for item in allCatogory" data-ng-model="filterCategory" data-ng-model-options="{ debounce: 250 }">
+                                                <option value="">Toutes</option>                                 
+                                             </select> 
+                                               <select  data-ng-hide="language === 'fr'" class="form-control custom-dropdown-bg custom-input-stroke" ng-change="filterPictos()"
+                                                ng-options="item.categoryEn for item in allCatogory" data-ng-model="filterCategory" data-ng-model-options="{ debounce: 250 }">
+                                                <option value="">All</option>                                          
+                                            </select> </br>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12  custom-hr-gray"></div>
+                                    <div class="padding-box-filter">
+                                        <form id="imageType">
+                                            <h6 class="filter-context-title color-black">{{ 'picto.filter.label.imageType' | localize }}</h6>
+                                            <!--PB PRP024006-52 Start -->
+                                            <div class="filter-context-content">
+                                                <div class="checkbox color-black">
+                                                    <div class="checkbox">
+                                                        <div>
+                                                            <div class="checkbox" style="margin-top: -13px;">
+
+                                                                <div class="checkbox">
+                                                                    <label style="padding-left: 0px;"> <input id="isoReg"
+                                                                        class="checkbox-custom" type="checkbox" value="3" data-ng-click="imageType(3)"
+                                                                        data-ng-model="imageType3"> <label style="padding-left: 0px;"
+                                                                        for="isoReg" class="checkbox-custom-label-blue color-checkbox-blue"></label>
+                                                                        <div class="custom-v-align">{{'picto.filter.label.isoReg' | localize }}</div>
+                                                                    </label>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label style="padding-left: 0px;"><input id="isoAut" class="checkbox-custom"
+                                                                    type="checkbox" value="2" data-ng-click="imageType(2)" data-ng-model="imageType2">
+                                                                    <label style="padding-left: 0px;" for="isoAut"
+                                                                    class="checkbox-custom-label-blue color-checkbox-blue"></label>
+                                                                    <div class="custom-v-align">{{'picto.filter.label.isoAut' | localize }}</div></label>
+                                                            </div>
+                                                            <div class="checkbox">
+                                                                <label style="padding-left: 0px;"><input id="nonIso" class="checkbox-custom"
+                                                                    type="checkbox" value="1" data-ng-click="imageType(1)" data-ng-model="imageType1">
+                                                                    <label style="padding-left: 0px;" for="nonIso"
+                                                                    class="checkbox-custom-label-blue color-checkbox-blue"></label>
+                                                                    <div class="custom-v-align">{{'picto.filter.label.nonIso' | localize }}</div></label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label style="padding-left: 0px;"><input type="checkbox" value="4" id="others"
+                                                            class="checkbox-custom" data-ng-click="imageType(4)" data-ng-model="imageType4"> <label
+                                                            style="padding-left: 0px;" for="others"
+                                                            class="checkbox-custom-label-blue color-checkbox-blue"></label>
+                                                            <div class="custom-v-align">{{'picto.filter.label.others' | localize }}</div></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- PB - PRP024006-52 End -->
+                                        </form>
+                                    </div>
+                                    <div class="col-lg-12 custom-hr-gray"></div>
+                                    <div class="padding-box-filter">
+                                        <h6 class="filter-context-title color-black">{{ 'picto.filter.label.validationLevel' | localize }}</h6>
+                                        <div class="filter-context-content color-black" style="margin-top: -13px;">
+
+
+                                            <div class=" filter-item checkbox">
+                                                <label style="padding-left: 0px;"> <input id="validated" class="checkbox-custom"
+                                                    type="checkbox" data-ng-click="filterPictos()" data-ng-model="PictoFilterRepresentation.validated">
+                                                    <label style="padding-left: 0px;" for="validated"
+                                                    class="checkbox-custom-label-blue color-checkbox-blue"></label><span class="fa work-validate" style="vertical-align: middle;"></span>
+                                                    <div class="custom-v-align"> &nbsp;{{ 'picto.filter.label.validateProgress' | localize }}</div>
+                                                </label>
+
+                                            </div>
+
+                                            <!-- <input type="checkbox"  data-ng-click="filterPictos()" data-ng-model="PictoFilterRepresentation.validated"/> -->
+
+                                            <div class="filter-item checkbox">
+                                                <label style="padding-left: 0px;"><input type="checkbox" id="inProgress"
+                                                    class="checkbox-custom" data-ng-click="filterPictos()"
+                                                    data-ng-model="PictoFilterRepresentation.inProgress"> <label style="padding-left: 0px;"
+                                                    for="inProgress" class="checkbox-custom-label-blue color-checkbox-blue"></label> <span  class="fa work-in-progress" style="vertical-align: middle;"></span>
+                                                     <div class="custom-v-align"> &nbsp;{{'picto.filter.label.inProgressValidation' | localize }}</div></label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 custom-hr-gray"></div>
+
+                                    <div class="padding-box-filter">
+                                        <h6 class="filter-context-title color-black">{{ 'picto.filter.label.informations' | localize }}</h6>
+                                        <div class="filter-context-content color-black" style="margin-top: -13px;">
+                                            <div class="filter-item checkbox">
+                                                <label style="padding-left: 0px;"><input type="checkbox" id="infoToRead" class="checkbox-custom"
+                                                    data-ng-click="filterPictos()" data-ng-model="PictoFilterRepresentation.pictoInfo"> <label style="padding-left: 0px;"
+                                                    for="infoToRead" class="checkbox-custom-label-blue color-checkbox-blue"></label><span class="fa info-valid" style="vertical-align: middle;"></span>
+                                                     <div class="custom-v-align"> &nbsp;{{'picto.filter.label.infoToRead' | localize }}</div></label>
+                                            </div>
+
+
+
+
+
+                                            <div class="filter-item checkbox">
+                                                <label style="padding-left: 0px;"><input type="checkbox" id="infoInProgress"
+                                                    class="checkbox-custom" data-ng-click="filterPictos()"
+                                                    data-ng-model="PictoFilterRepresentation.infoInProgress"> <label
+                                                    style="padding-left: 0px;" for="infoInProgress" class="checkbox-custom-label-blue color-checkbox-blue"></label><span class="fa info-warning" style="vertical-align: middle;"></span>
+                                                     <div class="custom-v-align"> &nbsp;{{ 'picto.filter.label.inProgress' | localize }}</div></label>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 custom-hr-gray"></div>
+
+                                    <div class="padding-box-filter">
+                                        <h6 class="filter-context-title color-black">{{ 'picto.filter.label.filterByDate' | localize }}</h6>
+                                        <div class="filter-context-content" style="height: 40px;">
+                                            <div>
+                                                <ui-select class="datapicker-dropdown custom-sort-date" ng-model="PictoFilterRepresentation.dateSpan" on-select="filterPictos()"  style="width: 50%; float: left; top: 5px; padding-right:1px;">
+                                                <ui-select-match>{{$select.selected.fieldVal}}</ui-select-match>
+                                                <ui-select-choices 
+                                                    repeat="value.fieldVal as value in dateFilter | filter: $select.search">
+                                                <div ng-bind-html="value.fieldVal | highlight: $select.search"></div>
+                                                </ui-select-choices> </ui-select>
+                                                <!-- <select class="filter-sort-select">
+                                                    <option>Toutes categories</option>
+                                                    <option>Before</option>
+                                                    <option>After</option>
+                                                </select> -->
+                                            </div>
+
+                                            <div class="filter-date form-group filter-date has-feedback" style="margin: 0px; width: 50%;  float: right;padding-left:1px;">
+                                                <label class="control-label sr-only">DatePicker</label> <input id="filter-datepicker"
+                                                    class="filter-date-input form-control date-picker custom-input-stroke"
+                                                    ng-keypress="($event.charCode==13)?filterPictos():return" data-ng-change="filterPictos()"
+                                                    ng-model="PictoFilterRepresentation.dateFilter" value="" type="text"
+                                                    placeholder="{{'picto.filter.label.datePlaceholder' | localize }}" style="cursor: pointer"
+                                                    title="Select Date" /> <i class="fa form-control-feedback" style="line-height: 3.2;"></i>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 custom-hr-gray"></div>
+
+                                    <div class="padding-box-filter" style="clear: both;">
+                                        <h6 class="filter-context-title color-black">{{ 'picto.filter.label.favorites' | localize }}</h6>
+                                        <div class="filter-context-content color-black" style="margin-top: -13px">
+                                            
+                                            
+                                             <div class="filter-item checkbox">
+                                                <label style="padding-left: 0px;"><input type="checkbox" id="favPictos"
+                                                    class="checkbox-custom" data-ng-click="filterPictos()"
+                                                    data-ng-model="PictoFilterRepresentation.favPictos"> <label
+                                                    style="padding-left: 0px;" for="favPictos" class="checkbox-custom-label-blue color-checkbox-blue"></label>
+                                                     <div class="custom-v-align">{{ 'picto.filter.label.onlyFavPictos' |
+                                                    localize }}</div></label>
+                                            </div>
+                                            
+                                            
+                                            <div class="filter-item checkbox">
+                                                <label style="padding-left: 0px;"><input type="checkbox" id="extFavPictos"
+                                                    class="checkbox-custom" data-ng-click="filterPictos()"
+                                                   data-ng-model="PictoFilterRepresentation.exceptFavPictos"> <label
+                                                    style="padding-left: 0px;" for="extFavPictos" class="checkbox-custom-label-blue color-checkbox-blue"></label>
+                                                     <div class="custom-v-align">{{ 'picto.filter.label.otherPictos' |
+                                                    localize }}</div></label>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 custom-hr-gray"></div>
+
+                                    <div class="padding-box-filter" data-ng-if="admin">
+                                        <h6 class="filter-context-title color-black">{{ 'picto.filter.label.visibility' | localize }}</h6>
+                                        <div class="filter-context-content color-black" style="margin-top: -13px;">
+                                           
+                                            
+                                              <div class="filter-item checkbox">
+                                                <label style="padding-left: 0px;"><input type="checkbox" id="pictoVisble"
+                                                    class="checkbox-custom" data-ng-click="filterPictos()"
+                                                   data-ng-model="PictoFilterRepresentation.visiblePicto"> <label
+                                                    style="padding-left: 0px;" for="pictoVisble" class="checkbox-custom-label-blue color-checkbox-blue"></label><span class="fa eye-open" style="vertical-align: middle;"></span>
+                                                    <div class="custom-v-align"> &nbsp;{{ 'picto.filter.label.pictoVisble' | localize }}</div>
+                                                    </label>
+                                                     
+                                            </div>
+                                            
+                                            <div class="filter-item checkbox">
+                                                <label style="padding-left: 0px;"><input type="checkbox" id="pictoInVisble"
+                                                    class="checkbox-custom" data-ng-click="filterPictos()"
+                                                   data-ng-model="PictoFilterRepresentation.invisiblePictos"> <label
+                                                    style="padding-left: 0px;" for="pictoInVisble" class="checkbox-custom-label-blue color-checkbox-blue"></label><span class="fa eye-cross-central" style="vertical-align: middle;"></span>
+                                                     <div class="custom-v-align"> &nbsp;{{ 'picto.filter.label.pictoInVisble' | localize }}</div>
+                                                    </label>
+                                                    
+                                            </div>
+                                            
+                                            
+                                           
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-lg-12 custom-hr-gray"></div>
+
+                                    <div class="padding-box-filter" data-ng-if="admin">
+                                        <h6 class="filter-context-title color-black">{{ 'picto.filter.label.modification' | localize }}</h6>
+                                        <div class="filter-context-content color-black" style="margin-top: -13px;">
+                                              <div class="filter-item checkbox">
+                                                <label style="padding-left: 0px;"><input type="checkbox" id="pictosInModification"
+                                                    class="checkbox-custom" data-ng-click="filterPictos()"
+                                                   data-ng-model="PictoFilterRepresentation.inModificationPictos"> <label
+                                                    style="padding-left: 0px;" for="pictosInModification" class="checkbox-custom-label-blue color-checkbox-blue"></label>
+                                                     <div class="custom-v-align">{{ 'picto.filter.label.pictosInModification' | localize }}</div></label>
+                                            </div>
+                                            
+                                           
+                                            
+                                            <div class="filter-item checkbox">
+                                                <label style="padding-left: 0px;"><input type="checkbox" id="othersPictos"
+                                                    class="checkbox-custom" data-ng-click="filterPictos()"
+                                                   data-ng-model="PictoFilterRepresentation.exceptInModification"> <label
+                                                    style="padding-left: 0px;" for="othersPictos" class="checkbox-custom-label-blue color-checkbox-blue"></label>
+                                                     <div class="custom-v-align">{{'picto.filter.label.othersPictos' | localize }}</div></label>
+                                            </div>
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--                        Filter List Ends -->
+
+                        <div class="filter-blue-arrow" style="text-align: center;">
+                            <a data-ng-click="filterClick()" data-toggle="collapse" href="#filter"
+                                style="color: #fff !important; bottom: -12px !important;" class="collapsed" class="navbarArrow"></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-9 col-md-9 col-sm-9 hidden-xs no-padding">
+                <div class="col-lg-3 col-md-3 col-sm-5 no-padding header-bar-height" style="z-index: 2; position: relative;">
+
+                    <div class="panel-group  panel-border-cust" style="margin-bottom: 0px !important">
+                        <div class="panel panel-default navbar-panel ">
+                            <div class="nav-panel dropdown" data-toggle="collapse" href="#sortBy"
+                                title="{{'picto.navbar.label.sortPictos' | localize}}" style="height : 29px;">
+                                <h4 class="panel-title" style="text-align: center;">
+                                    <a><span><i class="fa"></i> <!-- GK - PSA - PRP024006-49 - 15-Jul-16 - Start --> &nbsp;<span
+                                            class="header-font-size">{{ 'picto.navbar.label.sortBy' | localize }}:
+                                                 <span data-ng-if="sortByParamName=='Ref'">{{ 'picto.message.ref' | localize }}</span>
+                                                 <span data-ng-if="sortByParamName=='Charter' || sortByParamName=='Charte'">{{ 'picto.filter.feedack.label.isCharte' | localize }}</span> 
+                                                 <span data-ng-if="sortByParamName=='Date'"> {{ 'picto.message.date' | localize }}</span>  
+                                                 </span>                                               
+                                                 </span></a>                                    
+                                    <!-- GK - PSA - PRP024006-49 - 15-Jul-16 - End  -->
+                                </h4>
+                            </div>
+                            <!--  PB 26-Jul-2016 PSA PRP024006-49 Start -->
+                            <ul id="sortBy" class="panel-collapse collapse dropdown-menu"
+                                style="position: relative; width: 100%; margin: 0px 0 0; font-size: 15px;text-align: center;"
+                                data-toggle="collapse" href="#sortBy">
+                                <li data-ng-show="language=='fr'"; data-ng-click="sortingPicto(value.sortBy)" data-ng-repeat="value in listOfSort" data-toggle="collapse"
+                                    href="#sortBy">{{value.sortBy}}</li>
+                                   <li data-ng-hide="language=='fr'"; data-ng-click="sortingPicto(value.sortBy)" data-ng-repeat="value in listOfSortEn" data-toggle="collapse"
+                                    href="#sortBy">{{value.sortBy}}</li>
+                            </ul>
+                            <!--  PB 26-Jul-2016 PSA PRP024006-49 END -->
+                            <div class="blue-arrow" style="text-align: center;">
+                                <a data-toggle="collapse" href="#sortBy" class="collapsed" style="color: #fff !important;"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="input-group col-lg-8 col-md-8 col-sm-6 input--search-left  panel-border-cust header-bar-height">
+                    <input class="form-control no-radius group-style header-font-size" id="textsearch" type="text" 
+                        data-ng-keypress="($event.which === 13)?filterPictos():0" placeholder="{{ 'picto.navbar.label.searchPictos' | localize }}"
+                        data-ng-model="PictoFilterRepresentation.searchText" style="height : 31px !important;"> <span 
+                        class="input-group-addon no-radius  input-grp-adon" style="background-color: #8EB1C6;padding: 0px 15px !important;"><i class="fa custom-search"
+                        data-ng-model="searchFilter" style="color: #000" data-ng-click="filterPictos()"></i></span>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="col-lg-12 col-md-12 col-sm-12 padding-right">
+        <div class="col-lg-3 col-md-3 col-sm-3"></div>
+
+        <div class="col-lg-9 col-md-9 col-sm-9 hidden-xs no-padding">
+            <div class="col-lg-3 col-md-3 col-sm-3 no-padding"></div>
+            <div class="col-lg-9 col-md-9 col-sm-9" style="padding: 1% 0% 1% 4%;">
+
+				<div class="checkbox" style="margin: 0px;">
+					<label style="padding-left: 0px;"><input type="checkbox"
+						id="checkbox1" class="checkbox-custom" data-ng-model="hasChecked"
+						data-ng-click="selectAll()"> <label
+						style="padding-left: 0px;" for="checkbox1"
+						class="checkbox-custom-label-blue color-checkbox-blue"></label>
+						<div class="custom-v-align" style="padding-top: 1px;">{{'picto.navbar.label.selectAllPictos' | localize }}</div></label>
+				</div>
+			</div>
+        </div>
+    </div>
+
+</nav>
+
+

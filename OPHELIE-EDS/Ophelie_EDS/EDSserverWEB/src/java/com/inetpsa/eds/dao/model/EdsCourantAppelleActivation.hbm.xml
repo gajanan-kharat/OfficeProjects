@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 27 sept. 2012 18:58:20 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsCourantAppelleActivation" table="OPLQTCAA">
+        <id name="caaedsId" type="string">
+            <column name="CAAEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="caaedsTminImaxPulse" type="java.lang.Float">
+            <column name="CAAEDS_TMIN_IMAX_PULSE" precision="7" scale="0" />
+        </property>
+        <property name="caaedsTmoyImaxPulse" type="java.lang.Float">
+            <column name="CAAEDS_TMOY_IMAX_PULSE" precision="7" scale="0" />
+        </property>
+        <property name="caaedsTmaxImaxPulse" type="java.lang.Float">
+            <column name="CAAEDS_TMAX_IMAX_PULSE" precision="7" scale="0" />
+        </property>
+        <property name="caaedsTmoyImaxPulseComment" type="string">
+            <column name="CAAEDS_TMOY_IMAX_PULSE_COM" length="1024" />
+        </property>
+        <property name="caaedsTminDtPulse" type="java.lang.Float">
+            <column name="CAAEDS_TMIN_DT_PULSE" precision="7" scale="0" />
+        </property>
+        <property name="caaedsTmoyDtPulse" type="java.lang.Float">
+            <column name="CAAEDS_TMOY_DT_PULSE" precision="7" scale="0" />
+        </property>
+        <property name="caaedsTmaxDtPulse" type="java.lang.Float">
+            <column name="CAAEDS_TMAX_DT_PULSE" precision="7" scale="0" />
+        </property>
+        <property name="caaedsTmoyDtPulseComment" type="string">
+            <column name="CAAEDS_TMOY_DT_PULSE_COMMENT" length="1024" />
+        </property>
+        <property name="caaedsTitre" type="string">
+            <column name="CAAEDS_TITRE" length="1024" />
+        </property>
+        <property name="caaedsRemove" type="boolean">
+            <column name="CAAEDS_REMOVE" />
+        </property>
+    </class>
+</hibernate-mapping>

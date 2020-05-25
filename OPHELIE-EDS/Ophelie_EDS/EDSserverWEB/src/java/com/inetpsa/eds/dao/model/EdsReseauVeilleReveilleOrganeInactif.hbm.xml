@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22 sept. 2012 08:59:24 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsReseauVeilleReveilleOrganeInactif" table="OPLQTRVR">
+        <id name="rvroiedsId" type="string">
+            <column name="RVROIEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        
+        
+        <property name="rvroiedsName" type="string">
+            <column name="RVROIEDS_NAME" length="1024" />
+        </property>
+        <property name="rvroiedsTminIveilleMoteurNonTourant" type="java.lang.Float">
+            <column name="RVROIEDS_MIN_IV_MOT_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmoyIveilleMoteurNonTourant" type="java.lang.Float">
+            <column name="RVROIEDS_MOY_IV_MOT_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmaxIveilleMoteurNonTourant" type="java.lang.Float">
+            <column name="RVROIEDS_MAX_IV_MOT_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTminIveille8hMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MIN_IV_8H_MOT_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmoyIveille8hMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MOY_IV_8H_MOT_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmaxIveille8hMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MAX_IV_8H_MOT_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTminIveille21hMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MIN_IV_21H_EN_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmoyIveille21hMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MOY_IV_21H_EN_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmaxIveille21hMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MAX_IV_21H_EN_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTminIveille30hMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MIN_IV_30H_EN_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmoyIveille30hMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MOY_IV_30H_EN_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmaxIveille30hMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MAX_IV_30H_EN_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTminIreveilleInactifMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MIN_IREV_IN_EN_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmoyIreveilleInactifMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MOY_IREV_IN_EN_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmaxIreveilleInactifMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MAX_IREV_IN_EN_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTminImodeEcoMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MIN_I_ECO_MOT_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmoyImodeEcoMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MOY_I_ECO_MOT_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmaxImodeEcoMoteurNonTourant" type="java.lang.Float">
+            <column name="RVEDS_MAX_I_ECO_MOT_NO_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTminIreveilleInactif10vMoteurTourant" type="java.lang.Float">
+            <column name="RVEDS_MIN_IREV_IN_10V_EN_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTminIreveilleInactif13vMoteurTourant" type="java.lang.Float">
+            <column name="RVEDS_MIN_IREV_IN_13V_EN_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTminIreveilleInactif15vMoteurTourant" type="java.lang.Float">
+            <column name="RVEDS_MIN_IREV_IN_15V_EN_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmoyIreveilleInactif10vMoteurTourant" type="java.lang.Float">
+            <column name="RVEDS_MOY_IREV_IN_10V_EN_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmoyIreveilleInactif13vMoteurTourant" type="java.lang.Float">
+            <column name="RVEDS_MOY_IREV_IN_13V_EN_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmoyIreveilleInactif15vMoteurTourant" type="java.lang.Float">
+            <column name="RVEDS_MOY_IREV_IN_15V_EN_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmaxIreveilleInactif10vMoteurTourant" type="java.lang.Float">
+            <column name="RVEDS_MAX_IREV_IN_10V_EN_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmaxIreveilleInactif13vMoteurTourant" type="java.lang.Float">
+            <column name="RVEDS_MAX_IREV_IN_13V_EN_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsTmaxIreveilleInactif15vMoteurTourant" type="java.lang.Float">
+            <column name="RVEDS_MAX_IREV_IN_15V_EN_T" precision="7" scale="0" />
+        </property>
+        <property name="rvroiedsIveilleMoteurNonTourantComment" type="string">
+            <column name="RVEDS_IV_MOT_NO_TOURANT_COM" length="1024" />
+        </property>
+        <property name="rvroiedsIveille8hMoteurNonTourantComment" type="string">
+            <column name="RVEDS_IV_8H_EN_NO_TOURANT_COM" length="1024" />
+        </property>
+        <property name="rvroiedsIveille21hMoteurNonTourantComment" type="string">
+            <column name="RVEDS_IV_21H_EN_NO_ON_COM" length="1024" />
+        </property>
+        <property name="rvroiedsIveille30hMoteurNonTourantComment" type="string">
+            <column name="RVEDS_IV_30H_EN_NO_ON_COM" length="1024" />
+        </property>
+        <property name="rvroiedsIreveilleInactifMoteurNonTourantComment" type="string">
+            <column name="RVEDS_IREV_INA_EN_NO_ON_COM" length="1024" />
+        </property>
+        <property name="rvroiedsImodeEcoMoteurNonTourantComment" type="string">
+            <column name="RVEDS_I_ECO_EN_NO_TOURANT_COM" length="1024" />
+        </property>
+        <property name="rvroiedsIreveilleInactif10vMoteurTourantComment" type="string">
+            <column name="RVEDS_IREV_INA_10V_EN_ON_COM" length="1024" />
+        </property>
+        <property name="rvroiedsIreveilleInactif13vMoteurTourantComment" type="string">
+            <column name="RVEDS_IREV_INA_13V_EN_ON_COM" length="1024" />
+        </property>
+        <property name="rvroiedsIreveilleInactif15vMoteurTourantComment" type="string">
+            <column name="RVEDS_IREV_INA_15V_EN_ON_COM" length="1024" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,91 @@
+<div data-cop-header></div>
+<div id="wrapper" class="context-wrapper">
+    <div class="container-fluid" style="padding-top: 10px;">
+        <div>
+            <div data-cop-sidebar></div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+            <div class="row no-margin">
+                <label><b>{{'cop.vehicleFile.screenHeader.search' | localize }} </b></label>
+            </div>
+        </div>
+        <div id="showSCBox" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content" style="border-radius: 0px;">
+
+                    <div class="modal-header">
+                        <div class="row">
+
+                            <div class="modal-title col-lg-10 no-padding" id="myModalLabel">
+                                <div class="col-lg-9">
+                                    <label>{{ 'cop.statisticalCurve.label'| localize }}</label>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-1">
+                                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal"
+                                    aria-hidden="true"></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-11">
+                                <label>{{ 'cop.statisticalCurve.Pollutants'| localize }}</label>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2"></div>
+                            <div class="col-lg-10">
+                                <label> <input type="checkbox" name="select all" ng-click="selectAll()" data-ng-model="test"> {{
+                                    'cop.statisticalCurve.selectAll'| localize }}
+                                </label>
+
+
+                                <div data-ng-repeat="pg in pgList  track by $index">
+                                    <input type="checkbox" name="selectedPgGas[]" value="{{pg}}" data-ng-checked="test"
+                                        data-ng-click="toggleSelection(pg.pgLabel.label)"> {{pg.pgLabel.label}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-7"></div>
+                            <div class="col-lg-5">
+
+                                <!--      <input type="radio" value="1" ng-model="file" name="rating" class="radio">PDF <input type="radio" value="2"
+                                    ng-model="file" name="rating" class="radio"> Excel -->
+
+
+                                <md-radio-group layout="row"> <input type="radio" name="rating" data-ng-model="file"
+                                    data-ng-click="show()" md-radio-button value="pdf" class="md-primary">PDF</md-radio-button> <input type="radio"
+                                    name="rating" data-ng-model="file" data-ng-click="show()" md-radio-button value="excel"> Excel </md-radio-button> </md-radio-group>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="text-align: center;">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal" data-ng-click="W">{{
+                                        'cop.technicalData.label.cancel'| localize}}</button>
+                                </div>
+                                <div class="col-lg-4"></div>
+                                <div class="col-lg-4">
+                                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="sendFile()"
+                                        data-dismiss="modal">{{ 'cop.genomedata.label.save'| localize}}</button>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>

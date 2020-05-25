@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsConsSupProfileListOfPoints" table="OPLQTSPP">
+        <id name="csppId" type="string">
+            <column name="CSPP_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="csppXyData" type="string">
+            <column name="CSPP_XY_DATA" length="2048" />
+        </property>
+        <property name="csppMesureTemp" type="string">
+            <column name="CSPP_MESURE_TEMP" length="255" />
+        </property>
+        <property name="csppYAxisValue" type="string">
+            <column name="CSPP_Y_AXIS_VALUE" length="255" />
+        </property>
+        <property name="csppTimeAxisValue" type="string">
+            <column name="CSPP_TIME_AXIS_VALUE" length="255" />
+        </property>
+        <property name="csppSourceImpedance" type="string">
+            <column name="CSPP_SOURCE_IMPEDANCE" length="255" />
+        </property>
+        <many-to-one name="profile" class="com.inetpsa.eds.dao.model.EdsConsSupProfile" fetch="select" lazy="false" >
+            <column name="CSP_ID" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

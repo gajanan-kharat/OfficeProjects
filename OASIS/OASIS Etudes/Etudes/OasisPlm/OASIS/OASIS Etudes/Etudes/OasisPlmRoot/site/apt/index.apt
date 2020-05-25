@@ -1,0 +1,36 @@
+
+            ------
+            OASIS/PLM General Description
+            ------
+            B.Choquet
+            ------
+            2015-06-18
+
+OASIS/PLM Home
+
+	OASIS/PLM exposes some of the OASIS heavy client fonctionnalities through WebService for the PLM.
+	
+* Infrastructure
+
+    The Infrastructure is specific :
+    
+       * a Windows Server 2008
+        
+       * a Tomcat server running on the same windows machine.
+        
+       * The Webapp includes a specific version of Scilab 4.0.0
+        
+       []
+        
+* WebServices 
+
+   Only one Webservice is exposed which allows to perform two main tasks :
+	
+      * Check the syntax of a Formula
+	
+      * Perfom OASIS Calculation
+
+      []
+
+
+	

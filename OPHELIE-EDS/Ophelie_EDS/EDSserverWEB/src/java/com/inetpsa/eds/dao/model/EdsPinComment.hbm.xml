@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 juin 2012 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsPinComment" table="OPLQTEPC">
+        <id column="ID_COMMENT" name="id" >
+            <generator class="increment"/>
+        </id>
+        
+        <properties name="triple" unique="true">  
+            <many-to-one name="eds" class="com.inetpsa.eds.dao.model.EdsEds">
+                <column name="EDS_ID" />
+            </many-to-one>
+            <property name="cavity" type="string">
+                <column name="CAVITY" />
+            </property>
+            <property name="pinType" type="string">
+                <column name="PIN_TYPE" />
+            </property>
+        </properties>
+             
+        <property name="message" type="string">
+            <column name="MESSAGE" />
+        </property>
+    </class>
+</hibernate-mapping>

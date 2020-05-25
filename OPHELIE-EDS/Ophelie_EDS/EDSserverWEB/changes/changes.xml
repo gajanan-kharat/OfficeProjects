@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+    <properties>
+        <title>Historique des changements</title>
+    </properties>
+    <body>
+        <release version="2.0.5" date="19-06-2015" description="Sprint 12">
+            <action dev="João Costa" type="add">#1915 : Ex_Conn_52 - BSX - Link a box -pines CAN, LIN ou NC cases</action>
+            <action dev="João Costa" type="add">#1928 : Ex_Conn_71 - Cavities - Typical case of the pines common to BSX and part CHS</action>
+            <action dev="João Costa" type="add">#1917 : Ex_Conn_54 - BSX - Lier un boîtier - Traitement de associant le boîtier à l'EDS</action>
+            <action dev="João Costa" type="add">#3515 : Ex_conn_68 - détails des informations à associer par Cavités</action>         
+            <action dev="João Costa" type="add">#3561 : Rajout des données de la fiche composant dans l'export Excel d'EDS - Export Projet et Export Fiche EDS</action>         
+            <action dev="João Costa" type="add">#3523 : Modifier Chargé de conception d'architecture en mode normal</action>         
+            <action dev="João Costa" type="update">#1884 : Ex_Conn_107 - Cavités – Associer une alimentation /un profil de courant /un IF</action>
+            <action dev="João Costa" type="update">#1885 : Ex_Conn_108 - Cavités –Associer une alimentation EDS</action>
+            <action dev="João Costa" type="update">#1886 : Ex_Conn_109 - Cavités –Associer un IF</action>
+        </release>
+        <release version="2.0.5" date="19-06-2015" description="Sprint 11">
+            <action dev="João Costa" type="add">#1884 : Ex_Conn_107 - Cavités – Associer une alimentation /un profil de courant /un IF</action>
+            <action dev="João Costa" type="add">#1885 : Ex_Conn_108 - Cavités –Associer une alimentation EDS</action>
+            <action dev="João Costa" type="add">#1886 : Ex_Conn_109 - Cavités –Associer un IF</action>
+            <action dev="João Costa" type="add">#1887 : Ex_Conn_110 - Cavités –Créer un profil de courant</action>
+            <action dev="João Costa" type="add">#1888 : Ex_Conn_111 - Cavités –Créer un profil de courant définition</action>
+            <action dev="João Costa" type="add">#1889 : Ex_Conn_112 - Cavités –Formulaire en lecture</action>            
+        </release>
+        <release version="2.0.5" date="19-06-2015" description="Sprint 10">
+            <action dev="João Costa" type="add">#1898 : Ex_Conn_31 - Component form - Part selection</action>
+            <action dev="João Costa" type="add">#1899 : Ex_Conn_32 - Component form - Consequence of the selection of a part</action>
+            <action dev="João Costa" type="add">#1900 : Ex_Conn_33 - Component form - Consequence of the organ's selection</action>
+            <action dev="João Costa" type="update">#1901 : Ex_Conn_34 - General information - Consequence on the application</action>
+            <action dev="João Costa" type="update">#1902 : Ex_Conn_35 - Component form - GUI left 1 - Information bubble on a selected part</action>
+            <action dev="João Costa" type="update">#1903 : Ex_Conn_36 - Component form - GUI left 4 - To remove the selection of a part</action>
+            <action dev="João Costa" type="update">#1904 : Ex_Conn_37 - Component form - GUI left 4 - Consequence of the deletion</action>
+            <action dev="Guillaume VILLEREZ" type="update">Evolution #1890: Ex_Conn_113 - Better error handling and translations</action>
+            <action dev="Guillaume VILLEREZ" type="update">Evolution #1830: ConnectEvo2 - New fields exported from EDS to Gestion</action>
+            <action dev="João Costa" type="add">#1922 : Ex_Conn_59 - Cavities - Generalities on cavities informations</action>
+            <action dev="João Costa" type="add">#1923 : Ex_Conn_60 - Cavities - Information system</action>             
+            <action dev="João Costa" type="add">#1924 : Ex_Conn_61 - Cavities - data Acquisition</action>            
+            <action dev="João Costa" type="add">#1925 : Ex_Conn_62 - Cavities - To associate a comment for a type (Modification)</action>
+            <action dev="João Costa" type="add">#1926 : Ex_Conn_63 - Cavities - To associate a comment with a cavity (Modification)</action>
+            <action dev="João Costa" type="add">#1927 : Ex_Conn_64 - Cavities - To associate data with a kind of pines (Modification)</action>
+        </release>
+        <release version="2.0.5" date="19-06-2015" description="Sprint 9">
+            <action dev="João Costa" type="add">#1878 : Ex_Conn_01 - Link between EDS and Ophelie tools group</action>
+            <action dev="João Costa" type="add">#1879 : Ex_Conn_02 - Submenu Connectivity</action>
+            <action dev="João Costa" type="add">#1891 : Ex_Conn_19 - Link CHS devices with an EDS form</action>
+            <action dev="João Costa" type="add">#1892 : Ex_Conn_20 - Component form - D area organization</action>
+            <action dev="João Costa" type="add">#1893 : Ex_Conn_21 - Component form - GUI left 1</action>
+            <action dev="João Costa" type="add">#1894 : Ex_Conn_22 - Component form - GUI left 1 - Display of the devices</action>
+            <action dev="João Costa" type="add">#1895 : Ex_Conn_24 - Component form - GUI left 1 - Filter (Left 3)</action>
+            <action dev="João Costa" type="add">#1896 : Ex_Conn_25 - Component form - GUI left 1 - Selection of part</action>
+            <action dev="João Costa" type="add">#1897 : Ex_Conn_26 - Component form - GUI left 2 - Presentation</action>
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #1931: Ex_Conn_94 - New EDS description field in the database and in the model. New names will be imported (and selected) from a Gestion database, selected from Ex_Conn_113</action>
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #1932: Ex_Conn_95 - SQL script to use old EDS' names as description</action>
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #1933: Ex_Conn_96 - Name and description field update to the EDS creation form, using imported data from Ex_Conn_113</action>
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #1934: Ex_Conn_97 - EDS summary update, displaying the newly added description field among the previously presents fields</action>
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #1935: Ex_Conn_98 - EDS filter update to take in account the new description field as a possible filter (filter selection)</action>
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #1936: Ex_Conn_99 - EDS filter update to take in account the new description field as a possible filter (filter action)</action>
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #1880: Ex_Conn_100 - New right to change the EDS' names (right selection + right action)</action>
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #1881: Ex_Conn_101 - New right to use GS containers (right selection)</action>
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #1890: Ex_Conn_113 - Gestion database selection in the administration of EDS. Only one instance is loaded in memory, shared between all users</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3244: Ex_Fich 10 - Fix EDS export</action>
+        </release>
+        <release version="2.0.5" date="19-06-2015" description="Sprint 6">
+            <action dev="Guillaume VILLEREZ" type="update">Evolution #3001: Evol de #1259: de la meme manière que l'export unitaire d'une EDS/ Pouvoir exporter toutes les EDS d'un projet en xls</action>
+            <action dev="Guillaume VILLEREZ" type="update">Evolution #3056: Evolution - DistribEvo53 - Data imported / Modification du template d'origine de l'import</action>
+            <action dev="Guillaume VILLEREZ" type="update">Evolution #3084: Ex_fich 66 modifier Icone du rapport de check</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #2725: Exigence 22</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #2998: EDS: Ano Ex_Fich_65 le stade robuste peux etre validé meme avec une dérive</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #2999: EDS: Ano Ex_Fich_65 Il est necessaire de fermer l'EDS pour valider les Dérives</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3000: Anomalie à la validation du stade consolidé</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3081: Problème à l'ouverture de certaines fiches</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3083: Ex_Fich 66 Ano: redimenssionner le pop up du rapport de check</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3085: Ex_Fich_37:Pour une alim en BT les données Umin U max Umoy n'apparaissent pas dans les données générique par défaut:</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3086: Ex_Fich_37:Redimmenssionner le tableau de configuration des tensions Umin Umoy Umax</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3087: Ex_Fich_37:Ano: nombre de tableau de configuration des tensions en BT incorrect</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3094: Ex_Fiche 34: ANO l'ensemble des données ne sont pas reconduites</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3095: Stade robuste: Par défaut le premier mode de fonctionnement doit avoir un nom à "-"</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3096: Ex_Fich_34 : Ano Ajouter en lecture les titres des modes de fonctionnement pour les tableaux non duplicable en consolidé</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3097: Ano: Stade consolidé formulaire en lecture: le mode de fonctionnement apparait 2 fois</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3098: Ex_Fich68: Dans le rapport de check les valeurs sont toujours vide</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3099: Ex_Fich 68: Données manquantes/à supprimer du rapport de check</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3104: Ex_Fich68: des données doivent être à N\A dans le rapport de check</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3105: Ex_Fich_38 : Si les champ Umin/Umoy ou Umax vide</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3106: Ex_Fich43: il doit etre possible d'inserer des profils dans plus de formulaires</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3107: Ex_fich 43: Impossible d'enregistrer des profils de courants</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3108: Ex_36: le tableau n'apparait pas par défaut</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3109: A la validation d'un stade le commentaire des dérives est éffacé</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #3118: Fenêtre d'erreur DistribEVO53 - Data imported</action>
+        </release>
+        <release version="2.0.5" date="29-05-2015" description="Sprint 5">
+            <action dev="Guillaume VILLEREZ" type="add">Evolution #2928: [Ophelie EDS] Ex_Gene_36 Renommage de l'arborescence</action>
+            <action dev="Clement FLEURY" type="add">Evolution #2940: EDS: Ex_Fiche_48 l'ensemble des derives ne sont pas checkées</action>
+            <action dev="David SANTOS" type="add">Evolution #2977: Ano: Ex_Fich_62/ changement d'icone/ajouter l'information de reinit dans l'historique des versions</action>
+            <action dev="Idir MEZIANI" type="update">Anomalie #2925: [Ophelie EDS] Ex_Fiche_59:Impossible de passer au stade consolidé en niveau de validation haut</action>
+            <action dev="Idir MEZIANI" type="update">Anomalie #2926: [EDS] Ex_Fiche 22: Afficher dans le formulaire en lecture le nom du mode fonctionnement du premier tableau</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #2927: [Ophelie EDS] Ex_Fich_30: Incoherences des données Inom/Tnom dans les masses + saisies possibles</action>
+            <action dev="Guillaume VILLEREZ" type="update">Anomalie #2952: Anomalie - [Ex_Fich_66] To generate a report of check</action>
+            <action dev="Guillaume VILLEREZ" type="add">#1259: [Ex_Fich_10] Export of one EDS sheet</action>
+            <action dev="Idir MEZIANI" type="add">#1280: Ex_Fich_34 : Renewal of the supply (with the operating processes)</action>
+            <action dev="Idir MEZIANI" type="add">#1282: Ex_Fich_36 : Generic data</action>
+            <action dev="Idir MEZIANI" type="add">#1283: Ex_Fich_37 : Case of the power supply of the BT type at the consolidated stage</action>
+            <action dev="Idir MEZIANI" type="add">#1284: Ex_Fich_38 : Case of the supply of the BT type at the stage consolidated /Tension of under tables</action>
+            <action dev="David SANTOS" type="add">#1288: Ex_Fich_42 : Profile insertion: Type of profile in consolidated and enclosed</action>
+            <action dev="Guillaume VILLEREZ" type="add">#1289: Ex_Fich_43 : Addition of profile of consumption in table of point</action>
+            <action dev="Guillaume VILLEREZ" type="add">#1290: Ex_Fich_44 : Addition of several profiles</action>
+            <action dev="Guillaume VILLEREZ" type="add">#1291: Ex_Fich_45 : Modified a profile</action>
+            <action dev="David SANTOS" type="add">#1292: Ex_Fich_46 : Addition of profile of consumption: To import an image</action>
+            <action dev="David SANTOS" type="add">#1293: Ex_Fich_47 : To add a comment on each power supply presents in the pilot of drifts</action>
+            <action dev="Idir MEZIANI" type="add">#1312: Ex_Fich_66 : To generate a report of check</action>
+            <action dev="Idir MEZIANI" type="add">#1313: Ex_Fich_67 : Report of check: Application right</action>
+            <action dev="Guillaume VILLEREZ" type="add">#1314: Ex_Fich_68 : Data in the report of check</action>
+            <action dev="Clement FLEURY" type="add">#1318: Ex_Gene_2 Translation of fields</action>
+        </release>
+        <release version="2.0.4" date="07-05-2015" description="Sprint 4">
+            <action dev="Clement FLEURY" type="add">Ex_Fich_22 : Structure in IHM of a power supply of the robust stage</action>
+            <action dev="David SANTOS" type="add">Ex_Fich_23 : Association diagram at the robust stage</action>
+            <action dev="Idir MEZIANI" type="update">Ex_Fich_48 : Add the measured data of the consolidate stage.</action>
+            <action dev="Idir MEZIANI" type="update">Ex_Fich_59 : Remove a Role From the stage consolidate and closed in High validation mode.</action>
+            <action dev="Idir MEZIANI" type="add">Ex_Fich_62 : Reset the Validations Stages of a Data Sheet</action>
+            <action dev="Idir MEZIANI" type="add">Ex_Fich_63 : Reset the Validations of a Sheet - Application Rights</action>
+            <action dev="Idir MEZIANI" type="update">Ex_Fich_65 : Forbid the validation of a stage while having drift.</action>
+            <action dev="Guillaume VILLEREZ" type="add">Ex_Fich_30 : New data in supplies and ground</action>
+            <action dev="Guillaume VILLEREZ" type="add">Ex_Fich_31 : New name for Ipic and Tipic</action>
+            <action dev="Guillaume VILLEREZ" type="update">Ex_Gene_31: Add new rights in the model</action>
+            <action dev="Guillaume VILLEREZ" type="update">Ex_Gene_36: Add project node tree + SQL + change of project management window</action>
+            <action dev="Guillaume VILLEREZ" type="update">Ex_Gene_37: Edit MainNavigatorMenu for handling EDS project nodes organization</action>
+            <action dev="Guillaume VILLEREZ" type="update">Ex_Gene_68: New pop-up displaying a check report (CheckReportWindow) of the consolidated stage</action>
+        </release>
+        <release version="2.0.3" date="08-04-2015" description="Initial version for project 213B4" />
+    </body>
+</document>

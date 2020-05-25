@@ -1,0 +1,509 @@
+<div class="padding-top-btm">
+
+        <!-- Carburant -->
+        
+        <div class="panel padding-top-btm">
+            <div data-toggle="collapse" 
+                data-target="#Carburant"
+                class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse"
+                data-target="#Carburant"> <label>{{
+                    'cop.specificCop.label.Fuel' | localize }}</label>
+            </a>
+
+            <div id="Carburant" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="valider" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('Carburant')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="CarburantGridOptions"
+                                data-ui-grid-edit data-ui-grid-auto-resize data-ui-grid-cellNav
+                                class="grid"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Classe -->
+        <div class="panel padding-top-btm">
+
+            <div data-toggle="collapse"  data-target="#Classe"
+                class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse"
+                 data-target="#Classe"> <label>{{
+                    'cop.specificCop.label.Class' | localize }}</label>
+            </a>
+
+            <div id="Classe" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="newRow" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('classe')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="ClasseGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize
+                                class="grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Categorie -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#Categorie" data-toggle="collapse"
+                class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#Categorie"> <label>{{
+                    'cop.specificCop.label.Category' | localize }}</label>
+            </a>
+
+            <div id="Categorie" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="newRow" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('Category')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="CategorieGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize ui-grid-cell-contents ui-grid-resize-columns
+                                 class="grid"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FuelInjectionType -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#FuelInjectionType" data-toggle="collapse"
+                class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#FuelInjectionType"> <label>{{
+                    'cop.genomedata.label.EngineFuelInjection' | localize }}</label>
+            </a>
+
+            <div id="FuelInjectionType" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="newRow" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('FuelInjection')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="FuelInjectionTypeGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav
+                                data-ui-grid-auto-resize  class="grid"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- VehicleTechnology -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#VehicleTechnology" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#VehicleTechnology"> <label>{{
+                    'cop.specificCop.label.VehicleTechnology' | localize }}</label>
+            </a>
+
+            <div id="VehicleTechnology" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="newRow" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('VehicleTechnology')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="VehicleTechnologyGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav
+                                data-ui-grid-auto-resize class="grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ApprovalAreaType -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#ApprovalAreaType" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#ApprovalAreaType"> <label>{{
+                    'cop.specificCop.label.TypeApproval' | localize }}</label>
+            </a>
+
+            <div id="ApprovalAreaType" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="newRow" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('TypeApprovalArea')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="ApprovalAreaTypeGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav
+                                data-ui-grid-auto-resize class="grid"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Polluants -->
+        <div class="panel padding-top-btm">
+            <div data-target="#Polluants" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#Polluants"> <label>{{
+                    'cop.specificCop.label.Pollutant' | localize }}</label>
+            </a>
+
+            <div id="Polluants" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="newRow" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('Pollutant')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="PolluantsGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize
+                                class="grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- FactorApplication -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#FactorApplication" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#FactorApplication"> <label>{{
+                    'cop.specificCop.label.FactorApplication' | localize }}</label>
+            </a>
+
+            <div id="FactorApplication" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="valider" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('factor')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="FactorApplicationGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav
+                                data-ui-grid-auto-resize class="grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- VehicleCoefficients -->
+        <div class="panel padding-top-btm">
+            <div data-target="#VehicleCoefficients" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#VehicleCoefficients"> <label>{{
+                    'cop.specificCop.label.VehicleCoefficient' | localize }}</label>
+            </a>
+
+            <div id="VehicleCoefficients" class="panel-collapse collapse">
+                <div class="panel-body">
+
+                    <div class="col-lg-1 button-top button-left">
+                        <!-- <button type="button" id="newRow" class="btn btn-primary fa fa-plus"
+                    data-ng-click="addRow('VehicleCoeff')"></button> -->
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="VehicleCoefficientsGridOptions"
+                                data-ui-grid-edit data-ui-grid-auto-resize data-ui-grid-cellNav></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Usine -->
+
+    <div class="panel padding-top-btm">
+
+
+        <div data-toggle="collapse" data-target="#Usine" class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+        <a class="accordion-toggle" data-toggle="collapse" data-target="#Usine"> <label>{{ 'cop.genomedata.label.Factory' | localize }}</label>
+        </a>
+
+        <div id="Usine" class="panel-collapse collapse">
+
+            <div class="panel-body ">
+                <div class="col-lg-1 button-top button-left">
+                    <button type="button" id="newRow" data-ng-show="authorization('POCMRole')" class="btn btn-primary fa fa-plus"
+                        data-ng-click="addRow('Usine')"></button>
+                </div>
+                <div class="col-lg-11">
+                    <div data-ui-grid="UsineGridOptions" data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize
+                        class="grid"></div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+        
+        
+        <!-- Pays -->
+
+    <div class="panel padding-top-btm">
+
+
+        <div data-toggle="collapse" data-target="#Pays" class="btn btn-default collapsed arrow accordion-toggle"></div>
+
+        <a class="accordion-toggle" data-toggle="collapse" data-target="#Pays"> <label>{{ 'cop.genomedata.label.Country' | localize }}</label>
+        </a>
+
+        <div id="Pays" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="col-lg-1 button-top button-left">
+                    <button type="button" id="newRow" data-ng-show="authorization('POCMRole')" class="btn btn-primary fa fa-plus"
+                        data-ng-click="addRow('Pays')"></button>
+                </div>
+                <div class="col-lg-11">
+                    <div data-ui-grid="PaysGridOptions" data-ui-grid-edit data-ui-grid-cellnav data-ui-grid-auto-resize
+                        class="grid"></div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+        
+       
+        
+        
+        <!-- TireBrand -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#TireBrand" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#tireBrand"> <label>{{
+                    'cop.specificCop.label.tireBrand' | localize }}</label>
+            </a>
+
+            <div id="TireBrand" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="valider" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('tireBrand')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="tireBrandGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav
+                                data-ui-grid-auto-resize class="grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- coDecisionParameters -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#coDecisionParameters" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#coDecisionParameters"> <label>{{
+                    'cop.specificCop.label.coDecisionParameters' | localize }}</label>
+            </a>
+
+            <div id="coDecisionParameters" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="valider" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('coDecisionParameters')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="coDecisionParametersGridOptions"
+                                data-ui-grid-edit data-ui-grid-auto-resize data-ui-grid-cellNav class="grid"></div>
+                        </div>
+                    </div>
+                </div>
+               <br>
+               
+                
+               
+            </div>
+        </div>
+        
+        
+             <!-- lambdaDecisionParameters -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#lambdaDecisionParameters" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#lambdaDecisionParameters"> <label>{{
+                    'cop.specificCop.label.lambdaDecisionParameters' | localize }}</label>
+            </a>
+
+            <div id="lambdaDecisionParameters" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="valider" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('lambdaDecisionParameters')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="lambdaDecisionParametersGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav
+                                data-ui-grid-auto-resize class="grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- OpacityDecisionParameters -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#opacityDecisionParameters" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#opacityDecisionParameters"> <label>{{
+                    'cop.specificCop.label.opacityDecisionParameters' | localize }}</label>
+            </a>
+
+            <div id="opacityDecisionParameters" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="valider" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('opacityDecisionParameters')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="opacityDecisionParametersGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav
+                                data-ui-grid-auto-resize class="grid"></div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- teamUsers -->
+
+        <div class="panel padding-top-btm">
+            <div data-target="#teamUsers" data-toggle="collapse" class="btn btn-default collapsed arrow"></div>
+
+            <a class="accordion-toggle" data-toggle="collapse" data-target="#teamUsers"> <label>{{'cop.specificCop.label.teamUsers' | localize }}</label>
+            </a>
+
+            <div id="teamUsers" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="col-lg-1 button-top button-left">
+                        <button type="button" id="valider" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-primary fa fa-plus"
+                            data-ng-click="addRow('teamUsers')"></button>
+                    </div>
+                    <div class="col-lg-11">
+                        <div>
+                            <div data-ui-grid="teamUsersGridOptions"
+                                data-ui-grid-edit data-ui-grid-cellnav
+                                data-ui-grid-auto-resize class="grid"></div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+         
+        
+</div>
+
+
+
+<div class="slide-resize col-lg-12 col-lg-10"
+    style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+    <label class="screenNo">{{'cop.specificCop.label.screenNo' | localize}}</label>
+    <div class="col-lg-12 padding-top-btm">
+
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 text-center" >
+            <button type="button" id="save" class="btn btn-primary" data-ng-show = "authorization('POCMRole')"
+                data-ng-click="SaveAll()">{{ 'cop.genomedata.label.save' |
+                localize }}</button>
+
+            &nbsp; &nbsp;
+
+            <button type="reset" id="valider" class="btn btn-default" data-ng-show = "authorization('POCMRole')"
+                data-ng-click="refresh()">{{
+                'cop.technicalData.label.cancel' | localize }}</button>
+        </div>
+
+        <div class="col-lg-3 text-right">
+        
+            <button type="button" id="History" class="btn btn-default pull-right"
+                data-ng-click="showHistoryData('SPECIFIC_COP')">{{
+                'cop.technicalData.label.modificationHistory' | localize }}</button>
+                
+        </div>
+
+    </div>
+</div>

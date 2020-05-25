@@ -1,0 +1,51 @@
+# Put configuration in this file
+
+[org.seedstack.seed.core]
+application-id = cop-batch
+application-name = New Cop
+application-version = 1.0.0-SNAPSHOT
+
+[org.seedstack]
+jdbc.datasources = cop_ds
+jpa.units = cop-domain
+
+
+
+####################################################################
+# Security
+####################################################################
+# The following section is used by ConfigurationRealm, the default security realm, which should be replaced by a
+# more useful one like ClpRealm.
+#[org.seedstack.seed.security]
+#realms = ClpRealm
+
+# For this sample, user accounts are directly hard-coded in configuration
+[org.seedstack.seed.security.users]
+demo = demo
+
+
+####################################################################
+# Persistence
+####################################################################
+
+
+# Configure the application datasource
+[org.seedstack.jdbc.datasource.cop_ds]
+provider= HikariDataSourceProvider
+driver=com.mysql.jdbc.Driver
+url= jdbc:mysql://yval1vx0.inetpsa.com:3306/POC
+user=mdepoc00
+password=mdepoc00
+property.sql.enforce_strict_size = false
+
+# Configure the COP JPA unit
+[org.seedstack.jpa.unit.cop-domain]
+datasource= cop_ds
+property.hibernate.dialect= org.hibernate.dialect.MySQLDialect
+
+# Define the JPA unit for classes under this package
+[org.seedstack.poc.domain.*]
+jpa-unit=cop-domain
+
+# This empty section resets to keys without prefix
+[]

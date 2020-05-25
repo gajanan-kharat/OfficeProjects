@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsChs" table="OPLQTECC">
+
+ 
+<composite-id>
+<key-property name="edsId" column="EDS_ID" type="string" />
+<key-property name="componentId" column="COMPONENT_ID" type="string" />
+</composite-id>
+    
+    </class>
+</hibernate-mapping>

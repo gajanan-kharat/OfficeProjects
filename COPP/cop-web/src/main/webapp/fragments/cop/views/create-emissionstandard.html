@@ -1,0 +1,238 @@
+<div data-cop-header></div>
+
+
+<div id="wrapper" class="context-wrapper">
+	<div>
+		<div data-cop-sidebar></div>
+	</div>
+
+	<div class="col-lg-12 no-padding">
+		<div class="row no-margin"></div>
+	</div>
+</div>
+
+<div id="addEMSModal" class="modal fade in" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 650px;">
+		<div class="modal-content" style="border-radius: 0px; width: 600x;">
+			<form name="myForm1">
+				<div class="modal-header">
+
+					<button type="button" class="btn fa fa-remove"
+					data-ng-click="cancelCreation(esLabel,description,'addEMSModal')"
+						style="float: right; background-color: #fff;" 
+						aria-hidden="true"></button>
+						
+					<h4 class="modal-title" id="myModalLabel">{{
+						'cop.emissionStandard.label.emissionStandardAdd'| localize }}</h4>
+
+
+				</div>
+				<div class="modal-body"
+					style="padding-top: 20px; padding-bottom: 20px;">
+					<div class="col-sm-12">
+						<label>{{ 'cop.ems.text.label'| localize }}</label> <span
+							class="astrik">*</span>
+					</div>
+					<div class="col-sm-12">
+						<input id="emissionLabel" class="form-control" type="text"ng-keydown="changeEmissionStandardName()" data-ng-model="esLabel" />
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+
+					<div class="col-sm-12">
+						<label>{{ 'cop.ems.text.Description'| localize }}</label>
+
+					</div>
+					<div class="col-sm-12">
+						<textarea class="form-control" data-ng-model="description"></textarea>
+					</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+					<div class="col-sm-12 no-padding">
+
+						<div class="col-sm-6">
+
+							<label>{{'cop.specificCop.label.Fuel'|localize}}</label><span
+								class="astrik">*</span>
+							<ui-select id="FuelSelect" multiple
+								data-ng-model="fuelList.selected" reset-search-input="true">
+							<ui-select-match placeholder="Select Fuel">
+							{{$item.label}} </ui-select-match> <ui-select-choices
+								repeat="type in fuelList | filter: $select.search">
+							<div ng-bind-html="type.label | highlight: $select.search "></div>
+							</ui-select-choices> </ui-select>
+
+						</div>
+
+						<div class="col-sm-6">
+
+							<label>{{'cop.specificCop.label.VehicleTechnology'|localize}}</label><span
+								class="astrik">*</span>
+							<ui-select id="vehicleTechnologySelect" multiple
+								data-ng-model="vehicleTList.selected" reset-search-input="true">
+							<ui-select-match placeholder="Select Vehicle Technology">
+							{{$item.label}} </ui-select-match> <ui-select-choices
+								repeat="type in vehicleTList | filter: $select.search">
+							<div ng-bind-html="type.label | highlight: $select.search "></div>
+							</ui-select-choices> </ui-select>
+
+						</div>
+
+					</div>
+					
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+					<div class="col-sm-12 no-padding">
+
+						<div class="col-sm-6">
+
+							<label>{{'cop.genomedata.label.EngineFuelInjection'|localize}}</label><span
+								class="astrik">*</span>
+
+							<ui-select id="injectionTypeSelect" multiple
+								data-ng-model="fuelITList.selected" reset-search-input="true">
+							<ui-select-match placeholder="Select Fuel Injection Type">
+							{{$item.label}} </ui-select-match> <ui-select-choices
+								repeat="type in fuelITList | filter: $select.search">
+							<div ng-bind-html="type.label | highlight: $select.search "></div>
+							</ui-select-choices> </ui-select>
+
+						</div>
+
+						<div class="col-sm-6">
+
+							<label>{{'cop.specificCop.label.Category'|localize}}</label><span
+								class="astrik">*</span>
+							<ui-select id="categorySelect" multiple
+								data-ng-model="categoryList.selected" reset-search-input="true">
+							<ui-select-match placeholder="Select Category">
+							{{$item.label}} </ui-select-match> <ui-select-choices
+								repeat="type in categoryList | filter: $select.search">
+							<div ng-bind-html="type.label | highlight: $select.search"></div>
+							</ui-select-choices> </ui-select>
+
+						</div>
+						&nbsp;&nbsp;&nbsp;&nbsp;
+					</div>
+
+				</div>
+
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+				<div class="modal-footer align-center"
+					style="border-top: 0px solid #e5e5e5;">
+
+					<button type="submit" data-ng-disabled="myForm1.$invalid"
+						style="border-radius: 0px;" class="btn btn-primary"
+						 data-ng-click="checkLabel()">{{
+						'cop.technicalData.message.create' |localize }}</button>
+					&nbsp;&nbsp;
+					<button type="button" style="border-radius: 0px;"
+						class="btn btn-default" data-ng-click="cancelCreation(esLabel,description,'addEMSModal')">{{
+						'cop.technicalData.message.cancel' | localize }}</button>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="duplicateLabelModal" class="modal fade in " tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.ems.message.duplicateLabel'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal"
+					data-ng-click="initializeEMS()">{{
+					'cop.technicalData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="mandatoryFieldsModal" class="modal" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+<button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.common.message.mandatoryFields'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal"
+					data-ng-click="initializeEMS()">{{
+					'cop.technicalData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal">{{
+					'cop.technicalData.message.cancel' | localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="errorEsDisplayModal" class="modal" tabindex="-1" role="dialog"  aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 400px;">
+		<div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+			<div class="modal-header">
+				<button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="goToEditScreen()">{{ 'cop.technicalData.label.ok' | localize
+					}}</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+<div id="cancelCreationModal" class="modal fade" tabindex="-1"
+				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-md" style="width: 500px;">
+					<div class="modal-content"
+						style="border-radius: 0px; width: 500px;">
+
+						<div class="modal-header">
+							<button type="button" class="btn fa fa-remove"
+								style="float: right; background-color: #fff;"
+								data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title" id="myModalLabel">{{
+								'cop.creation.cancel.message'| localize }}
+							</h4>
+						</div>
+
+						<div class="modal-footer align-center">
+
+
+
+
+
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-primary" data-dismiss="modal"
+								data-ng-click="continueCreation()">{{
+								'cop.creation.label.yes' | localize }}</button>
+							&nbsp; &nbsp;
+							<button type="button" style="border-radius: 0px;"
+								class="btn btn-default" data-dismiss="modal">{{
+								'cop.creation.label.no' | localize }}</button>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+

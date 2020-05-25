@@ -1,0 +1,38 @@
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 custom-col-padding" data-ng-repeat="tc in tcList">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-vehicle-card">
+        <h5>{{tc.label}}</h5>
+        <label>&nbsp;{{tc.Value}}</label>
+        </div>
+    </div>
+</div>
+
+<div class="slide-resize col-lg-12 col-lg-10"
+    style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+    <label class="screenNo">{{'cop.specificCop.label.screenNo' | localize}}</label>
+    <div class="col-lg-12 padding-top-btm">
+
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 text-center" >
+            <button type="button" id="save" class="btn btn-primary" 
+                data-ng-click="SaveAll()">{{ 'cop.genomedata.label.save' |
+                localize }}</button>
+
+            &nbsp; &nbsp;
+
+            <button type="reset" id="valider" class="btn btn-default" 
+                data-ng-click="refresh()">{{
+                'cop.technicalData.label.cancel' | localize }}</button>
+        </div>
+
+        <div class="col-lg-3 text-right">
+        
+            <button type="button" id="History" class="btn btn-default pull-right"
+                data-ng-click="createNewSpecificTestCondition()">{{
+                'cop.technicalData.label.modificationHistory' | localize }}</button>
+                
+        </div>
+
+    </div>
+</div>

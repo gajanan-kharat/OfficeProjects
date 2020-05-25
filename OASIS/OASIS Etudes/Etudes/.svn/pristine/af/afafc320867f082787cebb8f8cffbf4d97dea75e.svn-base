@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ******************************************************************** -->
+<!-- Ce fichier permet de decrire la liste des goals et des parametres    -->
+<!-- que le plugin PSA-Release doit executer lors d'une release. Cela     -->
+<!-- evite de les passer en ligne de commande.                            -->
+<!--                                                                      -->
+<!-- Note : pour tester cette execution sans faire une vraie release,     -->
+<!--        lancer la commande suivante :                                 -->
+<!--                                                                      -->
+<!-- mvn psa-release:dry-run -DparamFile=psa/release/release-goals.xml    -->
+<!--                                                                      -->
+<!-- ******************************************************************** -->
+<release 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="http://ciq-repository.inetpsa.com/repository/virtual/com/inetpsa/jip/xsd/release/release-1.1.xsd">
+	<goals>
+		<goal>deploy</goal> 
+		<goal>javadoc:jar</goal>
+		<goal>site</goal>
+		<goal>psa-dashboard:consolidate</goal>
+		<goal>psa-dashboard:report</goal>
+		<goal>psa-archive:prepare</goal>
+		<!-- <goal>publisher:publish</goal>-->
+		<goal>cleaner:clean-project-folder</goal>
+		<goal>site:deploy</goal>
+	</goals>
+	<arguments>
+		<!-- Tous les profils a activer lors d'une release -->
+<!-- 		<argument>-PpsaReports,psaArchive,psaComponentRelease,coverageClassFilter</argument> -->
+        <argument>-Dmaven.test.skip=true</argument>
+		<argument>-PpsaReports,psaScmReports,psaArchive</argument>
+		<!-- Environnement pour lequel on souhaite valoriser les templates -->
+		<argument>-Dvalo.env=dev</argument>
+		<!-- Les excludes pour le nettoyage du repertoire projet -->
+		<argument>-DcleanerExcludes=**/distrib/**</argument>
+	</arguments>
+</release>

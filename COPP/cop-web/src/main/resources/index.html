@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"  manifest="${restPath}/offline/manifest" data-w20-app="${restPath}/seed-w20/application/configuration"  data-w20-timeout="${timeout}" data-w20-cors-with-credentials="${corsWithCredentials}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/cache-manifest; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>${applicationTitle}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" data-main="${componentsPath}/w20/modules/w20.js" src="${componentsPath}/requirejs/require.js"></script>
+</head>
+<body>
+<div id="w20-loading-cloak">
+    <div class="w20-loading-indicator"></div>
+</div>
+<div data-w20-topbar data-title="'${applicationTitle}'" data-subtitle="'${applicationSubtitle}'"></div>
+<div data-w20-sidebar></div>
+<div id="w20-view" class="w20-content" data-ng-view></div>
+<div data-w20-error-report></div>
+</body>
+</html>

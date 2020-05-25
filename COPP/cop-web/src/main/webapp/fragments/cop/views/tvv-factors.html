@@ -1,0 +1,80 @@
+<div class="padding-top-btm tvv-smalltabgroup-wrapp">
+    <ul class="nav nav-pills nav-custom f-left custom-tab">
+        <li class="left factor{{$index}}" data-ng-repeat="factor in tvvValuedFactorCoeffList"><a data-toggle="pill" href="#factor{{$index}}">{{factor.label}}</a></li>
+        
+    </ul>
+</div>
+
+<div class="col-lg-12 tab-content no-padding">
+
+    <!--first tab start here (scroll-box) -->
+    <div class="tab-pane padding-top-btm fade"  data-ng-repeat="factor in tvvValuedFactorCoeffList" id="factor{{$index}}">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content tab-content-top no-padding" style="border: 0px;">
+
+         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 " style="margin-top: 50px;">
+             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding" data-ng-show="factor.fcApplicationTypes[0].label==='Application'" >
+                <ui-select ng-model="dropDownVal">
+                <ui-select-match>{{$select.selected}}</ui-select-match>
+                <ui-select-choices repeat="val in tvvValuedFCDropdownVal | filter: $select.search">
+                    <div ng-bind-html="val | highlight: $select.search"></div>
+                </ui-select-choices>
+                </ui-select>
+             </div>
+         
+             <div class="col-lg-12 col-md-2 col-sm-2 col-xs-12 no-padding" data-ng-show="factor.fcApplicationTypes[0].label!=='Application'" >
+                  <label class="control-label custom-label" style="font-weight:700;font-size: 14px;text-transform: capitalize;">{{factor.fcApplicationTypes[0].label}}</label> 
+             </div>
+         </div>
+         <!-- loop start here -->
+
+           <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 " style="overflow: auto;max-height: 30vh;">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 " data-ng-repeat="factorCoeffs in factor.factorOrCoeffiecients">
+                <div class="custom-card  tvv-factor-tab" style="float: left; width: 100%;padding: 5px;">
+                    <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 no-padding">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                            <span class="control-label" title="{{factorCoeffs.fcLabel.label}}">({{factorCoeffs.fcLabel.label}})</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding" style="top: 5px;">
+                        <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 ellipsis  card-lg-overflow">
+                            <input class="form-control editableInput" data-ng-hide="editable" type="text" data-ng-enter="enterSave();"
+                                data-ng-blur='save();' data-ng-model="factorCoeffs.defaultValue" data-ng-change="factorCoeffs.defaultValue=numFormatCheck(factorCoeffs.defaultValue,factorCoeffs.entityId)"><b><span data-ng-show="editable" 
+                                data-ng-click="edit()">{{factorCoeffs.defaultValue}}</span></b>
+                        </div>
+                        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding"  data-ng-show="enableFactorEdit">
+                            <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o 
+                    fa-2x"></span></span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            </div>
+            </div>
+            
+            <!--loop end here -->
+
+
+
+    </div>
+    <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+<label class="screenNo" title="Screen Number :SCR004">Screen Number :SCR038</label>
+        <div class="col-lg-12 padding-top-btm text-center">
+
+            <div class="col-lg-3"></div>
+
+            <div class="col-lg-6 text-center">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-hide="!enableFactorEdit" data-ng-click="updateFCL()">Valider</button>
+                &nbsp; &nbsp;
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-ng-hide="!enableFactorEdit" data-ng-click="tvvValuedFactor()">Annuler</button>
+            </div>
+        </div>
+    </div>
+    </div> <!--first tab end here -->
+   
+
+
+

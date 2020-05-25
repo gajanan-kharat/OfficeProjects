@@ -1,0 +1,195 @@
+
+<div>
+
+
+    <div data-ng-repeat="list in testConditionlists">
+        <div class="col-lg-6 top-btm-padding" id="list-{{$index}}">
+            <fieldset class="custom-border">
+                <legend class="custom-border">{{"Liste " +list.label +" V
+                    "+list.version}}</legend>
+
+                <div class="custom-cross">
+                    <span class="fa fa-remove fa-2x" style="cursor: pointer;"
+                        data-ng-click="showDeleteTCListModal(list,list.label,$index)" data-ng-show = "authorization('POCMRole')"></span>
+                </div>
+
+                <div class="list-inner">
+                    <div class="col-lg-12">
+                        <div class="col-lg-5">
+                            <label title=" {{ 'cop.technicalDataList.text.label'| localize }} " >{{ 'cop.technicalDataList.text.label'| localize }}</label>
+                            <input class="form-control" type="text"
+                                data-ng-model="list.label"
+                                data-ng-disabled="list.entityId!==undefined"
+                                data-ng-maxlength="255" maxlength="255" />
+                        </div>
+                        <div class="col-lg-6">
+                            <label title="{{ 'cop.technicalDataList.text.Description'|
+                                localize }} " >{{ 'cop.technicalDataList.text.Description'|
+                                localize }}</label>
+                            <textarea class="form-control" ng-disabled="!authorization('POCMRole')" data-ng-model="list.description"
+                                data-ng-change="setModifiedTCFlag(list)" data-ng-maxlength="255"
+                                maxlength="255"></textarea>
+                        </div>
+                    </div>
+
+                    <div data-ng-repeat="dataItem in list.genericTestCondition"
+                        data-ng-show="dataItem.isDeleted!=='TRUE'">
+
+
+                        <div class="col-lg-12 custom-phase-pad" id="dataItem-{{$index}}">
+                            
+                            <div ng-show="!authorization('POCMRole')">
+                           <span><div class="col-lg-9 editable-text" style="max-height: 25px; overflow: hidden;text-overflow: ellipsis;">{{dataItem.label}}</div></span>
+                             </div>
+                            <editlabel model="dataItem.label" ng-show="authorization('POCMRole')"
+                                data-ng-click="setModifiedTCFlag(list)" ></editlabel>
+                            <span class="fa fa-remove"
+                                data-ng-click="showDeleteConditionModal(list,dataItem.label,$index)" data-ng-show = "authorization('POCMRole')"></span>
+
+                            <div class="col-lg-12 no-padding">
+                                <div class="col-lg-5">
+                                    <label class="control-label" title="{{'cop.technicalData.label.defaultValue'| localize }} " >{{
+                                        'cop.technicalData.label.defaultValue'| localize }}</label> <input
+                                        class="form-control" type="text"
+                                        ng-disabled="!authorization('POCMRole')"
+                                        data-ng-model="dataItem.defaultValue"
+                                        data-ng-change="setModifiedTCFlag(list)"
+                                        data-ng-maxlength="255" maxlength="255" />
+                                </div>
+                                <div class="col-lg-4">
+                                    <label class="control-label" title="{{'cop.technicalData.label.dataType'| localize }}" >{{
+                                        'cop.technicalData.label.dataType'| localize }}</label>
+                                    <ui-select id="dropdownSelect"
+                                     ng-disabled="!authorization('POCMRole')" 
+                                        data-ng-model="dataItem.dataType" reset-search-input="true"
+                                        on-select="setModifiedTCFlag(list)"> <ui-select-match
+                                        placeholder="Select Data Type...">
+                                    {{$select.selected}} </ui-select-match> <ui-select-choices
+                                        repeat="type in dataTypes | filter: $select.search">
+                                    <div ng-bind-html="type | highlight: $select.search "></div>
+                                    </ui-select-choices> </ui-select>
+                                    <!-- <label class="control-label">{{ 'cop.technicalData.label.dataType'| localize }}</label> <input class="form-control" type="text" data-ng-model="dataItem.dataType" data-ng-change ="setModifiedTCFlag(list)" />-->
+                                </div>
+                                <div class="col-lg-3">
+                                    <label class="control-label" title="{{ 'cop.technicalData.label.unit'| localize }} " >{{
+                                        'cop.technicalData.label.unit'| localize }}</label> <input
+                                        class="form-control" type="text"
+                                        ng-disabled="!authorization('POCMRole')" 
+                                        data-ng-model="dataItem.unit.value"
+                                        data-ng-change="setModifiedTCFlag(list)"
+                                        data-ng-maxlength="255" maxlength="255" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 custom-phase-btn align-right">
+                    <div class="col-lg-12">
+                        <button type="button" style="border-radius: 2px;" data-ng-show = "authorization('POCMRole')"
+                            class="btn btn-success" data-dismiss="modal"
+                            data-ng-click="showTCListAddModal(list)">
+                            <span class="fa fa-plus-square-o fa-custom-pad"></span> {{
+                            'cop.testCondition.label.add' |localize }}
+                        </button>
+
+                    </div>
+                </div>
+
+            </fieldset>
+        </div>
+    </div>
+
+
+    <div class="slide-resize col-lg-12 col-lg-10"
+        style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+<label class="screenNo" title=" {{'cop.tvv.testConditionList.label.screenNo' | localize}} " >{{'cop.tvv.testConditionList.label.screenNo' | localize}}</label>
+        <div class="col-lg-12 no-padding">
+            <div class="col-lg-12  padding-top-btm text-center">
+
+                <div class="col-lg-3"></div>
+
+                <div class="col-lg-6 text-center">
+
+
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-show = "authorization('POCMRole')"
+                        data-ng-disabled="!listsTCAvail"
+                        data-ng-click="showSaveTCLConfirmation()">{{
+                        'cop.technicalData.label.validate' | localize }}</button>
+
+                    &nbsp; &nbsp;
+
+                    <button type="button" class="btn btn-default " data-ng-show = "authorization('POCMRole')"
+                        data-dismiss="modal" data-ng-click="CancelOnConfirmationTCL()">{{ 'cop.technicalData.label.cancel'
+                        | localize }}</button>
+
+                </div>
+
+                <div class="col-lg-3 text-right"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ConfirmSaveTCModal" class="modal fade" tabindex="-1"
+    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove"
+                    style="float: right; background-color: #fff;" data-dismiss="modal"
+                    aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{
+                    'cop.technicalDataList.message.saveConfirmation'| localize }}</h4>
+            </div>
+
+            <div class="modal-footer align-center"
+                style="padding-right: 100px; margin-top: 10px;">
+
+
+
+
+
+                <button type="button" style="border-radius: 0px;"
+                    class="btn btn-primary" data-dismiss="modal"
+                    data-ng-click="saveTCLChanges()">{{
+                    'cop.technicalData.label.ok' | localize }}</button>
+                &nbsp; &nbsp;
+                <button type="button" style="border-radius: 0px;"
+                    class="btn btn-default" data-dismiss="modal">{{
+                    'cop.technicalData.message.cancel' | localize }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Confirmation Message On Cancel Button -->
+<div id="ConfirmCancelTCModal" class="modal fade" tabindex="-1"
+    role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 500px;">
+        <div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{
+                    'cop.message.cancelUnsavedDataOnConfirmation'| localize }}</h4>
+            </div>
+        
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;"
+                    class="btn btn-primary" data-dismiss="modal"
+                    data-ng-click="cancelModifiedTCChanges()">{{
+                    'cop.cancelUnsavedData.label.ok' | localize }}</button>
+                &nbsp; &nbsp;
+                <button type="button" style="border-radius: 0px;"
+                    class="btn btn-default" data-dismiss="modal">{{
+                    'cop.cancelUnsavedData.message.cancel' | localize }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Confirmation Message On Cancel Button-->
+

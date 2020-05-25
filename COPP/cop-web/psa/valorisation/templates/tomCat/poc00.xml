@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcat>
+    <screenLog>${valo.tomcat.config.screenLog}</screenLog>
+    <logLevel>${valo.tomcat.config.logLevel}</logLevel>
+    <logFile>${valo.tomcat.config.logFile}</logFile>
+    <prd>poc</prd>
+    <occ>00</occ>
+    <reflexName>cop/d</reflexName>
+    <aliasName>cop</aliasName>
+    <applicationsList>
+        <application>
+            <aliasName>cop-web</aliasName>
+            <url>${valo.tomcat.config.url}</url>
+            <source>cop-web-${project.version}.war</source>
+            <contextRoot>/cop-web</contextRoot>
+            <configuration>
+                <jvmXmx>${valo.tomcat.config.jvmXmx}</jvmXmx>
+                <jvmXms>${valo.tomcat.config.jvmXms}</jvmXms>
+                <jvmClassPathList>
+                    <jvmClassPath>${valo.tomcat.config.jvmClassPath.root}</jvmClassPath>
+                    <jvmClassPath>${valo.tomcat.config.jvmClassPath.META-INF}</jvmClassPath>
+                </jvmClassPathList>
+                <jvmGenericArgumentList>
+                    <jvmGenericArgument>-Xdebug -agentlib:jdwp=transport=dt_socket,address=1043,server=y,suspend=n</jvmGenericArgument>
+                </jvmGenericArgumentList>
+            </configuration>
+        </application>
+    </applicationsList>
+</tomcat>

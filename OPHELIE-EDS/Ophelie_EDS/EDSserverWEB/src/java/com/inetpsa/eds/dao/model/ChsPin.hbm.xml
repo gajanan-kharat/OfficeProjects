@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.ChsPin" table="OPLQTCAV">
+        <id name="uid" type="string">
+            <column name="ID" length="36"/>
+            <generator class="assigned" />
+        </id>
+        <property name="cavityId" type="string">
+            <column name="CAVITY_ID"/>
+        </property>
+        <property name="connectionName" type="string">
+            <column name="CONNECTION_NAME"/>
+        </property>
+        
+        <property name="cavity" type="string">
+            <column name="CAVITY"  />
+        </property>
+        
+        <property name="pinType" type="string">
+            <column name="PIN_TYPE"  />
+        </property>
+                
+        <many-to-one name="component" class="com.inetpsa.eds.dao.model.Chs" fetch="select" lazy="false">
+            <column name="COMPONENT_ID" />
+        </many-to-one>
+        
+        
+       
+    </class>
+</hibernate-mapping>

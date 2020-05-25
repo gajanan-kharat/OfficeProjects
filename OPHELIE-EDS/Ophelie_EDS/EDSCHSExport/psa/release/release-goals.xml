@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ******************************************************************** -->
+<!-- Ce fichier permet de décrire la liste des goals et des paramètres -->
+<!-- que le plugin PSA-Release doit exécuter lors d'une release. Cela -->
+<!-- évite de les passer en ligne de commande. -->
+<!-- -->
+<!-- Note : pour tester cette exécution sans faire une vraie release, -->
+<!-- lancer la commande suivante : -->
+<!-- -->
+<!-- mvn psa-release:dry-run -DparamFile=release/release-goals.xml -->
+<!-- -->
+<!-- ******************************************************************** -->
+<release xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ciq-repository.inetpsa.com/repository/virtual/com/inetpsa/jip/xsd/release/release-1.1.xsd">
+    <goals>
+        <goal>deploy</goal>
+        <goal>site</goal>
+        <goal>psa-dashboard:consolidate</goal>
+        <goal>psa-dashboard:report</goal>
+        <goal>psa-archive:prepare</goal>
+        <goal>assembly:attached</goal>
+        <goal>psa-archive:deliver</goal>
+        <goal>publisher:publish</goal>
+        <goal>cleaner:clean-project-folder</goal>
+        <goal>site:deploy</goal>
+    </goals>
+    <arguments>
+        <!-- Tous les profils à activer lors d'une release -->
+        <argument>-PpsaReports,psaScmReports,psaArchive,psaPublish</argument>
+        <argument>-Dvalo.env=prod</argument>
+        <!-- Les includes et excludes pour le nettoyage du répertoire projet -->
+        <argument>-DcleanerIncludes=**/EDSCHSExport/**</argument>
+        <argument>-DcleanerExcludes=**/distrib/**</argument>
+    </arguments>
+</release>

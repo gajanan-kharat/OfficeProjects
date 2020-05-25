@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.inetpsa.poc00</groupId>
+        <artifactId>cop-root</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../cop-root</relativePath>
+    </parent>
+
+    <artifactId>cop-app</artifactId>
+    <name>cop-app</name>
+
+    <properties>
+        <svnModuleName>cop-app</svnModuleName>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.inetpsa.poc00</groupId>
+            <artifactId>cop-domain</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.inetpsa.fnd</groupId>
+            <artifactId>seed-app-composite</artifactId>
+            <type>pom</type>
+        </dependency>
+
+
+		<dependency>
+			<groupId>org.seedstack.seed</groupId>
+			<artifactId>seed-testing</artifactId>
+			<scope>test</scope>
+		</dependency>
+          <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <scope>test</scope>
+            <version>2.3.3</version>
+        </dependency>
+		<dependency>
+			<groupId>com.inetpsa.fnd.addons.clp</groupId>
+			<artifactId>clp</artifactId>
+		</dependency>
+
+
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-testing</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.inetpsa.fnd.addons.clp</groupId>
+            <artifactId>clp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.31</version>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>2.3</version>
+        </dependency>
+<dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.3.4</version>
+        </dependency>
+   <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>2.2.4</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.21</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+    </dependency>
+    </dependencies>
+
+</project>

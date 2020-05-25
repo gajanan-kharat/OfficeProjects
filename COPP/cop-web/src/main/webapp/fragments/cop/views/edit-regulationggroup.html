@@ -1,0 +1,765 @@
+
+
+<div data-cop-header></div>
+
+
+<div id="wrapper" class="context-wrapper">
+	<div>
+		<div data-cop-sidebar></div>
+	</div>
+
+
+	<div class="col-lg-12 no-padding">
+		<div class="row no-margin">
+
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+
+			<div class="container-fluid no-padding">
+
+				<div class="no-padding slide-resize col-lg-10 col-lg-12" style="position: fixed; z-index: 100; background-color: #fff;">
+
+
+
+
+					<div>
+
+						<div class="col-lg-12 no-padding">
+							<div class="col-lg-12">
+								<div class="padding-top-btm" data-ng-init="initialize()">
+									<b>{{'cop.regulationGroup.title.lable'| localize}}</b>
+								</div>
+							</div>
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+							<div class="col-lg-12 no-padding tab-content-bottom">
+								<div class="col-lg-6 no-padding">
+
+									<div class="col-lg-12">{{'cop.regulationGroup.fammille.label'|localize}}</div>
+
+
+									<div class="col-lg-6">
+										<div class="form-control">
+											<div class="col-lg-10 no-padding">
+												<label class="card-text-overflow" style="white-space: nowrap;"
+													title="{{regulationGroup.label}} {{regulationGroup.version}} {{regulationGroup.regulationgroupstatus.label}}">{{regulationGroup.label}}
+													{{regulationGroup.version}} {{regulationGroup.regulationgroupstatus.label}}</label>
+											</div>
+
+											<div class="col-lg-2">
+												<span class="fa fa-pencil" style="line-height: inherit" data-ng-click="showEditStatusVersionModal()" data-ng-show = "authorization('POCNRole')"></span>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-lg-4">
+										<ui-select data-ng-model="selectedAction" reset-search-input="true" on-select="takeAction()" data-ng-show = "authorization('POCNRole')"> <ui-select-match
+											placeholder="{{'cop.actions.options.actions'|localize}}"> {{$select.selected}} </ui-select-match> <ui-select-choices
+											repeat="action in actions | filter: $select.search">
+										<div ng-bind-html="action | highlight: $select.search"></div>
+										</ui-select-choices> </ui-select>
+									</div>
+								</div>
+
+
+								<div class="col-lg-6 no-padding">
+
+									<ul class="nav nav-pills fade in active">
+										<li class="icon-option active" data-toggle="pill" href="#EmmisionStandard" data-ng-click="showTechnicalData()"><span
+											class="fa fa-car fa-2x"></span>
+											<div>{{'cop.regulationGroup.tab.TechnicalData' |localize}}</div></li>
+										<li class="icon-option" data-toggle="pill" href="#Conditions" data-ng-click="showTestConditions()"><span class="fa fa-cogs fa-2x"></span>
+											<div>{{'cop.esDependent.tab.TestCondition'|localize}}</div></li>
+										<li class="icon-option" data-toggle="pill" href="#wltp" data-ng-click="showLimits()"><span class="fa fa-globe fa-2x"></span>
+											<div>{{'cop.regulationGroup.tab.Wltp'|localize}}</div></li>
+									</ul>
+
+								</div>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+							</div>
+						</div>
+
+
+
+
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+					<div class="col-lg-12">
+						<fieldset class="custom-border">
+							<legend class="custom-border">{{'cop.regulationGroup.characteristics.label'|localize}} </legend>
+							<div class="col-lg-4 padding-top-btm">
+								<div class="padding-top-btm custom-margin">{{'cop.regulationGroup.typeApproval.label'|localize}}</div>
+								<ui-select id="typeApprovalSelect" data-ng-selected="true" data-ng-model="regulationGroup.typeApprovalArea" ng-disabled="!authorization('POCNRole')" reset-search-input="true"
+									on-select="setTypeApprovalArea($select.selected)"> <ui-select-match placeholder="Select Type Approval Area">
+								{{$select.selected.label}} </ui-select-match> <ui-select-choices repeat="typeApproval in typeApprovalArea | filter: $select.search">
+								<div ng-bind-html="typeApproval.label | highlight: $select.search "></div>
+								</ui-select-choices> </ui-select>
+
+
+							</div>
+							<div class="col-lg-4 padding-top-btm  custom-margin">
+								<div class="padding-top-btm custom-margin">{{'cop.regulationGroup.emissionSatdard'|localize}}</div>
+								<ui-select id="emissionStandardSelect" data-ng-selected="true" data-ng-model="regulationGroup.emissionStandardforRg" ng-disabled="!authorization('POCNRole')" reset-search-input="true"
+									on-select="setEmissionStandard($select.selected)"> <ui-select-match placeholder="Select Emission Standard">
+								{{$select.selected.displayLabelTVV}}</ui-select-match> <ui-select-choices repeat="emission in emissionStandard | filter: $select.search">
+								<div ng-bind-html="emission.displayLabelTVV | highlight: $select.search "></div>
+								</ui-select-choices> </ui-select>
+
+
+							</div>
+                            
+                            <div class="col-lg-3 padding-top-btm  custom-margin">
+                                <div class="padding-top-btm custom-margin">{{'cop.regulationGroup.statisticalRule.label'|localize}}</div>
+                                <ui-select id="statisticalRuleSelect" data-ng-selected="true" data-ng-model="regulationGroup.statisticalRuleRepresentation" ng-disabled="!authorization('POCNRole')" reset-search-input="true"
+                                  on-select="setStatisticalRule($select.selected)" > <ui-select-match placeholder="Select Statistical Rule">
+                                {{$select.selected.label}}</ui-select-match> <ui-select-choices repeat="statisticalRule in statisticalRule | filter: $select.search">
+                                <div ng-bind-html="statisticalRule.label | highlight: $select.search "></div>
+                                </ui-select-choices> </ui-select>
+
+
+                            </div>
+                            
+
+
+
+
+						</fieldset>
+					</div>
+				</div>
+				<div class="col-lg-12 tab-content no-padding" style="bottom: 43px; padding-top: 285px !important;">
+					<div id="EmmisionStandard" class="tab-pane fade in active">
+
+						<!-- 				firstTab -->
+						<div>
+							<div class="padding-top-btm">
+								<div class="col-lg-3">{{'cop.editTechnicalGroup.envelope.lable'|localize}}</div>
+							</div>
+							<div class="col-lg-12 no-padding">
+
+
+
+
+								<div class="col-lg-2"></div>
+								<div class="col-lg-12 no-padding">
+
+
+
+									<div class="padding-top-btm">
+										<div class="col-lg-3">
+											<button type="button" style="border-radius: 8px;" class="btn " ng-click="addTG()" data-ng-show = "authorization('POCNRole')">
+												<span class="fa fa-plus-square-o fa-custom-pad"></span>{{'cop.regulatioGroup.addTg.label'|localize}}
+											</button>
+
+										</div>
+									</div>
+									<div class="col-lg-12 no-padding">
+
+
+
+										<div class="col-lg-11 col-md-12 col-sm-12 col-xs-12 tab-content">
+
+											<div data-ng-repeat="tg in tgList">
+												<div class="col-lg-5 col-md-5 col-sm-5 col-xs-11 custom-card no-padding"">
+													<div class="col-lg-10 col-md-6 col-sm-6 col-xs-12">
+														<label class="control-label custom-label">(Enveloppe)</label>
+														<div>
+															<label class="control-label">{{tg.label}} <span>{{tg.version}}</span> {{tg.techgroupstatus.guiLabel}}</label>
+														</div>
+													</div>
+
+
+
+													<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 no-padding" data-ng-click="editTechnicalGroup(tg)" style="padding-top: 2px;" data-ng-show = "authorization('POCNRole')">
+														<div style="padding-top: 15px" title="Edit">
+															<span class="fa fa-pencil custom-fa-size"></span>
+														</div>
+													</div>
+
+													<div class="col-lg-1 col-md-1 col-sm-1 col-xs-6 no-padding" data-ng-click="deleteTechnicalGroupInRg(tg)" data-ng-show = "authorization('POCNRole')">
+														<div style="padding-top: 15px" title="Delete">
+															<span class="fa fa-trash custom-fa-size"></span>
+														</div>
+													</div>
+
+
+
+												</div>
+
+
+											</div>
+
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+
+
+
+
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="slide-resize col-lg-12 col-lg-10" style="position: fixed; bottom: 0px; background-color: #fff;">
+							<label class="screenNo">{{'cop.rg.editTg.label.screenNo' | localize}}</label>
+
+							<div class="col-lg-12 padding-top-btm">
+
+								<div class="col-lg-3"></div>
+								<div class="col-lg-6 text-center">
+									<button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click="validate()" data-ng-show = "authorization('POCNRole')">{{
+										'cop.technicalData.label.validate' | localize }}</button>
+
+									&nbsp; &nbsp;
+
+									<button type="button" class="btn btn-default " data-dismiss="modal" data-ng-click="CancelOnConfirmationTG()" data-ng-show = "authorization('POCNRole')">{{
+										'cop.technicalData.label.cancel' | localize }}</button>
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+					<div id="Conditions" class="tab-pane fade">
+
+						<!-- 			second tab -->
+						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+						<div class="col-lg-12">
+							<ul class="nav nav-pills nav-custom f-left custom-tab">
+
+								<li data-ng-repeat="List in regulationGroup.rgValuedEsDepTCL"><a data-toggle="pill" href="#RGvalue-{{$index}}">{{List.label}}({{List.editedValues}}/{{List.rgValuedGenericTestConditionrepresent.length}})</a></li>
+							</ul>
+						</div>
+
+						<div class="col-lg-12 tab-content">
+
+
+							<div data-ng-repeat="List in regulationGroup.rgValuedEsDepTCL" id="RGvalue-{{$index}}" class="tab-pane fade in">
+								<div data-ng-repeat="RgTestCondition in List.rgValuedGenericTestConditionrepresent">
+									<div class="col-lg-5 col-md-5 col-sm-5 col-xs-11 custom-card no-padding" style="min-height: 65px; max-height: 65px;">
+										<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+											<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12 no-padding">
+												<span class="control-label">({{RgTestCondition.label}})</span>
+											</div>
+											<!--  <span class="control-label"><editable
+													model="RgTestCondition.defaultValue"  data-ng-click="editDefaultConditionValue(List)"></editable></span>-->
+
+
+											<div class="col-lg-12 no-padding padding-top-btm">
+                                            <div class="col-lg-6 no-padding card-lg-overflow" title="{{RgTestCondition.defaultValue}}" ng-show="!authorization('POCNRole')">
+                                                    <input class="form-control editableInput" ng-disabled="!authorization('POCNRole')" data-ng-hide="editable" type="text" data-ng-enter="enterSave();editDefaultConditionValue(List)"
+                                                        data-ng-blur='save();editDefaultConditionValue(List)' data-ng-model="RgTestCondition.defaultValue"><b><span
+                                                        data-ng-show="editable" >{{RgTestCondition.defaultValue}}</span></b>
+                                                </div>
+												<div class="col-lg-6 no-padding card-lg-overflow" title="{{RgTestCondition.defaultValue}}" ng-show="authorization('POCNRole')">
+													<input class="form-control editableInput"  data-ng-hide="editable" type="text" data-ng-enter="enterSave();editDefaultConditionValue(List)"
+														data-ng-blur='save();editDefaultConditionValue(List)' data-ng-model="RgTestCondition.defaultValue"><b><span
+														data-ng-show="editable" data-ng-click="edit()">{{RgTestCondition.defaultValue}}</span></b>
+												</div>
+												<div class="col-lg-6 no-padding" style="text-align: right" data-ng-click="editDefaultConditionValue(List);" data-ng-show = "authorization('POCNRole')">
+													<span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+														data-ng-click="save();editDefaultConditionValue(List)" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+						</div>
+
+
+						<div class="slide-resize col-lg-12 col-lg-10" style="position: fixed; bottom: 0px; background-color: #fff;">
+							<label class="screenNo">{{'cop.rg.editTestCondition.label.screenNo' | localize}}</label>
+
+							<div class="col-lg-12 padding-top-btm">
+
+								<div class="col-lg-3"></div>
+								<div class="col-lg-6 text-center">
+									<button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click="saveEditedRegulationGroup()" data-ng-show = "authorization('POCNRole')">{{
+										'cop.technicalData.label.validate' | localize }}</button>
+
+									&nbsp; &nbsp;
+
+									<button type="button" class="btn btn-default " data-dismiss="modal" data-ng-click="CancelOnConfirmationTG()" data-ng-show = "authorization('POCNRole')">{{
+										'cop.technicalData.label.cancel' | localize }}</button>
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+					<div id="wltp" class="tab-pane fade">
+						<div class="col-lg-12">WLTP</div>
+
+						<div>
+                           
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                            <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.crrvlow' | localize }}
+                               <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.crrvLow}}">{{regulationGroup.wltpRepresentation.crrvLow}}</span></b></div>
+                              </div>
+                             
+                            </div>
+								<div  ng-show="authorization('POCNRole')">
+                                <div class="col-lg-12">{{'cop.RegulationGroup.label.crrvlow' | localize }}</div>
+                                
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label" ><regeditable  model="regulationGroup.wltpRepresentation.crrvLow"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable> </span>
+								</div>
+                                </div>
+							</div>
+
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                                
+                                 <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.scvlow' | localize }}
+                               <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.scxVLow}}">{{regulationGroup.wltpRepresentation.scxVLow}}</span></b></div>
+                              </div>
+                             
+                             </div>
+                                
+                                <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.scvlow' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable   model="regulationGroup.wltpRepresentation.scxVLow"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                               <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.mvlow' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.massVLow}}">{{regulationGroup.wltpRepresentation.massVLow}}</span></b></div>
+                              </div>
+                            
+                             </div>
+                                <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.mvlow' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable   model="regulationGroup.wltpRepresentation.massVLow"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+                             
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                            <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.f0vlow' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.f0vLow}}">{{regulationGroup.wltpRepresentation.f0vLow}}</span></b></div>
+                              </div>
+                            
+                             </div>
+                             <div ng-show="authorization('POCNRole')" >
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.f0vlow' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable   model="regulationGroup.wltpRepresentation.f0vLow"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.f1vlow' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.f1vLow}}">{{regulationGroup.wltpRepresentation.f1vLow}}</span></b></div>
+                              </div>
+                            
+                             </div>
+                             <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.f1vlow' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable   model="regulationGroup.wltpRepresentation.f1vLow"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                            
+                            <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.f2vlow' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.f2vLow}}">{{regulationGroup.wltpRepresentation.f2vLow}}</span></b></div>
+                              </div>
+                            
+                             </div>
+                             <div  ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.f2vlow' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable  model="regulationGroup.wltpRepresentation.f2vLow"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                            
+                            
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.f0avlow' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.f0vInd}}">{{regulationGroup.wltpRepresentation.f0vInd}}</span></b></div>
+                              </div>
+                              </div>
+                              
+                              <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.f0avlow' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable  model="regulationGroup.wltpRepresentation.f0vInd"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+
+
+
+
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.f1avlow' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.f1vInd}}">{{regulationGroup.wltpRepresentation.f1vInd}}</span></b></div>
+                              </div>
+                              </div>
+                              <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.f1avlow' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable   model="regulationGroup.wltpRepresentation.f1vInd"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+
+
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                            
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.f2avlow' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.f2vInd}}">{{regulationGroup.wltpRepresentation.f2vInd}}</span></b></div>
+                              </div>
+                              </div>
+                              <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.f2avlow' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable   model="regulationGroup.wltpRepresentation.f2vInd"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                              <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.crrvhigh' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.crrvHigh}}">{{regulationGroup.wltpRepresentation.crrvHigh}}</span></b></div>
+                              </div>
+                              </div>
+                                <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.crrvhigh' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable  model="regulationGroup.wltpRepresentation.crrvHigh"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.scvhigh' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.scxVHigh}}">{{regulationGroup.wltpRepresentation.scxVHigh}}</span></b></div>
+                              </div>
+                              </div>
+                              <div  ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.scvhigh' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable  model="regulationGroup.wltpRepresentation.scxVHigh"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.mvhigh' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.masseVhigh}}">{{regulationGroup.wltpRepresentation.masseVhigh}}</span></b></div>
+                              </div>
+                              </div>
+                              <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.mvhigh' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable   model="regulationGroup.wltpRepresentation.masseVhigh"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.f0vhigh' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.f0vHigh}}">{{regulationGroup.wltpRepresentation.f0vHigh}}</span></b></div>
+                              </div>
+                              </div>
+                              <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.f0vhigh' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable   model="regulationGroup.wltpRepresentation.f0vHigh"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.f1vhigh' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.f1vHigh}}">{{regulationGroup.wltpRepresentation.f1vHigh}}</span></b></div>
+                              </div>
+                              </div >
+                              <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.f1vhigh' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable model="regulationGroup.wltpRepresentation.f1vHigh"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                            <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.f2vhigh' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.f2vHigh}">{{regulationGroup.wltpRepresentation.f2vHigh}}</span></b></div>
+                              </div>
+                              </div >
+                              <div  ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.f2vhigh' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable  model="regulationGroup.wltpRepresentation.f2vHigh"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.crrvind' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.crrvInd}">{{regulationGroup.wltpRepresentation.crrvInd}}</span></b></div>
+                              </div>
+                              </div >
+                              <div ng-show="authorization('POCNRole')" >
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.crrvind' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable  model="regulationGroup.wltpRepresentation.crrvInd"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                             <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.scvind' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.scxVInd}">{{regulationGroup.wltpRepresentation.scxVInd}}</span></b></div>
+                              </div>
+                              </div >
+                              <div ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.scvind' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable   model="regulationGroup.wltpRepresentation.scxVInd"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+
+							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-11 custom-card no-padding" style="min-height: 55px; max-height: 55px;">
+                            <div ng-show="!authorization('POCNRole')" >
+                              <div class="col-lg-12">{{'cop.RegulationGroup.label.mvind' | localize }}
+                                <div style="padding:5px 0px; max-width: 15vw; max-height: 30px;"><b><span   class="editable-text" title="{{regulationGroup.wltpRepresentation.massVInd}">{{regulationGroup.wltpRepresentation.massVInd}}</span></b></div>
+                              </div>
+                              </div >
+                              <div  ng-show="authorization('POCNRole')">
+								<div class="col-lg-12">{{'cop.RegulationGroup.label.mvind' | localize }}</div>
+								<div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
+									<span class="control-label"></span> <span class="control-label"><regeditable  model="regulationGroup.wltpRepresentation.massVInd"
+											data-ng-click="editDefaultValue(pill,$index)"></regeditable></span>
+								</div>
+                                </div>
+							</div>
+
+
+						</div>
+						<div class="slide-resize col-lg-12 col-lg-10" style="position: fixed; bottom: 0px; background-color: #fff;">
+
+							<label class="screenNo">{{'cop.rg.editWltp.label.screenNo' | localize}}</label>
+							<div class="col-lg-12 padding-top-btm">
+
+								<div class="col-lg-3"></div>
+								<div class="col-lg-6 text-center">
+									<button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-click="saveEditedRegulationGroup()" data-ng-show = "authorization('POCNRole')">{{
+										'cop.technicalData.label.validate' | localize }}</button>
+
+									&nbsp; &nbsp;
+
+									<button type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="CancelOnConfirmationTG()" data-ng-show = "authorization('POCNRole')">{{
+										'cop.technicalData.label.cancel' | localize }}</button>
+								</div>
+
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="editRegulationVersionStatusModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+	data-backdrop="false">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+			<form name="myForm3">
+				<div class="modal-header">
+					<button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+					<h4 class="modal-title" id="modalLabel">{{'cop.editTechnicalGroup.editStatusVersion.label'|localize}}</h4>
+				</div>
+				<div class="modal-body" style="margin-bottom: 6%;">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="col-lg-2">
+							<label>{{'cop.editTechnicalGroup.statusDropdown.label'|localize}}</label>
+						</div>
+						<div class="col-lg-4">
+
+							<ui-select id="statusSelect" data-ng-model="regulationGroup.regulationgroupstatus" reset-search-input="true"
+								on-select="setSelectedStatus($select.selected)"> <ui-select-match placeholder="Select Status">
+							{{$select.selected.label}} </ui-select-match> <ui-select-choices repeat="status in regulationGroupStatus | filter: $select.search">
+							<div ng-bind-html="status.label | highlight: $select.search "></div>
+							</ui-select-choices> </ui-select>
+
+
+						</div>
+						<div class="col-lg-1"></div>
+						<div class="col-lg-3">{{'cop.editTechnicalGroup.incrementVersion.label'|localize}}</div>
+						<div class="col-lg-1">
+							<input id="versionCheckbox" ng-model="isVersionCreated" type="checkbox" name="version" value=false>
+						</div>
+
+
+					</div>
+				</div>
+
+				<div class="modal-footer align-center">
+
+
+					<button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="setSelectedVersionandStatus()">{{'cop.regulationGroup.modal.ok'|localize}}</button>
+
+					&nbsp; &nbsp;
+					<button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{'cop.regulationGroup.modal.cancel'|localize}}</button>
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<div id="editRegulationGroupModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+	data-backdrop="false">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+			<form name="myForm3">
+				<div class="modal-body" style="padding-top: 20px;">{{'cop.regulationGroup.label.warningMessage'|localize}}</div>
+				<div class="modal-footer align-center">
+
+					<button type="button" style="border-radius: 0px;" class="btn btn-default" data-ng-click="deleteRegulationGroup()">{{'cop.regulationGroup.modalOption.yes'|localize}}</button>
+
+					&nbsp; &nbsp;
+					<button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{'cop.regulationGroup.modalOption.No'|localize}}</button>
+
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- Confirmation Message On Cancel Button -->
+<div id="ConfirmCancelTGModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{ 'cop.message.cancelUnsavedDataOnConfirmation'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="cancelModifiedTGChanges()">{{
+					'cop.cancelUnsavedData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.cancelUnsavedData.message.cancel'
+					| localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Confirmation Message On Cancel Button-->
+
+<div id="errorDisplayModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="createRegulationGroupVersionModal" class="modal fade"
+                tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                aria-hidden="true" data-backdrop="false">
+                <div class="modal-dialog modal-md" style="width: 500px;">
+                    <div class="modal-content"
+                        style="border-radius: 0px; width: 500px;">
+                        <form name="myForm3">
+                            <div class="modal-body" style="padding-top: 20px;">
+                                {{'cop.regulationGroup.modifyVersion.message'|localize}}</div>
+                            <div class="modal-footer align-center">
+
+                                <button type="button" style="border-radius: 0px;"
+                                    class="btn btn-default" data-dismiss="modal"
+                                    data-ng-click="createNewVersion()">{{'cop.regulationGroup.modalOption.yes'|localize}}</button>
+
+                                &nbsp; &nbsp;
+                                <button type="button" style="border-radius: 0px;"
+                                    class="btn btn-default" data-dismiss="modal"
+                                    data-ng-click="setOldStatisticalRule()">{{'cop.regulationGroup.modalOption.No'|localize}}</button>
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>

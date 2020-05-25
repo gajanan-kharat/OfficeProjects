@@ -1,0 +1,33 @@
+{
+    "w20-core": {
+        "modules": {
+            "application": {
+                "id": "W20",
+                "home": "/cop/Home"
+            },
+            "culture": {
+                "available": ["fr-FR"],
+                "default": "fr-FR"
+            }, 
+            "env": {
+                "type" : "DEV"  
+            },
+            "security": {
+                "autoLogin": true
+            },
+            "notifications": {"position": "bottom-right"}
+        }
+    },
+    
+   "w20-components": {
+    	"modules": {
+    		"grid": {},
+    		"select":{}
+    	}	
+	},	
+	
+    "fragments/cop/cop-w20.json": {
+    }
+         
+    
+}

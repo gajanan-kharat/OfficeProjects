@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <property id="endpoint-ws" value="${valo.bdd_gestion.url}/EndpointWS?wsdl"/>
+    <property id="endpoint-download" value="${valo.bdd_gestion.url}/DownloadServlet"/>
+    <property id="endpoint-upload" value="${valo.bdd_gestion.url}/UploadServlet"/>
+    <property id="endpoint-ping" value="2000"/>
+    
+    <property id="profil-directory" value="${valo.bdd_gestion.path}/profile"/>
+    <property id="tmp-directory" value="${valo.bdd_gestion.path}/tmp"/>
+    <property id="database-template-directory" value="${valo.bdd_gestion.path}/template"/>
+    
+    <property id="hibernate-config-file" value="/OPHGserver/hibernate.cfg.xml"/>
+    
+    <property id="gestion-container-id" value="${valo.bdd_gestion.container_id}"/>
+    
+    <property id="gestion-login" value="${valo.bdd_gestion.login}"/>
+    <property id="gestion-password" value="${valo.bdd_gestion.password}"/>
+</configuration>

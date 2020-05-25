@@ -1,0 +1,9 @@
+CREATE TABLE COPQTVEN (
+    BOF_LCDVCODEVALUE       VARCHAR(100),
+    DOC_LCDVCODEVALUE       VARCHAR(100),
+    KMAT                    VARCHAR(100),
+    BOF_FRLABEL             VARCHAR(100),
+    DOC_FRLABEL             VARCHAR(100),
+    BOF_ENTITYID            BIGINT(20),
+    DOC_ENTITYID            BIGINT(20)
+);

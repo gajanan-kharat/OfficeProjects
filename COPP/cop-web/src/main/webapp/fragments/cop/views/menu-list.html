@@ -1,0 +1,79 @@
+<div data-cop-header></div>
+<div id="wrapper" class="context-wrapper container-fluid">
+	<div>
+		<div data-cop-sidebar></div>
+	</div>
+<div class=" ">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+    <div class="fix-menusection">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 f-right no-padding">
+        <ul class="nav nav-tabs custom-menulist-right">
+        <li id="historyTab" class="left active" data-ng-click="getVehicleFileHistory()"><a data-toggle="pill"
+            data-target="#history"> {{'cop.menuList.tab.history'|localize }} </a></li>
+        <li><a data-toggle="pill" data-target="#tvv">
+                {{'cop.menuList.tab.tvv'|localize }} </a></li>
+        <li><a data-toggle="pill" data-target="#prep">{{'cop.menuList.tab.preparation'|localize }}</a></li>
+        <li><a data-toggle="pill" data-target="#conditions">
+                {{'cop.menuList.tab.conditions'|localize }} </a></li>
+        <li><a data-toggle="pill" data-target="#vehicleConditioning">
+                {{'cop.menuList.tab.conditionnement'|localize }} </a></li>
+        <li id="resultSetTab"><a data-toggle="pill" data-target="#resultSet">
+                {{'cop.menuList.tab.results'|localize }} </a></li>
+        <li><a data-toggle="pill" data-target="#expertise"> {{'cop.menuList.tab.expertise'|localize }}
+        </a></li>
+        <li class="disabled"><a data-target="#">
+                {{'cop.menuList.tab.impression'|localize }} </a></li>
+        <li class="right disabled"><a data-target="#vehicleCreate"> 
+                Info. Compl.</a></li>
+                
+    </ul>
+    </div>
+    </div> <!-- end fix-menusection -->
+
+	<div class="tab-content col-lg-12 col-sm-12 col-xs-12 padd-top">
+		<div id="history" class="tab-pane fade active in">
+		
+		<data-ng-include src="'fragments/cop/views/vehiclefile-history.html'" />
+		
+    </div>
+        
+    <div id="tvv" class="tab-pane fade">
+        
+        <data-ng-include src="'fragments/cop/views/edit-tvv.html'" />
+        
+        </div>
+
+		<div id="prep" class="tab-pane fade">
+
+		<data-ng-include src="'fragments/cop/views/preparation-list.html'" />
+
+		</div>
+        
+        <div id="conditions" class="tab-pane fade">
+
+        <data-ng-include src="'fragments/cop/views/display-testconditions.html'" />
+
+        </div>
+        
+        <div id="vehicleConditioning" class="tab-pane fade">
+        
+        <data-ng-include src="'fragments/cop/views/vehicle-conditioning.html'" />
+        
+        </div>
+
+        <div id="resultSet" class="tab-pane fade">
+
+        <data-ng-include src="'fragments/cop/views/result-testpollutant.html'" />
+
+        </div>
+        
+		<div id="expertise" class="tab-pane fade">
+		    <data-ng-include src="'fragments/cop/views/vehicle-expertise.html'" />
+		</div>
+        
+        <div id="vehicleCreate" class="tab-pane fade">
+            <data-ng-include src="'fragments/cop/views/vehicleCreate.html'" />
+        </div>
+	</div>
+</div>
+</div>

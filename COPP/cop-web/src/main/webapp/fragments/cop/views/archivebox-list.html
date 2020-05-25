@@ -1,0 +1,131 @@
+<div >
+    <div data-cop-header></div>
+
+
+    <div id="wrapper" class="context-wrapper">
+        <div>
+            <div data-cop-sidebar></div>
+        </div>
+        
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">&nbsp;</div>
+                    
+                    <div class="row no-margin col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+            
+                        <div class="container-fluid no-padding">
+                          <label><b>&gt; {{'cop.archiveboxList.label.title' | localize}}  </b></label>
+                          <h4 class="border-bottom"><b>{{'cop.archiveboxList.label.heading' | localize}}</b></h4>
+                          <div class="row">
+                          <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                          <label class="ellipsis" title="{{'cop.archive.label.year' | localize}}">{{'cop.archive.label.year' | localize}}</label>
+                          <input type="text" id="" class="form-control"  data-ng-model="modelYear">
+                          </div>
+                          <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6">
+                         <label class="ellipsis" title="{{'cop.archiveBoxList.label.cardboard' | localize}}">{{'cop.archiveBoxList.label.cardboard' | localize}}</label>
+                          <input type="text" id="" class="form-control" data-ng-model="archiveBoxnumber">
+                          </div>
+                          <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                          <label class="ellipsis" title="{{'cop.archive.label.archiveTypeOf' | localize}}">{{'cop.archive.label.archiveTypeOf' | localize}}</label>
+                          <input type="text" id="" class="form-control"  data-ng-model="testType">
+                          </div>
+                          <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6">
+                         <label class="ellipsis" title="{{'cop.archive.label.family' | localize}}">{{'cop.archive.label.family' | localize}}</label>
+                          <input type="text" id="" class="form-control" data-ng-model= "projectFamilyLabel">
+                          </div>   <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                          <label class="ellipsis" title="{{'cop.archive.label.fuel' | localize}}">{{'cop.archive.label.fuel' | localize}}</label>
+                          <input type="text" id="" class="form-control" data-ng-model="fuelLabel">
+                          </div>
+                          <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
+                         <label class="ellipsis" title="{{'cop.archiveboxList.label.cardboardCondition' | localize}}">{{'cop.archiveboxList.label.cardboardCondition' | localize}}</label>
+                          <input type="text" id="" class="form-control" data-ng-model="archiveOpen">
+                          </div>   <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                          <label class="ellipsis" title="{{'cop.archiveboxList.label.opningdate' | localize}}">{{'cop.archiveboxList.label.opningdate' | localize}}</label>
+                          <input type="text" id="" class="form-control"  placeholder = "DD/MM/YYYY" data-ng-model="dateOfOpen">
+                          </div>
+                          <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6">
+                         <label class="ellipsis" title="{{'cop.archiveboxList.label.closingdate' | localize}}">{{'cop.archiveboxList.label.closingdate' | localize}}</label>
+                          <input type="text" id="" class="form-control" placeholder = "DD/MM/YYYY" data-ng-model="dateOfClose">
+                          </div>
+                              <div data-ng-repeat="archiveBox in archiveBoxList" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                              <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                                <label class="ellipsis box-label form-control" title="{{archiveBox.modelYear}}">{{archiveBox.modelYear}}</label>
+                              </div>
+                              <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                                <label class="ellipsis box-label form-control" title="{{archiveBox.archiveBoxNumber}}">{{archiveBox.archiveBoxNumber}}</label>
+                              </div>
+                              <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                                <label class="ellipsis box-label form-control" title="{{archiveBox.typeOfTestRepresentation.label}}">{{archiveBox.typeOfTestRepresentation.label}}</label>
+                              </div>
+                              <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                                <label class="ellipsis box-label form-control" title="{{archiveBox.projectCodeFamilyReprsentation.displayLabel}}">{{archiveBox.projectCodeFamilyReprsentation.displayLabel}}</label>
+                              </div>
+                              <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                                <label class="ellipsis box-label form-control" title="{{archiveBox.fuelRepresentation.label}}">{{archiveBox.fuelRepresentation.label}}</label>
+                              </div>
+                              <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 ">
+                                <label class="ellipsis box-label form-control" title="{{archiveBox.modelYear}}">{{archiveBox.isOpen}}</label>
+                              </div>
+                              <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                                <label class="ellipsis box-label form-control" title="{{archiveBox.openingDate | date : 'dd/MM/yyyy'}}">{{archiveBox.openingDate | date : 'dd/MM/yyyy'}}</label>
+                              </div>
+                              <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                                <label class="ellipsis box-label form-control" title="{{archiveBox.closingDate}}">{{archiveBox.closingDate}}</label>
+                              </div>
+                              <div class="col-lg-1 col-md-3 col-sm-4 col-xs-6 ">
+                                <div data-toggle="collapse"  data-target="#vehicleFileTable{{$index}}" class="btn btn-default collapsed arrow accordion-toggle box-label"></div>
+                              </div>
+                              <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 no-padding panel-collapse collapse" id="vehicleFileTable{{$index}}">
+                               <div class="table-responsive panel-body">
+                                  <table class="table">
+                                    <thead>
+                                        <tr>
+                                          <th>{{'cop.archive.label.nChassis' | localize}}</th>
+                                          <th>{{'cop.archive.label.counterMark' | localize}}</th>
+                                          <th>{{'cop.archive.label.registration' | localize}}</th>
+                                          <th>{{'cop.archive.label.family' | localize}}</th>
+                                          <th>{{'cop.archive.label.fuel' | localize}}</th>
+                                          <th>{{'cop.archiveboxList.label.dateOfClosing' | localize}}</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                      <tr data-ng-repeat= "vehicleFile in archiveBox.vehicleFilesRepresentation">
+                                      <td title="{{vehicleFile.vehicleRepresentation.chasisNumber}}">{{vehicleFile.vehicleRepresentation.chasisNumber}}</td>
+                                      <td title="{{vehicleFile.vehicleRepresentation.counterMark}}">{{vehicleFile.vehicleRepresentation.counterMark}}</td>
+                                      <td title="{{vehicleFile.vehicleRepresentation.registrationNumber}}">{{vehicleFile.vehicleRepresentation.registrationNumber}}</td>
+                                      <td title="{{vehicleFile.vehicleRepresentation.projectFamilyLabel}}">{{vehicleFile.vehicleRepresentation.projectFamilyLabel}}</td>
+                                      <td title="{{vehicleFile.vehicleRepresentation.fuelLabel}}">{{vehicleFile.vehicleRepresentation.fuelLabel}}</td>
+                                      <td title="{{vehicleFile.updateDate | date : 'dd/MM/yyyy'}}">{{vehicleFile.updateDate | date : 'dd/MM/yyyy'}}</td>
+                                      <td><span  class="fa fa-table fa-2x " style="cursor: pointer;" data-ng-click="toResultSet(vehicleFile.entityId)"> </span></td>
+                                      </tr>
+                                   </tbody>
+                                  </table>
+                                </div> 
+                                </div>
+                              </div>                      
+                          </div>
+                          
+                           <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+           
+            <div class="col-lg-12 col-md-9 col-sm-9 col-xs-12 padding-top-btm">
+              
+                <div class="col-lg-9 text-center">
+                    <button type="button" id="save" class="btn btn-primary" data-ng-click="searchArchiveCardBoard()">{{ 'cop.archiveboxList.label.applyFilter' |
+                        localize }}</button>
+
+                    &nbsp; &nbsp;
+
+                    <button type="reset" id="valider" class="btn btn-default" data-ng-click="refresh()">{{ 'cop.archiveboxList.label.resetFilter' |
+                        localize }}</button>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+                  <label class="screenNo ellipsis">{{'cop.archiveboxList.label.screenNo' | localize }} </label>
+                </div>
+            </div>
+        </div>
+                          
+                          </div></div></div>
+        
+        
+        </div>
+        </div>

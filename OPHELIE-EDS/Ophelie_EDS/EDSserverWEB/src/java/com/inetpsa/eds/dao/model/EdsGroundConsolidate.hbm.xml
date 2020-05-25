@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23 avr. 2013 16:19:06 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsGroundConsolidate" table="OPLQTGRC">
+        <id name="gedsId" type="string">
+            <column name="GEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="gedsTitle" type="string">
+            <column name="GEDS_TITLE" length="225" />
+        </property>
+        <!-- <property name="gcGrcedsId" type="string"> <column name="GC_GRCEDS_ID" length="36" /> </property> -->
+        <set name="edsCourantMiseSousTensions" inverse="false" table="OPLQTGCM" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JCGCMSTEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantMiseSousTension">
+                <column name="JCGCMSTEDS_CMST_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantAppelleActivations" inverse="false" table="OPLQTCGC" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JCGCAAEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantAppelleActivation">
+                <column name="JCGCAAEDS_CAA_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantBloqueCourantDysfonctionnements" inverse="false" table="OPLQTOGC" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JCGCBCDEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantBloqueCourantDysfonctionnement">
+                <column name="JCGCBCDEDS_CBCD_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="edsCourantNominaleActivations" inverse="false" table="OPLQTNGC" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="JCGCNAEDS_ID" length="36" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.inetpsa.eds.dao.model.EdsCourantNominaleActivation">
+                <column name="JCGCNAEDS_CNA_ID" length="36" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

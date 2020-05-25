@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.inetpsa.pv2</groupId>
+        <artifactId>pv200-root</artifactId>
+        <version>1.0.10-SNAPSHOT</version>
+        <relativePath>../pv200-root</relativePath>
+    </parent>
+
+    <artifactId>pv200-web</artifactId>
+    <name>pv200-web</name>
+    <!-- <packaging>war</packaging> -->
+
+    <properties>
+        <svnModuleName>pv200-web</svnModuleName>
+    </properties>
+
+    <build>
+        <finalName>picto-webapp-${project.version}</finalName>
+        <plugins>
+            <!-- <plugin> <groupId>org.seedstack</groupId> <artifactId>seedstack-maven-plugin</artifactId> <executions> <execution> <id>build-capsule</id> 
+                <goals> <goal>package</goal> </goals> </execution> </executions> </plugin> -->
+
+
+			<plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.11.v20150529</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <!--  Added for Picto Web -->
+             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.18.1</version>
+                <executions>
+                    <execution>
+                        <id>failsafe-integration-test</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>failsafe-verify</id>
+                        <goals>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                                <exclude>META-INF/configuration/*.properties</exclude>
+                                <exclude>META-INF/properties/PictoConfig.properties</exclude>
+                                <exclude>META-INF/properties/Messages_en.properties</exclude>
+                                <exclude>META-INF/properties/Messages_fr.properties</exclude>
+                                <exclude>META-INF/properties/Messages_fr.properties</exclude>
+                                <exclude>META-INF/properties/Messages_fr.properties</exclude>
+                                <exclude>META-INF/properties/Messages_fr.properties</exclude>
+                                <exclude>META-INF/configuration/pv200-web.props</exclude>
+                                <exclude>*.txt</exclude>
+                                <!-- <exclude>batchDataMigration.*</exclude> -->
+                            </excludes>
+                        </filter>
+                    </filters>
+                    <transformers>
+
+                                         <transformer
+                                                implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                                <resource>META-INF/spring.handlers</resource>
+                                         </transformer>
+
+                                         <transformer
+                                                implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                                <resource>META-INF/spring.schemas</resource>
+                                         </transformer>
+
+                                         <transformer
+                                                implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                                <manifestEntries>
+                                                       <Main-Class>org.seedstack.seed.cli.SeedRunner</Main-Class>
+                                                </manifestEntries>
+                                         </transformer>
+                                         <transformer
+                                                implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+
+                    </transformers>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.inetpsa.pv2</groupId>
+            <artifactId>pv200-app</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <!-- WEB -->
+        <dependency>
+            <groupId>org.seedstack</groupId>
+            <artifactId>web-composite</artifactId>
+            <type>pom</type>
+        </dependency>
+	
+	  <dependency>
+            <groupId>com.inetpsa.fnd</groupId>
+            <artifactId>seed-web-composite</artifactId>
+            <type>pom</type>
+             <exclusions>
+				<exclusion>
+				  <groupId>org.javassist</groupId>
+				  <artifactId>javassist</artifactId>
+				</exclusion>
+			</exclusions> 
+        </dependency> 
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-web-undertow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-web-bootstrap-3</artifactId>
+        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>org.seedstack.addons.w20</groupId> -->
+<!--             <artifactId>w20-bridge-web-business-theme</artifactId> -->
+<!--         </dependency> -->
+
+        <!-- PERSISTENCE -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+        <!-- Tests -->
+        <dependency>
+            <groupId>org.seedstack.seed</groupId>
+            <artifactId>seed-testing</artifactId>
+            <scope>test</scope>
+        </dependency>
+	
+		<dependency>
+            <groupId>org.seedstack.addons.w20</groupId>
+            <artifactId>w20-bridge-web-components</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- ends jersy -->   
+        
+        <dependency>
+			 <groupId>org.seedstack.addons.ldap</groupId>
+	 	<artifactId>ldap</artifactId>
+ 	</dependency>
+ 	
+	<!-- Added for PDF Download -->
+	<dependency>
+	    <groupId>com.lowagie</groupId>
+	    <artifactId>itext</artifactId>
+	    <version>2.1.7</version>
+	</dependency>
+	
+	
+ 	<!-- End for PDF Download -->
+ 	
+    </dependencies>    
+
+    <packaging>war</packaging>
+</project>

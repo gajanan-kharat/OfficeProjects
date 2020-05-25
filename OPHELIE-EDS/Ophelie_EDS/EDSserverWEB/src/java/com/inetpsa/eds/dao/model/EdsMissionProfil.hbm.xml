@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10 juil. 2012 14:11:21 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsMissionProfil" table="OPLQTMIP">
+        <id name="mpId" type="string">
+            <column name="MP_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="mpRank" type="int">
+            <column name="MP_RANK" />
+        </property>
+        <property name="mpNombreActivation" type="java.lang.Float">
+            <column name="MP_NOMBRE_ACTIVATION" />
+        </property>
+        <property name="mpUnit" type="java.lang.Integer">
+            <column name="MP_UNIT" />
+        </property>
+        <property name="mpCommentaire" type="string">
+            <column name="MP_COMMENTAIRE" length="2048" />
+        </property>
+        <property name="mpDocsInfosUrls" type="string">
+            <column name="MP_DOCS_INFOS_URLS" length="256" />
+        </property>
+        <property name="mpNomProfil" type="string">
+            <column name="MP_NOM_PROFIL" length="256" />
+        </property>
+    </class>
+</hibernate-mapping>

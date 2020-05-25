@@ -1,0 +1,121 @@
+<div class="row form-group">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.projectVehicle'|localize}}</label>
+
+			<ui-select multiple id="projectSelect" data-ng-model="searchRepresentation.pcFamilyList" reset-search-input="true" on-select="setProject($select.selected)" append-to-body="true" title="{{searchRepresentation.pcFamilyList}}" > <ui-select-match
+				placeholder="" > {{$item}} </ui-select-match> <ui-select-choices
+				repeat="project in projectFamilyList | filter: $select.search" >
+			<div ng-bind-html="project | highlight: $select.search " title="{{project}}"></div>
+			</ui-select-choices> </ui-select>
+
+
+
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.bodyWork'|localize}}</label>
+
+			<ui-select multiple id="bodyWorkSelect" data-ng-model="searchRepresentation.bodyWorkList" reset-search-input="true" on-select="setBodyWork($select.selected)" append-to-body="true" title="{{searchRepresentation.bodyWorkList}}"> <ui-select-match
+				placeholder=""> {{$item}} </ui-select-match> <ui-select-choices repeat="bodyWork in bodyWorkList | filter: $select.search">
+			<div ng-bind-html="bodyWork | highlight: $select.search " title="{{bodyWork}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.engine'|localize}}</label>
+
+			<ui-select multiple id="engineSelect" data-ng-model="searchRepresentation.engineList" reset-search-input="true" on-select="setEngine($select.selected)" append-to-body="true" title="{{searchRepresentation.engineList}}"> <ui-select-match
+				placeholder=""> {{$item}} </ui-select-match> <ui-select-choices repeat="engine in engineList | filter: $select.search">
+			<div ng-bind-html="engine| highlight: $select.search " title="{{engine}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.gearBox'|localize}}</label>
+
+			<ui-select multiple id="gearBoxSelect" data-ng-model="searchRepresentation.gearBoxList" reset-search-input="true" on-select="setGearBox($select.selected)" append-to-body="true" title="{{searchRepresentation.gearBoxList}}"> <ui-select-match
+				placeholder=""> {{$item}} </ui-select-match> <ui-select-choices repeat="gearBox in gearBoxList | filter: $select.search">
+			<div ng-bind-html="gearBox| highlight: $select.search " title="{{gearBox}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.fuel'|localize}}</label>
+
+			<ui-select multiple id="fuelSelect" data-ng-model="searchRepresentation.fuelList" reset-search-input="true" on-select="setFuel($select.selected)" append-to-body="true" title="{{searchRepresentation.fuelList}}"> <ui-select-match
+				placeholder=""> {{$item}} </ui-select-match> <ui-select-choices repeat="fuel in fuelList | filter: $select.search">
+			<div ng-bind-html="fuel | highlight: $select.search " title="{{fuel}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.emissionStandard'|localize}}</label>
+
+			<ui-select  multiple  id="emissionStandardSelect" data-ng-model="searchRepresentation.emsList" reset-search-input="true" append-to-body="true"  title="{{searchRepresentation.emsList}}"
+				on-select="setEmissionStandard($select.selected)" append-to-body="true" > <ui-select-match placeholder=""> {{$item}}
+			</ui-select-match> <ui-select-choices repeat="emissionStandard in emissionStandardList | filter: $select.search">
+			<div ng-bind-html="emissionStandard| highlight: $select.search " style="width: 100%;" title="{{emissionStandard}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.inertia'|localize}}</label>
+
+			<ui-select  multiple id="inertiaSelect" data-ng-model="searchRepresentation.inertiaLIst" reset-search-input="true" append-to-body="true"   title="{{searchRepresentation.inertiaLIst}}" on-select="setInertia($select.selected)" append-to-body="true">
+			<ui-select-match placeholder=""> {{$item}} </ui-select-match> <ui-select-choices
+				repeat="inertia in inertiaList | filter: $select.search">
+			<div ng-bind-html="inertia | highlight: $select.search " title="{{inertia}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.coastDown'|localize}}</label>
+
+			<ui-select multiple id="coastDownSelect" data-ng-model="searchRepresentation.coastDownList" reset-search-input="true" on-select="setCoastDown($select.selected)"  title="{{searchRepresentation.coastDownList}}" append-to-body="true">
+			<ui-select-match placeholder=""> {{$item}} </ui-select-match> <ui-select-choices
+				repeat="coastDown in coastDownList | filter: $select.search">
+			<div ng-bind-html="coastDown| highlight: $select.search " title="{{coastDown}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.minLimit'|localize}}</label>
+
+			<ui-select multiple id="minLimitSelect" data-ng-model="searchRepresentation.pgMinLimits" reset-search-input="true" title="{{searchRepresentation.pgMinLimits}}" on-select="setMinLimit($select.selected)" append-to-body="true"> <ui-select-match
+				placeholder=""> {{$item}} </ui-select-match> <ui-select-choices repeat="minLimit in minLimitList | filter: $select.search">
+			<div ng-bind-html="minLimit | highlight: $select.search " title="{{minLimit}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.maxLimit'|localize}}</label>
+
+			<ui-select multiple id="maxLimitSelect" data-ng-model="searchRepresentation.pgMaxLimits" reset-search-input="true" title="{{searchRepresentation.pgMaxLimits}}" on-select="setMaxLimit($select.selected)" append-to-body="true"> <ui-select-match
+				placeholder=""> {{$item}} </ui-select-match> <ui-select-choices repeat="maxLimit in maxLimitList | filter: $select.search">
+			<div ng-bind-html="maxLimit| highlight: $select.search " title="{{maxLimit}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.typeApprovalArea'|localize}}</label>
+
+			<ui-select  multiple id="typeApprovalAreaSelect" data-ng-model="searchRepresentation.typeApprovalAreaList" reset-search-input="true" title="{{searchRepresentation.typeApprovalAreaList}}"
+				on-select="setTypeApprovalArea($select.selected)" append-to-body="true"> <ui-select-match placeholder=""> {{$item}}
+			</ui-select-match> <ui-select-choices repeat="typeApprovalArea in typeApprovalAreaList | filter: $select.search">
+			<div ng-bind-html="typeApprovalArea | highlight: $select.search " title="{{typeApprovalArea}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+		<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+			<label>{{'cop.search.label.country'|localize}}</label>
+
+			<ui-select multiple id="countrySelect" data-ng-model="searchRepresentation.countryList" reset-search-input="true" title="{{searchRepresentation.countryList}}" on-select="setCountry($select.selected)" append-to-body="true"> <ui-select-match
+				placeholder=""> {{$item}} </ui-select-match> <ui-select-choices repeat="country in countryList | filter: $select.search">
+			<div ng-bind-html="country | highlight: $select.search "title="{{country}}"></div>
+			</ui-select-choices> </ui-select>
+		</div>
+
+
+	</div>
+</div>

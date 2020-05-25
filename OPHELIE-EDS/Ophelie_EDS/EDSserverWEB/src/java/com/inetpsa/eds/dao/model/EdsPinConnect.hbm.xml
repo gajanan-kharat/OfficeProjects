@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 juin 2012 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsPinConnect" table="OPLQTEPC">
+        <id column="ID_COMMENT" name="id" >
+            <generator class="increment"/>
+        </id>
+        
+        <properties name="triple" unique="true">  
+            <many-to-one name="eds" class="com.inetpsa.eds.dao.model.EdsEds">
+                <column name="EDS_ID" />
+            </many-to-one>
+            <property name="cavity" type="string">
+                <column name="CAVITY" />
+            </property>
+            <property name="pinType" type="string">
+                <column name="PIN_TYPE" />
+            </property>
+        </properties>
+             
+        <property name="message" type="string">
+            <column name="MESSAGE" />
+        </property>
+        
+        <many-to-one name="supply" class="com.inetpsa.eds.dao.model.EdsSupply" fetch="select" lazy="false">
+            <column name="SEDS_ID" length="36" />
+        </many-to-one>
+        
+        <property name="wiredInterface" type="string">
+            <column name="WI_NAME" />
+        </property>
+         
+        <property name="simpleProfile" type="string">
+            <column name="SP_NAME" />
+        </property>
+        
+        <property name="complexProfile" type="string">
+            <column name="CP_NAME" />
+        </property>
+        
+        <property name="complexComment" type="string">
+            <column name="CP_COMMENT" />
+        </property>
+        
+        <property name="rMax" >
+            <column name="R_MAX" />
+        </property>
+        
+        <property name="ifImpedance" >
+            <column name="IF_IMPEDANCE" />
+        </property>
+        
+        <property name="minSection" >
+            <column name="MIN_SECTION" />
+        </property>
+                 
+        <set name="wiProperty" inverse="true" table="OPLQTCWP" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="WI_ID" length="36" not-null="true" />
+            </key>
+            <one-to-many not-found="ignore" class="com.inetpsa.eds.dao.model.EdsWIProperty" />
+        </set>
+        
+        <list name="spProperty" inverse="true" table="OPLQTESP" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="WI_ID" length="36" not-null="true" />
+            </key>
+            <list-index column="id"/>
+            <one-to-many not-found="ignore" class="com.inetpsa.eds.dao.model.EdsSPProperty" />
+        </list>
+       
+         <list name="cpProperty" inverse="true" table="OPLQTECP" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="WI_ID" length="36" not-null="true" />
+            </key>
+            <list-index column="id"/>
+            <one-to-many not-found="ignore" class="com.inetpsa.eds.dao.model.EdsCPProperty" />
+       </list>
+       
+              
+        <list name="cpProfile" inverse="true" table="OPLQTCCP" lazy="false" cascade="all-delete-orphan">
+            <key>
+                <column name="WI_ID" length="36" not-null="true" />
+            </key>
+            <list-index column="id"/>
+            <one-to-many not-found="ignore" class="com.inetpsa.eds.dao.model.EdsCPProfile" />
+       </list> 
+       
+        
+    </class>
+</hibernate-mapping>

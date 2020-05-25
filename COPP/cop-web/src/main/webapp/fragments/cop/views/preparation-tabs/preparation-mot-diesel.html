@@ -1,0 +1,268 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm"
+                data-ng-repeat="result in checkList.preparationResultList | limitTo:4">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm custom-card-diesel">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                        <span title="{{result.label}} ">({{result.label}})</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                                <input class="form-control editableInput custom-form-control-prep" data-ng-hide="editable" type="text"
+                                data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="result.value" data-ng-change="dieselAverage(checkList.preparationResultList)">
+                                <b class="custom-value-font">
+                                 <span data-ng-show="editable" data-ng-click="edit()" title="{{result.value}}">{{result.value}}</span>
+                                </b>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color" data-ng-show="result.mandatory">
+                                <span class="fa fa-2x"
+                                    data-ng-class="{'fa-asterisk':result.value.length == '0' || result.value == null,'fa-check-circle':result.value.length >= '1'}"></span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" data-ng-show="authorization()">
+                                <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                    data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm custom-card-diesel">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                        <span title="{{checkList.preparationResultList[4].label}}" >({{checkList.preparationResultList[4].label}})</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                            <input type="text" class="form-control custom-form-control-prep" data-ng-model="checkList.preparationResultList[4].value"
+                                data-ng-disabled="true" title="{{checkList.preparationResultList[4].value}}">
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding custom-status-color">
+                            <span class="fa fa-2x"
+                                data-ng-class="{'fa-check-circle':checkList.preparationResultList[4].value <= preparationFile.opacDecHigherLim && checkList.preparationResultList[4].value >= preparationFile.opacDecLowerLim}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <!-- Right-side -->
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <!-- Température Huile -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm"
+                data-ng-repeat="result in checkList.preparationResultList | limitTo:1">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm custom-card-diesel">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis" title="{{checkList.preparationResultList[5].label}}">
+                        <span>({{checkList.preparationResultList[5].label}})</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                            <input class="form-control editableInput custom-form-control-prep" data-ng-hide="editable" type="text"
+                                data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="checkList.preparationResultList[5].value"><b
+                                class="custom-value-font"><span data-ng-show="editable" data-ng-click="edit()" title="{{checkList.preparationResultList[5].value}}">{{checkList.preparationResultList[5].value}}</span></b>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color" data-ng-show="checkList.preparationResultList[5].mandatory">
+                                <span class="fa fa-2x"
+                                    data-ng-class="{'fa-asterisk':checkList.preparationResultList[5].value.length == '0' || checkList.preparationResultList[5].value == null,'fa-check-circle':checkList.preparationResultList[5].value.length >= '1'}"></span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" data-ng-show="authorization()">
+                                <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                    data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dual card-1 -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                <!-- Pression atmosphérique -->
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding" style="padding-right: 5px !important;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm"
+                        data-ng-repeat="result in checkList.preparationResultList | limitTo:1">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm custom-card-diesel">
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                                <span title=" {{checkList.preparationResultList[6].label}} " >({{checkList.preparationResultList[6].label}})</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ellipsis">
+                                    <input class="form-control editableInput custom-form-control-prep" data-ng-hide="editable" type="text"
+                                        data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="checkList.preparationResultList[6].value" title="{{checkList.preparationResultList[6].value}}">
+                                        <b class="custom-value-font"><span data-ng-show="editable" data-ng-click="edit()">{{checkList.preparationResultList[6].value}}</span></b>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color no-padding" data-ng-show="checkList.preparationResultList[6].mandatory">
+                                        <span class="fa fa-2x"
+                                            data-ng-class="{'fa-asterisk':checkList.preparationResultList[6].value.length == '0' || checkList.preparationResultList[6].value == null,'fa-check-circle':checkList.preparationResultList[6].value.length >= '1'}"></span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding text-right" data-ng-show="authorization()">
+                                        <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                            data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Température ambiante -->
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding" style="padding-left: 5px !important;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm"
+                        data-ng-repeat="result in checkList.preparationResultList | limitTo:1">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm custom-card-diesel">
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                                <span title=" {{checkList.preparationResultList[7].label}} ">({{checkList.preparationResultList[7].label}})</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ellipsis">
+                                    <input class="form-control editableInput custom-form-control-prep" data-ng-hide="editable" type="text"
+                                        data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="checkList.preparationResultList[7].value"><b
+                                        class="custom-value-font">
+                                        <span data-ng-show="editable" data-ng-click="edit()" title="{{checkList.preparationResultList[7].value}}" >{{checkList.preparationResultList[7].value}}</span></b>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color no-padding" data-ng-show="checkList.preparationResultList[7].mandatory">
+                                        <span class="fa fa-2x"
+                                            data-ng-class="{'fa-asterisk':checkList.preparationResultList[7].value.length == '0' || checkList.preparationResultList[7].value == null,'fa-check-circle':checkList.preparationResultList[7].value.length >= '1'}"></span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding text-right" data-ng-show="authorization()" >
+                                        <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                            data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Régime Maxi -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm"
+                data-ng-repeat="result in checkList.preparationResultList | limitTo:1">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm custom-card-diesel">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                        <span title="{{checkList.preparationResultList[8].label}}">({{checkList.preparationResultList[8].label}})</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                            <input class="form-control editableInput custom-form-control-prep" data-ng-hide="editable" type="text"
+                                data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="checkList.preparationResultList[8].value">
+                                <b class="custom-value-font" title="{{checkList.preparationResultList[8].value}}" >
+                                  <span data-ng-show="editable" data-ng-click="edit()">{{checkList.preparationResultList[8].value}}</span>
+                                </b>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color" data-ng-show="checkList.preparationResultList[8].mandatory">
+                                <span class="fa fa-2x"
+                                    data-ng-class="{'fa-asterisk':checkList.preparationResultList[8].value.length == '0' || checkList.preparationResultList[8].value == null,'fa-check-circle':checkList.preparationResultList[8].value.length >= '1'}"></span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" data-ng-show="authorization()">
+                                <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                    data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ralenti -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm"
+                data-ng-repeat="result in checkList.preparationResultList | limitTo:1">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm custom-card-diesel">
+                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis" >
+                        <span title="{{checkList.preparationResultList[9].label}}" >({{checkList.preparationResultList[9].label}})</span>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                            <input class="form-control editableInput custom-form-control-prep" data-ng-hide="editable" type="text"
+                                data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="checkList.preparationResultList[9].value"><b
+                                class="custom-value-font">
+                                <span data-ng-show="editable" data-ng-click="edit()" title="{{checkList.preparationResultList[9].value}}" >{{checkList.preparationResultList[9].value}}</span></b>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color" data-ng-show="checkList.preparationResultList[9].mandatory">
+                                <span class="fa fa-2x"
+                                    data-ng-class="{'fa-asterisk':checkList.preparationResultList[9].value.length == '0' || checkList.preparationResultList[9].value == null,'fa-check-circle':checkList.preparationResultList[9].value.length >= '1'}"></span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" data-ng-show="authorization()">
+                                <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                    data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dual card-2 -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                <!-- Valeur etiquette opacité -->
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding" style="padding-right: 5px !important;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm"
+                        data-ng-repeat="result in checkList.preparationResultList | limitTo:1">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm custom-card-diesel">
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                                <span title="{{checkList.preparationResultList[10].label}}" >({{checkList.preparationResultList[10].label}})</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ellipsis">
+                                    <input class="form-control editableInput custom-form-control-prep" data-ng-hide="editable" type="text"
+                                        data-ng-enter="enterSave();" data-ng-blur='save();' data-ng-model="checkList.preparationResultList[10].value"><b
+                                        class="custom-value-font"><span data-ng-show="editable" data-ng-click="edit()" title="{{checkList.preparationResultList[10].value}}">{{checkList.preparationResultList[10].value}}</span></b>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color no-padding" data-ng-show="checkList.preparationResultList[10].mandatory">
+                                        <span class="fa fa-2x"
+                                            data-ng-class="{'fa-asterisk':checkList.preparationResultList[10].value.length == '0' || checkList.preparationResultList[10].value == null,'fa-check-circle':checkList.preparationResultList[10].value.length >= '1'}"></span>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding text-right" data-ng-show="authorization()">
+                                        <span data-ng-click="edit()" data-ng-show="editable"><span class="fa fa-pencil fa-2x"></span></span> <span
+                                            data-ng-click="save();" data-ng-hide="editable"><span class="fa fa-floppy-o fa-2x"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opacité réglementaire -->
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding" style="padding-left: 5px !important;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm"
+                        data-ng-repeat="result in checkList.preparationResultList | limitTo:1">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-btm custom-card-diesel">
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ellipsis">
+                                <span title="{{checkList.preparationResultList[11].label}} ">({{checkList.preparationResultList[11].label}})</span>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ellipsis"><b
+                                        class="custom-value-font"><span title="{{checkList.preparationResultList[11].value}}">{{checkList.preparationResultList[11].value}}</span></b>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 custom-status-color no-padding" data-ng-show="checkList.preparationResultList[11].mandatory">
+                                       
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding text-right">
+                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+    <label class="screenNo" title="Screen Number :SCR057">Screen Number :SCR057</label>
+    <div class="padding-top-btm">
+        <button class="btn btn-primary" data-ng-click="saveDiesel(checkList)" data-ng-show="authorization()" >{{'cop.technicalData.label.validate' | localize}}</button>
+       <button class="btn btn-default" data-ng-show="authorization()" data-ng-click="loadPreparationList()" >{{'cop.technicalData.label.cancel' | localize }}</button>
+    </div>
+</div>

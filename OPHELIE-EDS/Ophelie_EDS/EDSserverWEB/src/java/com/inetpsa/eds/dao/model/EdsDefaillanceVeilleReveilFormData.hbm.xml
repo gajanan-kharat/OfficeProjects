@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 17 juil. 2012 10:54:59 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsDefaillanceVeilleReveilFormData" table="OPLQTDVD">
+        <id name="dvrfdId" type="string">
+            <column name="DVRFD_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select">
+            <column name="DVRFD_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="dvrfdOccurenceTotalDefaillanceOrganeConsommationPlusVintMah" type="string">
+            <column name="DVRFD_OC_TO_FL_OG_CS_AD_VI_M" length="256" />
+        </property>
+        <property name="dvrfdCourantCorrespondantConsommationPlusVintMah" type="string">
+            <column name="DVRFD_CUR_COP_CS_AD_VINT_MAH" length="256" />
+        </property>
+        <property name="dvrfdCommentaireConsommationPlusVintMah" type="string">
+            <column name="DVRFD_COM_CONS_AD_VINT_MAH" length="2048" />
+        </property>
+        <property name="dvrfdIsPlusVintMah" type="java.lang.Integer">
+            <column name="DVRFD_IS_PLUS_VINT_MAH" />
+        </property>
+        <property name="dvrfdOccurenceTotalDefaillanceOrganeMaintienReseaux" type="string">
+            <column name="DVRFD_OCC_TOT_FL_ORG_MAIN_NET" length="256" />
+        </property>
+        <property name="dvrfdCourantCorrespondantMaintienReseaux" type="string">
+            <column name="DVRFD_CUR_CORESP_MAINT_NET" length="256" />
+        </property>
+        <property name="dvrfdCommentaireMaintienReseaux" type="string">
+            <column name="DVRFD_COMAIRE_MAINT_NET" length="2048" />
+        </property>
+        <property name="dvrfdIsMaintienReseaux" type="java.lang.Integer">
+            <column name="DVRFD_IS_MAINTIEN_RESEAUX" />
+        </property>
+        <property name="dvrfdOccurenceTotalDefaillanceOrganeReveilIntempestif" type="string">
+            <column name="DVRFD_OCC_TOT_FL_ORG_REV_INT" length="256" />
+        </property>
+        <property name="dvrfdCourantCorrespondantReveilIntempestif" type="string">
+            <column name="DVRFD_CUR_CORESP_REV_INT" length="256" />
+        </property>
+        <property name="dvrfdCommentaireReveilIntempestif" type="string">
+            <column name="DVRFD_COMAIRE_REV_INT" length="2048" />
+        </property>
+        <property name="dvrfdIsReveilIntempsif" type="java.lang.Integer">
+            <column name="DVRFD_IS_REVEIL_INTEMPSIF" />
+        </property>
+        <property name="dvrfdOccurenceTotalDefaillanceOrganeMaintienAlimentaion" type="string">
+            <column name="DVRFD_OCC_TOT_FL_ORG_MAINT_AL" length="256" />
+        </property>
+        <property name="dvrfdCourantCorrespondantMaintienAlimentaion" type="string">
+            <column name="DVRFD_CUR_CORESP_MAINT_ALIM" length="256" />
+        </property>
+        <property name="dvrfdCommentaireMaintienAlimentaion" type="string">
+            <column name="DVRFD_COMAIRE_MAINT_ALIM" length="2048" />
+        </property>
+        <property name="dvrfdIsMaintienAlimentation" type="java.lang.Integer">
+            <column name="DVRFD_IS_MAINTIEN_ALIMENTATION" />
+        </property>
+        <property name="dvrfdOccurenceTotalDefaillanceOrganeRealimentationAlimentation" type="string">
+            <column name="DVRFD_OCC_TOT_FL_ORG_REIM_ALI" length="256" />
+        </property>
+        <property name="dvrfdCourantCorrespondantRealimentationAlimentation" type="string">
+            <column name="DVRFD_CUR_CORESP_REALIM_ALIM" length="256" />
+        </property>
+        <property name="dvrfdCommentaireRealimentationAlimentation" type="string">
+            <column name="DVRFD_COMAIRE_REALIM_ALIM" length="2048" />
+        </property>
+        <property name="dvrfdIsRealimentationAlimentation" type="java.lang.Integer">
+            <column name="DVRFD_IS_REALIM_ALIM" />
+        </property>
+    </class>
+</hibernate-mapping>

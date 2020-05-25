@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29 oct. 2012 15:24:22 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsAttachment" table="OPLQTATT">
+        <id name="AId" type="string">
+            <column length="36" name="A_ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one class="com.inetpsa.eds.dao.model.EdsAttachmentFormData" fetch="select" name="edsAttachmentFormData">
+            <column length="36" name="A_AFD_ID" not-null="true" />
+        </many-to-one>
+        <property name="ALink" type="string">
+            <column length="512" name="A_LINK" not-null="true" />
+        </property>
+        <property name="AComment" type="string">
+            <column length="1024" name="A_COMMENT" />
+        </property>
+    </class>
+</hibernate-mapping>

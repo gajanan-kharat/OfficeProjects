@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xmlns:seed="http://www.seedstack.org/xml-schemas/spring-support"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/batch
+		http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.seedstack.org/xml-schemas/spring-support 
+		http://www.seedstack.org/xml-schemas/spring-support/spring-support-1.1.xsd">
+
+    <!-- the job will contains only one step that refers to the tasklet -->
+    <batch:job id="genomeBatchJob">
+        <batch:step id="genomeBatchStep" next="viewRefresh">
+            <batch:tasklet>
+               <bean class="com.inetpsa.poc00.batch.GenomeBatchTasklet">
+                	 <property name="genomeFileDirectory" value="${genome.file.directory.path}" />                	
+                     <property name="genomeService" >
+                    		<seed:instance id="genomeService" class="com.inetpsa.poc00.application.GenomeService"/>
+                     </property>
+                 </bean> 
+            </batch:tasklet>
+        </batch:step>
+        
+          <batch:step id="viewRefresh">
+            <batch:tasklet>
+               <bean class="com.inetpsa.poc00.batch.ViewRefreshTasklet">
+                     <property name="viewRefreshService" > 
+                    		<seed:instance id="viewRefreshService" class="com.inetpsa.poc00.application.ViewRefreshService"/>
+                     </property>
+                 </bean> 
+            </batch:tasklet>
+        </batch:step>
+        
+    </batch:job>
+    
+     <batch:job id="coastDownJob">
+        <batch:step id="coastDownStep">
+            <batch:tasklet> 
+               <bean class="com.inetpsa.poc00.coastdownmigration.CoastDownTasklet">
+                	 <property name="coastDownFileDirectory" value="${coastDown.file.directory.path}" />  
+                     <property name="coastDownService" >
+                    		<seed:instance id="coastDownService" class="com.inetpsa.poc00.application.CoastDownService"/>
+                     </property>
+                 </bean> 
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+    
+    <batch:job id="tvvMigrationJob">
+        <batch:step id="tvvMigrationStep">
+            <batch:tasklet> 
+               <bean class="com.inetpsa.poc00.tvvmigration.TvvMigrationTasklet">
+                	 <property name="tvvMigrationFileDirectory" value="${tvvmigration.file.directory.path}" />  
+                     <property name="tvvMigrationService" >
+                    		<seed:instance id="tvvMigrationService" class="com.inetpsa.poc00.application.TvvMigrationService"/>
+                     </property> 
+                 </bean> 
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+    
+    
+     <!-- TODO: don't use the ResourcelessTransactionManager in production -->
+    <bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
+    
+    <bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean"/>
+
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="jobRepository"/>
+    </bean>
+    
+    <bean id="placeholderProperties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:batchGenome.properties</value>
+            </list>
+        </property>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="ignoreUnresolvablePlaceholders" value="false" />
+        <property name="order" value="1" /> 
+    </bean>
+</beans>

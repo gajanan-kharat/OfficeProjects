@@ -1,0 +1,240 @@
+<div data-ng-controller="offlinePreparationController">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content no-padding"></div>
+    <div class="preptbl-wrp form-group">
+          
+           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-gbr-content-bottom right-padd-zero preparation-small-h4 ">
+           <div class="pageinfo-lbl-wrp">
+            <label>
+             <b class="custom-menulist-left ellipsis" title="SCR044 – Préparer le véhicule">>..> SCR044 – Préparer le véhicule</b>
+            </label>
+            </div>
+            
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 no-padding">
+                <h4 class="no-top-margin ellipsis" data-ng-show="(preparationFile.registrationNumber !== null)">Immatriculation: {{preparationFile.registrationNumber}}</h4>
+                <h4 class="no-top-margin ellipsis" data-ng-show="(preparationFile.chasisNumber!==null)&&(preparationFile.registrationNumber===null)">Chassis: {{preparationFile.chasisNumber}}</h4>
+                <h4 class="no-top-margin ellipsis" data-ng-show="(preparationFile.counterMark!==null)&&(preparationFile.chasisNumber===null)&&(preparationFile.registrationNumber===null)">Contremarque:
+                    {{preparationFile.counterMark}}</h4>
+                <h4 class="no-top-margin ellipsis" >VIN: {{preparationFile.vin}}</h4>
+            </div>
+
+            <div class="col-lg-3 col-md-2 col-sm-12 col-xs-12 no-padding">
+
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 no-padding text-right">
+                <h4 class="no-top-margin ellipsis">{{preparationFile.typeOfTest}}</h4>
+                <h4 class="no-top-margin ellipsis">
+                     <i>{{preparationFile.vehicleFileStatusLabel}}</i>
+                </h4>
+            </div>
+
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding input-lbl-propertext-wrapp">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis">Project Vehicle</label> <input type="text" class="form-control"
+                    title="{{preparationFile.projectCodeFamilyLabel}}" data-ng-model="preparationFile.projectCodeFamilyLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis">Silhoutte</label> <input type="text" class="form-control"
+                    title="{{preparationFile.bodyWorkLabel}}" data-ng-model="preparationFile.bodyWorkLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis">Constructeur</label> <input type="text" class="form-control" title="preparationFile.carBrandMaker"
+                    data-ng-model="preparationFile.carBrandMaker" readonly>
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin" data-ng-if="!displayFields">
+                <label class="input-lbl-propertext ellipsis">Anne Modele</label> <input type="text" class="form-control" title="{{preparationFile.modelYear}}"
+                    data-ng-model="preparationFile.modelYear" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="Boite de vitesse">Boite de vitesse</label> <input type="text" class="form-control" title="{{preparationFile.gearBoxLabel}}" data-ng-model="preparationFile.gearBoxLabel"
+                    readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="Carburant">Carburant</label> <input type="text" class="form-control" title="{{preparationFile.fuelLabel}}" data-ng-model="preparationFile.fuelLabel"
+                    readonly>
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis">Reglemenation</label> <input type="text" class="form-control" title="{{preparationFile.esLabel}}"
+                    data-ng-model="preparationFile.esLabel" readonly>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis">Moteur</label> <input type="text" class="form-control" title="{{preparationFile.engineLabel}}"
+                    data-ng-model="preparationFile.engineLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="Puissance CV">Puissance CV</label> <input type="text" class="form-control"
+                    title="{{preparationFile.powerCV}}" data-ng-model="preparationFile.powerCV" readonly>
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="Puissance KW"> Puissance KW</label> <input type="text" class="form-control"
+                    title="{{preparationFile.powerKW}}" data-ng-model="preparationFile.powerKW" readonly>
+
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="Couple NM"> Couple NM</label> <input type="text" class="form-control"
+                    title="{{preparationFile.torque}}" data-ng-model="preparationFile.torque" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin" data-ng-if="!displayFields">
+                <label class="input-lbl-propertext ellipsis">Boite de vitesse</label> <input type="text" class="form-control"
+                    title="{{preparationFile.gearBoxLabel}}" data-ng-model="preparationFile.gearBoxLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin" data-ng-if="!displayFields">
+                <label class="input-lbl-propertext ellipsis">Type de Carburant</label> <input type="text" class="form-control"
+                    title="{{preparationFile.fuelTypeLabel}}" data-ng-model="preparationFile.fuelTypeLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 col-margin" data-ng-if="displayFields">
+                <label class="input-lbl-propertext ellipsis" title="Type de Injection">Type de Injection</label> <input type="text" class="form-control"
+                    title="{{preparationFile.fuelInjectionType}}" data-ng-model="preparationFile.fuelInjectionType" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin" data-ng-if="!displayFields">
+                <label class="input-lbl-propertext ellipsis">Carburant</label> <input type="text" class="form-control" title="{{preparationFile.fuelLabel}}"
+                    data-ng-model="preparationFile.fuelLabel" readonly>
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 col-margin">
+                <label class="input-lbl-propertext ellipsis">Pays</label> <input type="text" class="form-control" title={{preparationFile.countryLabel}}
+                    data-ng-model="preparationFile.vehicleFileRepresentation.vehicleRepresentation.destinationCountry.countryLable" readonly>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-content tab-content-border no-padding"></div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">&nbsp;</div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+
+        <ul class="nav nav-pills nav-custom f-left custom-tab">
+            <li class="preperationList{{$index}}" data-ng-hide="checkList.enabled == false || checkList.order == 101"
+                data-ng-repeat="checkList in preparationFile.prepCheckListRepresentation | orderBy:'order'" data-ng-click="tabClick(checkList.label)"><a data-toggle="pill"
+                data-target="#preperationList{{$index}}"> {{checkList.label | calcFilter}}</a></li>
+
+        </ul>
+        <div class="tab-content col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-tab-block">
+            <div id="preperationList{{$index}}" class="tab-pane fade" data-ng-repeat="checkList in preparationFile.prepCheckListRepresentation | orderBy:'order'">
+                <data-ng-include src="'offline-preparation-tabs/offline-preparation-parametrized-tabs.html'"
+                    data-ng-if="checkList.typeOfList == 1" data-ng-hide="checkList.enabled == false"></data-ng-include>
+                <data-ng-include src="'offline-preparation-tabs/offline-preparation-tab-calculators.html'" data-ng-if="checkList.typeOfList == 2"
+                    data-ng-hide="checkList.enabled == false"></data-ng-include>
+                <data-ng-include src="'offline-preparation-tabs/offline-preparation-oil-level-check.html'" data-ng-if="checkList.typeOfList == 3"
+                    data-ng-hide="checkList.enabled == false"></data-ng-include>
+                <data-ng-include src="'offline-preparation-tabs/offline-preparation-mot-gasoline.html'" data-ng-if="checkList.typeOfList == 4"
+                    data-ng-hide="checkList.enabled == false"></data-ng-include>
+                <data-ng-include src="'offline-preparation-tabs/offline-preparation-mot-diesel.html'" data-ng-if="checkList.typeOfList == 5"
+                    data-ng-hide="checkList.enabled == false"></data-ng-include>
+            </div>
+        </div>
+    </div>
+<div id="expertiseStatus" class="modal fade">
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">cop.preparationList.modal.expertiseConfirm</h4>
+
+
+            <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="changeToExpertise()">{{
+                    'cop.vehicleFile.filter.yesButton</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">
+                    'cop.vehicleFile.filter.noButton</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="completePreparation" class="modal fade">
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">'cop.preparationList.modal.completePraparation'</h4>
+
+
+            <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="completePreparation()">
+                    'cop.vehicleFile.filter.yesButton'</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">
+                    'cop.vehicleFile.filter.noButton'</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="testEVACOP" class="modal fade">
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">cop.preparationList.modal.testEVACOP</h4>
+
+
+            <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="changeToTestEVACOP()">{{
+                    'cop.vehicleFile.filter.yesButton'</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{
+                    'cop.vehicleFile.filter.noButton'</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="errorMsg" class="modal fade">
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content col-lg-12 text-center">
+            <h4>{{errorMessage}}</h4>
+            <div class="col-lg-12 modal-footer text-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal"> Ok </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="noPrepation" class="modal fade">
+    <div class="modal-dialog modal-md">
+
+        <div class="modal-content col-lg-12 text-center">
+            <h4>{{errorMessage}}</h4>
+            <div class="col-lg-12 modal-footer text-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="redirectToHome()"> Ok </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>

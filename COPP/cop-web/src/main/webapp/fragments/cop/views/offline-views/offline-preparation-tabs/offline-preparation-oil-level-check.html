@@ -1,0 +1,55 @@
+<div class="row">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding padding-top-btm">
+        <div style="padding: 15px; overflow-x:hidden;">
+            <div class="range">
+                <input type="range" list="volsettings" min="0" max="100" step="25" value="checkList.preparationResultList[0].value"
+                    data-ng-model="checkList.preparationResultList[0].value" />
+            </div>
+
+            <ul class="range-labels">
+                <li class="active selected" title="Min ">Min</li>
+                <li class="" title="1/4 ">1/4</li>
+                <li title="1/2 ">1/2</li>
+                <li title="3/4 ">3/4</li>
+                <li title="Max ">Max</li>
+            </ul>
+        </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+        <form>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style=" margin-top: 10px; margin-bottom: 10px;">
+                <label title="{{checkList.preparationResultList[1].label}}">{{checkList.preparationResultList[1].label}}</label>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+                <div class="radio">
+                    <label title="{{checkList.preparationResultList[1].value}} "><input type="radio" name="optradio" data-ng-model="checkList.preparationResultList[1].value" data-ng-value="'no'" data-ng-click="makeDrpdwnDisable=true"> NON</label>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6">
+                <div class="radio">
+                    <label title="{{checkList.preparationResultList[1].value}} "><input type="radio" name="optradio" data-ng-model="checkList.preparationResultList[1].value"  data-ng-value="'yes'" data-ng-click="makeDrpdwnDisable=false">
+                        OUI </label>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 ">
+            <div title="{{checkList.preparationResultList[2].value}} ">
+                <select class="form-control" data-ng-model="checkList.preparationResultList[2].value" data-ng-disabled="makeDrpdwnDisable">
+                    <option>Plus</option>
+                    <option>MOINS</option>
+                </select>
+             </div>   
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+<label class="screenNo">Screen Number :SCR056</label>
+<div class="padding-top-btm">
+<button class="btn btn-primary" data-ng-click="saveOilLevelCheck(checkList)">Valider</button>
+<a href="#!/cop/SearchVehicle"><button class="btn btn-default" >Annular</button></a>
+</div>
+</div>
+</div>

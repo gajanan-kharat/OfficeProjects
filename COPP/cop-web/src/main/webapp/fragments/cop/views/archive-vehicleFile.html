@@ -1,0 +1,508 @@
+<div data-cop-header></div>
+<div id="wrapper" class="context-wrapper" data-ng-class="{'loaderBlock': copLoader == true}">
+<div>
+<div data-cop-sidebar></div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+<div class="archive-vehical-wrapp footer-margin-bottom-60px">
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+
+<div class="archivetop-fixed-section">
+ <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 top-margin-20">
+     <label class="" title="{{'cop.archive.title.archiveVehicleFile' | localize}}">{{'cop.archive.title.archiveVehicleFile' | localize}}</label>
+    </div> <!-- lable-wrapp-end -->
+ </div> <!--row for lable-wrapp-end -->
+
+ <div class="row">
+     <div class="col-xs-12 col-xs-offset-0 col-sm-12 col-sm-offset-0 col-md-8 col-md-offset-4 col-lg-8 col-lg-offset-4">
+         <div class="archive-topbtn-wrapp">
+         <button  class="btn btn-default btn-blueborder" data-ng-click="showArchiveCreate()" title="{{'cop.archive.label.chooseCarton' | localize}}"> {{'cop.archive.label.chooseCarton' | localize}}</button>
+         <button  class="btn btn-default btn-blueborder"  data-toggle="modal" data-target="#searchArchiveModal" title="{{'cop.archive.label.createNewCardboard' | localize}}">{{'cop.archive.label.createNewCardboard' | localize}} </button>
+         <button  class="btn btn-default btn-blueborder" data-toggle="modal" data-target="#closeArchiveModal" title="{{'cop.archive.label.closeExistingCardboard' | localize}}" >{{'cop.archive.label.closeExistingCardboard' | localize}}</button>
+         </div>
+     </div> <!--grid for archive-topbtn-wrapp-end -->
+ </div> <!--row for archive-topbtn-wrapp-end -->
+ 
+ 
+ <div class="horizontal-divider-line top-margin-40"></div>
+ 
+ <div class="row ">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+       <div class="archive-selectdroppdwn-wrapp ">
+        
+        <div class="row"> 
+        
+         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+           <div class="archive-selectdroppdwn-top"> &nbsp </div> <!-- archive-selectdroppdwn-top end-->
+             <div class="archive-selectdroppdwn-bottom"> 
+                 <div class="lablebox">
+                 <label title="{{'cop.archive.label.archivingInCarton' | localize}}">{{'cop.archive.label.archivingInCarton' | localize}}</label>
+                 </div>
+                 <div class="inputbox">
+                 <input type="text" class="form-control" data-ng-model="archiveBox.archiveBoxNumber" title="archiveBox.archiveBoxNumber" data-ng-disabled="true">
+                 </div>
+             </div> <!-- archive-selectdroppdwn-bottom end-->
+          </div> <!--grid for archive-selectdroppdwn top bottom end-->
+          
+          
+          <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+            <div class="archive-selectdroppdwn-top"> 
+             <label class="" title="{{'cop.archive.label.archiveTypeOf' | localize}}">{{'cop.archive.label.archiveTypeOf' | localize}}</label>
+            </div> <!-- archive-selectdroppdwn-top end-->
+             <div class="archive-selectdroppdwn-bottom" > 
+              <ui-select id="dropdownTypeofTest"data-ng-model="typeOfTestList.selectedSearch" reset-search-input="true" title="typeOfTestList.selected">
+     <ui-select-match placeholder="Select test type">{{$select.selected.label}} </ui-select-match> 
+     <ui-select-choices repeat="typeofTest in typeOfTestList | filter: $select.search">
+        <div ng-bind-html="typeofTest.label | highlight: $select.search " title="{{typeofTest.label}}"></div></ui-select-choices> 
+ </ui-select> 
+             </div> <!-- archive-selectdroppdwn-bottom end-->
+          </div> <!--grid for archive-selectdroppdwn top bottom end-->
+          
+          <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+            <div class="archive-selectdroppdwn-top"> 
+             <label class="" title="{{'cop.archive.label.year' | localize}}">{{'cop.archive.label.year' | localize}}</label>
+            </div> <!-- archive-selectdroppdwn-top end-->
+             <div class="archive-selectdroppdwn-bottom"> 
+              <ui-select id="#" data-ng-model="modelYearList.selectedSearch" reset-search-input="true" on-select=""
+              title="{{modelYearList.selected}}"> <ui-select-match placeholder="Select ModelYear"> {{$select.selected}} </ui-select-match> 
+              <ui-select-choices repeat="modelYear in modelYearList">
+               <div ng-bind-html="modelYear" title="{{modelYear}}"></div>
+              </ui-select-choices> 
+              </ui-select>
+             </div> <!-- archive-selectdroppdwn-bottom end-->
+          </div> <!--grid for archive-selectdroppdwn top bottom end-->
+          
+          <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+            <div class="archive-selectdroppdwn-top"> 
+             <label class="" title="{{'cop.archive.label.family' | localize}}">{{'cop.archive.label.family' | localize}}</label>
+            </div> <!-- archive-selectdroppdwn-top end-->
+             <div class="archive-selectdroppdwn-bottom"> 
+             <ui-select id="#" data-ng-model="projectFamilyList.selectedSearch" reset-search-input="true" on-select=""
+              title="{{projectFamilyList.selected}}"> <ui-select-match placeholder="Select projectFamily"> {{$select.selected}} </ui-select-match> 
+              <ui-select-choices repeat="projectFamily in projectFamilyList ">
+               <div ng-bind-html="projectFamily" title="{{projectFamily}}"></div>
+              </ui-select-choices> 
+              </ui-select>
+             </div> <!-- archive-selectdroppdwn-bottom end-->
+          </div> <!--grid for archive-selectdroppdwn top bottom end-->
+          
+          <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+            <div class="archive-selectdroppdwn-top"> 
+             <label class="" title="{{'cop.archive.label.fuel' | localize}}">{{'cop.archive.label.fuel' | localize}}</label>
+            </div> <!-- archive-selectdroppdwn-top end-->
+             <div class="archive-selectdroppdwn-bottom"> 
+            <ui-select id="#" data-ng-model="fuelList.selectedSearch" reset-search-input="true" on-select=""
+              title="{{fuelList.selected}}"> <ui-select-match placeholder="Select Fuel"> {{$select.selected}} </ui-select-match> 
+              <ui-select-choices repeat="fuel in fuelList">
+               <div ng-bind-html="fuel" title="{{fuel}}"></div>
+              </ui-select-choices> 
+              </ui-select>
+             </div> <!-- archive-selectdroppdwn-bottom end-->
+          </div> <!--grid for archive-selectdroppdwn top bottom end-->
+          
+        </div> <!-- row end-->
+        
+        
+       </div>
+      
+      </div>
+ </div> <!--row for archive-selectdroppdwn-wrapp-end -->
+  
+ <div class="horizontal-divider-line top-margin-20"></div>
+  
+ <div class="row  top-margin-20">
+         
+         <div class="col-xs-12  col-sm-3 col-md-2  col-lg-2 ">
+                
+          <div class="archive-central-topcontent"> 
+             <label class="" title="{{'cop.archive.label.nChassis' | localize}}">{{'cop.archive.label.nChassis' | localize}}</label>
+          </div> <!-- archive-central-topcontent end-->
+          <div class="archive-central-bottomcontent"> 
+             <input type="text" class="form-control" title="input-text" data-ng-model="chassis">
+          </div> <!-- archive-central-bottomcontent end-->
+          
+         </div> <!--grid-end -->
+         
+         <div class="col-xs-12  col-sm-3 col-md-2  col-lg-2 ">
+                
+          <div class="archive-central-topcontent"> 
+             <label class="" title="{{'cop.archive.label.counterMark' | localize}}">{{'cop.archive.label.counterMark' | localize}}</label>
+          </div> <!-- archive-central-topcontent end-->
+          <div class="archive-central-bottomcontent"> 
+             <input type="text" class="form-control" title="input-text" data-ng-model="counterMark">
+          </div> <!-- archive-central-bottomcontent end-->
+          
+         </div> <!--grid-end -->
+         
+         <div class="col-xs-12  col-sm-3 col-md-2  col-lg-2 ">
+                
+          <div class="archive-central-topcontent"> 
+             <label class="" title="{{'cop.archive.label.registration' | localize}}">{{'cop.archive.label.registration' | localize}}</label>
+          </div> <!-- archive-central-topcontent end-->
+          <div class="archive-central-bottomcontent"> 
+             <input type="text" class="form-control" title="Input-text" data-ng-model="registration">
+          </div> <!-- archive-central-bottomcontent end-->
+          
+         </div> <!--grid-end -->
+         
+         <div class="col-xs-12  col-sm-3 col-md-2  col-lg-2 ">
+                
+          <div class="archive-central-topcontent"> 
+             <label class="" title="input-text"> &nbsp </label>
+          </div> <!-- archive-central-topcontent end-->
+          <div class="archive-central-bottomcontent"> 
+             <span class="dwnload-icon" title="{{'cop.archive.label.download' | localize}}" data-ng-click="addVehicleFile()"> 
+             <i class="fa fa-download" aria-hidden="true"></i>
+             </span>
+          </div> <!-- archive-central-bottomcontent end-->
+          
+         </div> <!--grid-end -->
+         
+         </div> <!--row-for-grid-of-three-textboxes-end -->
+  
+  
+  
+</div>    
+<!--archivetop-fixed-section-end -->
+
+<div class="clearfix"></div>
+  
+<div class="archivetop-fixed-section-black"></div>  
+  
+ <div class="row">
+     <div class="col-xs-12  col-sm-12 col-md-12  col-lg-12 ">
+         <div class="archive-central-wrapp">
+         
+         
+         
+         <div class="row top-margin-20">
+         <div class="scroll-contentbox">
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" data-ng-repeat="vehicleFile in archiveBox.vehicleFilesRepresentation">
+         <!--you-loop-this-div-for-add-dynamically-more-such-div-->
+         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+         <div class="archive-car-text-trash-box-wrapp">
+             <div class="caricon-wrp">
+               <span class="car-icon-span" title="{{'cop.archive.label.car' | localize}}"> 
+                 <i class="fa fa-car" aria-hidden="true"></i>
+               </span>
+             </div>
+             
+             <div class="text-wrp">
+             
+             <label class="small-fonttext" data-ng-show="vehicleFile.vehicleRepresentation.registrationNumber!== null"> ({{'cop.basket.label.registrationNumber' | localize}})</label>
+             <label class="small-fonttext" data-ng-show="vehicleFile.vehicleRepresentation.registrationNumber=== null && vehicleFile.vehicleRepresentation.chasisNumber !== null"> ({{'cop.basket.label.chasisNumber' | localize}})</label>
+             <label class="small-fonttext" data-ng-show="vehicleFile.vehicleRepresentation.registrationNumber=== null && vehicleFile.vehicleRepresentation.chasisNumber === null"> ({{'cop.basket.label.countermarkNumber' | localize}})</label>
+             <label class="big-fonttext" data-ng-show="vehicleFile.vehicleRepresentation.registrationNumber!== null" title="vehicleFile.registrationNumber">{{vehicleFile.vehicleRepresentation.registrationNumber}}</label>
+             <label class="big-fonttext" data-ng-show="vehicleFile.vehicleRepresentation.registrationNumber=== null && vehicleFile.vehicleRepresentation.chasisNumber !== null" title="vehicleFile.chasisNumber">{{vehicleFile.vehicleRepresentation.chasisNumber}}</label>
+             <label class="big-fonttext" data-ng-show="vehicleFile.vehicleRepresentation.registrationNumber=== null && vehicleFile.vehicleRepresentation.chasisNumber === null" title="">{{vehicleFile.vehicleRepresentation.counterMark}}</label>
+             </div>
+             
+             <div class="lbltext-wrp" title="{{'cop.archive.label.archive' | localize}}">
+              <p> {{vehicleFile.vehicleFileStatusLabel | localize}}</p>
+             </div>
+             
+             <div class="delete-wrp" data-ng-click="removeVehicleFileModal(vehicleFile, $index)">
+               <span class="car-icon-span" title="{{'cop.archive.label.delete' | localize}}"> 
+                 <i class="fa fa-trash" aria-hidden="true"></i>
+                 </span>
+             
+             </div>
+         
+         </div> <!--archive-car-text-trash-box-wrapp-end -->
+         </div> <!--your-loop-div-end-here-->
+         
+         </div> <!--first-halfside-grid-end -->
+         
+         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+           <p> <!--blank space for data --> <p>
+         </div> <!--second-halfside-grid-end -->
+         
+         </div> <!--scroll-contentbox-end -->
+         
+         </div> <!--row-for-inputboxes-with-car-icon-end -->
+         
+          
+         </div> <!--archive-central-wrapp-end -->
+         
+         
+         
+     </div> <!--grid for archive-central-wrapp-end -->
+ </div> <!--row for archive-central-wrapp-end -->
+
+  
+</div> <!--grid for all row end -->
+
+</div> <!-- archive-vehical-wrapp-end --> 
+
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="archive-footer-btnwrapp">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button  class="btn btn-primary" data-ng-click="archiveBoxValider()" title="{{'cop.archive.label.validate' | localize}}">{{'cop.archive.label.validate' | localize}} </button>
+            &nbsp; 
+            <button  class="btn btn-default " data-ng-click="refresh()" title="{{'cop.archive.label.cancel' | localize}}">{{'cop.archive.label.cancel' | localize}}</button>
+            &nbsp; 
+            <a href="#!/cop/archive-search"><button  class="btn btn-primary " data-ng-click="" title="{{'cop.archive.label.research' | localize}}">{{'cop.archive.label.research' | localize}}</button></a>
+         <div class="pull-right">
+          <div class="pull-right  margin-left-10" title="{{'cop.archive.label.screenNo' | localize}}"><b> {{'cop.archive.label.screenNo' | localize}} </b></div>
+         </div>
+        </div>
+
+   </div>
+   
+
+   
+</div> <!--footer-end -->
+
+
+</div>
+</div>
+<!-- Modal to create archive box -->
+<div id="createArchiveModal" class="modal fade">
+    <div class="modal-dialog modal-md" style="width: 500px;" >
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px; width: 700px;">
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">{{'cop.archive.modal.createarchiveheader' | localize}}</h4>
+            </div>
+            <div class="modal-body">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+           <label >{{'cop.archive.label.archiveTypeOf' | localize}}<span style="color:red;">*</span></label>
+           <div>
+          <ui-select id="dropdownTypeofTest"data-ng-model="typeOfTestList.selected" reset-search-input="true" title="typeOfTestList.selected">
+     <ui-select-match placeholder="Select test type">{{$select.selected.label}} </ui-select-match> 
+     <ui-select-choices repeat="typeofTest in typeOfTestList | filter: $select.search">
+        <div ng-bind-html="typeofTest.label | highlight: $select.search " title="{{typeofTest.label}}"></div></ui-select-choices> 
+ </ui-select>
+           </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+           <label>{{'cop.archive.label.year' | localize}}<span style="color:red;">*</span></label>
+           <div>
+           <ui-select id="#" data-ng-model="modelYearList.selected" reset-search-input="true" on-select=""
+              title="{{modelYearList.selected}}"> <ui-select-match placeholder="Select ModelYear"> {{$select.selected}} </ui-select-match> 
+              <ui-select-choices repeat="modelYear in modelYearList">
+               <div ng-bind-html="modelYear" title="{{modelYear}}"></div>
+              </ui-select-choices> 
+              </ui-select>
+           </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <label>{{'cop.archive.label.family' | localize}}<span style="color:red;">*</span></label>
+           <div>
+           <ui-select id="#" data-ng-model="projectFamilyList.selected" reset-search-input="true" on-select=""
+              title="{{projectFamilyList.selected}}"> <ui-select-match placeholder="Select projectFamily"> {{$select.selected}} </ui-select-match> 
+              <ui-select-choices repeat="projectFamily in projectFamilyList ">
+               <div ng-bind-html="projectFamily" title="{{projectFamily}}"></div>
+              </ui-select-choices> 
+              </ui-select>
+           </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+           <label>{{'cop.archive.label.fuel' | localize}}<span style="color:red;">*</span></label>
+           <div>
+           <ui-select id="#" data-ng-model="fuelList.selected" reset-search-input="true" on-select=""
+              title="{{fuelList.selected}}"> <ui-select-match placeholder="Select Fuel"> {{$select.selected}} </ui-select-match> 
+              <ui-select-choices repeat="fuel in fuelList">
+               <div ng-bind-html="fuel" title="{{fuel}}"></div>
+              </ui-select-choices> 
+              </ui-select>
+           </div>
+            </div>
+            
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding" style="margin-top: 4em;">
+            <label class="col-xs-12 col-sm-12 col-md-9 col-lg-7">{{'cop.archive.modal.newArchiveNumber' | localize}}</label>
+            <span class="col-xs-6 col-sm-6 col-md-3 col-lg-1 no-padding"><input type="text" data-ng-model="archiveBoxNumber" data-ng-disabled = "true" class="form-control"></span>
+          
+            </div>
+            
+            </div>
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em; ">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="createArchive()">{{ 'cop.vehicleFile.search.button' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.vehicleFile.cancel.button' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+<!-- Modal to search archive box -->
+<div id="searchArchiveModal" class="modal fade">
+    <div class="modal-dialog modal-md" style="width: 500px;" >
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px; width: 700px;">
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">{{'cop.archive.modal.searchArchiveHeader' | localize}}</h4>
+            </div>
+            
+            <div class="modal-body" >
+            
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding" style="margin-top: 1em; margin-bottom: 4em;" >
+            <label class="col-xs-12 col-sm-12 col-md-7 col-lg-4">{{'cop.archive.modal.chooseArchive' | localize}}</label>
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 no-padding"><input type="number" data-ng-model="archiveBoxNumber" class="form-control"></div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 no-padding" style="cursor: pointer;">
+<button class="btn btn-default fa fa-search fa-2x"  data-ng-click="searchArchiveBox()" style="border: 0px solid transparent;"> </button>
+</div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+           <label >{{'cop.archive.label.archiveTypeOf' | localize}}<span style="color:red;">*</span></label>
+           <div>
+         <input type="text" data-ng-model="archiveBoxLoaded.typeOfTestRepresentation.label" data-ng-disabled="true" class="form-control"/>
+           </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+           <label>{{'cop.archive.label.year' | localize}}<span style="color:red;">*</span></label>
+           <div>
+           <input type="text" data-ng-model="archiveBoxLoaded.modelYear" data-ng-disabled="true" class="form-control"/>
+           </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <label>{{'cop.archive.label.family' | localize}}<span style="color:red;">*</span></label>
+           <div>
+          <input type="text" data-ng-model="archiveBoxLoaded.projectCodeFamilyReprsentation.displayLabel" data-ng-disabled="true" class="form-control"/>
+           </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+           <label>{{'cop.archive.label.fuel' | localize}}<span style="color:red;">*</span></label>
+           <div>
+           <input type="text" data-ng-model="archiveBoxLoaded.fuelRepresentation.label" data-ng-disabled="true" class="form-control"/>
+           </div>
+            </div>
+            
+            </div>
+            
+            
+            </div>
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em; ">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="loadArchive()" data-dismiss="modal">{{ 'cop.vehicleFile.search.button' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.vehicleFile.cancel.button' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="vehicleFileRemove" class="modal fade">
+    <div class="modal-dialog modal-md">
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">{{removeConfirmation}}</h4>
+            
+            
+                <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="removeVehicleFile()">{{ 'cop.vehicleFile.filter.yesButton' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.vehicleFile.filter.noButton' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal to close archive box -->
+<div id="closeArchiveModal" class="modal fade">
+    <div class="modal-dialog modal-md" style="width: 500px;" >
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px; width: 700px;">
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title" id="myModalLabel">{{'cop.archive.modal.searchArchiveHeader' | localize}}</h4>
+            </div>
+            
+            <div class="modal-body" >
+            
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding" style="margin-top: 1em; margin-bottom: 4em;" >
+            <label class="col-xs-12 col-sm-12 col-md-7 col-lg-4">{{'cop.archive.modal.chooseArchive' | localize}}</label>
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-2 no-padding"><input type="number" data-ng-model="archiveBoxNumber" class="form-control"></div>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-xs-6 no-padding" style="cursor: pointer;">
+<button class="btn btn-default fa fa-search fa-2x"  data-ng-click="searchArchiveBox()" style="border: 0px solid transparent;"> </button>
+</div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+           <label >{{'cop.archive.label.archiveTypeOf' | localize}}<span style="color:red;">*</span></label>
+           <div>
+         <input type="text" data-ng-model="archiveBoxLoaded.typeOfTestRepresentation.label" data-ng-disabled="true" class="form-control"/>
+           </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+           <label>{{'cop.archive.label.year' | localize}}<span style="color:red;">*</span></label>
+           <div>
+           <input type="text" data-ng-model="archiveBoxLoaded.modelYear" data-ng-disabled="true" class="form-control"/>
+           </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+            <label>{{'cop.archive.label.family' | localize}}<span style="color:red;">*</span></label>
+           <div>
+          <input type="text" data-ng-model="archiveBoxLoaded.projectCodeFamilyReprsentation.displayLabel" data-ng-disabled="true" class="form-control"/>
+           </div>
+            </div>
+             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+           <label>{{'cop.archive.label.fuel' | localize}}<span style="color:red;">*</span></label>
+           <div>
+           <input type="text" data-ng-model="archiveBoxLoaded.fuelRepresentation.label" data-ng-disabled="true" class="form-control"/>
+           </div>
+            </div>
+            
+            </div>
+            
+            
+            </div>
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em; ">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="archiveCloseConfirmation()" data-dismiss="modal">{{ 'cop.history.button.close' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.vehicleFile.cancel.button' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="archiveErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ errorMessage }}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize
+                    }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="archiveCloseModal" class="modal fade">
+    <div class="modal-dialog modal-md">
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px;">
+            <h4 style="text-align: center;">{{removeConfirmation}}</h4>
+            
+            
+                <div class="col-lg-12 modal-footer text-center" style="margin-top: 1em;">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="archiveClose()">{{ 'cop.vehicleFile.filter.yesButton' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.vehicleFile.filter.noButton' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+
+

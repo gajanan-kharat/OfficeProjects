@@ -1,0 +1,298 @@
+
+
+
+
+<div data-ng-repeat="PGlist in limitsList">
+	<div class="col-lg-12 top-btm-padding">
+		<fieldset class="custom-border">
+			<legend class="custom-border">Liste {{ PGlist.label }} V
+				{{PGlist.version}}</legend>
+
+			<div class="custom-cross">
+				<span class="fa fa-remove fa-2x" style="cursor: pointer;" data-ng-show = "authorization('POCMRole')"
+					data-ng-click="showDeletePGListModal(PGlist,PGlist.label,$index)"></span>
+			</div>
+
+			<div class="full-list-inner">
+				<div class="col-lg-12 no-padding"
+					style="padding: 5px 0px 15px 0px !important">
+					<div class="col-lg-3">
+						<label>{{ 'cop.technicalDataList.text.label'| localize }}</label>
+						<input class="form-control" type="text"
+							data-ng-model="PGlist.label"
+							data-ng-disabled="PGlist.entityId!==undefined"
+							data-ng-maxlength="255" maxlength="255" />
+					</div>
+
+					<div class="col-lg-4"></div>
+					<div class="col-lg-4">
+						<label>{{ 'cop.technicalDataList.text.Description'|
+							localize }}</label>
+						<textarea class="form-control" data-ng-model="PGlist.description"
+							ng-disabled="!authorization('POCMRole')" data-ng-change="setModifiedPGFlag(PGlist)"
+							data-ng-maxlength="255" maxlength="255"></textarea>
+					</div>
+				</div>
+
+				<div
+					class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding tab-content-border"
+					style="padding: 5px 0px 15px 0px !important">
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+						<label>{{'cop.specificCop.label.Fuel'|localize}}</label><span
+							class="astrik">*</span>
+						<ui-select id="FuelSelect" data-ng-model="PGlist.fuels" ng-disabled="!authorization('POCMRole')"
+							reset-search-input="true"
+							on-select="setCorburant($select.selected,PGlist)" multiple>
+						<ui-select-match placeholder="Select Fuel">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in fuelList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+						<label>{{'cop.specificCop.label.Category'|localize}}</label><span
+							class="astrik">*</span>
+						<ui-select id="categorySelect" data-ng-model="PGlist.categories" ng-disabled="!authorization('POCMRole')"
+							reset-search-input="true"
+							on-select="setCategory($select.selected,PGlist)" multiple>
+						<ui-select-match placeholder="Select Category">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in categoryList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+					<div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 col-margin">
+						<label class="control-label">{{'cop.specificCop.label.Class'|localize}}</label><span
+							class="astrik">*</span>
+						<ui-select id="classSelect" data-ng-model="PGlist.classes" ng-disabled="!authorization('POCMRole')"
+							reset-search-input="true"
+							on-select="setClass($select.selected,PGlist)" multiple>
+						<ui-select-match placeholder="Select Class">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in classList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-margin">
+						<label>{{'cop.specificCop.label.VehicleTechnology'|localize}}</label><span
+							class="astrik">*</span>
+						<ui-select id="vehicleTechnologySelect" ng-disabled="!authorization('POCMRole')"
+							data-ng-model="PGlist.vehicleTechnologySet"
+							reset-search-input="true"
+							on-select="setVTechnology($select.selected,PGlist)" multiple>
+						<ui-select-match placeholder="Select Vehicle Technology">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in vehicleTList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+					<div class="col-lg-3 col-md-2 col-sm-3 col-xs-6 col-margin">
+						<label>{{'cop.genomedata.label.EngineFuelInjection'|localize}}</label><span
+							class="astrik">*</span>
+
+						<ui-select id="injectionTypeSelect"
+							data-ng-model="PGlist.fuelInjectionTypes" ng-disabled="!authorization('POCMRole')"
+							reset-search-input="true"
+							on-select="setInjectionType($select.selected,PGlist)" multiple>
+						<ui-select-match placeholder="Select Fuel Injection Type">
+						{{$item.label}} </ui-select-match> <ui-select-choices
+							repeat="type in fuelITList | filter: $select.search">
+						<div ng-bind-html="type.label | highlight: $select.search "></div>
+						</ui-select-choices> </ui-select>
+					</div>
+
+
+
+
+				</div>
+
+
+				<div data-ng-repeat="limit in PGlist.pollutantGasLimit"
+					data-ng-show="limit.isDeleted!=='TRUE'">
+					<div class="col-lg-12  custom-phase-pad padding-top-btm"
+						id="$index">
+
+						<div class="col-lg-4">
+							<div style="padding: 5px 0px;">
+								<div class="col-lg-9 no-padding">
+									<ui-select id="pgLabelSelect" data-ng-model="limit.pgLabel"
+                                    ng-change="baseValueChange(limit.oldPgLabel, limit.pgLabel); limit.oldPgLabel = limit.pgLabel"
+										append-to-body="true" reset-search-input="true"
+                                        
+										on-select="setPGLabel($select.selected,PGlist,limit.pgLabel)"  
+                                        on-remove="unSetPGLabel($select.selected,PGlist)"
+                                        
+                                        
+                                        ng-disabled="!authorization('POCMRole')"> 
+                                        <ui-select-match id="choiceId"
+                                        focus-on="checkFlag($select.selected.label)"
+										placeholder="Select Pollutant or Gas Label">
+									{{$select.selected.label}} </ui-select-match> 
+                                    <ui-select-choices
+                                    data-id="$index"
+                                    
+									 ui-disable-choice="checkVisible(type,PGlist,limit.pgLabel)" repeat="type in pgLabellist | filter: $select.search "   >
+                                     
+                                      
+									<div ng-bind-html="type.label | highlight: $select.search "></div>
+									</ui-select-choices> </ui-select>
+									<span class="astrik">*</span>
+								</div>
+								<div class="col-lg-3 no-padding">
+									<div style="padding: 5px;">
+										<span class="fa fa-pencil" data-ng-show = "authorization('POCMRole')"></span> <span class="fa fa-remove"
+											data-ng-click="showDeleteLimitModal(PGlist,$index,limit.pgLabel)" data-ng-show = "authorization('POCMRole')"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+						<div class="col-lg-1">
+							<div style="padding: 5px 0px;">
+								<ui-select id="minSelect" data-ng-model="limit.minDValRule"  ng-disabled="!authorization('POCMRole')"
+									append-to-body="true" reset-search-input="true"
+									on-select="setModifiedPGFlag(PGlist)"> <ui-select-match
+									placeholder=" Select"> {{$select.selected}} </ui-select-match>
+								<ui-select-choices
+									repeat="sym in minSymbolList | filter: $select.search">
+								<div ng-bind-html="sym | highlight: $select.search "></div>
+								</ui-select-choices> </ui-select>
+							</div>
+						</div>
+
+						<div class="col-lg-3">
+
+							<div style="float: left; padding: 5px 0px;">
+								<div class="col-lg-6">
+									<label>{{'cop.ems.limits.minValue'|localize}}</label><span
+										class="astrik">*</span>
+								</div>
+								<div class="col-lg-6">
+									<input class="form-control" type="number"  ng-disabled="!authorization('POCMRole')"
+										data-ng-change="setModifiedPGFlag(PGlist)"
+										data-ng-model="limit.minDValue" />
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-1">
+							<div style="padding: 5px 0px;">
+								<ui-select id="maxSelect" data-ng-model="limit.maxDValRule"  ng-disabled="!authorization('POCMRole')"
+									append-to-body="true" reset-search-input="true"
+									on-select="setModifiedPGFlag(PGlist)"> <ui-select-match
+									placeholder=" Select"> {{$select.selected}} </ui-select-match>
+								<ui-select-choices
+									repeat="sym in maxSymbolList | filter: $select.search">
+								<div ng-bind-html="sym | highlight: $select.search "></div>
+								</ui-select-choices> </ui-select>
+							</div>
+						</div>
+
+
+						<div class="col-lg-3">
+							<div style="padding: 5px 0px;">
+								<div class="col-lg-6">
+									<label>{{'cop.ems.limits.maxValue'|localize}}</label><span
+										class="astrik">*</span>
+								</div>
+								<div class="col-lg-6">
+									<input class="form-control" type="number"  ng-disabled="!authorization('POCMRole')"
+										data-ng-change="setModifiedPGFlag(PGlist)"
+										data-ng-model="limit.maxDValue"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-12 no-padding" id="limits"></div>
+			</div>
+			<div class="col-lg-12 custom-phase-btn">
+				<div class="col-lg-12">
+					<button class="btn btn-success" style="float: right" data-ng-show = "authorization('POCMRole')"
+						data-ng-click="addPollutant(PGlist)" class="drop">
+						<span class="fa fa-plus-square-o fa-custom-pad"></span>{{'cop.pollutant.label.add'|localize}}
+					</button>
+				</div>
+			</div>
+		</fieldset>
+
+	</div>
+</div>
+
+
+<div class="slide-resize col-lg-12 col-lg-10"
+	style="position: fixed;
+	/* top: 0px; */ bottom: 0px; background-color: #fff;">
+<label class="screenNo">{{'cop.ems.limits.label.screenNo' | localize}}</label>
+	<div class="col-lg-12 padding-top-btm">
+
+		<div class="col-lg-3"></div>
+
+		<div class="col-lg-6 text-center">
+
+			<button type="button" class="btn btn-primary" data-dismiss="modal" data-ng-show = "authorization('POCMRole')"
+				data-ng-click="showSavePGConfirmation(true)">{{
+				'cop.technicalData.label.validate' | localize }}</button>
+
+			&nbsp; &nbsp;
+
+
+			<button type="button" class="btn btn-default " data-ng-show = "authorization('POCMRole')"
+				data-dismiss="modal" data-ng-click="CancelConfirmationESPG()">{{ 'cop.technicalData.label.cancel' |
+				localize }}</button>
+		</div>
+
+
+		<div class="col-lg-3 text-right">
+			<div class="padding-top-btm">
+				<button type="button" style="border-radius: 8px;"
+					class="btn btn-default" data-dismiss="modal"
+					 data-ng-click="getAllHistory('EMS_DEPENDENT_PGL')">{{
+					'cop.technicalData.label.modificationHistory' |localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Confirmation Message On Cancel Button -->
+<div id="ConfirmCancelESPGModal" class="modal fade" tabindex="-1"
+	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" style="width: 500px;">
+		<div class="modal-content" style="border-radius: 0px; width: 500px;">
+
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true"></button>
+				<h4 class="modal-title" id="myModalLabel">{{
+					'cop.message.cancelUnsavedDataOnConfirmation'| localize }}</h4>
+			</div>
+
+			<div class="modal-footer align-center">
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-primary" data-dismiss="modal"
+					data-ng-click="cancelModifiedESPGChanges()">{{
+					'cop.cancelUnsavedData.label.ok' | localize }}</button>
+				&nbsp; &nbsp;
+				<button type="button" style="border-radius: 0px;"
+					class="btn btn-default" data-dismiss="modal">{{
+					'cop.cancelUnsavedData.message.cancel' | localize }}</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End of Confirmation Message On Cancel Button-->
+
+
+
+
+

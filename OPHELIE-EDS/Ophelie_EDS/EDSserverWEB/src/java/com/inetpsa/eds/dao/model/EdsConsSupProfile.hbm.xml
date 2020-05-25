@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsConsSupProfile" table="OPLQTCSP">
+        <id name="cspId" type="string">
+            <column name="CSP_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="cspName" type="string">
+            <column name="CSP_NAME" length="225" />
+        </property>
+        <property name="cspType" type="string">
+            <column name="CSP_TYPE" length="3" />
+        </property>
+        <property name="cspComment" type="string">
+            <column name="CSP_COMMENT" length="1024" />
+        </property>
+        <set name="cspListOfPoints" lazy="false" fetch="select" inverse="true" cascade="all">
+            <key>
+                <column name="CSP_ID" not-null="true" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsConsSupProfileListOfPoints" />
+        </set>
+        <property name="cspImage" type="string">
+            <column name="CSP_IMAGE" length="225" />
+        </property>
+    </class>
+</hibernate-mapping>

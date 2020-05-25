@@ -1,0 +1,68 @@
+####################################################################
+# Basic Configuration
+####################################################################
+[org.seedstack.seed.core]
+application-id = pv200
+application-name = Pictotheque
+application-version = 1.0.10
+
+[org.seedstack]
+jdbc.datasources = main-datasource
+jpa.units = picto-domain
+
+####################################################################
+# Security Configuration
+####################################################################
+[org.seedstack.seed.security]
+realms = ConfigurationRealm
+ConfigurationRealm.role-mapping = ConfigurationRoleMapping
+ConfigurationRealm.role-permission-resolver = ConfigurationRolePermissionResolver
+LdapRealm.role-mapping = ConfigurationRoleMapping
+LdapRealm.role-permission-resolver = ConfigurationRolePermissionResolver
+
+[org.seedstack.seed.security.users]
+PICTOD = PICTOD, PV2.DEV
+PICTOA = PICTOA, PV2.Administrateur
+PICTOC = PICTOC, PV2.Contributeur
+PICTOG = PICTOG, PV2.Graphiste
+PICTOE = PICTOE, PV2.ClearanceAdmin
+
+[org.seedstack.seed.security.roles]
+PICTODRole = PV2.DEV
+PICTOARole = PV2.Administrateur
+PICTOCRole = PV2.Contributeur
+PICTOGRole = PV2.Graphiste
+PICTOERole = PV2.ClearanceAdmin
+
+[org.seedstack.seed.security.permissions]
+PICTODRole = write:read, file:export
+PICTOARole = write:read, file:export
+PICTOCRole = write:read
+PICTOGRole = write:read
+PICTOERole = write:read
+
+####################################################################
+# Persistence Configuration
+####################################################################
+
+# Configure the application datasource
+[org.seedstack.jdbc.datasource.main-datasource]
+provider = HikariDataSourceProvider
+driver = com.mysql.jdbc.Driver
+url = jdbc:mysql://localhost:3306/picto_new
+user = root
+password = root123
+property.sql.enforce_strict_size = false
+
+# Configure the picto JPA unit
+[org.seedstack.jpa.unit.picto-domain]
+datasource = main-datasource
+property.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+property.hibernate.hbm2ddl.auto = update
+
+# Define the JPA unit for classes under this package
+[org.seedstack.pv2.domain.*]
+jpa-unit = picto-domain
+
+# This empty section resets to keys without prefix
+[]

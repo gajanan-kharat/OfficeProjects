@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<release xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation='http://ciq-repository.inetpsa.com/repository/virtual/com/inetpsa/jip/xsd/release/release-1.1.xsd'>
+    <goals>
+
+        <!-- generate the package -->
+       <goal>deploy</goal>
+
+        <!-- clean the project site -->
+        <goal>cleaner:clean-project-folder</goal>
+        <goal>validate</goal>
+        <!-- generate and deploy the site -->
+        <goal>site</goal> 
+         <!-- <goal>psa-dashboard:consolidate</goal> <goal>psa-dashboard:report</goal> <goal>site:deploy</goal> -->
+        <!-- deploy the archive on the CDD app server -->
+        <goal>psa-archive:prepare</goal>
+        <goal>assembly:attached</goal>
+        <goal>psa-archive:deliver</goal>
+        <!-- <goal>deployer:deploy-on-was-8</goal> -->
+    </goals>
+    <arguments>
+        <!-- profiles to activate during a release -->
+        <argument>-PpsaReports,psaArchive</argument>
+        <!-- Environnement chosen to filter the templates -->
+        <argument>-Dvalo.env=dev</argument>
+        <!-- includes/excludes to clean up the environment directory -->
+        <argument>-DcleanerIncludes=**/pv200-root/**,**/pv200-app/**,**/pv200-web/**</argument>
+        <!-- skip test -->
+        <argument>-Dmaven.test.skip=true</argument>
+    </arguments>
+</release>

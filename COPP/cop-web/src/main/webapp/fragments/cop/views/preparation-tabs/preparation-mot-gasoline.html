@@ -1,0 +1,143 @@
+<div class="row">
+<div class="col-lg-12 custom-top-btm-padding">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+<label title="{{'cop.preparationList.label.co2'|localize }}">{{'cop.preparationList.label.co2'|localize }}</label>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+<label title="{{'cop.preparationList.label.hc'|localize }}">{{'cop.preparationList.label.hc'|localize }}</label>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+<label title="{{'cop.preparationList.label.co'|localize }}">{{'cop.preparationList.label.co'|localize }}</label>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+<label title="{{'cop.preparationList.label.lambda'|localize }}">{{'cop.preparationList.label.lambda'|localize }}</label>
+</div>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+<label title="{{'cop.preparationList.label.ralenti'|localize }}">{{'cop.preparationList.label.ralenti'|localize }}</label>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 custom-status-color">
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding">
+<input class="form-control" type="text" data-ng-model="checkList.preparationResultList[0].value" data-ng-disabled="!authorization()" title="checkList.preparationResultList[0].value"/>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
+<span class="fa fa-2x" data-ng-class="{'fa-asterisk':checkList.preparationResultList[0].value.length == '0' || checkList.preparationResultList[0].value == null,'fa-check-circle':checkList.preparationResultList[0].value.length >= '1'}"></span>
+</div>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 custom-status-color">
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding">
+<input class="form-control" type="text" data-ng-model="checkList.preparationResultList[1].value" data-ng-disabled="!authorization()"  title="checkList.preparationResultList[1].value"/>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
+<span class="fa fa-2x" data-ng-class="{'fa-asterisk':checkList.preparationResultList[1].value.length == '0' || checkList.preparationResultList[1].value == null,'fa-check-circle':checkList.preparationResultList[1].value.length >= '1'}"></span>
+</div>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 custom-status-color">
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding">
+<input class="form-control" type="text" data-ng-model="checkList.preparationResultList[2].value" data-ng-disabled="!authorization()" title="{{checkList.preparationResultList[2].value}}"/>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
+<span class="fa fa-2x" data-ng-class="{'fa-asterisk':checkList.preparationResultList[2].value.length == '0' || checkList.preparationResultList[2].value == null,'fa-check-circle':checkList.preparationResultList[2].value.length >= '1'}"></span>
+</div>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 custom-status-color">
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding">
+<input class="form-control" type="text" data-ng-model="checkList.preparationResultList[3].value" data-ng-change="changeCO(checkList)" data-ng-disabled="!authorization()" title="{{checkList.preparationResultList[3].value}}"/>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
+<span class="fa fa-2x" data-ng-class="{'fa-asterisk':checkList.preparationResultList[3].value.length == '0' || checkList.preparationResultList[3].value == null,'fa-check-circle':checkList.preparationResultList[3].value.length >= '1'}"></span>
+</div>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+</div>
+</div>
+</div>
+<!-- Ralenti acc -->
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-top-btm-padding">
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+<label title="{{'cop.preparationList.label.ralentiAcc'|localize }}">{{'cop.preparationList.label.ralentiAcc'|localize }}</label>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 custom-status-color">
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding">
+<input class="form-control" type="text" data-ng-model="checkList.preparationResultList[4].value" data-ng-disabled="!authorization()" title="{{checkList.preparationResultList[4].value}}"/>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
+<span class="fa fa-2x" data-ng-class="{'fa-asterisk':checkList.preparationResultList[4].value.length == '0' || checkList.preparationResultList[4].value == null,'fa-check-circle':checkList.preparationResultList[4].value.length >= '1'}"></span>
+</div>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 custom-status-color">
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding">
+<input class="form-control" type="text" data-ng-model="checkList.preparationResultList[5].value" data-ng-disabled="!authorization()" title="{{checkList.preparationResultList[5].value}}"/>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
+<span class="fa fa-2x" data-ng-class="{'fa-asterisk':checkList.preparationResultList[5].value.length == '0' || checkList.preparationResultList[5].value == null,'fa-check-circle':checkList.preparationResultList[5].value.length >= '1'}"></span>
+</div>
+</div>
+
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 custom-status-color">
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding">
+<input class="form-control" type="text" data-ng-model="checkList.preparationResultList[6].value" data-ng-change="changeLamda(checkList)" data-ng-disabled="!authorization()" title="{{checkList.preparationResultList[6].value}}"/>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 no-padding">
+<span class="fa fa-2x" data-ng-class="{'fa-asterisk':checkList.preparationResultList[6].value.length == '0' || checkList.preparationResultList[6].value == null,'fa-check-circle':checkList.preparationResultList[6].value.length >= '1'}"></span>
+</div>
+</div>
+
+<!-- Decision Lambda -->
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-top-btm-padding">
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+<label title="{{'cop.preparationList.label.decisionCo'|localize }}">{{'cop.preparationList.label.decisionCo'|localize }}</label>
+<input class="form-control" type="text" data-ng-model="checkList.preparationResultList[7].value" title="checkList.preparationResultList[7].value" readonly/>
+</div>
+<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+<label title="{{'cop.preparationList.label.decisionLambda'|localize }}">{{'cop.preparationList.label.decisionLambda'|localize }}</label>
+<input class="form-control" type="text" data-ng-model="checkList.preparationResultList[8].value" title="{{checkList.preparationResultList[8].value}}" readonly/>
+</div>
+</div>
+</div>
+
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+<label class="screenNo" title="Screen Number :SCR053">Screen Number :SCR053</label>
+<div class="padding-top-btm">
+<button class="btn btn-primary" data-ng-click="saveGasoline(checkList,$index)" data-ng-show="authorization()" >{{'cop.technicalData.label.validate' | localize}}</button>
+<button class="btn btn-default" data-ng-show="authorization()" data-ng-click="loadPreparationList()">{{'cop.technicalData.label.cancel' | localize }}</button>
+</div>
+</div>

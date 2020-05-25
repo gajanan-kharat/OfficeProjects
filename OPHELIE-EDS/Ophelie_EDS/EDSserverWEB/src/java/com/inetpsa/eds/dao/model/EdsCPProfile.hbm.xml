@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14 juin 2012 16:43:00 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsCPProfile" table="OPLQTCCP">
+        <id column="ID" name="id" >
+            <generator class="increment"/>
+        </id>
+        <properties name="triple" unique="true"> 
+            <many-to-one name="wi" class="com.inetpsa.eds.dao.model.EdsPinConnect">
+                <column name="WI_ID"/>
+            </many-to-one>
+            <property name="type" >
+                <column name="PROPERTY_TIME" />
+            </property>      
+            <property name="value" >
+                <column name="PROPERTY_CURRENT" />
+            </property>
+        </properties>
+
+    </class>
+</hibernate-mapping>
+ 

@@ -1,0 +1,39 @@
+
+
+#org.seedstack.seed.server.port<heroku> = ${env:PORT}
+
+####################################################################
+# Web security
+####################################################################
+
+[org.seedstack.seed.security.urls]
+/** = authcBasic
+
+#Directory Path Containing Images Folder
+[com.inetpsa.pv2.web]
+tempFileDirectory=D:/Destination_new/
+
+#host url
+[com.inetpsa.pv2.host]
+hostUrl=http://localhost:8080/picto-webapp-1.0.10-SNAPSHOT
+#Added for Single PDF Path
+[com.inetpsa.pv2.web.singlepdf]
+spath=D:/PdfReports/PictoReport.pdf
+
+#Added for Multiple PDF Path
+[com.inetpsa.pv2.web.multipdf]
+mpath=D:/MultiPdfReports/MultiplePictoReport.pdf
+
+#Name for single PDF
+[com.inetpsa.pv2.web.singlepdf]
+sname =PictoReport.pdf
+
+#Name for Multiple PDF
+[com.inetpsa.pv2.web.multipdf]
+mname=multiplePictoReport.pdf
+
+#Logged in user roles
+[com.inetpsa.pv2.role]
+adminRole1=PICTOARole
+adminRole2=PICTODRole
+contributorRole=PICTOCRole

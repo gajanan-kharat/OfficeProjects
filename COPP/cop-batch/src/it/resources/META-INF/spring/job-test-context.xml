@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xmlns:seed="http://www.seedstack.org/xml-schemas/spring-support"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/batch
+		http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	    http://www.springframework.org/schema/jdbc
+	    http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+	    http://www.seedstack.org/xml-schemas/spring-support 
+		http://www.seedstack.org/xml-schemas/spring-support/spring-support-1.1.xsd">
+
+    <!-- the job will contains only one step that refers to the tasklet -->
+    <batch:job id="genomeBatchJob">
+        <batch:step id="genomeBatchStep">
+            <batch:tasklet>
+               <bean class="com.inetpsa.poc00.batch.GenomeBatchTasklet">
+					 <property name="genomeFileDirectory" value="${genome.file.directory.path}"/>
+                     <property name="genomeService" >
+                    		<seed:instance id="genomeService" class="com.inetpsa.poc00.application.GenomeService"/>
+                     </property>
+                 </bean> 
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+
+    <bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager"/>
+
+    <jdbc:embedded-database id="dataSource" type="HSQL">
+        <jdbc:script location="classpath:org/springframework/batch/core/schema-drop-hsqldb.sql"/>
+        <jdbc:script location="classpath:org/springframework/batch/core/schema-hsqldb.sql"/>
+    </jdbc:embedded-database>
+
+    <bean id="jobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="isolationLevelForCreate" value="ISOLATION_DEFAULT"/>
+    </bean>
+
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="jobRepository"/>
+    </bean>
+</beans>

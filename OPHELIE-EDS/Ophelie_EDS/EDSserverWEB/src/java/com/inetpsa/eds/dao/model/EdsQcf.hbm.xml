@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29 avr. 2013 15:29:38 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsQcf" table="OPLQTQCF">
+        <id name="qcfId" type="string">
+            <column name="QCF_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <property name="qcf1" type="java.lang.Integer">
+            <column name="QCF_1" />
+        </property>
+        <property name="qcf2" type="java.lang.Integer">
+            <column name="QCF_2" />
+        </property>
+        <property name="qcf3" type="java.lang.Integer">
+            <column name="QCF_3" />
+        </property>
+        <property name="qcfC1" type="java.lang.Integer">
+            <column name="QCF_C1" />
+        </property>
+        <property name="qcfC2" type="java.lang.Integer">
+            <column name="QCF_C2" />
+        </property>
+        <property name="qcfC3" type="java.lang.Integer">
+            <column name="QCF_C3" />
+        </property>
+        <property name="qcfC4" type="java.lang.Integer">
+            <column name="QCF_C4" />
+        </property>
+    </class>
+</hibernate-mapping>

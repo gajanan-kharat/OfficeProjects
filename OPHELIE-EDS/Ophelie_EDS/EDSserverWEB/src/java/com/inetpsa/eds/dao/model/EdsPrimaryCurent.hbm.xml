@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 16 ao?t 2012 16:02:15 by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.inetpsa.eds.dao.model.EdsPrimaryCurent" table="OPLQTPRC">
+        <id name="pcedsId" type="string">
+            <column name="PCEDS_ID" length="36" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edsEds" class="com.inetpsa.eds.dao.model.EdsEds" fetch="select" lazy="false">
+            <column name="PCEDS_EDS_ID" length="36" not-null="true" />
+        </many-to-one>
+        <property name="pcComment" type="string">
+            <column name="PC_COMMENT" length="1024" />
+        </property>
+        <property name="pcImage" type="string">
+            <column name="PC_IMAGE" length="225" />
+        </property>
+        <set name="edsSupplies" inverse="false" lazy="false" cascade="all,delete-orphan">
+            <key>
+                <column name="S_PCEDS_ID" length="36" />
+            </key>
+            <one-to-many class="com.inetpsa.eds.dao.model.EdsSupply" />
+        </set>
+    </class>
+</hibernate-mapping>

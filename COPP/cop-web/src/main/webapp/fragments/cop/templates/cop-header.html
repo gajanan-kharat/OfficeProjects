@@ -1,0 +1,20 @@
+<div class="custom-header">
+	<!-- Custom Top Buttons -->
+	<div class="row no-margin">
+		<div class="col-lg-12 user-menu" style="position: fixed;
+    z-index: 100; width:100%">
+			<div class="user-pad">
+				<img class="img-circle" src="fragments/cop/images/iwp.png"
+					style="width: 50px; height: 50px;" /> <b>{{'cop.application.name' | localize}}</b> <br />
+				<div class="user-info">
+					<span>{{userInfo()}}</span>
+					<div class="custom-chevron fa fa-chevron-left"
+						id="menu-toggle" data-ng-click="slideToggle()" style="cursor:pointer;">
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+    <div data-ng-show="copLoader" class="loader"></div>
+</div>

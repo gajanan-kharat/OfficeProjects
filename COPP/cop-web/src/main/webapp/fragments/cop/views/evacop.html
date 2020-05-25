@@ -1,0 +1,186 @@
+<div data-ng-controller="EvaCopController">
+    <div data-cop-header></div>
+
+
+    <div id="wrapper" class="context-wrapper">
+        <div>
+            <div data-cop-sidebar></div>
+        </div>
+        <div>
+            <div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">&nbsp;</div>
+                    <label class="" title="{{'cop.evacop.title.vehicleSearch' | localize}}">>..> {{'cop.evacop.title.vehicleSearch' |
+                        localize}}</label>
+                    <div class="row no-margin col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding custom-evacop">
+                            <data-ng-include src="'fragments/cop/views/vehicle-properties.html'" />
+                        </div>
+                        <div class="container-fluid no-padding">
+
+                            <div data-ng-repeat="vehicleFile in filteredVehicleItems"
+                                class="col-lg-5 col-md-5 col-sm-5 col-xs-5 no-padding vehicleTvvBox" id="vehSelected{{$index}}">
+                                <div data-ng-click="selectVehicle(vehicleFile.entityId,$index)">
+                                
+                              
+                                    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                                        <div class="fa fa-car fa-2x col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <span style="font-size: 0.7em;" title="{{vehicleFile.displayTitle}}">({{vehicleFile.displayTitle}})</span><br>
+                                            <label title="{{vehicleFile.guidisplyLabel}}">{{vehicleFile.guidisplyLabel}}</label>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <span class="ellipsis" title="{{vehicleFile.typeOfTestLabel}}">{{vehicleFile.typeOfTestLabel}}</span> <i
+                                                class="fa fa-shopping-cart fa-2x pull-right" data-ng-if="vehicleFile.inBasket" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding ellipsis">
+                                            <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="font-size: 0.8em;">{{vehicleFile.vehicleFileStatusLabel
+                                                | localize}}</span> <span class="col-lg-5 col-md-5 col-sm-5 col-xs-5 pull-right" style="font-size: 0.8em;">{{vehicleFile.userName}}</span>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-resize col-lg-12 col-lg-10" style="position: fixed;
+    /* top: 0px; */ bottom: 0px; background-color: #fff;">
+            <label class="screenNo">{{'cop.evacop.label.screenNo' | localize}}</label>
+            <div class="col-lg-12 padding-top-btm">
+
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 text-center">
+                    <button type="button" id="save" class="btn btn-primary" data-ng-click="checkConditions()">{{ 'cop.menu.label.searchTVV'
+                        | localize }}</button>
+
+                    &nbsp; &nbsp;
+
+                    <button type="reset" id="valider" class="btn btn-default" data-ng-click="refresh()">{{ 'cop.technicalData.label.cancel' |
+                        localize }}</button>
+                </div>
+
+                <div class="col-lg-3 text-right">
+
+                    <button type="button" id="History" class="btn btn-default pull-right" data-ng-show="authorization" data-ng-click="setEvaCop()">{{
+                        'cop.evacop.label.evacopCompleted' | localize }}</button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div id="ConfirmationPopUp" class="modal fade">
+            <div class="modal-dialog modal-md" style="border-radius: 0px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4>{{'cop.vehicleFile.filter.emptyMsg' | localize }}</h4>
+                    </div>
+                    <div class="modal-footer align-center">
+                        <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal"
+                            data-ng-click="searchEvaCop()">{{'cop.vehicleFile.filter.yesButton' | localize }}</button>
+                        &nbsp; &nbsp;
+                        <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{'cop.vehicleFile.filter.noButton'
+                            | localize }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="ConfirmEvaCopPopUp" class="modal fade">
+            <div class="modal-dialog modal-md" style="border-radius: 0px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="row">
+                            <div class="modal-title col-lg-10 no-padding" id="myModalLabel">
+                                <div class="col-lg-10">
+                                    <label>{{ 'cop.evacop.label.terminal'| localize }}</label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal"
+                                        aria-hidden="true"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="row form-group">
+
+                            <div class=" col-lg-12 text center">
+
+                                <fieldset class="custom-border">
+                                    <legend class="custom-border">{{ 'cop.evacop.label.comment'| localize }}</legend>
+
+                                    <div class="tvv-chart-inner">
+                                        <div class="col-lg-12">
+
+                                            <div class="col-lg-10">
+                                                <p>
+                                                
+                                                <input type="text" placeholder=" {{ 'cop.evacop.label.comment.data'| localize }}" ng-model="evacop.comment"></input>
+                                               </p>
+                                            </div>
+                                            <div class="col-lg-2"></div>
+
+                                        </div>
+
+                                    </div>
+
+                                </fieldset>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer" style="text-align: center;">
+                        <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="saveEvaCop()" data-dismiss="modal">{{
+                            'cop.genomedata.label.save'| localize}}</button>
+                        <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{
+                            'cop.technicalData.label.cancel'| localize}}</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+  <div id="errorPopUp" class="modal fade">
+            <div class="modal-dialog modal-md" style="border-radius: 0px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4>{{'cop.evacop.label.error' | localize }}</h4>
+                    </div>
+                    <div class="modal-footer align-center">
+                        <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal"
+                            data-ng-click="searchVehicleFile()">{{'cop.vehicleFile.filter.yesButton' | localize }}</button>
+                        &nbsp; &nbsp;
+                        <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{'cop.vehicleFile.filter.noButton'
+                            | localize }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+</div>

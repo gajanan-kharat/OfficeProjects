@@ -1,0 +1,272 @@
+<div class="row" data-ng-controller="ResultTestPollutantController">
+    <div class="col-lg-12">
+     <label>
+        <b class="custom-menulist-left" title="{{'cop.preparationList.title.resultTestPollutants'|localize }}">>..> {{'cop.preparationList.title.resultTestPollutants'|localize
+            }}</b>
+     </label>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+            <div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-bottom: 1px solid #eee;">
+               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 no-padding">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                            <label title="{{vehicleFileData.guidisplyLabelForResultScr}} ">{{vehicleFileData.guidisplyLabelForResultScr}} :&nbsp;</label> <span style="display: inline;" title="{{vehicleFileData.guidisplyLabel}}"><strong>{{vehicleFileData.guidisplyLabel}}</strong></span>
+                            <span data-ng-if="true"><i class="fa fa-graduation-cap" aria-hidden="true" style="color: red"
+                                data-ng-if="vehicleFileData.vehicleFileStatusLabel=='cop.vehicleFileStatus.guilabel.expertise'"></i></span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                            <label title="{{'cop.testresult.screenHeader.tvvTitle' | localize }} ">{{'cop.testresult.screenHeader.tvvTitle' | localize }}&nbsp;</label> <span style="display: inline;" title="{{vehicleFileData.tvvLabel}}"><strong>{{vehicleFileData.tvvLabel}}</strong></span>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                            <label title=" {{'cop.testresult.screenHeader.vinTitle' | localize }} ">{{'cop.testresult.screenHeader.vinTitle' | localize }}&nbsp;</label> <span style="display: inline;" title="{{vehicleFileData.vin}}"><strong>{{vehicleFileData.vin}}</strong></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 no-padding">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                            <div class="col-lg-12 col-md-4 col-sm-12 col-xs-12 no-padding"></div>
+                            <div class="col-lg-12 col-md-4 col-sm-12 col-xs-12 no-padding" data-ng-show="showInquarantain">
+                                <label style="background-color: red; color: white" title="{{'cop.testresult.screenHeader.enQuarantaine' | localize }}">{{'cop.testresult.screenHeader.enQuarantaine' | localize }}</label>
+                            </div>
+                            <div class="col-lg-12 col-md-4 col-sm-12 col-xs-12 no-padding"></div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding"></div>
+                            <div class="col-lg-12 col-md-3 col-sm-12 col-xs-12 no-padding">
+                               <div class="{{$select.selected}}" data-ng-show="disableResultSet">
+                                <ui-select id="actions" class="uiselectPosition" data-ng-model="projectslist.SelectedProject" data-ng-disabled="checkAuthorization()" 
+                                    data-ng-change="onActionChange($select.selected)"> 
+                                <ui-select-match placeholder="Actions...">{{$select.selected}}</ui-select-match>
+                                <ui-select-choices  repeat="project in actionList | filter: $select.search" style="width: inherit;">
+                                <div data-ng-bind-html="project | highlight: $select.search "></div>
+                                </ui-select-choices> </ui-select>
+                               </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-12 col-xs-12 no-padding">
+                        <label class="f-right" title=" {{vehicleFileData.typeOfTestLabel}} ">{{vehicleFileData.typeOfTestLabel}}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding">
+                   
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 no-padding top-btm-padding"></div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 no-padding top-btm-padding">
+                                <label title=" {{'cop.testresult.screenHeader.minLimit' | localize }} ">{{'cop.testresult.screenHeader.minLimit' | localize }}</label>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 no-padding top-btm-padding">
+                                <label title=" {{'cop.testresult.screenHeader.maxLimit' | localize }} ">{{'cop.testresult.screenHeader.maxLimit' | localize }}</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 no-padding top-btm-padding" data-ng-repeat="i in resultSetData">
+                                <div class="radiobtn-wrapp">
+                                <input type="radio" id="radioBtn{{i.entityId}}" name="radiobtn1" value="radioBtn1" data-ng-click="updatequarantineAttr(i)"
+                                    ng-disabled="!i.validated || checkAuthorization()" /> 
+                                    <label for="radioBtn{{i.entityId}}"  title=" {{'cop.testresult.screenHeader.resultSet' | localize }} {{$index+1}} " >{{'cop.testresult.screenHeader.resultSet' | localize }} {{$index+1}}</label> <span id="date" title="{{i.updatedate}}">{{i.updatedate}} <i class="fa fa-pencil" data-ng-if="i.validated" data-ng-click="i.validated=false" data-ng-show="authorization('POCHRole')"></i></span>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding" data-ng-repeat="i in resultSetData | limitTo:1">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-12 custom-top-btm-padding "
+                                    data-ng-repeat="testresult in i.pollutantGasTestResultRepresentationList">
+                                    
+                                    <div class="row">
+                                    <div class="col-lg-4">
+                                        <label title=" {{testresult.tvvValuedPollutantLimitRepresentation.pgLabel.label}} ">{{testresult.tvvValuedPollutantLimitRepresentation.pgLabel.label}}</label>
+                                    </div>
+                                    <div class="col-lg-4" style="padding-right: 0px;">
+                                        <input class="col-lg-12 form-control " type="text" data-ng-readonly="true"
+                                            value="{{testresult.tvvValuedPollutantLimitRepresentation.minDValue}}" title="{{testresult.tvvValuedPollutantLimitRepresentation.minDValue}} "/>
+                                    </div>
+                                    <div class="col-lg-4" style="padding-right: 0px;">
+                                        <input class="col-lg-12 form-control " type="text" data-ng-readonly="true"
+                                            value="{{testresult.tvvValuedPollutantLimitRepresentation.maxDValue}}" title=" {{testresult.tvvValuedPollutantLimitRepresentation.maxDValue}} "/>
+                                    </div>
+                                    </div>
+                                    
+
+                                </div>
+                                
+                                <div class="col-lg-12 custom-top-btm-padding">
+                                    <label title=" {{'cop.testresult.screenHeader.testobd' | localize }} ">{{'cop.testresult.screenHeader.testobd' | localize }}</label>
+                                </div>
+                                <div class="col-lg-12 custom-top-btm-padding">
+                                    <label title=" {{'cop.testresult.screenHeader.testobd' | localize }} ">{{'cop.testresult.screenHeader.ncellule' | localize }}</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" data-ng-repeat="i in resultSetData">
+                            <div class="col-lg-10 no-padding borderBox" id="borderBox{{i.entityId}}">
+                                <div class="col-lg-12 custom-top-btm-padding custom-result-pencil"
+                                    data-ng-repeat="testresult in i.pollutantGasTestResultRepresentationList">
+                                    <div class='input-group add-on'>
+
+                                            <input class="form-control editableInput" data-ng-hide="editable" type="text"
+                                            data-ng-readonly="!i.isCellEnabled || checkAuthorization()" data-ng-enter="enterSave();"
+                                            data-ng-blur='save();' data-ng-model="testresult.value"
+                                            data-ng-change="testresult.value=dirtyCheck(testresult.value,$parent.$index)" value="{{testresult.value}}" title=" {{testresult.value}} " id="re{{$parent.$index}}-input{{$index}}"> 
+                                            <input  class="form-control" data-ng-model="testresult.value" data-ng-show="editable" data-ng-readonly="editable"  title=" {{testresult.value}} "/>
+
+
+                                            <div data-ng-hide="i.validated" class="input-group-btn">
+                                            <span class="btn btn-default btngrp-iconpadd" data-ng-hide="checkAuthorization() || !disableResultSet"
+                                                data-ng-click="i.isCellEnabled=true"> <span class="fa fa-pencil" data-ng-click="edit()" id="re{{$parent.$index}}-pencil{{$index}}"
+                                                data-ng-show="editable"></span> <span data-ng-click="save();" data-ng-hide="editable" id="re{{$parent.$index}}-save{{$index}}"><span
+                                                    class="fa fa-floppy-o"></span></span>
+                                            </span>
+
+                                        </div>
+                                        <div class="custom-status-color "></div>
+                                        <span class="custom-text-boxnext center_align"
+                                            data-ng-class="colourClass(testresult.statisticalDecision)"  title="{{testresult.statisticalDecision}}" > {{testresult.statisticalDecision}} </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 custom-top-btm-padding">
+                                    <div title="{{$select.selected}} " data-ng-show="disableResultSet">
+                                    
+                                    <ui-select id="re0-actions{{$index}}" class="uiselectPosition" ng-change="dropdownValChanged($index)" data-ng-model="i.obdTest" data-ng-disabled="i.validated || checkAuthorization()" > 
+                                     <ui-select-match>{{$select.selected}}</ui-select-match>
+                                     <ui-select-choices repeat="project in obdTest | filter: $select.search">
+                                     <div data-ng-bind-html="project | highlight: $select.search "></div>
+                                    </ui-select-choices> </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 custom-top-btm-padding">
+                                    <div title="{{$select.selected}} " data-ng-show="disableResultSet">
+                                    <ui-select id="re1-actions{{$index}}" class="uiselectPosition" ng-change="dropdownValChanged($index)" data-ng-model="i.benchCell" data-ng-disabled="i.validated || checkAuthorization()"
+                                        > <ui-select-match>{{$select.selected}}</ui-select-match>
+                                    <ui-select-choices repeat="project in benchCell | filter: $select.search">
+                                    <div data-ng-bind-html="project | highlight: $select.search "></div>
+                                    </ui-select-choices> </ui-select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 no-padding">
+                    <div style="padding-top: 150px;" class="col-lg-12">
+
+                        <label title=" {{'cop.resulttest.decision.global' | localize }} " >{{'cop.resulttest.decision.global' | localize }}</label><br> 
+                           <span title=" {{vehStatisticalDecision}} "
+                                            data-ng-class="colourClass(vehStatisticalDecision)">{{vehStatisticalDecision}}</span><br>
+                        <label title=" {{statisticalRuleLabel}} " >{{statisticalRuleLabel}}</label><br>
+
+                    </div>
+                    <div style="padding-top: 50px;" class="col-lg-9">
+                        <label title=" {{'cop.resulttest.reference.santorin' | localize }} ">{{'cop.resulttest.reference.santorin' | localize }} <span class="astrik">*</span> </label>
+                        <textarea class="form-control" name="msg" id="msg" rows="3" cols="3" data-ng-model="referenceSantorin" data-ng-readonly="readonlyAccess || !disableResultSet" required></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 custom-footer">
+        <div class="col-lg-12 padding-top-btm">
+
+
+            <div class="col-lg-3 col-md-3 text-center"></div>
+            <div class="col-lg-4 col-md-4 text-center" >
+                <button type="button" id="save" class="btn btn-primary"  data-ng-disabled="readonlyAccess" data-ng-click="checkSaveCondition()" data-ng-show="disableResultSet">{{ 'cop.genomedata.label.save' |
+                    localize }}</button>
+                &nbsp; &nbsp;
+                <button type="reset" id="valider" class="btn btn-default" data-ng-disabled="readonlyAccess" data-ng-click="refreshConfirmation()" data-ng-show="disableResultSet">{{ 'cop.technicalData.label.cancel' |
+                    localize }}</button>
+            </div>
+            
+            <div class="col-lg-5 col-md-5 text-right no-padding">
+                <div class="btn-with-screen-no">
+                    <label class="screenNo" title=" {{'cop.testresult.screenNo' | localize}} " >{{'cop.testresult.screenNo' | localize}}</label>
+                </div>
+                <div class="btn-with-screen-no">
+                  <button type="button" id="save" class="btn btn-default" data-ng-disabled="restrictAccess || readonlyAccess" data-ng-click="resultInGreen()" data-ng-show="disableResultSet">{{
+                    'cop.resulttest.calculate.result.button' | localize }}</button>
+              </div>  
+             
+                  
+            </div>
+           
+        </div>
+        </div>
+
+<div id="sendinexpertise" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <button type="button" class="btn fa fa-remove" style="float: right; background-color: #fff;" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title" id="myModalLabel">{{ 'cop.resulttest.modal.inexpertise' | localize}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="sendInExpertise()">{{
+                    'cop.vehicleFile.filter.yesButton' | localize }}</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{
+                    'cop.vehicleFile.filter.noButton' | localize }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="unsavedChangesPopup" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{{'cop.resultset.unsavedchanges.warning.popup'| localize}}</h4>
+            </div>
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="refreshData()" data-dismiss="modal">{{'cop.vehicleFile.filter.yesButton'|
+                    localize}}</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{'cop.vehicleFile.filter.noButton'|
+                    localize}}</button>
+            </div>
+
+        </div>
+    </div>
+</div> 
+
+
+<div id="confirmationModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{{'cop.resulttest.save.confirm.saveorcalculate'| localize}}</h4>
+            </div>
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="calculateResult()" data-dismiss="modal">{{'cop.resulttest.calculate.button'|
+                    localize}}</button>
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-ng-click="saveTestResultValues()" data-dismiss="modal">{{'cop.resulttest.save.button'|
+                    localize}}</button>
+            </div>
+
+        </div>
+    </div>
+</div>  
+<div id="errorModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" style="width: 400px;">
+        <div class="modal-content" style="border-radius: 0px; width: 400px;">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">{{errorMsg}}</h4>
+            </div>
+
+            <div class="modal-footer align-center">
+                <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{
+                    'cop.technicalData.label.ok' | localize }}</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

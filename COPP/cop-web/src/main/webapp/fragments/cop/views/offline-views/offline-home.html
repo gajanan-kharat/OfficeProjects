@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html data-ng-app="offlineApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-type" content="text/cache-manifest; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>New-Cop(OFFLINE)</title>
+<script data-require="angular.js@*" data-semver="1.2.10"
+	src="../../../../bower_components/angular/angular.js"></script>
+<script data-require="angular.js@*" data-semver="1.2.10"
+	src="../../../../bower_components/angular-route/angular-route.js"></script>
+<script data-require="angular.js@*" data-semver="1.2.10"
+	src="../../../../bower_components/jquery/dist/jquery.js"></script>
+<script data-require="angular.js@*" data-semver="1.2.10"
+	src="../../../../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<link rel="stylesheet"
+	href="../../../../bower_components/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet"
+	href="../../../../bower_components/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" href="../../style/cop.css" />
+
+<script src="../../modules/js/offline-js/offline-home.js"></script>
+<script src="../../modules/js/offline-js/offline-common.js"></script>
+<script src="../../modules/js/offline-js/offline-basket.js"></script>
+<script src="../../modules/js/offline-js/offline-menulist.js"></script>
+<script src="../../modules/js/offline-js/offline-preparation-list.js"></script>
+</head>
+
+<body style="margin: 0px" data-ng-controller="homeCtrl">
+	<!-- View Creation -->
+	<div ng-include src="'../../templates/cop-offline-header.html'"></div>
+	<div id="wrapper" class="context-wrapper">
+		<div ng-include src="'../../templates/cop-offline-sidebar.html'"></div>
+		<div data-ng-view></div>
+	</div>
+    
+    <div id="offlineMessage" class="modal fade">
+    <div class="modal-dialog modal-md">
+    
+        <div class="modal-content col-lg-12">
+                <h4>You are currently not connected to Dock, please connect and try again.</h4>
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em; ">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

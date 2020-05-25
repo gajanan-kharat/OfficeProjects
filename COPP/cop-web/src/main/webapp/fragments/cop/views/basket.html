@@ -1,0 +1,129 @@
+<div data-cop-header></div>
+
+<div id="wrapper" class="context-wrapper" data-ng-class="{'loaderBlock': copLoader == true}">
+<div>
+            <div data-cop-sidebar></div>
+        
+
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-10 col-sm-10 col-xs-10 custom-top-pad custom-page-header col-lg-10" style="border-bottom: 1px solid #eee;">
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding pull-left">
+<b>>...>{{'cop.basket.label.basketView' | localize}}</b>
+</div>
+
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding pull-right">
+<h4 class="pull-right">{{allVehicleInBasketCount}} {{'cop.vehicle.label.vehicle' | localize}}</h4>
+</div>
+</div>
+<div class="col-lg-12 no-padding custom-btm-pad basket-main-block" style="padding-bottom: 5% !important;">
+<div data-ng-repeat="typeTest in typeTestGroup" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+<label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-top-pad">{{typeTest.typeOfTestLabel}}</label> 
+
+
+<div data-ng-repeat="basket in typeTest.basketDetail" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 1em;">
+<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 fa fa-graduation-cap fa-lg no-padding" style="margin-top: 1em;color:red;" data-ng-show="basket.vehicleFileStatusLabel === 'cop.vehicleFileStatus.guilabel.expertise'"></div>
+                    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 no-padding basket-card"
+                        style="border: 1px solid; border-radius: 0.3em; margin-bottom: 1em;">
+                        <div class="fa fa-car fa-2x col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding" style="margin: 0.3em;"></div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0px;" data-ng-if="basket.registrationNumber!==null">
+                            <span style="font-size: 0.8em;" class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                                title="{{'cop.basket.label.registrationNumber' | localize}}">({{'cop.basket.label.registrationNumber' |
+                                localize}})</span> <span class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                                title="{{basket.vehicleFamilylabel}}"> {{basket.vehicleFamilylabel}}</span> <label
+                                class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="{{basket.registrationNumber}}">{{basket.registrationNumber}}</label>
+
+                        </div>
+
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0px;"
+                            data-ng-if="(basket.chasisNumber!==null) &&(basket.registrationNumber===null)">
+                            <span style="font-size: 0.8em;" class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                                title="{{'cop.basket.label.chasisNumber' | localize}}">({{'cop.basket.label.chasisNumber' | localize}})</span> <span
+                                class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="{{basket.vehicleFamilylabel}}">{{basket.vehicleFamilylabel}}</span>
+                            <label class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="{{basket.chasisNumber}}">{{basket.chasisNumber}}</label>
+
+                        </div>
+
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0px;"
+                            data-ng-if="(basket.counterMark!==null)&&(basket.chasisNumber===null) &&(basket.registrationNumber===null)">
+                            <span style="font-size: 0.8em;" class="ellipsis no-padding col-lg-6 col-md-6 col-sm-6 col-xs-6"
+                                title="{{'cop.basket.label.countermarkNumber' | localize}}">({{'cop.basket.label.countermarkNumber' |
+                                localize}})</span> <span class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                                title="{{basket.vehicleFamilylabel}}">{{basket.vehicleFamilylabel}}</span> <label
+                                class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="{{basket.counterMark}}">{{basket.counterMark}}</label>
+
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 ellipsis" style="margin-top: 1em; padding: 0px; font-size: 0.9em;"
+                            title="{{basket.vehicleFileStatusLabel | localize}}"
+                            data-ng-class="{'basket-cutom-fontcolor' : basket.vehicleFileStatusLabel === 'cop.vehicleFileStatus.guilabel.expertise' }">
+
+                            {{basket.vehicleFileStatusLabel | localize}}</div>
+                        <div class="fa fa-trash fa-lg col-lg-1 col-md-1 col-sm-1 col-xs-1 pull-right" style="margin-top: 0.9em; padding: 0px;"
+                            data-ng-click="deleteConfirmation(basket)" ng-hide="disableEdit()"></div>
+                        <div class="col-lg-1 col-sm-1 col-md-1 col-xs-1" style="top: 0.5vw;">
+
+                        </div>
+                        <div class="col-lg-1 col-sm-1 col-md-1 col-xs-1" style="top: 0.5vw;">
+                            <i class="fa fa-folder-open-o fa-2x pull-right" title="{{'cop.preparationList.title.openPreparationFile' | localize }}"
+                                data-ng-click="dblClickVehicleFile(basket)"></i>
+                        </div>
+                    </div>
+                </div>
+</div>
+</div>
+
+<div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+<label class="screenNo">Screen Number :SCR068</label>
+<div class="padding-top-btm">
+<button class="btn btn-primary" data-ng-click="basketCaching()"  ng-hide="disableEdit()">{{'cop.basket.label.cartCache' | localize}}</button>
+<a data-ng-click="toSearchVehicles()"><button ng-hide="disableEdit()" class="btn btn-default" >{{'cop.basket.label.addvehicle' | localize}}</button></a>
+<a><button  class="btn btn-warning" data-ng-click="checkNetwork()" data-ng-hide="disableEdit()">{{'cop.basket.label.goOffline' | localize}}</button></a>
+<a><button class="btn btn-warning" data-ng-click="syncData()" data-ng-show = "authorization('POCMRole')">{{'cop.basket.label.syncData' | localize}}</button></a>
+</div>
+</div>
+</div>
+</div>
+
+<div id="deleteVehicle" class="modal fade">
+    <div class="modal-dialog modal-md" style="width: 500px;" >
+    
+        <div class="modal-content col-lg-12" style="border-radius: 10px; width: 500px;">
+            <h4 >{{'cop.basket.model.deleteVehicle' | localize}}
+          "{{basketForDelete.vehicleFamilylabel}}
+            <span data-ng-if="basketForDelete.registrationNumber!==null">{{basketForDelete.registrationNumber}}</span>
+            <span data-ng-if="basketForDelete.chasisNumber!==null"> {{basketForDelete.chasisNumber}}</span>
+            <span data-ng-if="basketForDelete.counterMark!==null"> {{basketForDelete.counterMark}}</span>"
+             {{'cop.basket.model.deleteVehicle1' | localize}}</h4>
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em; ">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal" data-ng-click="deleteBasket()">{{ 'cop.creation.label.yes' | localize }}</button>
+                    <button type="button" style="border-radius: 0px;" class="btn btn-default" data-dismiss="modal">{{ 'cop.creation.label.no' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="onlineMessage" class="modal fade">
+    <div class="modal-dialog modal-md">
+    
+        <div class="modal-content col-lg-12">
+                <h4>{{'cop.basket.message.onlineNow' | localize}}</h4>
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em; ">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="customNotifier" class="modal fade">
+    <div class="modal-dialog modal-md">
+    
+        <div class="modal-content col-lg-12 align-center">
+                <h4>{{message | localize}}</h4>
+                <div class="col-lg-12 modal-footer align-center" style="margin-top: 1em; ">
+                    <button type="button" style="border-radius: 0px;" class="btn btn-primary" data-dismiss="modal">{{ 'cop.technicalData.label.ok' | localize }}</button>
+                </div>
+        </div>
+    </div>
+
+</div>

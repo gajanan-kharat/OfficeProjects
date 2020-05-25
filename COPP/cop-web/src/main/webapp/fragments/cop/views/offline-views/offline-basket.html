@@ -1,0 +1,80 @@
+<div data-ng-controller="offlineBasketController">
+
+    <div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-md-10 col-sm-10 col-xs-10 custom-top-pad custom-page-header col-lg-10"
+        style="border-bottom: 1px solid #eee;">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding pull-left">
+            <b>>...> Afficher mon panier</b>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding pull-right">
+            <h4 class="pull-right">{{allVehicleInBasketCount}} véhicules</h4>
+        </div>
+    </div>
+
+    <div class="col-lg-12 no-padding custom-btm-pad basket-main-block" style="padding-bottom: 5% !important;">
+        <div data-ng-repeat="typeTest in typeTestGroup" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+            <label class="col-lg-12 col-md-12 col-sm-12 col-xs-12 custom-top-pad">{{typeTest.typeOfTestLabel}}</label>
+
+
+            <div data-ng-repeat="basket in typeTest.basketDetail" class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-top: 1em;">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 fa fa-graduation-cap fa-lg no-padding" style="margin-top: 1em; color: red;"
+                    data-ng-show="basket.vehicleFileStatusLabel === 'cop.vehicleFileStatus.guilabel.expertise'"></div>
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 no-padding basket-card" style="border: 1px solid; border-radius: 0.3em; margin-bottom: 1em;">
+                    <div class="fa fa-car fa-2x col-lg-1 col-md-1 col-sm-1 col-xs-1 no-padding" style="margin: 0.3em;"></div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0px;" data-ng-if="basket.registrationNumber!==null">
+                        <span style="font-size: 0.8em;" class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="N° d’immatriculation">(N°
+                            d’immatriculation)</span> <span class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                            title="{{basket.vehicleFamilylabel}}"> {{basket.vehicleFamilylabel}}</span> <label
+                            class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="{{basket.registrationNumber}}">{{basket.registrationNumber}}</label>
+
+                    </div>
+
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0px;"
+                        data-ng-if="(basket.chasisNumber!==null) &&(basket.registrationNumber===null)">
+                        <span style="font-size: 0.8em;" class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="N° de chassis">(N°
+                            de chassis)</span> <span class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="{{basket.vehicleFamilylabel}}">{{basket.vehicleFamilylabel}}</span>
+                        <label class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="{{basket.chasisNumber}}">{{basket.chasisNumber}}</label>
+                    </div>
+
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0px;"
+                        data-ng-if="(basket.counterMark!==null)&&(basket.chasisNumber===null) &&(basket.registrationNumber===null)">
+                        <span style="font-size: 0.8em;" class="ellipsis no-padding col-lg-6 col-md-6 col-sm-6 col-xs-6" title="N° de contremarque">(N°
+                            de contremarque)</span> <span class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5"
+                            title="{{basket.vehicleFamilylabel}}">{{basket.vehicleFamilylabel}}</span> <label
+                            class="ellipsis no-padding col-lg-5 col-md-5 col-sm-5 col-xs-5" title="{{basket.counterMark}}">{{basket.counterMark}}</label>
+
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 ellipsis" style="margin-top: 1em; padding: 0px; font-size: 0.9em;"
+                        title="basket.vehicleFileStatusLabelEng"
+                        data-ng-class="{'basket-cutom-fontcolor' : basket.vehicleFileStatusLabel === 'cop.vehicleFileStatus.guilabel.expertise' }">
+
+                        {{basket.vehicleFileStatusLabelEng}}</div>
+
+                    <div class="col-lg-1 col-sm-1 col-md-1 col-xs-1" style="top: 0.5vw;">
+                        <i class="fa fa-folder-open-o fa-2x" title="Ouvrir le fichier de préparation" data-ng-click="dblClickVehicleFile(basket)"></i>
+                    </div>
+
+                    <div class="col-lg-1 col-sm-1 col-md-1 col-xs-1 custom-wifi-unc" title="WIFI_Unconnected">
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="slide-resize col-lg-12 col-md-12 col-sm-12 col-xs-12 col-lg-10 col-md-10 col-sm-10 col-xs-10 no-padding custom-footer">
+        <label class="screenNo">Screen Number :SCR068</label>
+        <div class="padding-top-btm">
+            <a><button class="btn btn-warning" data-ng-click="checkNetwork()">Go Online</button></a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
